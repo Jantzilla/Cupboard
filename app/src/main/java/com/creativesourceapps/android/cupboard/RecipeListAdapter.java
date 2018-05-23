@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -25,13 +26,10 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
         Recipe recipes = getItem(position);
         TextView textView;
         if (convertView == null) {
-            // If the view is not recycled, this creates a new TextView to hold a string
-            textView = new TextView(getContext());
-            // Define the layout parameters
-            textView.setPadding(8, 8, 8, 8);
-        } else {
-            textView = (TextView) convertView;
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_recipe_layout, parent, false);
         }
+
+        textView = convertView.findViewById(R.id.grid_item_recipe);
 
         // Set the text resource and return the newly created TextView
         textView.setText(recipes.title);
