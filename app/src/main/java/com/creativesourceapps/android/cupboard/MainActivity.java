@@ -42,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     response = getRequest.execute(myUrl).get();
 
-                    JSONObject json = new JSONObject(response);
-                    JSONArray items = json.getJSONArray("results");
+                    JSONArray json = new JSONArray(response);
 
-                    for (int i = 0; i < items.length(); i++) {
-                        JSONObject resultObject = items.getJSONObject(i);
+                    for (int i = 0; i < json.length(); i++) {
+                        JSONObject resultObject = json.getJSONObject(i);
                         Recipe recipe = new Recipe(resultObject.getInt("id"),
-                                resultObject.getString("title"));
+                                resultObject.getString("name"));
                         recipes.add(recipe);
                     }
 
@@ -91,5 +90,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestRecipeData();
     }
 }
