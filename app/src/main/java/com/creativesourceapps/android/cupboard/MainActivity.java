@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -94,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
                                                             int position, long id) {
 
                                         Recipe item_clicked = recipes.get(position);
+
+                                        Intent intent = new Intent(getApplicationContext(), RecipeActivity.class);
+                                        intent.putExtra("parcel_data", item_clicked);
+                                        startActivity(intent);
 
                                     }
                                 });
