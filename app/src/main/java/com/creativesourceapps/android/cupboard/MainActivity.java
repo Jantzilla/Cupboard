@@ -83,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 //Handle UI here
-                                RecipeListAdapter moviesAdapter = new RecipeListAdapter(getApplicationContext(), recipes);
+                                RecipeListAdapter recipeAdapter = new RecipeListAdapter(getApplicationContext(), recipes);
 
                                 GridView gridView = findViewById(R.id.recipes_grid_view);
-                                gridView.setAdapter(moviesAdapter);
+                                gridView.setAdapter(recipeAdapter);
 
                                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
