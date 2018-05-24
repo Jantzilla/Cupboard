@@ -67,9 +67,22 @@ public class MainActivity extends AppCompatActivity {
                             JSONArray json = new JSONArray(response.body().string());
 
                             for (int i = 0; i < json.length(); i++) {
+                                int id;
+                                String name;
+                                ArrayList<String> description = new ArrayList<>();
                                 JSONObject resultObject = json.getJSONObject(i);
-                                Recipe recipe = new Recipe(resultObject.getInt("id"),
-                                        resultObject.getString("name"));
+                                id = resultObject.getInt("id");
+                                name = resultObject.getString("name");
+
+
+                                JSONArray steps = resultObject.getJSONArray("steps");
+                                for(int o = 0; o < steps.length(); o++) {
+                                    JSONObject step = steps.getJSONObject(o);
+                                    description.add(step.getString("shortDescription"));
+                                }
+                                Recipe recipe = new Recipe(id,
+                                        name, description);
+
                                 recipes.add(recipe);
                             }
 
