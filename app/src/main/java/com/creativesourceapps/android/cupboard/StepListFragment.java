@@ -17,7 +17,7 @@ public class StepListFragment extends Fragment {
 
     // OnStepClickListener interface, calls a method in the host activity named OnStepSelected
     public interface OnStepClickListener {
-        void onStepSelected(int position);
+        void onStepSelected(int position, Recipe recipe);
     }
 
     // Override onAttach to make sure that the container activity has implemented the callback
@@ -43,7 +43,7 @@ public class StepListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
+        final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
 
         final View rootView = inflater.inflate(R.layout.fragment_step_list, container, false);
 
@@ -62,7 +62,7 @@ public class StepListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Trigger the callback method and pass in the position that was clicked
-                mCallback.onStepSelected(position);
+                mCallback.onStepSelected(position, recipe);
             }
         });
 

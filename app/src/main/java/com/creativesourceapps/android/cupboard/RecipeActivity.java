@@ -1,5 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -15,7 +16,10 @@ public class RecipeActivity extends AppCompatActivity implements StepListFragmen
     }
 
     @Override
-    public void onStepSelected(int position) {
+    public void onStepSelected(int position, Recipe recipe) {
 
+        final Intent intent = new Intent(this, DetailStepActivity.class);
+        intent.putExtra("parcel_data", recipe);
+        startActivity(intent);
     }
 }
