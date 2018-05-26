@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < json.length(); i++) {
                                 int id;
                                 String name;
+                                ArrayList<String> shortDescription = new ArrayList<>();
                                 ArrayList<String> description = new ArrayList<>();
                                 JSONObject resultObject = json.getJSONObject(i);
                                 id = resultObject.getInt("id");
@@ -78,10 +79,14 @@ public class MainActivity extends AppCompatActivity {
                                 JSONArray steps = resultObject.getJSONArray("steps");
                                 for(int o = 0; o < steps.length(); o++) {
                                     JSONObject step = steps.getJSONObject(o);
-                                    description.add(step.getString("shortDescription"));
+                                    shortDescription.add(step.getString("shortDescription"));
+                                }
+                                for(int o = 0; o < steps.length(); o++) {
+                                    JSONObject step = steps.getJSONObject(o);
+                                    description.add(step.getString("description"));
                                 }
                                 Recipe recipe = new Recipe(id,
-                                        name, description);
+                                        name, shortDescription, description);
 
                                 recipes.add(recipe);
                             }

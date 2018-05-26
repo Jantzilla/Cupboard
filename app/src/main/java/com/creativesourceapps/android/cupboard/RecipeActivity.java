@@ -17,9 +17,11 @@ public class RecipeActivity extends AppCompatActivity implements StepListFragmen
 
     @Override
     public void onStepSelected(int position, Recipe recipe) {
-
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",position);
+        bundle.putParcelable("parcel_data", recipe);
         final Intent intent = new Intent(this, DetailStepActivity.class);
-        intent.putExtra("parcel_data", recipe);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

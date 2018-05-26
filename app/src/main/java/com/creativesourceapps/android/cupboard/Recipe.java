@@ -9,19 +9,23 @@ public class Recipe implements Parcelable {
     final int id;
     final String title;
     ArrayList<String> steps;
+    ArrayList<String> instructions;
 
-    public Recipe(int id, String title, ArrayList<String> description)
+    public Recipe(int id, String title, ArrayList<String> shortDescription, ArrayList<String> description)
     {
         this.id = id;
         this.title = title;
-        this.steps = description;
+        this.steps = shortDescription;
+        this.instructions = description;
     }
 
     private Recipe(Parcel in) {
         id = in.readInt();
         title = in.readString();
         steps = new ArrayList<String>();
+        instructions = new ArrayList<String>();
         in.readList(steps, getClass().getClassLoader());
+        in.readList(instructions, getClass().getClassLoader());
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -46,5 +50,6 @@ public class Recipe implements Parcelable {
         parcel.writeInt(id);
         parcel.writeString(title);
         parcel.writeList(steps);
+        parcel.writeList(instructions);
     }
 }
