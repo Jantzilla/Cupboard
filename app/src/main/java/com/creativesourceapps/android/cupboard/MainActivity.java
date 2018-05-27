@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                     description.add(step.getString("description"));
                                 }
                                 Recipe recipe = new Recipe(id,
-                                        name, shortDescription, description);
+                                        name, ingredient, shortDescription, description);
 
                                 recipes.add(recipe);
                             }

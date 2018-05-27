@@ -55,7 +55,7 @@ public class StepListFragment extends Fragment {
         // Create the adapter
         // This adapter takes in the context and an ArrayList of ALL the image resources to display
         StepListAdapter mAdapter = new StepListAdapter(getContext(), recipe.steps);
-        IngredientListAdapter ingredientListAdapter = new IngredientListAdapter(getContext(), "Ingredients", null);
+        IngredientListAdapter ingredientListAdapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.ingredients);
 
         // Set the adapter on the ListView
         listView.setAdapter(mAdapter);
