@@ -45,7 +45,6 @@ tools:layout_editor_absoluteY="81dp">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toLeftOf="@+id/buttonB"
-    app:layout_constraintTop_toBottomOf="@+id/text_description"
     android:text="Previous"/>
 
 <Button
@@ -55,7 +54,6 @@ tools:layout_editor_absoluteY="81dp">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@+id/buttonA"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_description"
     android:text="Next"/>
 
 

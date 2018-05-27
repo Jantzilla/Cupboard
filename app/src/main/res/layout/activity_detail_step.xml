@@ -10,26 +10,21 @@
  See the License for the specific language governing permissions and
  limitations under the License.-->
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.creativesourceapps.android.cupboard.DetailStepActivity">
 
-    <LinearLayout
-        android:id="@+id/detail_step_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical">
+
 
         <!-- This container holds the DetailStepFragment -->
         <FrameLayout android:id="@+id/detail_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:scaleType="centerInside"/>
 
-    </LinearLayout>
 
-</ScrollView>
+</LinearLayout>
