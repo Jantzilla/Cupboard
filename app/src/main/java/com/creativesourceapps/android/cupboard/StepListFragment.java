@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -49,13 +50,16 @@ public class StepListFragment extends Fragment {
 
         // Get a reference to the ListView in the fragment_step_list xml layout file
         ListView listView = (ListView) rootView.findViewById(R.id.steps_list_view);
+        ExpandableListView expandableListView = (ExpandableListView) rootView.findViewById(R.id.recipe_list_view);
 
         // Create the adapter
         // This adapter takes in the context and an ArrayList of ALL the image resources to display
         StepListAdapter mAdapter = new StepListAdapter(getContext(), recipe.steps);
+        IngredientListAdapter ingredientListAdapter = new IngredientListAdapter(getContext(), "Ingredients", null);
 
         // Set the adapter on the ListView
         listView.setAdapter(mAdapter);
+        expandableListView.setAdapter(ingredientListAdapter);
 
         // Set a click listener on the listView and trigger the callback onStepSelected when an item is clicked
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
