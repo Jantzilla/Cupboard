@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 ArrayList<String> ingredient = new ArrayList<>();
                                 ArrayList<String> shortDescription = new ArrayList<>();
                                 ArrayList<String> description = new ArrayList<>();
+                                ArrayList<String> media = new ArrayList<>();
                                 JSONObject resultObject = json.getJSONObject(i);
                                 id = resultObject.getInt("id");
                                 name = resultObject.getString("name");
@@ -92,8 +93,16 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject step = steps.getJSONObject(o);
                                     description.add(step.getString("description"));
                                 }
+                                for(int o = 0; o < steps.length(); o++) {
+                                    JSONObject step = steps.getJSONObject(o);
+                                    String tempUrl = step.getString("videoURL");
+                                    if(tempUrl.equals(""))
+                                        media.add(step.getString("thumbnailURL"));
+                                    else
+                                        media.add(step.getString("videoURL"));
+                                }
                                 Recipe recipe = new Recipe(id,
-                                        name, ingredient, shortDescription, description);
+                                        name, ingredient, shortDescription, description, media);
 
                                 recipes.add(recipe);
                             }
