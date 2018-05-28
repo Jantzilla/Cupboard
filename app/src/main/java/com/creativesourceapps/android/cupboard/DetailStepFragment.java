@@ -61,7 +61,10 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         Button previousBtn = (Button) rootView.findViewById(R.id.buttonA);
         Button nextBtn = (Button) rootView.findViewById(R.id.buttonB);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
-        position = getActivity().getIntent().getIntExtra("position", 0);
+
+        position = 0;
+        if(getArguments() != null)
+            position = getArguments().getInt("position", 0);
         textView.setText(recipe.instructions.get(position));
 
         mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource
