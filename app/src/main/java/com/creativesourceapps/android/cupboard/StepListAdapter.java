@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +11,61 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class StepListAdapter extends ArrayAdapter<String> {
+public class StepListAdapter extends RecyclerView.Adapter<StepListAdapter.ViewHolder> {
+    private Context context;
+    private ArrayList<String> steps;
+    private Recipe recipe;
+    private OnStepClickListener mCallback;
+
+    // OnStepClickListener interface, calls a method in the host activity named OnStepSelected
+    public interface OnStepClickListener {
+        void onStepSelected(int position, Recipe recipe);
+    }
 
     /**
      * Constructor method
      * @param steps The list of recipes to display
+     * @param recipe
      */
-    public StepListAdapter(Context context, ArrayList<String> steps) {
-        super(context,0,steps);
+    public StepListAdapter(Context context, ArrayList<String> steps, Recipe recipe) {
+        this.context = context;
+        this.steps = steps;
+        this.recipe = recipe;
+        mCallback = (OnStepClickListener) context;
     }
 
-    /**
-     * Creates a new TextView for each item referenced by the adapter
-     */
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        String step = getItem(position);
-        TextView textView;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_step_layout, parent, false);
-        }
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.list_step_layout, parent, false));
+    }
 
-        textView = convertView.findViewById(R.id.list_item_step);
-
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         // Set the text resource and return the newly created TextView
-        textView.setText(step);
-        return textView;
+        String step = steps.get(position);
+        holder.textView.setText(step);
+        holder.parentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onStepSelected(position, recipe);
+            }
+        });
     }
 
+    @Override
+    public int getItemCount() {
+        return this.steps.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView textView;
+        private View parentView;
+
+        public ViewHolder(@NonNull View view) {
+            super(view);
+            this.parentView = view;
+            this.textView = (TextView)view.findViewById(R.id.list_item_step);
+        }
+    }
 }
