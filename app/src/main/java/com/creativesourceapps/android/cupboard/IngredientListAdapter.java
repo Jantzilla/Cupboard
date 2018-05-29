@@ -9,8 +9,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class IngredientListAdapter extends BaseExpandableListAdapter {
 
@@ -46,7 +44,7 @@ public class IngredientListAdapter extends BaseExpandableListAdapter {
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
         TextView expandedListTextView = (TextView) convertView
-                .findViewById(R.id.expandedListItem);
+                .findViewById(R.id.ingredientsListItem);
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
