@@ -14,11 +14,11 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
     private Context mContext;
     private ArrayList<String> arrayList = new ArrayList<>();
 
-    public MyWidgetRemoteViewsFactory(Context applicationContext, Intent intent) {
+    public MyWidgetRemoteViewsFactory(Context applicationContext, Intent intent, ArrayList<String> recipe) {
         mContext = applicationContext;
-        arrayList.add("pickles");
-        arrayList.add("meat");
-        arrayList.add("bread");
+
+        if(recipe != null)
+            arrayList = recipe;
     }
 
     @Override

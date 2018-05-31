@@ -5,12 +5,32 @@
     android:background="#09C"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <ImageView
         android:id="@+id/widget_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:id="@+id/recipe_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#eeeeee"
+            android:text="No Active Recipe"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/layout_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"/>
 
     <ListView android:id="@+id/widgetListView"
         android:layout_width="match_parent"

@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                                                             int position, long id) {
 
                                         Recipe item_clicked = recipes.get(position);
+                                        CupboardWidgetProvider.sendRefreshBroadcast(getApplicationContext(),item_clicked);
 
                                         Intent intent = new Intent(getApplicationContext(), RecipeActivity.class);
                                         intent.putExtra("parcel_data", item_clicked);
