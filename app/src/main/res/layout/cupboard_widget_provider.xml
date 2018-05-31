@@ -24,7 +24,7 @@
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#eeeeee"
-            android:text="No Active Recipe"/>
+            android:text="@string/no_active_recipe"/>
     </LinearLayout>
     <TextView
         android:id="@+id/layout_divider"

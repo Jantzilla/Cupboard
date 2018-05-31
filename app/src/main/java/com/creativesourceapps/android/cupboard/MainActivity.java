@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             } else {
-                Toast.makeText(this, "No Network Connection. Please reconnect and reload page.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.no_network_connection, Toast.LENGTH_LONG).show();
             }
 
     }

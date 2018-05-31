@@ -35,8 +35,7 @@ tools:layout_editor_absoluteY="81dp">
     app:layout_constraintBottom_toTopOf="@id/buttonA"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/horizontalHalf"
-    android:text="Test"/>
+    app:layout_constraintTop_toBottomOf="@+id/horizontalHalf"/>
 
 <Button
     android:id="@+id/buttonA"
@@ -45,7 +44,7 @@ tools:layout_editor_absoluteY="81dp">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toLeftOf="@+id/buttonB"
-    android:text="Previous"/>
+    android:text="@string/previous"/>
 
 <Button
     android:id="@+id/buttonB"
@@ -54,7 +53,7 @@ tools:layout_editor_absoluteY="81dp">
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@+id/buttonA"
     app:layout_constraintRight_toRightOf="parent"
-    android:text="Next"/>
+    android:text="@string/next"/>
 
 
 

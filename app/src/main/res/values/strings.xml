@@ -2,4 +2,8 @@
     <string name="app_name">Cupboard</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="no_active_recipe">No Active Recipe</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="no_network_connection">No Network Connection. Please reconnect and reload page.</string>
 </resources>
