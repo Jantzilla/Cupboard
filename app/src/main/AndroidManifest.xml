@@ -19,8 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeActivity" />
-        <activity android:name=".DetailStepActivity" />
+        <activity android:name=".RecipeActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"/>
+        <activity android:name=".DetailStepActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            />
 
         <receiver android:name=".CupboardWidgetProvider">
             <intent-filter>
