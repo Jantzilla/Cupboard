@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
@@ -40,6 +41,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private SimpleExoPlayerView mPlayerView;
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
+    long playerPosition;
 
     // Override onAttach to make sure that the container activity has implemented the callback
     @Override
@@ -55,6 +57,9 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if(savedInstanceState != null)
+            playerPosition = savedInstanceState.getLong("playerPosition");
+
         final View rootView = inflater.inflate(R.layout.fragment_detail_step, container, false);
         mPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.playerView);
         final TextView textView = (TextView) rootView.findViewById(R.id.text_description);
@@ -221,6 +226,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
             mExoPlayer.prepare(mediaSource);
             mExoPlayer.setPlayWhenReady(true);
         }
+        mExoPlayer.seekTo(playerPosition);
     }
 
 
@@ -244,8 +250,17 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     @Override
     public void onPause() {
         super.onPause();
-        if(mExoPlayer != null)
+        if(mExoPlayer != null) {
             mExoPlayer.setPlayWhenReady(false);
+            Bundle bundle = new Bundle();
+            onSaveInstanceState(bundle);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putLong("playerPosition", mExoPlayer.getCurrentPosition());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
