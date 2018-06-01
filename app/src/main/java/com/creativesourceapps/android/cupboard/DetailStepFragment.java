@@ -241,6 +241,12 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         mMediaSession.setActive(false);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mExoPlayer != null)
+            mExoPlayer.setPlayWhenReady(false);
+    }
 
     @Override
     public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
