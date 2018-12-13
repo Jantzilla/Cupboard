@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,19 +20,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/list_item_step"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/list_item_step"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Recipe Step Title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_step_number"
-            android:textColor="#ffffff"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:gravity="center"
-            android:textSize="18sp"/>
+            android:text="Recipe Step Title"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_step_number"
+            app:layout_constraintEnd_toStartOf="@+id/iv_expand_less"
+            app:layout_constraintStart_toEndOf="@id/tv_step_number"
+            app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
+
+        <ImageView
+            android:id="@+id/iv_expand_less"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_expand_less_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_step_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/list_item_step"
+            app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
 
         <com.google.android.exoplayer2.ui.SimpleExoPlayerView
             android:id="@+id/playerView"
