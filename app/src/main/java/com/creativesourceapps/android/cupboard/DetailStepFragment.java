@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -41,6 +42,8 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private SimpleExoPlayerView mPlayerView;
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
+    private IngredientListAdapter adapter;
+    private ExpandableListView expandableListView;
     long playerPosition;
 
     // Override onAttach to make sure that the container activity has implemented the callback
@@ -65,7 +68,11 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         final TextView textView = (TextView) rootView.findViewById(R.id.text_description);
         Button previousBtn = (Button) rootView.findViewById(R.id.buttonA);
         Button nextBtn = (Button) rootView.findViewById(R.id.buttonB);
+        expandableListView = rootView.findViewById(R.id.step_list_view);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
+        adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.ingredients);
+
+        expandableListView.setAdapter(adapter);
 
         position = 0;
         if(getArguments() != null)
