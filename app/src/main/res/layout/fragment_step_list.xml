@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ExpandableListView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/recipe_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp">
-    </ExpandableListView>
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/steps_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
         android:gravity="center"
         android:padding="16dp">
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <ExpandableListView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recipe_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:padding="8dp">
+    </ExpandableListView>
+
+</FrameLayout>
