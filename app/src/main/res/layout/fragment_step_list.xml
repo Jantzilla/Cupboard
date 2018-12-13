@@ -8,9 +8,9 @@
         android:id="@+id/steps_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?actionBarSize"
+        android:layout_marginTop="64dp"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="8dp">
     </android.support.v7.widget.RecyclerView>
 
     <ExpandableListView
