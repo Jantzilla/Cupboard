@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -45,6 +46,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private IngredientListAdapter adapter;
     private ExpandableListView expandableListView;
     private TextView stepTextView, numberTextView;
+    private ImageView expandImageView;
     long playerPosition;
 
     // Override onAttach to make sure that the container activity has implemented the callback
@@ -72,6 +74,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         expandableListView = rootView.findViewById(R.id.step_list_view);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
+        expandImageView = rootView.findViewById(R.id.iv_expand_less);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.ingredients);
 
@@ -198,6 +201,13 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
                         }
                     }
                 }
+            }
+        });
+
+        expandImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
 
