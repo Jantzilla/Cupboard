@@ -18,9 +18,12 @@
         android:id="@+id/recipe_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="@drawable/rounded_border_background"
         android:gravity="center"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
     </ExpandableListView>
 
 </FrameLayout>
