@@ -43,7 +43,8 @@ public class StepListAdapter extends RecyclerView.Adapter<StepListAdapter.ViewHo
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         // Set the text resource and return the newly created TextView
         String step = steps.get(position);
-        holder.textView.setText(step);
+        holder.stepTextView.setText(step);
+        holder.numberTextView.setText(String.valueOf(position + 1));
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,13 +59,15 @@ public class StepListAdapter extends RecyclerView.Adapter<StepListAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private TextView stepTextView;
+        private TextView numberTextView;
         private View parentView;
 
         public ViewHolder(@NonNull View view) {
             super(view);
             this.parentView = view;
-            this.textView = (TextView)view.findViewById(R.id.list_item_step);
+            this.stepTextView = (TextView)view.findViewById(R.id.list_item_step);
+            this.numberTextView = (TextView)view.findViewById(R.id.tv_step_number);
         }
     }
 }
