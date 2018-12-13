@@ -9,6 +9,7 @@
         android:id="@+id/grid_item_recipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/recipe_list_background"
         android:padding="32dp"
         android:gravity="center"
         android:textSize="32sp"/>
