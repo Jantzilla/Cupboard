@@ -80,7 +80,10 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         position = 0;
         if(getArguments() != null)
             position = getArguments().getInt("position", 0);
-        numberTextView.setText(String.valueOf(position + 1));
+        if(position == 0)
+            numberTextView.setText("");
+        else
+            numberTextView.setText(String.valueOf(position));
         stepTextView.setText(recipe.steps.get(position));
         textView.setText(recipe.instructions.get(position));
 
@@ -99,8 +102,11 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
              public void onClick(View view) {
                  if(position != 0) {
                      position -= 1;
+                     if(position == 0)
+                         numberTextView.setText("");
+                     else
+                         numberTextView.setText(String.valueOf(position));
                      textView.setText(recipe.instructions.get(position));
-                     numberTextView.setText(String.valueOf(position + 1));
                      stepTextView.setText(recipe.steps.get(position));
 
                      if(mExoPlayer == null) {
@@ -122,7 +128,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
                  } else {
                      position = recipe.instructions.size() - 1;
                      textView.setText(recipe.instructions.get(recipe.instructions.size() - 1));
-                     numberTextView.setText(String.valueOf(recipe.instructions.size()));
+                     numberTextView.setText(String.valueOf(recipe.instructions.size() - 1));
                      stepTextView.setText(recipe.steps.get(recipe.instructions.size() - 1));
 
                      if(mExoPlayer == null) {
@@ -149,7 +155,10 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
                 if(position != recipe.instructions.size() - 1) {
                     position += 1;
                     textView.setText(recipe.instructions.get(position));
-                    numberTextView.setText(String.valueOf(position + 1));
+                    if(position == 0)
+                        numberTextView.setText("");
+                    else
+                        numberTextView.setText(String.valueOf(position));
                     stepTextView.setText(recipe.steps.get(position));
 
                     if(mExoPlayer == null) {
@@ -171,8 +180,8 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
                 } else {
                     position = 0;
                     textView.setText(recipe.instructions.get(0));
-                    numberTextView.setText(String.valueOf(1));
                     stepTextView.setText(recipe.steps.get(0));
+                    numberTextView.setText("");
 
                     if(mExoPlayer == null) {
                         if (!recipe.media.get(position).equals(""))

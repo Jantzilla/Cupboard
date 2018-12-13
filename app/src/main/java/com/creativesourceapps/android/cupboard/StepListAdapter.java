@@ -44,7 +44,8 @@ public class StepListAdapter extends RecyclerView.Adapter<StepListAdapter.ViewHo
         // Set the text resource and return the newly created TextView
         String step = steps.get(position);
         holder.stepTextView.setText(step);
-        holder.numberTextView.setText(String.valueOf(position + 1));
+        if(position != 0)
+            holder.numberTextView.setText(String.valueOf(position));
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
