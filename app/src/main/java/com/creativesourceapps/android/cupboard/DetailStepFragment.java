@@ -48,6 +48,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private TextView stepTextView, numberTextView;
     private ImageView expandImageView;
     long playerPosition;
+    private TextView textView;
 
     // Override onAttach to make sure that the container activity has implemented the callback
     @Override
@@ -68,7 +69,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
 
         final View rootView = inflater.inflate(R.layout.fragment_detail_step, container, false);
         mPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.playerView);
-        final TextView textView = (TextView) rootView.findViewById(R.id.text_description);
+        textView = (TextView) rootView.findViewById(R.id.text_description);
         Button previousBtn = (Button) rootView.findViewById(R.id.buttonA);
         Button nextBtn = (Button) rootView.findViewById(R.id.buttonB);
         expandableListView = rootView.findViewById(R.id.step_list_view);
@@ -83,12 +84,15 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         position = 0;
         if(getArguments() != null)
             position = getArguments().getInt("position", 0);
-        if(position == 0)
+        if(position == 0) {
             numberTextView.setText("");
-        else
+            textView.setText("");
+        }
+        else {
             numberTextView.setText(String.valueOf(position));
+            textView.setText(recipe.instructions.get(position));
+        }
         stepTextView.setText(recipe.steps.get(position));
-        textView.setText(recipe.instructions.get(position));
 
         mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource
                 (getResources(), R.drawable.ic_launcher_foreground));
@@ -105,11 +109,14 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
              public void onClick(View view) {
                  if(position != 0) {
                      position -= 1;
-                     if(position == 0)
+                     if(position == 0) {
                          numberTextView.setText("");
-                     else
+                         textView.setText("");
+                     }
+                     else {
                          numberTextView.setText(String.valueOf(position));
-                     textView.setText(recipe.instructions.get(position));
+                         textView.setText(recipe.instructions.get(position));
+                     }
                      stepTextView.setText(recipe.steps.get(position));
 
                      if(mExoPlayer == null) {
@@ -157,11 +164,14 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
             public void onClick(View view) {
                 if(position != recipe.instructions.size() - 1) {
                     position += 1;
-                    textView.setText(recipe.instructions.get(position));
-                    if(position == 0)
+                    if(position == 0) {
                         numberTextView.setText("");
-                    else
+                        textView.setText("");
+                    }
+                    else {
                         numberTextView.setText(String.valueOf(position));
+                        textView.setText(recipe.instructions.get(position));
+                    }
                     stepTextView.setText(recipe.steps.get(position));
 
                     if(mExoPlayer == null) {
@@ -182,7 +192,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
                     }
                 } else {
                     position = 0;
-                    textView.setText(recipe.instructions.get(0));
+                    textView.setText("");
                     stepTextView.setText(recipe.steps.get(0));
                     numberTextView.setText("");
 
