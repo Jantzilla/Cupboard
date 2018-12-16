@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                                 int id;
                                 String name;
                                 ArrayList<String> ingredient = new ArrayList<>();
+                                ArrayList<Integer> quantity = new ArrayList<>();
+                                ArrayList<String> unit = new ArrayList<>();
                                 ArrayList<String> shortDescription = new ArrayList<>();
                                 ArrayList<String> description = new ArrayList<>();
                                 ArrayList<String> media = new ArrayList<>();
@@ -80,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                                 JSONArray ingredients = resultObject.getJSONArray("ingredients");
                                 for(int o = 0; o < ingredients.length(); o++) {
                                     JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
-                                    ingredient.add(ingredientsJSONObject.getInt("quantity") + " " + ingredientsJSONObject.getString("measure") + " " + ingredientsJSONObject.getString("ingredient"));
+                                    ingredient.add(ingredientsJSONObject.getString("ingredient"));
+                                    quantity.add(ingredientsJSONObject.getInt("quantity"));
+                                    unit.add(ingredientsJSONObject.getString("measure"));
                                 }
 
 
