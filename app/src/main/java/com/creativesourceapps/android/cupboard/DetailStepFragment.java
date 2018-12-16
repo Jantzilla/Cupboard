@@ -68,8 +68,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         final View rootView = inflater.inflate(R.layout.fragment_detail_step, container, false);
         mPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.playerView);
         textView = (TextView) rootView.findViewById(R.id.text_description);
-        Button previousBtn = (Button) rootView.findViewById(R.id.buttonA);
-        Button nextBtn = (Button) rootView.findViewById(R.id.buttonB);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
         expandImageView = rootView.findViewById(R.id.iv_expand_less);
@@ -97,116 +95,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
             initializePlayer(Uri.parse(recipe.media.get(position)));
         else
             mPlayerView.setVisibility(View.GONE);
-
-         previousBtn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 if(position != 0) {
-                     position -= 1;
-                     if(position == 0) {
-                         numberTextView.setText("");
-                         textView.setText("");
-                     }
-                     else {
-                         numberTextView.setText(String.valueOf(position));
-                         textView.setText(recipe.instructions.get(position));
-                     }
-                     stepTextView.setText(recipe.steps.get(position));
-
-                     if(mExoPlayer == null) {
-                         if (!recipe.media.get(position).equals("")) {
-                             mPlayerView.setVisibility(View.VISIBLE);
-                             initializePlayer(Uri.parse(recipe.media.get(position)));
-                         } else
-                             mPlayerView.setVisibility(View.GONE);
-                     } else {
-                         if (!recipe.media.get(position).equals("")) {
-                             releasePlayer();
-                             mPlayerView.setVisibility(View.VISIBLE);
-                             initializePlayer(Uri.parse(recipe.media.get(position)));
-                         } else {
-                             mPlayerView.setVisibility(View.GONE);
-                             releasePlayer();
-                         }
-                     }
-                 } else {
-                     position = recipe.instructions.size() - 1;
-                     textView.setText(recipe.instructions.get(recipe.instructions.size() - 1));
-                     numberTextView.setText(String.valueOf(recipe.instructions.size() - 1));
-                     stepTextView.setText(recipe.steps.get(recipe.instructions.size() - 1));
-
-                     if(mExoPlayer == null) {
-                         if (!recipe.media.get(position).equals(""))
-                             initializePlayer(Uri.parse(recipe.media.get(position)));
-                         else
-                             mPlayerView.setVisibility(View.GONE);
-                     } else {
-                         if (!recipe.media.get(position).equals("")) {
-                             releasePlayer();
-                             initializePlayer(Uri.parse(recipe.media.get(position)));
-                         } else {
-                             mPlayerView.setVisibility(View.GONE);
-                             releasePlayer();
-                         }
-                     }
-                 }
-             }
-         });
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(position != recipe.instructions.size() - 1) {
-                    position += 1;
-                    if(position == 0) {
-                        numberTextView.setText("");
-                        textView.setText("");
-                    }
-                    else {
-                        numberTextView.setText(String.valueOf(position));
-                        textView.setText(recipe.instructions.get(position));
-                    }
-                    stepTextView.setText(recipe.steps.get(position));
-
-                    if(mExoPlayer == null) {
-                        if (!recipe.media.get(position).equals("")) {
-                            mPlayerView.setVisibility(View.VISIBLE);
-                            initializePlayer(Uri.parse(recipe.media.get(position)));
-                        } else
-                            mPlayerView.setVisibility(View.GONE);
-                    } else {
-                        if (!recipe.media.get(position).equals("")) {
-                            releasePlayer();
-                            mPlayerView.setVisibility(View.VISIBLE);
-                            initializePlayer(Uri.parse(recipe.media.get(position)));
-                        } else {
-                            mPlayerView.setVisibility(View.GONE);
-                            releasePlayer();
-                        }
-                    }
-                } else {
-                    position = 0;
-                    textView.setText("");
-                    stepTextView.setText(recipe.steps.get(0));
-                    numberTextView.setText("");
-
-                    if(mExoPlayer == null) {
-                        if (!recipe.media.get(position).equals(""))
-                            initializePlayer(Uri.parse(recipe.media.get(position)));
-                        else
-                            mPlayerView.setVisibility(View.GONE);
-                    } else {
-                        if (!recipe.media.get(position).equals("")) {
-                            releasePlayer();
-                            initializePlayer(Uri.parse(recipe.media.get(position)));
-                        } else {
-                            mPlayerView.setVisibility(View.GONE);
-                            releasePlayer();
-                        }
-                    }
-                }
-            }
-        });
 
         expandImageView.setOnClickListener(new View.OnClickListener() {
             @Override
