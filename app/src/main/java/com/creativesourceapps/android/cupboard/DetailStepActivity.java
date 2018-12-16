@@ -21,14 +21,14 @@ public class DetailStepActivity extends AppCompatActivity {
         // Only create new fragments when there is no previously saved state
         if(savedInstanceState == null) {
 
-            DetailStepFragment detailStepFragment = new DetailStepFragment();
-            detailStepFragment.setArguments(bundle);
+            StepPagerFragment stepPagerFragment = new StepPagerFragment();
+            stepPagerFragment.setArguments(bundle);
 
             // Add the fragment to its container using a FragmentManager and a Transaction
             FragmentManager fragmentManager = getSupportFragmentManager();
 
             fragmentManager.beginTransaction()
-                    .add(R.id.detail_container, detailStepFragment)
+                    .add(R.id.detail_container, stepPagerFragment)
                     .commit();
 
         }
