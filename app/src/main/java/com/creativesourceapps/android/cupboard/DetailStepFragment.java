@@ -140,24 +140,22 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     }
 
     private void initializePlayer(Uri mediaUri) {
-        if (mExoPlayer == null) {
-            // Create an instance of the ExoPlayer.
-            TrackSelector trackSelector = new DefaultTrackSelector();
-            LoadControl loadControl = new DefaultLoadControl();
-            mExoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
-            mPlayerView.setPlayer(mExoPlayer);
+        // Create an instance of the ExoPlayer.
+        TrackSelector trackSelector = new DefaultTrackSelector();
+        LoadControl loadControl = new DefaultLoadControl();
+        mExoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
+        mPlayerView.setPlayer(mExoPlayer);
 
-            // Set the ExoPlayer.EventListener to this activity.
-            mExoPlayer.addListener(this);
+        // Set the ExoPlayer.EventListener to this activity.
+        mExoPlayer.addListener(this);
 
-            // Prepare the MediaSource.
-            String userAgent = Util.getUserAgent(getContext(), "Cupboard");
-            MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
-                    getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
-            mExoPlayer.prepare(mediaSource);
-            mExoPlayer.setPlayWhenReady(true);
-        }
+        // Prepare the MediaSource.
+        String userAgent = Util.getUserAgent(getContext(), "Cupboard");
+        MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
+                getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
+        mExoPlayer.prepare(mediaSource);
         mExoPlayer.seekTo(playerPosition);
+        mExoPlayer.setPlayWhenReady(true);
     }
 
 
