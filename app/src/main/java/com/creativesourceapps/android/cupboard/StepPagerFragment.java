@@ -11,6 +11,7 @@ import android.widget.ExpandableListView;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class StepPagerFragment extends Fragment {
+    int position;
     StepPagerAdapter stepPagerAdapter;
     ViewPager viewPager;
     WormDotsIndicator wormDotsIndicator;
@@ -30,6 +31,7 @@ public class StepPagerFragment extends Fragment {
         Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
         stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
         expandableListView = view.findViewById(R.id.step_list_view);
+        position = getArguments().getInt("position", 0);
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
@@ -45,6 +47,8 @@ public class StepPagerFragment extends Fragment {
 
         viewPager.setAdapter(stepPagerAdapter);
         wormDotsIndicator.setViewPager(viewPager);
+
+        viewPager.setCurrentItem(position,true);
 
         return view;
     }
