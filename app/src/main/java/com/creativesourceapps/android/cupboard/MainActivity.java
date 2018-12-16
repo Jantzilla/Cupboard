@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                         media.add(step.getString("videoURL"));
                                 }
                                 Recipe recipe = new Recipe(id,
-                                        name, ingredient, shortDescription, description, media);
+                                        name, ingredient, quantity, unit, shortDescription, description, media);
 
                                 recipes.add(recipe);
                             }
