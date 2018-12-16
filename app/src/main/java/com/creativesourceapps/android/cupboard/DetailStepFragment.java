@@ -43,8 +43,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private SimpleExoPlayerView mPlayerView;
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
-    private IngredientListAdapter adapter;
-    private ExpandableListView expandableListView;
     private TextView stepTextView, numberTextView;
     private ImageView expandImageView;
     long playerPosition;
@@ -72,14 +70,10 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         textView = (TextView) rootView.findViewById(R.id.text_description);
         Button previousBtn = (Button) rootView.findViewById(R.id.buttonA);
         Button nextBtn = (Button) rootView.findViewById(R.id.buttonB);
-        expandableListView = rootView.findViewById(R.id.step_list_view);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
         expandImageView = rootView.findViewById(R.id.iv_expand_less);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
-
-        expandableListView.setAdapter(adapter);
 
         position = 0;
         if(getArguments() != null)
