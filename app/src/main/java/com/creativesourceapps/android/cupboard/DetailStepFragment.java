@@ -77,7 +77,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         numberTextView = rootView.findViewById(R.id.tv_step_number);
         expandImageView = rootView.findViewById(R.id.iv_expand_less);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.ingredients);
+        adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
         expandableListView.setAdapter(adapter);
 

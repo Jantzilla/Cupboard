@@ -14,18 +14,22 @@ public class IngredientListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private String expandableListTitle;
-    private ArrayList<String> expandableListDetail;
+    private ArrayList<String> ingredient;
+    private ArrayList<Integer> quantity;
+    private ArrayList<String> unit;
 
-    public IngredientListAdapter(Context context, String expandableListTitle,
-                                 ArrayList<String> expandableListDetail) {
+    public IngredientListAdapter(Context context, String expandableListTitle, ArrayList<Integer> quantity,
+                                 ArrayList<String> unit, ArrayList<String> ingredient) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
-        this.expandableListDetail = expandableListDetail;
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.unit = unit;
     }
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
-        return this.expandableListDetail
+        return this.ingredient
                 .get(expandedListPosition);
     }
 
@@ -37,21 +41,27 @@ public class IngredientListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int listPosition, final int expandedListPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final String expandedListText = (String) getChild(listPosition, expandedListPosition);
+        String ingredientListText = this.ingredient.get(expandedListPosition);
+        String unitListText = this.unit.get(expandedListPosition);
+        String quantityListText = String.valueOf(this.quantity.get(expandedListPosition));
+
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
-        TextView expandedListTextView = (TextView) convertView
-                .findViewById(R.id.ingredientsListItem);
-        expandedListTextView.setText(expandedListText);
+        TextView ingredientTextView = (TextView) convertView.findViewById(R.id.ingredientsListItem);
+        TextView quantityTextView = (TextView) convertView.findViewById(R.id.quantityListItem);
+        TextView unitTextView = (TextView) convertView.findViewById(R.id.unitListItem);
+        ingredientTextView.setText(ingredientListText);
+        quantityTextView.setText(quantityListText);
+        unitTextView.setText(unitListText);
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int listPosition) {
-        return this.expandableListDetail
+        return this.ingredient
                 .size();
     }
 
