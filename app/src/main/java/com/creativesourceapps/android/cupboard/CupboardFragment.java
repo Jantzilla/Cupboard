@@ -7,10 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-public class CupboardFragment extends Fragment {
+public class CupboardFragment extends Fragment implements CupboardAdapter.ItemClickListener {
 
     private RecyclerView recyclerView;
     private CupboardAdapter adapter;
@@ -42,11 +43,16 @@ public class CupboardFragment extends Fragment {
         categoryList.add("Fruit");
         categoryList.add("Vegetables");
 
-        adapter = new CupboardAdapter(categoryList);
+        adapter = new CupboardAdapter(categoryList, CupboardFragment.this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
 
     }
 
+    @Override
+    public void onItemClicked(int clickedItem, LinearLayout itemLayout) {
+        DetailCupboardFragment fragment = new DetailCupboardFragment();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+    }
 }
