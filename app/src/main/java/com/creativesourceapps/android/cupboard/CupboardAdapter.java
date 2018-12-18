@@ -15,9 +15,15 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     private ArrayList<String> categoryList = new ArrayList<>();
     private Context context;
     private LayoutInflater inflater;
+    private ItemClickListener clickListener;
 
-    public CupboardAdapter(ArrayList<String> categoryList) {
+    public CupboardAdapter(ArrayList<String> categoryList, ItemClickListener clickListener) {
         this.categoryList.addAll(categoryList);
+        this.clickListener = clickListener;
+    }
+
+    public interface ItemClickListener{
+        void onItemClicked(int clickedItem, LinearLayout itemLayout);
     }
 
     @NonNull
@@ -56,7 +62,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
             listItemLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    clickListener.onItemClicked(getAdapterPosition(),listItemLayout);
                 }
             });
         }
