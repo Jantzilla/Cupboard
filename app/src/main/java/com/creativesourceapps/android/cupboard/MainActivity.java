@@ -1,5 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
+    private FragmentManager fragmentManager;
+    private RecipeFragment fragment;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
+        fragmentManager = getSupportFragmentManager();
+        fragment = new RecipeFragment();
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
+        fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
     }
 }
