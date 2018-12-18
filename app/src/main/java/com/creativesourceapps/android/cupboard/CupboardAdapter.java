@@ -15,7 +15,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     private Context context;
     private LayoutInflater inflater;
 
-    public void CupboardAdapter(ArrayList<String> categoryList) {
+    public CupboardAdapter(ArrayList<String> categoryList) {
         this.categoryList.addAll(categoryList);
     }
 
