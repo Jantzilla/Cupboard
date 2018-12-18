@@ -21,4 +21,10 @@
         android:verticalSpacing="8dp">
     </GridView>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:layout_gravity="bottom|right"/>
+
 </FrameLayout>
