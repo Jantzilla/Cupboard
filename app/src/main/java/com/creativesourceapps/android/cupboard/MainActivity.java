@@ -2,6 +2,7 @@ package com.creativesourceapps.android.cupboard;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private RecipeFragment fragment;
+    private Fragment fragment;
     private NavigationView navigationView;
 
     @Override
@@ -58,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.id_recipes:
+                        fragment = new RecipeFragment();
+                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        break;
+                    case R.id.id_cupboard:
+                        fragment = new CupboardFragment();
+                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        break;
+                    case R.id.id_cookbook:
+                        fragment = new CookbookFragment();
+                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        break;
+                }
                 drawerLayout.closeDrawers();
                 return true;
             }
