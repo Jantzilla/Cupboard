@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,6 +43,9 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     @Override
     public void onBindViewHolder(@NonNull CupboardViewHolder cupboardViewHolder, int i) {
         cupboardViewHolder.categoryTextView.setText(categoryList.get(i));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            cupboardViewHolder.listItemLayout.setTransitionName(categoryList.get(i));
     }
 
     @Override
