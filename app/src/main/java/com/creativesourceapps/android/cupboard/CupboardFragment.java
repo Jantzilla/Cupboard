@@ -56,6 +56,9 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         DetailCupboardFragment fragment = new DetailCupboardFragment();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Bundle bundle = new Bundle();
+            bundle.putString("Shared Element", categoryList.get(clickedItem));
+            fragment.setArguments(bundle);
             getActivity().getSupportFragmentManager()
                     .beginTransaction()
                     .setReorderingAllowed(true)
