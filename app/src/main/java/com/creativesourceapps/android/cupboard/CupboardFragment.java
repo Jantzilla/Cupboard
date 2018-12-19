@@ -35,6 +35,11 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         layoutManager = new GridLayoutManager(getContext(), 2);
         getCategories();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setExitTransition(TransitionInflater.from(getContext())
+                    .inflateTransition(R.transition.grid_exit_transition));
+        }
+
         return view;
     }
 
