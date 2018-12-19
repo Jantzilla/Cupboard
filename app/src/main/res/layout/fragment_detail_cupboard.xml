@@ -13,6 +13,16 @@
     android:layout_marginBottom="18dp"
     tools:context=".DetailCupboardFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:padding="18dp"
+        android:layout_gravity="top|center"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
     <ImageView
         android:id="@+id/iv_collapse"
         android:layout_width="wrap_content"
