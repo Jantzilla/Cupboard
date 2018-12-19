@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 
 public class DetailCupboardFragment extends Fragment {
     FrameLayout frameLayout;
+    ImageView imageView;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -32,6 +34,13 @@ public class DetailCupboardFragment extends Fragment {
             frameLayout.setTransitionName(bundle.getString("Shared Element"));
         }
 
+        imageView = view.findViewById(R.id.iv_collapse);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Transition transition = TransitionInflater.from(getContext())
