@@ -5,12 +5,15 @@
     android:id="@+id/cl_cupboard_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="18dp"
-    android:layout_marginLeft="18dp"
-    android:layout_marginTop="74dp"
-    android:layout_marginEnd="18dp"
-    android:layout_marginRight="18dp"
-    android:layout_marginBottom="18dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="64dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:paddingTop="18dp"
+    android:paddingStart="18dp"
+    android:paddingLeft="18dp"
     android:background="@drawable/recipe_list_background"
     tools:context=".DetailCupboardFragment">
 
@@ -18,10 +21,10 @@
         android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="18dp"
         android:text="Category"
         android:textColor="#ffffff"
         android:textSize="18sp"
+        android:paddingBottom="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,40 +34,57 @@
         android:id="@+id/iv_collapse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/ic_expand_less_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="wrap_content"
+        android:id="@+id/header_border"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:background="@drawable/rounded_white_border_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/divider"
-        app:layout_constraintBottom_toBottomOf="@id/divider"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/divider_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
+        android:textSize="16sp"
         android:textColor="#ffffff"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/divider_vertical"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+        app:layout_constraintTop_toTopOf="@+id/divider_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/divider_vertical"/>
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/divider_vertical"
         android:layout_width="2dp"
-        android:layout_height="20sp"
+        android:layout_height="24sp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
         android:background="#ffffff"
         app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
         app:layout_constraintStart_toEndOf="@id/vertical_guideline"
         app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+    <View
+        android:id="@+id/divider_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="@id/header_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider_vertical" />
 
     <android.support.constraint.Guideline
         android:id="@+id/vertical_guideline"
@@ -78,17 +98,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="quantity"
+        android:textSize="16sp"
         android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+        app:layout_constraintEnd_toEndOf="@id/header_border"
+        app:layout_constraintStart_toEndOf="@+id/divider_vertical"
+        app:layout_constraintTop_toTopOf="@+id/divider_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/divider_vertical"/>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
         android:src="@drawable/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toEndOf="@id/header_border"
+        app:layout_constraintTop_toBottomOf="@id/header_border"
+        app:layout_constraintVertical_bias="0.060000002" />
 
 </android.support.constraint.ConstraintLayout>
