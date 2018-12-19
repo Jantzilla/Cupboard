@@ -2,16 +2,16 @@ package com.creativesourceapps.android.cupboard;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 
 public class DetailCupboardFragment extends Fragment {
-    FrameLayout frameLayout;
+    ConstraintLayout constraintLayout;
     ImageView imageView;
 
     public DetailCupboardFragment() {
@@ -24,12 +24,12 @@ public class DetailCupboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail_cupboard, container, false);
 
         // Inflate the layout for this fragment
-        frameLayout = view.findViewById(R.id.fl_cupboard_detail);
+        constraintLayout = view.findViewById(R.id.cl_cupboard_detail);
 
         Bundle bundle = getArguments();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            frameLayout.setTransitionName(bundle.getString("Shared Element"));
+            constraintLayout.setTransitionName(bundle.getString("Shared Element"));
         }
 
         imageView = view.findViewById(R.id.iv_collapse);
