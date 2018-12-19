@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,6 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
 
     @Override
     public void onBindViewHolder(@NonNull CupboardViewHolder cupboardViewHolder, int i) {
-        cupboardViewHolder.categoryTextView.setText(categoryList.get(i));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             cupboardViewHolder.listItemLayout.setTransitionName(categoryList.get(i));
@@ -54,13 +52,11 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     }
 
     public class CupboardViewHolder extends RecyclerView.ViewHolder {
-        TextView categoryTextView;
         LinearLayout listItemLayout;
 
         public CupboardViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            categoryTextView = itemView.findViewById(R.id.tv_category);
             listItemLayout = itemView.findViewById(R.id.ll_list_item);
 
             listItemLayout.setOnClickListener(new View.OnClickListener() {
