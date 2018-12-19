@@ -1,5 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -53,6 +54,22 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     @Override
     public void onItemClicked(int clickedItem, LinearLayout itemLayout) {
         DetailCupboardFragment fragment = new DetailCupboardFragment();
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .addSharedElement(itemLayout, itemLayout.getTransitionName())
+                    .replace(R.id.fl_fragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        } else {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.fl_fragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
