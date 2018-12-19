@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +61,12 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
             Bundle bundle = new Bundle();
             bundle.putString("Shared Element", categoryList.get(clickedItem));
             fragment.setArguments(bundle);
+            Transition transition = TransitionInflater.from(getContext())
+                    .inflateTransition(R.transition.cupboard_shared_element_transition);
+
+            fragment.setSharedElementEnterTransition(transition);
             getActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .setReorderingAllowed(true)
                     .addSharedElement(itemLayout, itemLayout.getTransitionName())
                     .replace(R.id.fl_fragment, fragment)
                     .addToBackStack(null)

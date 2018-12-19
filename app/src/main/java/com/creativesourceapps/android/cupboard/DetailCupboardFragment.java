@@ -3,8 +3,6 @@ package com.creativesourceapps.android.cupboard;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,13 +39,6 @@ public class DetailCupboardFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Transition transition = TransitionInflater.from(getContext())
-                    .inflateTransition(R.transition.cupboard_shared_element_transition);
-
-            setSharedElementEnterTransition(transition);
-        }
 
         return view;
     }
