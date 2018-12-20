@@ -4,15 +4,24 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 
 public class DetailCupboardFragment extends Fragment {
     ConstraintLayout constraintLayout;
+    RecyclerView recyclerView;
+    CupboardDetailAdapter adapter;
     ImageView imageView;
+    private ArrayList<Ingredient> ingredientsList;
+    private Ingredient ingredient;
+    private LinearLayoutManager linearLayoutManager;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -33,6 +42,19 @@ public class DetailCupboardFragment extends Fragment {
         }
 
         imageView = view.findViewById(R.id.iv_collapse);
+        recyclerView = view.findViewById(R.id.rv_cupboard_detail);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        ingredientsList = new ArrayList<>();
+
+        ingredient = new Ingredient(); // TODO: USE REAL INGREDIENT DATA
+        ingredient.name = "Potatos";
+        ingredient.quantity = 10;
+        ingredientsList.add(ingredient);
+
+        adapter = new CupboardDetailAdapter(ingredientsList);
+        recyclerView.setAdapter(adapter);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
