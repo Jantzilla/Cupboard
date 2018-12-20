@@ -34,7 +34,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     @Override
     public void onBindViewHolder(@NonNull DetailViewHolder detailViewHolder, int i) {
         detailViewHolder.ingredientTextView.setText(ingredientsList.get(i).name);
-        detailViewHolder.quantityTextView.setText(ingredientsList.get(i).quantity);
+        detailViewHolder.quantityTextView.setText(String.valueOf(ingredientsList.get(i).quantity));
     }
 
     @Override
