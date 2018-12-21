@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="385dp"
     android:layout_height="wrap_content"
+    android:paddingTop="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Spinner
         android:id="@+id/spin_group"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:padding="0dp"
+        android:background="@drawable/spinner_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_ingredient"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ingredient"/>
 
     <EditText
+        android:id="@+id/tv_ingredient"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/spin_group"
@@ -26,16 +32,23 @@
 
     <Spinner
         android:id="@+id/spin_unit"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:background="@drawable/spinner_icon"
+        app:layout_constraintTop_toTopOf="@id/tv_quantity"
+        app:layout_constraintBottom_toBottomOf="@id/tv_quantity"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_quantity"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Save"
+        android:background="@drawable/recipe_list_background"
+        android:textColor="@android:color/white"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Save"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_quantity" />
 
 </android.support.constraint.ConstraintLayout>
