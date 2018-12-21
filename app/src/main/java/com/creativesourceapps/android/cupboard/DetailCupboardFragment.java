@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
+import android.app.Notification;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -12,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -30,6 +33,8 @@ public class DetailCupboardFragment extends Fragment {
     private Dialog dialog;
     private ArrayAdapter<CharSequence> spinnerAdapter;
     private Spinner unitSpinner, categorySpinner;
+    private Button saveButton;
+    private EditText ingredientEditText, quantityEditText;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -71,11 +76,27 @@ public class DetailCupboardFragment extends Fragment {
                 dialog.setContentView(R.layout.dialog_ingredient_edit);
                 categorySpinner = dialog.findViewById(R.id.spin_group);
                 unitSpinner = dialog.findViewById(R.id.spin_unit);
+                saveButton = dialog.findViewById(R.id.btn_save);
+                ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
+                quantityEditText = dialog.findViewById(R.id.tv_quantity);
                 spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
                 spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 unitSpinner.setAdapter(spinnerAdapter);
                 spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, R.layout.dropdown_item);
                 categorySpinner.setAdapter(spinnerAdapter);
+
+                saveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Ingredient ingredient = new Ingredient();
+                        ingredient.name = ingredientEditText.getText().toString();
+                        ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
+                        adapter.addIngredient(ingredient);
+                        adapter.notifyItemInserted(ingredientsList.size());
+                        dialog.cancel();
+                    }
+                });
+
                 dialog.show();
             }
         });
