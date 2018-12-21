@@ -1,8 +1,10 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,9 +21,11 @@ public class DetailCupboardFragment extends Fragment {
     RecyclerView recyclerView;
     CupboardDetailAdapter adapter;
     ImageView imageView;
+    private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private LinearLayoutManager linearLayoutManager;
+    private Dialog dialog;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -43,6 +47,7 @@ public class DetailCupboardFragment extends Fragment {
 
         imageView = view.findViewById(R.id.iv_collapse);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
+        fab = view.findViewById(R.id.fab_add);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         ingredientsList = new ArrayList<>();
@@ -54,6 +59,15 @@ public class DetailCupboardFragment extends Fragment {
 
         adapter = new CupboardDetailAdapter(ingredientsList);
         recyclerView.setAdapter(adapter);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_ingredient_edit);
+                dialog.show();
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
