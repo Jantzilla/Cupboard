@@ -1,5 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
     private Context context;
     private LayoutInflater layoutInflator;
+    private Dialog dialog;
 
     public CupboardDetailAdapter(ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
@@ -43,10 +45,15 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     }
 
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView ingredientTextView, quantityTextView;
+        TextView ingredientTextView, quantityTextView, ingredientDialog, quantityDialog;
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            dialog = new Dialog(context);
+            dialog.setContentView(R.layout.dialog_ingredient_edit);
+            ingredientDialog = dialog.findViewById(R.id.tv_ingredient);
+            quantityDialog = dialog.findViewById(R.id.tv_quantity);
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
             quantityTextView = itemView.findViewById(R.id.tv_quantity);
@@ -56,7 +63,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
         @Override
         public void onClick(View v) {
-
+            dialog.show();
         }
     }
 }
