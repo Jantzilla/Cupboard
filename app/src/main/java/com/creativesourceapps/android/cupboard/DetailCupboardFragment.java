@@ -71,10 +71,10 @@ public class DetailCupboardFragment extends Fragment {
                 dialog.setContentView(R.layout.dialog_ingredient_edit);
                 categorySpinner = dialog.findViewById(R.id.spin_group);
                 unitSpinner = dialog.findViewById(R.id.spin_unit);
-                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, android.R.layout.simple_spinner_item);
+                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
                 spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 unitSpinner.setAdapter(spinnerAdapter);
-                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, android.R.layout.simple_spinner_item);
+                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, R.layout.dropdown_item);
                 categorySpinner.setAdapter(spinnerAdapter);
                 dialog.show();
             }

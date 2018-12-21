@@ -63,10 +63,10 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
             categorySpinner = dialog.findViewById(R.id.spin_group);
             unitSpinner = dialog.findViewById(R.id.spin_unit);
-            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.units_array, android.R.layout.simple_spinner_item);
+            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.units_array, R.layout.dropdown_item);
             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             unitSpinner.setAdapter(spinnerAdapter);
-            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, android.R.layout.simple_spinner_item);
+            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, R.layout.dropdown_item);
             categorySpinner.setAdapter(spinnerAdapter);
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
