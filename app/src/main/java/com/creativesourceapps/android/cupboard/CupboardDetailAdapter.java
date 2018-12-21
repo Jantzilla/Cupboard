@@ -77,6 +77,8 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
         @Override
         public void onClick(View v) {
+            dialogIngredientEditText.setText(ingredientTextView.getText());
+            dialogQuantityEditText.setText(quantityTextView.getText());
             dialog.show();
         }
     }
