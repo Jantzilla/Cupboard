@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     }
 
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private Button saveButton;
         ArrayAdapter<CharSequence> spinnerAdapter;
         TextView ingredientTextView, quantityTextView;
         EditText dialogIngredientEditText, dialogQuantityEditText;
@@ -60,6 +62,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             dialog.setContentView(R.layout.dialog_ingredient_edit);
             dialogIngredientEditText = dialog.findViewById(R.id.tv_ingredient);
             dialogQuantityEditText = dialog.findViewById(R.id.tv_quantity);
+            saveButton = dialog.findViewById(R.id.btn_save);
 
             categorySpinner = dialog.findViewById(R.id.spin_group);
             unitSpinner = dialog.findViewById(R.id.spin_unit);
@@ -68,6 +71,16 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             unitSpinner.setAdapter(spinnerAdapter);
             spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, R.layout.dropdown_item);
             categorySpinner.setAdapter(spinnerAdapter);
+
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
+                    ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
+                    dialog.cancel();
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
             quantityTextView = itemView.findViewById(R.id.tv_quantity);
