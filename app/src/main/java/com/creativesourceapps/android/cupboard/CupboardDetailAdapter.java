@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,15 +48,26 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     }
 
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView ingredientTextView, quantityTextView, ingredientDialog, quantityDialog;
+        ArrayAdapter<CharSequence> spinnerAdapter;
+        TextView ingredientTextView, quantityTextView;
+        EditText dialogIngredientEditText, dialogQuantityEditText;
+        Spinner categorySpinner, unitSpinner;
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
 
             dialog = new Dialog(context);
             dialog.setContentView(R.layout.dialog_ingredient_edit);
-            ingredientDialog = dialog.findViewById(R.id.tv_ingredient);
-            quantityDialog = dialog.findViewById(R.id.tv_quantity);
+            dialogIngredientEditText = dialog.findViewById(R.id.tv_ingredient);
+            dialogQuantityEditText = dialog.findViewById(R.id.tv_quantity);
+
+            categorySpinner = dialog.findViewById(R.id.spin_group);
+            unitSpinner = dialog.findViewById(R.id.spin_unit);
+            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.units_array, android.R.layout.simple_spinner_item);
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            unitSpinner.setAdapter(spinnerAdapter);
+            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, android.R.layout.simple_spinner_item);
+            categorySpinner.setAdapter(spinnerAdapter);
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
             quantityTextView = itemView.findViewById(R.id.tv_quantity);
