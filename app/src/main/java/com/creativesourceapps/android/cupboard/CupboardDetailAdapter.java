@@ -48,6 +48,10 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
         return ingredientsList.size();
     }
 
+    public void addIngredient(Ingredient ingredient) {
+        ingredientsList.add(ingredient);
+    }
+
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Button saveButton;
         ArrayAdapter<CharSequence> spinnerAdapter;
