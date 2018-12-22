@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +23,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     private Context context;
     private LayoutInflater layoutInflator;
     private Dialog dialog;
+    private String unit;
 
     public CupboardDetailAdapter(ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
@@ -82,6 +85,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
                 public void onClick(View v) {
                     ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
                     ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
+                    ingredientsList.get(getAdapterPosition()).unit = unit;
                     dialog.cancel();
                     notifyItemChanged(getAdapterPosition());
                 }
@@ -90,6 +94,18 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
             quantityTextView = itemView.findViewById(R.id.tv_quantity);
             unitTextView = itemView.findViewById(R.id.tv_unit);
+
+            unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    unit = String.valueOf(parent.getItemAtPosition(position));
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
             itemView.setOnClickListener(this);
         }
