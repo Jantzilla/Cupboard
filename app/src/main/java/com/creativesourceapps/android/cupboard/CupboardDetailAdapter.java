@@ -41,6 +41,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     public void onBindViewHolder(@NonNull DetailViewHolder detailViewHolder, int i) {
         detailViewHolder.ingredientTextView.setText(ingredientsList.get(i).name);
         detailViewHolder.quantityTextView.setText(String.valueOf(ingredientsList.get(i).quantity));
+        detailViewHolder.unitTextView.setText(ingredientsList.get(i).unit);
     }
 
     @Override
@@ -55,7 +56,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Button saveButton;
         ArrayAdapter<CharSequence> spinnerAdapter;
-        TextView ingredientTextView, quantityTextView;
+        TextView ingredientTextView, quantityTextView, unitTextView;
         EditText dialogIngredientEditText, dialogQuantityEditText;
         Spinner categorySpinner, unitSpinner;
 
@@ -88,6 +89,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
             quantityTextView = itemView.findViewById(R.id.tv_quantity);
+            unitTextView = itemView.findViewById(R.id.tv_unit);
 
             itemView.setOnClickListener(this);
         }
