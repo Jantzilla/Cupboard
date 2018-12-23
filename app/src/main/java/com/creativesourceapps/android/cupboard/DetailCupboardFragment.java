@@ -76,7 +76,7 @@ public class DetailCupboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.dialog_ingredient_edit);
+                dialog.setContentView(R.layout.dialog_ingredient_add);
                 categorySpinner = dialog.findViewById(R.id.spin_group);
                 unitSpinner = dialog.findViewById(R.id.spin_unit);
                 saveButton = dialog.findViewById(R.id.btn_save);
