@@ -36,6 +36,7 @@ public class DetailCupboardFragment extends Fragment {
     private Spinner unitSpinner, categorySpinner;
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
+    private String unit;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
