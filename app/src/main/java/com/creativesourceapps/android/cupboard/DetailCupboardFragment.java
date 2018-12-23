@@ -31,7 +31,7 @@ public class DetailCupboardFragment extends Fragment {
     private Ingredient ingredient;
     private LinearLayoutManager linearLayoutManager;
     private Dialog dialog;
-    private ArrayAdapter<CharSequence> spinnerAdapter;
+    private ArrayAdapter<CharSequence> unitSpinnerAdapter, categorySpinnerAdapter;
     private Spinner unitSpinner, categorySpinner;
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
@@ -80,11 +80,14 @@ public class DetailCupboardFragment extends Fragment {
                 saveButton = dialog.findViewById(R.id.btn_save);
                 ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
                 quantityEditText = dialog.findViewById(R.id.tv_quantity);
-                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
-                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                unitSpinner.setAdapter(spinnerAdapter);
-                spinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, R.layout.dropdown_item);
-                categorySpinner.setAdapter(spinnerAdapter);
+
+                unitSpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
+                unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                unitSpinner.setAdapter(unitSpinnerAdapter);
+
+                categorySpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, R.layout.dropdown_item);
+                categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                categorySpinner.setAdapter(categorySpinnerAdapter);
 
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override

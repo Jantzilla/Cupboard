@@ -58,7 +58,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Button saveButton;
-        ArrayAdapter<CharSequence> spinnerAdapter;
+        ArrayAdapter<CharSequence> unitSpinnerAdapter, categorySpinnerAdapter;
         TextView ingredientTextView, quantityTextView, unitTextView;
         EditText dialogIngredientEditText, dialogQuantityEditText;
         Spinner categorySpinner, unitSpinner;
@@ -74,11 +74,14 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
             categorySpinner = dialog.findViewById(R.id.spin_group);
             unitSpinner = dialog.findViewById(R.id.spin_unit);
-            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.units_array, R.layout.dropdown_item);
-            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            unitSpinner.setAdapter(spinnerAdapter);
-            spinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, R.layout.dropdown_item);
-            categorySpinner.setAdapter(spinnerAdapter);
+
+            unitSpinnerAdapter = ArrayAdapter.createFromResource(context,R.array.units_array, R.layout.dropdown_item);
+            unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            unitSpinner.setAdapter(unitSpinnerAdapter);
+
+            categorySpinnerAdapter = ArrayAdapter.createFromResource(context,R.array.categories_array, R.layout.dropdown_item);
+            categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            categorySpinner.setAdapter(categorySpinnerAdapter);
 
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
