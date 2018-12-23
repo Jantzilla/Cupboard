@@ -36,7 +36,7 @@ public class DetailCupboardFragment extends Fragment {
     private Spinner unitSpinner, categorySpinner;
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
-    private String unit;
+    private String unit, category;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -121,7 +121,7 @@ public class DetailCupboardFragment extends Fragment {
                 categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        category = String.valueOf(parent.getItemAtPosition(position));
                     }
 
                     @Override
