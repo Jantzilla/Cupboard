@@ -57,7 +57,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     }
 
     class DetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private Button saveButton;
+        private Button saveButton, deleteButton;
         ArrayAdapter<CharSequence> unitSpinnerAdapter, categorySpinnerAdapter;
         TextView ingredientTextView, quantityTextView, unitTextView;
         EditText dialogIngredientEditText, dialogQuantityEditText;
@@ -71,6 +71,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             dialogIngredientEditText = dialog.findViewById(R.id.tv_ingredient);
             dialogQuantityEditText = dialog.findViewById(R.id.tv_quantity);
             saveButton = dialog.findViewById(R.id.btn_save);
+            deleteButton = dialog.findViewById(R.id.btn_delete);
 
             categorySpinner = dialog.findViewById(R.id.spin_group);
             unitSpinner = dialog.findViewById(R.id.spin_unit);
@@ -91,6 +92,15 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
                     ingredientsList.get(getAdapterPosition()).unit = unit;
                     dialog.cancel();
                     notifyItemChanged(getAdapterPosition());
+                }
+            });
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ingredientsList.remove(getAdapterPosition());
+                    dialog.cancel();
+                    notifyItemRemoved(getAdapterPosition());
                 }
             });
 
