@@ -97,6 +97,7 @@ public class DetailCupboardFragment extends Fragment {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
                         ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
+                        ingredient.unit = unit;
                         adapter.addIngredient(ingredient);
                         adapter.notifyItemInserted(ingredientsList.size());
                         dialog.cancel();
