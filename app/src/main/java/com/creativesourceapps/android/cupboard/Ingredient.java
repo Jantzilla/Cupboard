@@ -1,6 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
 class Ingredient {
-    public String name, unit;
+    public String name, unit, category;
     public int quantity;
 }
