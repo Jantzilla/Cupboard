@@ -97,12 +97,15 @@ public class DetailCupboardFragment extends Fragment {
                 sortOrder
         );
 
-        ingredient = new Ingredient(); // TODO: USE REAL INGREDIENT DATA
-        ingredient.name = "Potatos";
-        ingredient.quantity = 10;
-        ingredient.unit = "lbs";
-        ingredient.category = "Vegetables";
-        ingredientsList.add(ingredient);
+        while(cursor.moveToNext()) {
+            ingredient = new Ingredient();
+            ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME));
+            ingredient.quantity = cursor.getInt(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY));
+            ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
+            ingredient.category = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_CATEGORY));
+            ingredientsList.add(ingredient);
+        }
+        cursor.close();
 
         adapter = new CupboardDetailAdapter(category, ingredientsList);
         recyclerView.setAdapter(adapter);
