@@ -88,6 +88,9 @@ public class DetailCupboardFragment extends Fragment {
                 ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
                 quantityEditText = dialog.findViewById(R.id.tv_quantity);
 
+                if(!category.equals("All Ingredients"))
+                    categorySpinner.setVisibility(View.INVISIBLE);
+
                 unitSpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
                 unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 unitSpinner.setAdapter(unitSpinnerAdapter);
