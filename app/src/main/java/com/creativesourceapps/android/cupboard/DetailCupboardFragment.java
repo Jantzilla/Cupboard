@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class DetailCupboardFragment extends Fragment {
     private Spinner unitSpinner, categorySpinner;
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
+    private TextView categoryTextView;
     private String unit, category;
 
     public DetailCupboardFragment() {
@@ -56,6 +58,7 @@ public class DetailCupboardFragment extends Fragment {
             constraintLayout.setTransitionName(bundle.getString("Shared Element"));
         }
 
+        categoryTextView = view.findViewById(R.id.tv_category);
         imageView = view.findViewById(R.id.iv_collapse);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
         fab = view.findViewById(R.id.fab_add);
