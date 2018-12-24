@@ -126,6 +126,10 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
         @Override
         public void onClick(View v) {
+
+            if(!category.equals("All Ingredients"))
+                categorySpinner.setVisibility(View.INVISIBLE);
+
             dialogIngredientEditText.setText(ingredientTextView.getText());
             dialogQuantityEditText.setText(quantityTextView.getText());
             unit = ingredientsList.get(getAdapterPosition()).unit;
