@@ -16,8 +16,20 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
                     CupboardContract.Ingredients.COLUMN_QUANTITY + " INTEGER," +
                     CupboardContract.Ingredients.COLUMN_UNIT + " TEXT)";
 
+    private static final String SQL_CREATE_RECIPES =
+            "CREATE TABLE " + CupboardContract.Recipes.TABLE_NAME + " (" +
+                    CupboardContract.Recipes._ID + " INTEGER PRIMARY KEY," +
+                    CupboardContract.Recipes.COLUMN_TITLE + " TEXT," +
+                    CupboardContract.Recipes.COLUMN_STEPS + " TEXT," +
+                    CupboardContract.Recipes.COLUMN_DIRECTIONS + " TEXT," +
+                    CupboardContract.Recipes.COLUMN_MEDIA + " TEXT," +
+                    CupboardContract.Recipes.COLUMN_INGREDIENTS + " TEXT)";
+
     private static final String SQL_DELETE_INGREDIENTS =
             "DROP TABLE IF EXISTS " + CupboardContract.Ingredients.TABLE_NAME;
+
+    private static final String SQL_DELETE_RECIPES =
+            "DROP TABLE IF EXISTS " + CupboardContract.Recipes.TABLE_NAME;
 
     public CupboardDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
