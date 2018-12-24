@@ -74,6 +74,7 @@ public class DetailCupboardFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         ingredientsList = new ArrayList<>();
         categoryTextView.setText(category);
+        dbHelper = new CupboardDbHelper(getContext());
 
         db = dbHelper.getReadableDatabase();
         projection = new String[]{
