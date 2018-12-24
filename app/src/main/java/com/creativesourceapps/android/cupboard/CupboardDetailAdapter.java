@@ -23,10 +23,11 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     private Context context;
     private LayoutInflater layoutInflator;
     private Dialog dialog;
-    private String unit;
+    private String unit, category;
 
     public CupboardDetailAdapter(String category, ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
+        this.category = category;
     }
 
     @NonNull
