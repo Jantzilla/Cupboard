@@ -66,6 +66,7 @@ public class DetailCupboardFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         ingredientsList = new ArrayList<>();
+        categoryTextView.setText(category);
 
         ingredient = new Ingredient(); // TODO: USE REAL INGREDIENT DATA
         ingredient.name = "Potatos";
