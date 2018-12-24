@@ -72,6 +72,7 @@ public class DetailCupboardFragment extends Fragment {
         ingredient.name = "Potatos";
         ingredient.quantity = 10;
         ingredient.unit = "lbs";
+        ingredient.category = "Vegetables";
         ingredientsList.add(ingredient);
 
         adapter = new CupboardDetailAdapter(category, ingredientsList);
