@@ -100,7 +100,8 @@ public class DetailCupboardFragment extends Fragment {
                 categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 categorySpinner.setAdapter(categorySpinnerAdapter);
 
-                selectedUnit = "g";        //Reset default ingredient selectedUnit
+                selectedUnit = "g";              //Reset default ingredient selectedUnit
+                selectedCategory = "Seasoning";  //Reset default ingredient selectedCategory
 
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
