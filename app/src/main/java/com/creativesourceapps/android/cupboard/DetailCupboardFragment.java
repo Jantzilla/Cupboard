@@ -2,6 +2,7 @@ package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,8 +40,11 @@ public class DetailCupboardFragment extends Fragment {
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
     private TextView categoryTextView;
-    private String selectedUnit, selectedCategory, category;
+    private String selectedUnit, selectedCategory, category, selection, sortOrder;
     private CupboardDbHelper dbHelper;
+    private SQLiteDatabase db;
+    private String[] projection, selectionArgs;
+    private Cursor cursor;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -70,6 +74,27 @@ public class DetailCupboardFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         ingredientsList = new ArrayList<>();
         categoryTextView.setText(category);
+
+        db = dbHelper.getReadableDatabase();
+        projection = new String[]{
+                CupboardContract.Ingredients.COLUMN_NAME,
+                CupboardContract.Ingredients.COLUMN_QUANTITY,
+                CupboardContract.Ingredients.COLUMN_UNIT,
+                CupboardContract.Ingredients.COLUMN_CATEGORY
+        };
+
+        selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
+        selectionArgs = new String[]{category};
+        sortOrder = CupboardContract.Ingredients.COLUMN_NAME + " DESC";
+        cursor = db.query(
+                CupboardContract.Ingredients.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
 
         ingredient = new Ingredient(); // TODO: USE REAL INGREDIENT DATA
         ingredient.name = "Potatos";
@@ -114,8 +139,8 @@ public class DetailCupboardFragment extends Fragment {
                         ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
                         ingredient.unit = selectedUnit;
                         ingredient.category = selectedCategory;
-                        
-                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                        db = dbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
                         values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
                         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
