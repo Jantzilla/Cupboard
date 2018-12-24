@@ -25,7 +25,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     private Dialog dialog;
     private String unit;
 
-    public CupboardDetailAdapter(ArrayList<Ingredient> ingredientsList) {
+    public CupboardDetailAdapter(String category, ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
     }
 

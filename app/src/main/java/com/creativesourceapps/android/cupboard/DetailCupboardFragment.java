@@ -74,7 +74,7 @@ public class DetailCupboardFragment extends Fragment {
         ingredient.unit = "lbs";
         ingredientsList.add(ingredient);
 
-        adapter = new CupboardDetailAdapter(ingredientsList);
+        adapter = new CupboardDetailAdapter(category, ingredientsList);
         recyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
