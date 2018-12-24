@@ -1,7 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
-import android.app.Notification;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -38,7 +37,7 @@ public class DetailCupboardFragment extends Fragment {
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
     private TextView categoryTextView;
-    private String unit, category;
+    private String selectedUnit, selectedCategory;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -94,7 +93,7 @@ public class DetailCupboardFragment extends Fragment {
                 categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 categorySpinner.setAdapter(categorySpinnerAdapter);
 
-                unit = "g";        //Reset default ingredient unit
+                selectedUnit = "g";        //Reset default ingredient selectedUnit
 
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -102,8 +101,8 @@ public class DetailCupboardFragment extends Fragment {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
                         ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
-                        ingredient.unit = unit;
-                        ingredient.category = category;
+                        ingredient.unit = selectedUnit;
+                        ingredient.category = selectedCategory;
                         adapter.addIngredient(ingredient);
                         adapter.notifyItemInserted(ingredientsList.size());
                         dialog.cancel();
@@ -113,7 +112,7 @@ public class DetailCupboardFragment extends Fragment {
                 unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        unit = String.valueOf(parent.getItemAtPosition(position));
+                        selectedUnit = String.valueOf(parent.getItemAtPosition(position));
                     }
 
                     @Override
@@ -125,7 +124,7 @@ public class DetailCupboardFragment extends Fragment {
                 categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        category = String.valueOf(parent.getItemAtPosition(position));
+                        selectedCategory = String.valueOf(parent.getItemAtPosition(position));
                     }
 
                     @Override
