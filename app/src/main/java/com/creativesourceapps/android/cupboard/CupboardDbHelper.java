@@ -38,11 +38,13 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_INGREDIENTS);
+        db.execSQL(SQL_CREATE_RECIPES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_INGREDIENTS);
+        db.execSQL(SQL_DELETE_RECIPES);
         onCreate(db);
     }
 }
