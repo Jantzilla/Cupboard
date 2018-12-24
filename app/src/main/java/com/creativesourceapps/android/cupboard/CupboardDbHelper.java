@@ -8,7 +8,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Cupboard.db";
 
-    private static final String SQL_CREATE_ENTRIES =
+    private static final String SQL_CREATE_INGREDIENTS =
             "CREATE TABLE " + CupboardContract.Ingredients.TABLE_NAME + " (" +
                     CupboardContract.Ingredients._ID + " INTEGER PRIMARY KEY," +
                     CupboardContract.Ingredients.COLUMN_NAME + " TEXT," +
@@ -16,7 +16,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
                     CupboardContract.Ingredients.COLUMN_QUANTITY + " INTEGER," +
                     CupboardContract.Ingredients.COLUMN_UNIT + " TEXT)";
 
-    private static final String SQL_DELETE_ENTRIES =
+    private static final String SQL_DELETE_INGREDIENTS =
             "DROP TABLE IF EXISTS " + CupboardContract.Ingredients.TABLE_NAME;
 
     public CupboardDbHelper(Context context) {
@@ -25,12 +25,12 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_INGREDIENTS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DELETE_INGREDIENTS);
         onCreate(db);
     }
 }
