@@ -23,7 +23,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     private Context context;
     private LayoutInflater layoutInflator;
     private Dialog dialog;
-    private String unit, category;
+    private String unit, category, selectedCategory;
 
     public CupboardDetailAdapter(String category, ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
@@ -124,7 +124,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                    selectedCategory = String.valueOf(parent.getItemAtPosition(position));
                 }
 
                 @Override
