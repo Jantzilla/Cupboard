@@ -37,7 +37,7 @@ public class DetailCupboardFragment extends Fragment {
     private Button saveButton;
     private EditText ingredientEditText, quantityEditText;
     private TextView categoryTextView;
-    private String selectedUnit, selectedCategory;
+    private String selectedUnit, selectedCategory, category;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -53,8 +53,10 @@ public class DetailCupboardFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
+        category = bundle.getString("Shared Element");
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            constraintLayout.setTransitionName(bundle.getString("Shared Element"));
+            constraintLayout.setTransitionName(category);
         }
 
         categoryTextView = view.findViewById(R.id.tv_category);
