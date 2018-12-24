@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -38,6 +40,7 @@ public class DetailCupboardFragment extends Fragment {
     private EditText ingredientEditText, quantityEditText;
     private TextView categoryTextView;
     private String selectedUnit, selectedCategory, category;
+    private CupboardDbHelper dbHelper;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -111,6 +114,15 @@ public class DetailCupboardFragment extends Fragment {
                         ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
                         ingredient.unit = selectedUnit;
                         ingredient.category = selectedCategory;
+                        
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        ContentValues values = new ContentValues();
+                        values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
+                        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
+                        values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
+                        values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
+                        db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+
                         adapter.addIngredient(ingredient);
                         adapter.notifyItemInserted(ingredientsList.size());
                         dialog.cancel();
