@@ -144,6 +144,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
                 categorySpinner.setVisibility(View.INVISIBLE);
             else {
                 categorySpinner.setSelection(categorySpinnerAdapter.getPosition(ingredientsList.get(getAdapterPosition()).category));
+                selectedCategory = ingredientsList.get(getAdapterPosition()).category;
             }
 
             dialogIngredientEditText.setText(ingredientTextView.getText());
