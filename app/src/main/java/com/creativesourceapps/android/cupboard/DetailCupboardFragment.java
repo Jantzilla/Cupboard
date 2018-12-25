@@ -86,7 +86,7 @@ public class DetailCupboardFragment extends Fragment {
 
         selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
         selectionArgs = new String[]{category};
-        sortOrder = CupboardContract.Ingredients.COLUMN_NAME + " DESC";
+        sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
 
         if(category.equals("All Ingredients")) {
             selection = null;
