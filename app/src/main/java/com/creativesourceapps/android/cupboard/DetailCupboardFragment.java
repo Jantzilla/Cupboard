@@ -87,6 +87,12 @@ public class DetailCupboardFragment extends Fragment {
         selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
         selectionArgs = new String[]{category};
         sortOrder = CupboardContract.Ingredients.COLUMN_NAME + " DESC";
+
+        if(category.equals("All Ingredients")) {
+            selection = null;
+            selectionArgs = null;
+        }
+
         cursor = db.query(
                 CupboardContract.Ingredients.TABLE_NAME,
                 projection,
