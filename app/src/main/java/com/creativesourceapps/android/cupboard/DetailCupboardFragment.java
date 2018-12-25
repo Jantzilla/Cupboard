@@ -121,9 +121,6 @@ public class DetailCupboardFragment extends Fragment {
                 ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
                 quantityEditText = dialog.findViewById(R.id.tv_quantity);
 
-                if(!category.equals("All Ingredients"))
-                    categorySpinner.setVisibility(View.INVISIBLE);
-
                 unitSpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
                 unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 unitSpinner.setAdapter(unitSpinnerAdapter);
@@ -133,7 +130,27 @@ public class DetailCupboardFragment extends Fragment {
                 categorySpinner.setAdapter(categorySpinnerAdapter);
 
                 selectedUnit = "g";              //Reset default ingredient selectedUnit
-                selectedCategory = "Seasoning";  //Reset default ingredient selectedCategory
+
+                if(!category.equals("All Ingredients")) {
+                    categorySpinner.setVisibility(View.INVISIBLE);
+                    selectedCategory = category;  //Reset default ingredient selectedCategory
+                } else {
+                    selectedCategory = "Seasoning";  //Reset default ingredient selectedCategory
+
+                    categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            selectedCategory = String.valueOf(parent.getItemAtPosition(position));
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+
+
+                }
 
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -162,18 +179,6 @@ public class DetailCupboardFragment extends Fragment {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         selectedUnit = String.valueOf(parent.getItemAtPosition(position));
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-                categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        selectedCategory = String.valueOf(parent.getItemAtPosition(position));
                     }
 
                     @Override
