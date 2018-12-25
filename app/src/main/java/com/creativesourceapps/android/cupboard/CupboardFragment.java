@@ -75,13 +75,14 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     public void startFragmentTransaction(int clickedItem, View view) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Bundle bundle = new Bundle();
             if(clickedItem == -1)
                 bundle.putString("Shared Element", "All Ingredients");
             else
                 bundle.putString("Shared Element", categoryList.get(clickedItem));
             fragment.setArguments(bundle);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Transition transition = TransitionInflater.from(getContext())
                     .inflateTransition(R.transition.cupboard_shared_element_transition);
 
