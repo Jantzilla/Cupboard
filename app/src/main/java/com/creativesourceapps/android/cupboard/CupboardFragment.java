@@ -62,9 +62,9 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
         categoryList.add("Seasoning");
         categoryList.add("Marinade");
-        categoryList.add("Produce");
         categoryList.add("Fruit");
         categoryList.add("Vegetables");
+        categoryList.add("Meat");
 
         adapter = new CupboardAdapter(categoryList, CupboardFragment.this);
 
