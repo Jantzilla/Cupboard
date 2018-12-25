@@ -166,6 +166,7 @@ public class DetailCupboardFragment extends Fragment {
                         ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
                         ingredient.unit = selectedUnit;
                         ingredient.category = selectedCategory;
+                        ingredientsList.add(ingredient);
 
                         db = dbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
