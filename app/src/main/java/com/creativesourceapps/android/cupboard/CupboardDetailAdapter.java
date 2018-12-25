@@ -21,8 +21,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
     private Context context;
     private LayoutInflater layoutInflator;
-    private Dialog dialog;
-    private String category, selectedUnit, selectedCategory;
+    private String category;
 
     public CupboardDetailAdapter(String category, ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
@@ -62,6 +61,8 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
         TextView ingredientTextView, quantityTextView, unitTextView;
         EditText dialogIngredientEditText, dialogQuantityEditText;
         Spinner categorySpinner, unitSpinner;
+        Dialog dialog;
+        String selectedUnit, selectedCategory;
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
