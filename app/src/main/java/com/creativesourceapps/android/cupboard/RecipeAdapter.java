@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private Context context;
 
-    public RecipeListAdapter(ArrayList<Recipe> recipes) {
+    public RecipeAdapter(ArrayList<Recipe> recipes) {
         this.recipes.addAll(recipes);
     }
 
