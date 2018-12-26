@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +15,10 @@ import java.util.ArrayList;
 public class CookbookFragment extends Fragment {
 
     private GridView gridView;
+    private SQLiteDatabase db;
+    private CupboardDbHelper dbHelper;
+    private Cursor cursor;
+    private String[] projection;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -23,7 +29,17 @@ public class CookbookFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
+        projection = new String[]{
+                CupboardContract.Recipes.COLUMN_TITLE,
+                CupboardContract.Recipes.COLUMN_STEPS,
+                CupboardContract.Recipes.COLUMN_DIRECTIONS,
+                CupboardContract.Recipes.COLUMN_MEDIA,
+                CupboardContract.Recipes.COLUMN_INGREDIENTS
+        };
+
         gridView = view.findViewById(R.id.cookbook_grid_view);
+        dbHelper = new CupboardDbHelper(getContext());
+        db = dbHelper.getReadableDatabase();
         requestRecipeData();
 
         return view;
@@ -34,6 +50,17 @@ public class CookbookFragment extends Fragment {
         final ArrayList<Recipe> recipes = new ArrayList<>();
         recipes.clear();
 
+        cursor = db.query(CupboardContract.Recipes.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        while(cursor.moveToNext()) {
+            // TODO: CREATE THE RECIPE OBJECTS
+        }
 
         RecipeListAdapter recipeAdapter = new RecipeListAdapter(getContext(), recipes);
 
