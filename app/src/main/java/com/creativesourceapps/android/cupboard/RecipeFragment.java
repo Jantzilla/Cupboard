@@ -147,22 +147,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                             recylcerView.setAdapter(recipeAdapter);
 
-                            recylcerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view,
-                                                        int position, long id) {
-
-                                    Recipe item_clicked = recipes.get(position);
-                                    CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
-
-                                    Intent intent = new Intent(getContext(), RecipeActivity.class);
-                                    intent.putExtra("parcel_data", item_clicked);
-                                    startActivity(intent);
-
-                                }
-                            });
-
                         }
                     });
                 }
@@ -176,6 +160,13 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
     @Override
     public void onItemClickListener(int itemClicked) {
+
+        Recipe item_clicked = recipes.get(itemClicked);
+        CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
+
+        Intent intent = new Intent(getContext(), RecipeActivity.class);
+        intent.putExtra("parcel_data", item_clicked);
+        startActivity(intent);
 
     }
 }
