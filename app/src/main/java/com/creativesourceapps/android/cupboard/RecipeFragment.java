@@ -6,11 +6,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ import okhttp3.Response;
 
 public class RecipeFragment extends Fragment {
 
-    private GridView gridView;
+    private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
 
     public RecipeFragment() {
@@ -40,7 +40,7 @@ public class RecipeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
-        gridView = view.findViewById(R.id.recipes_grid_view);
+        recylcerView = view.findViewById(R.id.recipes_grid_view);
         jsonObjectArray = new ArrayList<>();
         requestRecipeData();
 
@@ -145,9 +145,9 @@ public class RecipeFragment extends Fragment {
                             //Handle UI here
                             RecipeListAdapter recipeAdapter = new RecipeListAdapter(recipes);
 
-                            gridView.setAdapter(recipeAdapter);
+                            recylcerView.setAdapter(recipeAdapter);
 
-                            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            recylcerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view,

@@ -5,16 +5,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import java.util.ArrayList;
 
 public class CookbookFragment extends Fragment {
 
-    private GridView gridView;
+    private RecyclerView recyclerView;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
@@ -37,7 +37,7 @@ public class CookbookFragment extends Fragment {
                 CupboardContract.Recipes.COLUMN_INGREDIENTS
         };
 
-        gridView = view.findViewById(R.id.cookbook_grid_view);
+        recyclerView = view.findViewById(R.id.cookbook_grid_view);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
         requestRecipeData();
@@ -64,9 +64,9 @@ public class CookbookFragment extends Fragment {
 
         RecipeListAdapter recipeAdapter = new RecipeListAdapter(recipes);
 
-        gridView.setAdapter(recipeAdapter);
+        recyclerView.setAdapter(recipeAdapter);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
