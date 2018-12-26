@@ -20,6 +20,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         this.recipes.addAll(recipes);
     }
 
+    public interface ListItemClickListener {
+        void onItemClickListener();
+    }
+
     @NonNull
     @Override
     public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
