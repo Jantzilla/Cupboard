@@ -21,7 +21,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public interface ListItemClickListener {
-        void onItemClickListener();
+        void onItemClickListener(int itemClicked);
     }
 
     @NonNull

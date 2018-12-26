@@ -26,7 +26,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class RecipeFragment extends Fragment {
+public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemClickListener{
 
     private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
@@ -174,4 +174,8 @@ public class RecipeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onItemClickListener(int itemClicked) {
+
+    }
 }

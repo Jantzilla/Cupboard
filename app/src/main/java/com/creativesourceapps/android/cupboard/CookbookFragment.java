@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import java.util.ArrayList;
 
-public class CookbookFragment extends Fragment {
+public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener {
 
     private RecyclerView recyclerView;
     private SQLiteDatabase db;
@@ -82,4 +82,8 @@ public class CookbookFragment extends Fragment {
 
     }
 
+    @Override
+    public void onItemClickListener(int itemClicked) {
+
+    }
 }
