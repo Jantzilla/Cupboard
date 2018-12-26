@@ -45,13 +45,6 @@ public class CookbookFragment extends Fragment {
         return view;
     }
 
-    private boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
     private void requestRecipeData() {
 
         //Default Recipe API endpoint
