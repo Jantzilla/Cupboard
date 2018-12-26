@@ -62,7 +62,7 @@ public class CookbookFragment extends Fragment {
             // TODO: CREATE THE RECIPE OBJECTS
         }
 
-        RecipeListAdapter recipeAdapter = new RecipeListAdapter(getContext(), recipes);
+        RecipeListAdapter recipeAdapter = new RecipeListAdapter(recipes);
 
         gridView.setAdapter(recipeAdapter);
 

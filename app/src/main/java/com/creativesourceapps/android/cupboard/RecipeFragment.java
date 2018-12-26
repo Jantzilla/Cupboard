@@ -143,7 +143,7 @@ public class RecipeFragment extends Fragment {
                         @Override
                         public void run() {
                             //Handle UI here
-                            RecipeListAdapter recipeAdapter = new RecipeListAdapter(getContext(), recipes);
+                            RecipeListAdapter recipeAdapter = new RecipeListAdapter(recipes);
 
                             gridView.setAdapter(recipeAdapter);
 
