@@ -29,6 +29,7 @@ import okhttp3.Response;
 public class RecipeFragment extends Fragment {
 
     private GridView gridView;
+    private ArrayList<JSONObject> jsonObjectArray;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -40,6 +41,7 @@ public class RecipeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         gridView = view.findViewById(R.id.recipes_grid_view);
+        jsonObjectArray = new ArrayList<>();
         requestRecipeData();
 
         return view;
@@ -95,6 +97,7 @@ public class RecipeFragment extends Fragment {
                             ArrayList<String> description = new ArrayList<>();
                             ArrayList<String> media = new ArrayList<>();
                             JSONObject resultObject = json.getJSONObject(i);
+                            jsonObjectArray.add(resultObject);
                             id = resultObject.getInt("id");
                             name = resultObject.getString("name");
 
