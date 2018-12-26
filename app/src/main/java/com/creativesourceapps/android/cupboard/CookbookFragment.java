@@ -35,32 +35,23 @@ public class CookbookFragment extends Fragment {
         recipes.clear();
 
 
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Handle UI here
-                            RecipeListAdapter recipeAdapter = new RecipeListAdapter(getContext(), recipes);
+        RecipeListAdapter recipeAdapter = new RecipeListAdapter(getContext(), recipes);
 
-                            gridView.setAdapter(recipeAdapter);
+        gridView.setAdapter(recipeAdapter);
 
-                            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view,
-                                                        int position, long id) {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Recipe item_clicked = recipes.get(position);
+                CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
-                                    Recipe item_clicked = recipes.get(position);
-                                    CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
-
-                                    Intent intent = new Intent(getContext(), RecipeActivity.class);
-                                    intent.putExtra("parcel_data", item_clicked);
-                                    startActivity(intent);
-
-                                }
-                            });
-
-                        }
-                    });
+                Intent intent = new Intent(getContext(), RecipeActivity.class);
+                intent.putExtra("parcel_data", item_clicked);
+                startActivity(intent);
+            }
+        });
 
     }
 
