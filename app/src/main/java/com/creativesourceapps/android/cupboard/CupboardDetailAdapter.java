@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
@@ -68,6 +69,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String selection = CupboardContract.Ingredients.COLUMN_NAME + " Like ?";
         String[] selectionArgs;
+        ContentValues values = new ContentValues();
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,10 +97,21 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    values.put(CupboardContract.Ingredients.COLUMN_NAME, dialogIngredientEditText.getText().toString());
+                    values.put(CupboardContract.Ingredients.COLUMN_UNIT, selectedUnit);
+                    values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, dialogQuantityEditText.getText().toString());
+                    values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, selectedCategory);
+
+                    db.update(CupboardContract.Ingredients.TABLE_NAME,
+                            values,
+                            selection,
+                            selectionArgs);
+
                     ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
                     ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
                     ingredientsList.get(getAdapterPosition()).unit = selectedUnit;
                     ingredientsList.get(getAdapterPosition()).category = selectedCategory;
+
                     dialog.cancel();
                     notifyItemChanged(getAdapterPosition());
                 }
@@ -107,7 +120,6 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    selectionArgs = new String[]{ingredientsList.get(getAdapterPosition()).name};
                     db.delete(CupboardContract.Ingredients.TABLE_NAME, selection, selectionArgs);
                     ingredientsList.remove(getAdapterPosition());
                     dialog.cancel();
@@ -148,6 +160,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
         @Override
         public void onClick(View v) {
+            selectionArgs = new String[]{ingredientsList.get(getAdapterPosition()).name};
 
             if(!category.equals("All Ingredients"))
                 categorySpinner.setVisibility(View.INVISIBLE);
