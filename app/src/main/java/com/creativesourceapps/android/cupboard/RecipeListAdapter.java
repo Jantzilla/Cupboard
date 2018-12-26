@@ -33,7 +33,7 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
 
         // Set the text resource and return the newly created TextView
         textView.setText(recipes.title);
-        return textView;
+        return convertView;
     }
 
 }
