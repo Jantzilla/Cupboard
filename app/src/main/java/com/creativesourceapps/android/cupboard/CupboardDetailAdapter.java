@@ -164,15 +164,13 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
             if(!category.equals("All Ingredients"))
                 categorySpinner.setVisibility(View.INVISIBLE);
-            else {
-                categorySpinner.setSelection(categorySpinnerAdapter.getPosition(ingredientsList.get(getAdapterPosition()).category));
-                selectedCategory = ingredientsList.get(getAdapterPosition()).category;
-            }
 
             dialogIngredientEditText.setText(ingredientTextView.getText());
             dialogQuantityEditText.setText(quantityTextView.getText());
             selectedUnit = ingredientsList.get(getAdapterPosition()).unit;
             unitSpinner.setSelection(unitSpinnerAdapter.getPosition(ingredientsList.get(getAdapterPosition()).unit));
+            categorySpinner.setSelection(categorySpinnerAdapter.getPosition(ingredientsList.get(getAdapterPosition()).category));
+            selectedCategory = ingredientsList.get(getAdapterPosition()).category;
             dialog.show();
         }
     }
