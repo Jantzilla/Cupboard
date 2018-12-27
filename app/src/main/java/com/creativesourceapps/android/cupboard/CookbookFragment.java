@@ -157,7 +157,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                         recipes.remove(itemClicked);
                         recipeAdapter.remove(itemClicked);
-                        recipeAdapter.notifyItemRemoved(itemClicked);
 
                     }
                 });
