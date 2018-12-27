@@ -74,7 +74,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     }
 
     @Override
-    public void onItemClickListener(int itemClicked) {
+    public void onItemClickListener(int itemClicked, View view) {
 
         Recipe item_clicked = recipes.get(itemClicked);
         CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
