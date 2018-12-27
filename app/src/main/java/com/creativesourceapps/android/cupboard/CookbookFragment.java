@@ -33,6 +33,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private JSONObject jsonObject;
     private String selection;
     private RecipeAdapter recipeAdapter;
+    private ArrayList<Integer> recipeIds = new ArrayList<>();
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -121,6 +122,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                     name, ingredient, quantity, unit, shortDescription, description, media);
 
             recipes.add(recipe);
+            recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
         }
 
         recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
