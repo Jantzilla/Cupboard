@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
     private ArrayList<Recipe> recipes = new ArrayList<>();
+    private GridLayoutManager layoutManager;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -43,6 +45,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         recylcerView = view.findViewById(R.id.recipes_grid_view);
         jsonObjectArray = new ArrayList<>();
+        layoutManager = new GridLayoutManager(getContext(), 1);
         requestRecipeData();
 
         return view;
@@ -143,6 +146,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                         public void run() {
                             //Handle UI here
                             RecipeAdapter recipeAdapter = new RecipeAdapter(recipes);
+
+                            recylcerView.setLayoutManager(layoutManager);
 
                             recylcerView.setAdapter(recipeAdapter);
 

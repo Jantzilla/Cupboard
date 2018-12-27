@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private Cursor cursor;
     private String[] projection;
     private ArrayList<Recipe> recipes = new ArrayList<>();
+    private GridLayoutManager layoutManager;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -41,6 +43,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         recyclerView = view.findViewById(R.id.cookbook_grid_view);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
+        layoutManager = new GridLayoutManager(getContext(), 1);
         requestRecipeData();
 
         return view;
@@ -63,6 +66,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         }
 
         RecipeAdapter recipeAdapter = new RecipeAdapter(recipes);
+
+        recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setAdapter(recipeAdapter);
 
