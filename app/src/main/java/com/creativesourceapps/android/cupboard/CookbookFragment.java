@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener {
@@ -76,12 +78,17 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     @Override
     public void onItemClickListener(int itemClicked, View view) {
 
-        Recipe item_clicked = recipes.get(itemClicked);
-        CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
+        switch (view.getId()) {
+            case R.id.iv_button:
+                Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.grid_item_recipe:
+                Recipe item_clicked = recipes.get(itemClicked);
+                CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
-        Intent intent = new Intent(getContext(), RecipeActivity.class);
-        intent.putExtra("parcel_data", item_clicked);
-        startActivity(intent);
-
+                Intent intent = new Intent(getContext(), RecipeActivity.class);
+                intent.putExtra("parcel_data", item_clicked);
+                startActivity(intent);
+        }
     }
 }

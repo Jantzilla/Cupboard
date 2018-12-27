@@ -165,12 +165,17 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     @Override
     public void onItemClickListener(int itemClicked, View view) {
 
-        Recipe item_clicked = recipes.get(itemClicked);
-        CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
+        switch (view.getId()) {
+            case R.id.iv_button:
+                Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.grid_item_recipe:
+                Recipe item_clicked = recipes.get(itemClicked);
+                CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
-        Intent intent = new Intent(getContext(), RecipeActivity.class);
-        intent.putExtra("parcel_data", item_clicked);
-        startActivity(intent);
-
+                Intent intent = new Intent(getContext(), RecipeActivity.class);
+                intent.putExtra("parcel_data", item_clicked);
+                startActivity(intent);
+        }
     }
 }
