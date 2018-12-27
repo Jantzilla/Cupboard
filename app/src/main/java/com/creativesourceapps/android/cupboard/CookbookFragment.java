@@ -44,7 +44,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
-        selection = CupboardContract.Recipes.COLUMN_RECIPE + " LIKE ?";
+        selection = CupboardContract.Recipes._ID + " LIKE ?";
         projection = new String[]{
                 CupboardContract.Recipes._ID,
                 CupboardContract.Recipes.COLUMN_RECIPE
@@ -138,6 +138,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
         switch (view.getId()) {
             case R.id.iv_button:
+                selectionArgs = new String[]{String.valueOf(recipeIds.get(itemClicked))};
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
                 alertDialog.setCancelable(true);
