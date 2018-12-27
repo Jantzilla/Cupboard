@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -163,11 +165,26 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     }
 
     @Override
-    public void onItemClickListener(int itemClicked, View view) {
+    public void onItemClickListener(final int itemClicked, View view) {
 
         switch (view.getId()) {
             case R.id.iv_button:
-                Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                alertDialog.setTitle("Save Recipe?");
+                alertDialog.setCancelable(true);
+                alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(),jsonObjectArray.get(itemClicked).toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                alertDialog.show();
                 break;
             case R.id.grid_item_recipe:
                 Recipe item_clicked = recipes.get(itemClicked);
