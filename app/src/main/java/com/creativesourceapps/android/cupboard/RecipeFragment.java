@@ -1,9 +1,11 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -35,6 +37,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private ArrayList<JSONObject> jsonObjectArray;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
+    private SQLiteDatabase db;
+    private CupboardDbHelper dbHelper;
+    private ContentValues values;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -48,6 +53,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         recylcerView = view.findViewById(R.id.recipes_grid_view);
         jsonObjectArray = new ArrayList<>();
         layoutManager = new GridLayoutManager(getContext(), 1);
+        dbHelper = new CupboardDbHelper(getContext());
+        db = dbHelper.getWritableDatabase();
+        values = new ContentValues();
         requestRecipeData();
 
         return view;
@@ -181,6 +189,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                 alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        values.put(CupboardContract.Recipes.COLUMN_RECIPE, jsonObjectArray.get(itemClicked).toString());
+                        db.insert(CupboardContract.Recipes.TABLE_NAME, null, values);
                         Toast.makeText(getContext(),jsonObjectArray.get(itemClicked).toString(), Toast.LENGTH_LONG).show();
                     }
                 });
