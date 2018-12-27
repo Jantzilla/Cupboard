@@ -30,6 +30,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
     private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
+    private ArrayList<Recipe> recipes = new ArrayList<>();
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -59,8 +60,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         //Default Recipe API endpoint
         String myUrl = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
 
-
-        final ArrayList<Recipe> recipes = new ArrayList<>();
         recipes.clear();
 
 

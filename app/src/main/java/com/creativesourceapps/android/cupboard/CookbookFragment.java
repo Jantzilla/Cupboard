@@ -19,6 +19,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
     private String[] projection;
+    private ArrayList<Recipe> recipes = new ArrayList<>();
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -47,7 +48,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
     private void requestRecipeData() {
 
-        final ArrayList<Recipe> recipes = new ArrayList<>();
         recipes.clear();
 
         cursor = db.query(CupboardContract.Recipes.TABLE_NAME,
