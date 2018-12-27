@@ -22,6 +22,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         this.clickLister = clickListener;
     }
 
+    public void remove(int itemClicked) {
+        recipes.remove(itemClicked);
+        notifyItemRemoved(itemClicked);
+    }
+
     public interface ListItemClickListener {
         void onItemClickListener(int itemClicked, View view);
     }
