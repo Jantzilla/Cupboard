@@ -145,7 +145,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                         dialog.cancel();
                     }
                 });
-                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -160,6 +160,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                     }
                 });
+                alertDialog.show();
 
                 Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
                 break;
