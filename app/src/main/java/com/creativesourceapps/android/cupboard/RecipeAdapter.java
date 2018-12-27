@@ -45,7 +45,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         return recipes.size();
     }
 
-    public class RecipeViewHolder extends RecyclerView.ViewHolder {
+    public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView titleTextView;
         ImageView buttonImageView;
 
@@ -54,6 +54,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
             titleTextView = itemView.findViewById(R.id.grid_item_recipe);
             buttonImageView = itemView.findViewById(R.id.iv_button);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickLister.onItemClickListener(getAdapterPosition());
         }
     }
 }
