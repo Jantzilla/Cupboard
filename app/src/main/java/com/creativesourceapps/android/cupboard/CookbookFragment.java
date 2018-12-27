@@ -35,11 +35,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
         projection = new String[]{
-                CupboardContract.Recipes.COLUMN_TITLE,
-                CupboardContract.Recipes.COLUMN_STEPS,
-                CupboardContract.Recipes.COLUMN_DIRECTIONS,
-                CupboardContract.Recipes.COLUMN_MEDIA,
-                CupboardContract.Recipes.COLUMN_INGREDIENTS
+                CupboardContract.Recipes.COLUMN_RECIPE
         };
 
         recyclerView = view.findViewById(R.id.cookbook_grid_view);
