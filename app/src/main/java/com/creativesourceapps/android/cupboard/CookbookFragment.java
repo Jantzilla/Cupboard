@@ -65,7 +65,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             // TODO: CREATE THE RECIPE OBJECTS
         }
 
-        RecipeAdapter recipeAdapter = new RecipeAdapter(recipes);
+        RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
 
         recyclerView.setLayoutManager(layoutManager);
 

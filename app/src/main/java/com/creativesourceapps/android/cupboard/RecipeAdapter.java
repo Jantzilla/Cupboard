@@ -13,11 +13,13 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
+    private ListItemClickListener clickLister;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private Context context;
 
-    public RecipeAdapter(ArrayList<Recipe> recipes) {
+    public RecipeAdapter(ArrayList<Recipe> recipes, ListItemClickListener clickListener) {
         this.recipes.addAll(recipes);
+        this.clickLister = clickListener;
     }
 
     public interface ListItemClickListener {
