@@ -10,13 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/floating_search_view"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:titleTextColor="#ffffff"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+            android:layout_height="match_parent"
+            app:floatingSearch_searchHint="Search..."
+            app:floatingSearch_suggestionsListAnimDuration="250"
+            app:floatingSearch_showSearchKey="false"
+            app:floatingSearch_leftActionMode="showHamburger"
+            app:floatingSearch_menu="@menu/main"
+            app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
 
     </FrameLayout>
 
