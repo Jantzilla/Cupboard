@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener {
@@ -24,6 +28,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private String[] projection;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
+    private JSONObject jsonObject;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -42,12 +47,17 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
         layoutManager = new GridLayoutManager(getContext(), 1);
-        requestRecipeData();
+
+        try {
+            requestRecipeData();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
 
-    private void requestRecipeData() {
+    private void requestRecipeData() throws JSONException {
 
         recipes.clear();
 
@@ -60,7 +70,51 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                 null);
 
         while(cursor.moveToNext()) {
-            // TODO: CREATE THE RECIPE OBJECTS
+
+            String json = cursor.getString(cursor.getColumnIndex(CupboardContract.Recipes.COLUMN_RECIPE));
+            jsonObject = new JSONObject(json);
+
+            int id;
+            String name;
+            ArrayList<String> ingredient = new ArrayList<>();
+            ArrayList<Integer> quantity = new ArrayList<>();
+            ArrayList<String> unit = new ArrayList<>();
+            ArrayList<String> shortDescription = new ArrayList<>();
+            ArrayList<String> description = new ArrayList<>();
+            ArrayList<String> media = new ArrayList<>();
+            id = jsonObject.getInt("id");
+            name = jsonObject.getString("name");
+
+            JSONArray ingredients = jsonObject.getJSONArray("ingredients");
+            for(int o = 0; o < ingredients.length(); o++) {
+                JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
+                ingredient.add(ingredientsJSONObject.getString("ingredient"));
+                quantity.add(ingredientsJSONObject.getInt("quantity"));
+                unit.add(ingredientsJSONObject.getString("measure"));
+            }
+
+
+            JSONArray steps = jsonObject.getJSONArray("steps");
+            for(int o = 0; o < steps.length(); o++) {
+                JSONObject step = steps.getJSONObject(o);
+                shortDescription.add(step.getString("shortDescription"));
+            }
+            for(int o = 0; o < steps.length(); o++) {
+                JSONObject step = steps.getJSONObject(o);
+                description.add(step.getString("description"));
+            }
+            for(int o = 0; o < steps.length(); o++) {
+                JSONObject step = steps.getJSONObject(o);
+                String tempUrl = step.getString("videoURL");
+                if(tempUrl.equals(""))
+                    media.add(step.getString("thumbnailURL"));
+                else
+                    media.add(step.getString("videoURL"));
+            }
+            Recipe recipe = new Recipe(id,
+                    name, ingredient, quantity, unit, shortDescription, description, media);
+
+            recipes.add(recipe);
         }
 
         RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
