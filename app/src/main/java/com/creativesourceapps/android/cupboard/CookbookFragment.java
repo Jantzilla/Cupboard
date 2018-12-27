@@ -166,7 +166,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                 });
                 alertDialog.show();
 
-                Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.grid_item_recipe:
                 Recipe item_clicked = recipes.get(itemClicked);
