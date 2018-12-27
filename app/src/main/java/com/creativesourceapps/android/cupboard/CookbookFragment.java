@@ -1,5 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,6 +31,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
     private JSONObject jsonObject;
+    private String selection;
+    private RecipeAdapter recipeAdapter;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -39,6 +43,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
+        selection = CupboardContract.Recipes.COLUMN_RECIPE + " LIKE ?";
         projection = new String[]{
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
@@ -117,7 +122,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             recipes.add(recipe);
         }
 
-        RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
+        recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
 
         recyclerView.setLayoutManager(layoutManager);
 
@@ -126,10 +131,37 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     }
 
     @Override
-    public void onItemClickListener(int itemClicked, View view) {
+    public void onItemClickListener(final int itemClicked, View view) {
 
         switch (view.getId()) {
             case R.id.iv_button:
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                alertDialog.setCancelable(true);
+                alertDialog.setTitle("Delete Recipe?");
+                alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        db.delete(
+                                CupboardContract.Recipes.TABLE_NAME,
+                                selection,
+                                projection
+                        );
+
+                        recipes.remove(itemClicked);
+                        recipeAdapter.remove(itemClicked);
+                        recipeAdapter.notifyItemRemoved(itemClicked);
+
+                    }
+                });
+
                 Toast.makeText(getContext(),"Image button pressed!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.grid_item_recipe:
