@@ -45,6 +45,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
         selection = CupboardContract.Recipes.COLUMN_RECIPE + " LIKE ?";
         projection = new String[]{
+                CupboardContract.Recipes._ID,
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
 
