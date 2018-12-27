@@ -27,7 +27,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
-    private String[] projection;
+    private String[] projection, selectionArgs;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
     private JSONObject jsonObject;
@@ -155,7 +155,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                         db.delete(
                                 CupboardContract.Recipes.TABLE_NAME,
                                 selection,
-                                projection
+                                selectionArgs
                         );
 
                         recipes.remove(itemClicked);
