@@ -51,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
         floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
 
+        floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
+            @Override
+            public void onSearchTextChanged(String oldQuery, String newQuery) {
+
+            }
+        });
+
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
         navigationView.setNavigationItemSelectedListener(
