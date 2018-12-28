@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private Fragment fragment;
     private NavigationView navigationView;
+    private SearchChangeListener searchChangeListener;
 
     public interface SearchChangeListener {
         void onSearch(String query);
