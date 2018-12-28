@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener {
+public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
     private RecyclerView recyclerView;
     private SQLiteDatabase db;
@@ -60,6 +60,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        ((MainActivity)getActivity()).updateSearchListener(CookbookFragment.this);
 
         return view;
     }
@@ -175,5 +177,10 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                 intent.putExtra("parcel_data", item_clicked);
                 startActivity(intent);
         }
+    }
+
+    @Override
+    public void onSearch(String query) {
+
     }
 }
