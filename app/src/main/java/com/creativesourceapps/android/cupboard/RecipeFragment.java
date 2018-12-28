@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -40,6 +41,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private ContentValues values;
+    private Cursor cursor;
+    private String[] projection;
+    private boolean savedRecipe;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -56,6 +60,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
         values = new ContentValues();
+        projection = new String[] {
+                CupboardContract.Recipes.COLUMN_RECIPE
+        };
         requestRecipeData();
 
         return view;
@@ -177,23 +184,45 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
         switch (view.getId()) {
             case R.id.iv_button:
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-                alertDialog.setTitle("Save Recipe?");
-                alertDialog.setCancelable(true);
-                alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
+                cursor = db.query(
+                        CupboardContract.Recipes.TABLE_NAME,
+                        projection,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null);
+
+                while(cursor.moveToNext()) {
+
+                    if(cursor.getString(cursor.getColumnIndex(CupboardContract.Recipes.COLUMN_RECIPE))
+                            .equals(jsonObjectArray.get(itemClicked).toString())) {
+                        Toast.makeText(getContext(), "This Recipe is already saved.", Toast.LENGTH_LONG).show();
+                        savedRecipe = true;
                     }
-                });
-                alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        values.put(CupboardContract.Recipes.COLUMN_RECIPE, jsonObjectArray.get(itemClicked).toString());
-                        db.insert(CupboardContract.Recipes.TABLE_NAME, null, values);
-                    }
-                });
-                alertDialog.show();
+                }
+
+                if(!savedRecipe) {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                    alertDialog.setTitle("Save Recipe?");
+                    alertDialog.setCancelable(true);
+                    alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            values.put(CupboardContract.Recipes.COLUMN_RECIPE, jsonObjectArray.get(itemClicked).toString());
+                            db.insert(CupboardContract.Recipes.TABLE_NAME, null, values);
+                        }
+                    });
+                    alertDialog.show();
+                }
+
+                savedRecipe = false;
                 break;
             case R.id.grid_item_recipe:
                 Recipe item_clicked = recipes.get(itemClicked);
