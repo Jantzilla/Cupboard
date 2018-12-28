@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         void onSearch(String query);
     }
 
+    public void updateSearchListener(SearchChangeListener searchChangeListener) {
+        this.searchChangeListener = searchChangeListener;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
