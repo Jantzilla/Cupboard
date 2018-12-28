@@ -3,6 +3,7 @@ package com.creativesourceapps.android.cupboard;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
     private Context context;
     private LayoutInflater layoutInflator;
     private String category;
+    private String[] projection = new String[]{CupboardContract.Ingredients.COLUMN_NAME};
 
     public CupboardDetailAdapter(String category, ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList.addAll(ingredientsList);
@@ -69,7 +71,9 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String selection = CupboardContract.Ingredients.COLUMN_NAME + " Like ?";
         String[] selectionArgs;
+        Cursor cursor;
         ContentValues values = new ContentValues();
+        private boolean savedIngredient;
 
         public DetailViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,23 +101,50 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    values.put(CupboardContract.Ingredients.COLUMN_NAME, dialogIngredientEditText.getText().toString());
-                    values.put(CupboardContract.Ingredients.COLUMN_UNIT, selectedUnit);
-                    values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, dialogQuantityEditText.getText().toString());
-                    values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, selectedCategory);
+                    if(dialogIngredientEditText.getText().toString().isEmpty())
+                        dialogIngredientEditText.setError("Please enter a name.");
+                    if(dialogQuantityEditText.getText().toString().isEmpty())
+                        dialogQuantityEditText.setError("Please enter a quantity.");
+                    else {
+                        cursor = db.query(
+                                CupboardContract.Ingredients.TABLE_NAME,
+                                projection,
+                                null,
+                                null,
+                                null,
+                                null,
+                                null
+                        );
 
-                    db.update(CupboardContract.Ingredients.TABLE_NAME,
-                            values,
-                            selection,
-                            selectionArgs);
+                        while(cursor.moveToNext()) {
+                            if(cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME))
+                                    .equals(dialogIngredientEditText.getText().toString())) {
+                                dialog.cancel();
+                                savedIngredient = true;
+                            }
+                        }
 
-                    ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
-                    ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
-                    ingredientsList.get(getAdapterPosition()).unit = selectedUnit;
-                    ingredientsList.get(getAdapterPosition()).category = selectedCategory;
+                        if(!savedIngredient) {
+                            values.put(CupboardContract.Ingredients.COLUMN_NAME, dialogIngredientEditText.getText().toString());
+                            values.put(CupboardContract.Ingredients.COLUMN_UNIT, selectedUnit);
+                            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, dialogQuantityEditText.getText().toString());
+                            values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, selectedCategory);
 
-                    dialog.cancel();
-                    notifyItemChanged(getAdapterPosition());
+                            db.update(CupboardContract.Ingredients.TABLE_NAME,
+                                    values,
+                                    selection,
+                                    selectionArgs);
+
+                            ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
+                            ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
+                            ingredientsList.get(getAdapterPosition()).unit = selectedUnit;
+                            ingredientsList.get(getAdapterPosition()).category = selectedCategory;
+
+                            dialog.cancel();
+                            notifyItemChanged(getAdapterPosition());
+                        }
+                        savedIngredient = false;
+                    }
                 }
             });
 
