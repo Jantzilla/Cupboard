@@ -181,6 +181,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
     @Override
     public void onSearch(String query) {
-
+        
     }
 }

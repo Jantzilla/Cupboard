@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, String newQuery) {
-
+                searchChangeListener.onSearch(newQuery);
             }
         });
 
