@@ -2,6 +2,7 @@ package com.creativesourceapps.android.cupboard;
 
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -127,6 +128,14 @@ public class DetailCupboardFragment extends Fragment {
                 saveButton = dialog.findViewById(R.id.btn_save);
                 ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
                 quantityEditText = dialog.findViewById(R.id.tv_quantity);
+
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        ingredientEditText.setError(null);
+                        quantityEditText.setError(null);
+                    }
+                });
 
                 unitSpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
                 unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

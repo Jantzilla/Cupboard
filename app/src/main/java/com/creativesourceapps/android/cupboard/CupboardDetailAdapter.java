@@ -3,6 +3,7 @@ package com.creativesourceapps.android.cupboard;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
@@ -80,8 +81,18 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
 
             dialog = new Dialog(context);
             dialog.setContentView(R.layout.dialog_ingredient_edit);
+
             dialogIngredientEditText = dialog.findViewById(R.id.tv_ingredient);
             dialogQuantityEditText = dialog.findViewById(R.id.tv_quantity);
+
+            dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    dialogIngredientEditText.setError(null);
+                    dialogQuantityEditText.setError(null);
+                }
+            });
+
             saveButton = dialog.findViewById(R.id.btn_save);
             deleteButton = dialog.findViewById(R.id.btn_delete);
 
