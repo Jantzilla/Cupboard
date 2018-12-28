@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment;
     private NavigationView navigationView;
 
+    public interface SearchChangeListener {
+        void onSearch(String query);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
