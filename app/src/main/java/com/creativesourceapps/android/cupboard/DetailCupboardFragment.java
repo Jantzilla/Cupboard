@@ -45,6 +45,7 @@ public class DetailCupboardFragment extends Fragment {
     private SQLiteDatabase db;
     private String[] projection, selectionArgs;
     private Cursor cursor;
+    private boolean savedIngredient;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -161,24 +162,55 @@ public class DetailCupboardFragment extends Fragment {
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Ingredient ingredient = new Ingredient();
-                        ingredient.name = ingredientEditText.getText().toString();
-                        ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
-                        ingredient.unit = selectedUnit;
-                        ingredient.category = selectedCategory;
-                        ingredientsList.add(ingredient);
+                        if(ingredientEditText.getText().toString().isEmpty())
+                            ingredientEditText.setError("Please enter a name.");
+                        if(quantityEditText.getText().toString().isEmpty())
+                            quantityEditText.setError("Please enter a quantity.");
+                        else {
 
-                        db = dbHelper.getWritableDatabase();
-                        ContentValues values = new ContentValues();
-                        values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
-                        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
-                        values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
-                        values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
-                        db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+                            Ingredient ingredient = new Ingredient();
+                            ingredient.name = ingredientEditText.getText().toString();
+                            ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
+                            ingredient.unit = selectedUnit;
+                            ingredient.category = selectedCategory;
+                            ingredientsList.add(ingredient);
 
-                        adapter.addIngredient(ingredient);
-                        adapter.notifyItemInserted(ingredientsList.size());
-                        dialog.cancel();
+                            db = dbHelper.getWritableDatabase();
+
+                            cursor = db.query(
+                                    CupboardContract.Ingredients.TABLE_NAME,
+                                    projection,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                            );
+
+                            while(cursor.moveToNext()) {
+                                if(cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME))
+                                        .equals(ingredient.name)) {
+                                    ingredientEditText.setError("Ingredient already exists.");
+                                    savedIngredient = true;
+                                }
+                            }
+
+                            if(!savedIngredient) {
+                                ContentValues values = new ContentValues();
+                                values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
+                                values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
+                                values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
+                                values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
+                                db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+
+                                adapter.addIngredient(ingredient);
+                                adapter.notifyItemInserted(ingredientsList.size());
+                                dialog.cancel();
+                            }
+
+                            savedIngredient = false;
+
+                        }
                     }
                 });
 
