@@ -113,6 +113,6 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     @Override
     public void onSearch(String query) {
-
+        startFragmentTransaction(-1, fab );
     }
 }
