@@ -26,7 +26,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class DetailCupboardFragment extends Fragment {
+public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener {
     ConstraintLayout constraintLayout;
     RecyclerView recyclerView;
     CupboardDetailAdapter adapter;
@@ -77,6 +77,8 @@ public class DetailCupboardFragment extends Fragment {
         ingredientsList = new ArrayList<>();
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
+
+        ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
 
         db = dbHelper.getReadableDatabase();
         projection = new String[]{
@@ -249,4 +251,8 @@ public class DetailCupboardFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onSearch(String query) {
+
+    }
 }
