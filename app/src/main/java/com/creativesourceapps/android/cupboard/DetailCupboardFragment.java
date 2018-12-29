@@ -81,6 +81,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
 
         ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
 
+        getIngredientData("");
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
