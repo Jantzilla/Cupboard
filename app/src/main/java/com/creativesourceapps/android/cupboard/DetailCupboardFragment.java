@@ -213,6 +213,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     }
 
     public void getIngredientData(String query) {
+        ingredientsList.clear();
+
         projection = new String[]{
                 CupboardContract.Ingredients.COLUMN_NAME,
                 CupboardContract.Ingredients.COLUMN_QUANTITY,
