@@ -78,8 +78,10 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     public void startFragmentTransaction(int clickedItem, View view) {
 
             Bundle bundle = new Bundle();
-            if(clickedItem == -1)
+            if(clickedItem == -1) {
                 bundle.putString("Shared Element", "All Ingredients");
+                fragment.setSharedElementReturnTransition(null);
+            }
             else
                 bundle.putString("Shared Element", categoryList.get(clickedItem));
             fragment.setArguments(bundle);
