@@ -12,8 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +54,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         layoutManager = new GridLayoutManager(getContext(), 1);
 
         try {
-            requestRecipeData();
+            requestRecipeData("");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,14 +64,22 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         return view;
     }
 
-    private void requestRecipeData() throws JSONException {
+    private void requestRecipeData(String query) throws JSONException {
+        if(query.equals("")) {
+            selectionArgs = null;
+            selection = null;
+        }
+        else {
+            selectionArgs = new String[]{query};
+            selection = CupboardContract.Recipes._ID + " LIKE ?";
+        }
 
         recipes.clear();
 
         cursor = db.query(CupboardContract.Recipes.TABLE_NAME,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null);
@@ -182,7 +188,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     @Override
     public void onSearch(String query) {
         try {
-            requestRecipeData();
+            requestRecipeData(query);
         } catch (JSONException e) {
             e.printStackTrace();
         }
