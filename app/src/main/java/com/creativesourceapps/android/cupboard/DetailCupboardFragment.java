@@ -267,6 +267,6 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
 
     @Override
     public void onSearch(String query) {
-
+        getIngredientData(query);
     }
 }
