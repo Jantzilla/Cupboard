@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-public class CupboardFragment extends Fragment implements CupboardAdapter.ItemClickListener {
+public class CupboardFragment extends Fragment implements CupboardAdapter.ItemClickListener, MainActivity.SearchChangeListener {
 
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
@@ -54,6 +54,8 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
             }
         });
+
+        ((MainActivity)getActivity()).updateSearchListener(CupboardFragment.this);
 
         return view;
     }
@@ -107,5 +109,10 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     public void onItemClicked(int clickedItem, LinearLayout itemLayout) {
 
         startFragmentTransaction(clickedItem, itemLayout);
+    }
+
+    @Override
+    public void onSearch(String query) {
+
     }
 }
