@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
 
+        floatingSearchView.setSearchBarTitle("Recipes");
+
         floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, String newQuery) {
@@ -79,14 +81,17 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.id_recipes:
                         fragment = new RecipeFragment();
                         fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        floatingSearchView.setSearchBarTitle("Recipes");
                         break;
                     case R.id.id_cupboard:
                         fragment = new CupboardFragment();
                         fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        floatingSearchView.setSearchBarTitle("Cupboard");
                         break;
                     case R.id.id_cookbook:
                         fragment = new CookbookFragment();
                         fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                        floatingSearchView.setSearchBarTitle("Cookbook");
                         break;
                 }
                 drawerLayout.closeDrawers();
