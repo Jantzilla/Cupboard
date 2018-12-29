@@ -70,7 +70,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         }
         else {
             selectionArgs = new String[]{query};
-            selection = CupboardContract.Recipes._ID + " LIKE ?";
+            selection = CupboardContract.Recipes.COLUMN_TITLE + " LIKE ?";
         }
 
         recipes.clear();
