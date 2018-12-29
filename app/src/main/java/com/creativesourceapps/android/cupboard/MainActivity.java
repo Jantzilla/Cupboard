@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
+        navigationView.setCheckedItem(R.id.id_recipes);
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
             @Override
