@@ -215,6 +215,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                     alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            values.put(CupboardContract.Recipes.COLUMN_TITLE, recipes.get(itemClicked).title);
                             values.put(CupboardContract.Recipes.COLUMN_RECIPE, jsonObjectArray.get(itemClicked).toString());
                             db.insert(CupboardContract.Recipes.TABLE_NAME, null, values);
                         }
