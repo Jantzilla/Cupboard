@@ -77,48 +77,9 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         ingredientsList = new ArrayList<>();
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
+        db = dbHelper.getReadableDatabase();
 
         ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
-
-        db = dbHelper.getReadableDatabase();
-        projection = new String[]{
-                CupboardContract.Ingredients.COLUMN_NAME,
-                CupboardContract.Ingredients.COLUMN_QUANTITY,
-                CupboardContract.Ingredients.COLUMN_UNIT,
-                CupboardContract.Ingredients.COLUMN_CATEGORY
-        };
-
-        selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
-        selectionArgs = new String[]{category};
-        sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
-
-        if(category.equals("All Ingredients")) {
-            selection = null;
-            selectionArgs = null;
-        }
-
-        cursor = db.query(
-                CupboardContract.Ingredients.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder
-        );
-
-        while(cursor.moveToNext()) {
-            ingredient = new Ingredient();
-            ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME));
-            ingredient.quantity = cursor.getInt(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY));
-            ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
-            ingredient.category = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_CATEGORY));
-            ingredientsList.add(ingredient);
-        }
-        cursor.close();
-
-        adapter = new CupboardDetailAdapter(category, ingredientsList);
-        recyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +210,47 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         });
 
         return view;
+    }
+
+    public void getIngredientData(String query) {
+        projection = new String[]{
+                CupboardContract.Ingredients.COLUMN_NAME,
+                CupboardContract.Ingredients.COLUMN_QUANTITY,
+                CupboardContract.Ingredients.COLUMN_UNIT,
+                CupboardContract.Ingredients.COLUMN_CATEGORY
+        };
+
+        selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
+        selectionArgs = new String[]{category};
+        sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
+
+        if(category.equals("All Ingredients")) {
+            selection = null;
+            selectionArgs = null;
+        }
+
+        cursor = db.query(
+                CupboardContract.Ingredients.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
+
+        while(cursor.moveToNext()) {
+            ingredient = new Ingredient();
+            ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME));
+            ingredient.quantity = cursor.getInt(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY));
+            ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
+            ingredient.category = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_CATEGORY));
+            ingredientsList.add(ingredient);
+        }
+        cursor.close();
+
+        adapter = new CupboardDetailAdapter(category, ingredientsList);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
