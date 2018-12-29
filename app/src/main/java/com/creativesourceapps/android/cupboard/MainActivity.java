@@ -69,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
+            @Override
+            public void onActionMenuItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.id_search:
+                        floatingSearchView.setSearchFocused(true);
+                        break;
+                }
+            }
+        });
+
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
         navigationView.setCheckedItem(R.id.id_recipes);
