@@ -16,6 +16,7 @@ public class CupboardContract {
 
     public static class Recipes implements BaseColumns {
         public static final String TABLE_NAME = "recipes";
+        public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_RECIPE = "recipe";
     }
 }
