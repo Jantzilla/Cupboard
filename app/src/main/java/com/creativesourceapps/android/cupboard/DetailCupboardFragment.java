@@ -220,13 +220,23 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
                 CupboardContract.Ingredients.COLUMN_CATEGORY
         };
 
-        selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
-        selectionArgs = new String[]{category};
         sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
 
         if(category.equals("All Ingredients")) {
             selection = null;
             selectionArgs = null;
+            if(!query.equals("")) {
+                selection = CupboardContract.Ingredients.COLUMN_NAME + " LIKE ?";
+                selectionArgs = new String[]{"%" + query + "%"};
+            }
+        } else {
+            selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
+            selectionArgs = new String[]{category};
+            if(!query.equals("")) {
+                selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ? AND " +
+                        CupboardContract.Ingredients.COLUMN_NAME + " LIKE ?";
+                selectionArgs = new String[]{category, "%" + query + "%"};
+            }
         }
 
         cursor = db.query(
