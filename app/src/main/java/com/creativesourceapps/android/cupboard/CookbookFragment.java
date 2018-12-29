@@ -42,7 +42,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
-        selection = CupboardContract.Recipes._ID + " LIKE ?";
         projection = new String[]{
                 CupboardContract.Recipes._ID,
                 CupboardContract.Recipes.COLUMN_RECIPE
@@ -143,6 +142,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
     @Override
     public void onItemClickListener(final int itemClicked, View view) {
+        selection = CupboardContract.Recipes._ID + " LIKE ?";
 
         switch (view.getId()) {
             case R.id.iv_button:
