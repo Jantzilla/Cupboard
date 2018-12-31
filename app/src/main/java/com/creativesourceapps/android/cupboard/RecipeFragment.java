@@ -66,6 +66,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         };
         requestRecipeData();
 
+        ((MainActivity)getActivity()).updateSearchListener(RecipeFragment.this);
+
         return view;
     }
 
