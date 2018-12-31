@@ -33,7 +33,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemClickListener{
+public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
     private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
@@ -242,5 +242,10 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                 intent.putExtra("parcel_data", item_clicked);
                 startActivity(intent);
         }
+    }
+
+    @Override
+    public void onSearch(String query) {
+
     }
 }
