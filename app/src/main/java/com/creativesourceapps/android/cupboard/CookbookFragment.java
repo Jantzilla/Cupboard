@@ -91,7 +91,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             int id;
             String name;
             ArrayList<String> ingredient = new ArrayList<>();
-            ArrayList<Integer> quantity = new ArrayList<>();
+            ArrayList<String> quantity = new ArrayList<>();
             ArrayList<String> unit = new ArrayList<>();
             ArrayList<String> shortDescription = new ArrayList<>();
             ArrayList<String> description = new ArrayList<>();
@@ -103,7 +103,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             for(int o = 0; o < ingredients.length(); o++) {
                 JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
                 ingredient.add(ingredientsJSONObject.getString("ingredient"));
-                quantity.add(ingredientsJSONObject.getInt("quantity"));
+                quantity.add(ingredientsJSONObject.getString("quantity"));
                 unit.add(ingredientsJSONObject.getString("measure"));
             }
 
