@@ -9,13 +9,13 @@ public class Recipe implements Parcelable {
     final int id;
     final String title;
     ArrayList<String> unit;
-    ArrayList<Integer> quantity;
+    ArrayList<String> quantity;
     ArrayList<String> ingredients;
     ArrayList<String> steps;
     ArrayList<String> instructions;
     ArrayList<String> media;
 
-    public Recipe(int id, String title, ArrayList<String> ingredients, ArrayList<Integer> quantity, ArrayList<String> unit,
+    public Recipe(int id, String title, ArrayList<String> ingredients, ArrayList<String> quantity, ArrayList<String> unit,
                   ArrayList<String> shortDescription, ArrayList<String> description, ArrayList<String> media)
     {
         this.id = id;
@@ -32,7 +32,7 @@ public class Recipe implements Parcelable {
         id = in.readInt();
         title = in.readString();
         ingredients = new ArrayList<String>();
-        quantity = new ArrayList<Integer>();
+        quantity = new ArrayList<String>();
         unit = new ArrayList<String>();
         steps = new ArrayList<String>();
         instructions = new ArrayList<String>();

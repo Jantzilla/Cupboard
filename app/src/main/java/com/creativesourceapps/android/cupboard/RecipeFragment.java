@@ -111,7 +111,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                             int id;
                             String name, tempIngredient, tempUnit;
                             ArrayList<String> ingredient = new ArrayList<>();
-                            ArrayList<Integer> quantity = new ArrayList<>();
+                            ArrayList<String> quantity = new ArrayList<>();
                             ArrayList<String> unit = new ArrayList<>();
                             ArrayList<String> shortDescription = new ArrayList<>();
                             ArrayList<String> description = new ArrayList<>();
@@ -138,7 +138,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                         unit.add(tempUnit.substring(0, tempUnit.lastIndexOf(' ')));
                                     }
                                     else{
-                                        quantity.add(1);
+                                        quantity.add("1");
                                         unit.add(tempUnit);
                                     }
 //                                    unit.add(tempUnit);
