@@ -15,10 +15,10 @@ public class IngredientListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private String expandableListTitle;
     private ArrayList<String> ingredient;
-    private ArrayList<Integer> quantity;
+    private ArrayList<String> quantity;
     private ArrayList<String> unit;
 
-    public IngredientListAdapter(Context context, String expandableListTitle, ArrayList<Integer> quantity,
+    public IngredientListAdapter(Context context, String expandableListTitle, ArrayList<String> quantity,
                                  ArrayList<String> unit, ArrayList<String> ingredient) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
