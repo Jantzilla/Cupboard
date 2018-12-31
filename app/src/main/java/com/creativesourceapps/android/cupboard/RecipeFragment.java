@@ -64,7 +64,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         projection = new String[] {
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
-        requestRecipeData();
+        requestRecipeData("");
 
         ((MainActivity)getActivity()).updateSearchListener(RecipeFragment.this);
 
@@ -78,10 +78,12 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-    private void requestRecipeData() {
+    private void requestRecipeData(String query) {
 
         //Default Recipe API endpoint
-        String myUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+        String baseUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
+        String searchUrl = baseUrl + query;
 
         recipes.clear();
 
@@ -91,7 +93,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url(myUrl)
+                    .url(searchUrl)
                     .build();
 
             client.newCall(request).enqueue(new Callback() {
