@@ -250,6 +250,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
     @Override
     public void onSearch(String query) {
-
+        requestRecipeData(query);
     }
 }
