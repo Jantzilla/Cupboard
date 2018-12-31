@@ -78,7 +78,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private void requestRecipeData() {
 
         //Default Recipe API endpoint
-        String myUrl = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
+        String myUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
         recipes.clear();
 
