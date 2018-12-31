@@ -143,18 +143,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                         quantity.add("1");
                                         unit.add(tempUnit);
                                     }
-//                                    unit.add(tempUnit);
                                 } else
                                     break;
                             }
-
-//                            JSONArray ingredients = resultObject.getJSONArray("ingredients");
-//                            for(int o = 0; o < ingredients.length(); o++) {
-//                                JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
-//                                ingredient.add(ingredientsJSONObject.getString("ingredient"));
-//                                quantity.add(ingredientsJSONObject.getInt("quantity"));
-//                                unit.add(ingredientsJSONObject.getString("measure"));
-//                            }
 
                             media.add(resultObject.getString("strYoutube"));
 
@@ -163,16 +154,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                             for(int o = 1; o < description.size(); o++) {
                                 shortDescription.add(("Step " + o));
                             }
-
-//                            JSONArray steps = resultObject.getJSONArray("steps");
-//                            for(int o = 0; o < steps.length(); o++) {
-//                                JSONObject step = steps.getJSONObject(o);
-//                                shortDescription.add(step.getString("shortDescription"));
-//                            }
-//                            for(int o = 0; o < steps.length(); o++) {
-//                                JSONObject step = steps.getJSONObject(o);
-//                                description.add(step.getString("description"));
-//                            }
 
                             Recipe recipe = new Recipe(id,
                                     name, ingredient, quantity, unit, shortDescription, description, media);
