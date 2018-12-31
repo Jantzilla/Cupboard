@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -108,7 +109,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                         for (int i = 0; i < json.length(); i++) {
                             int id;
-                            String name;
+                            String name, tempIngredient, tempUnit;
                             ArrayList<String> ingredient = new ArrayList<>();
                             ArrayList<Integer> quantity = new ArrayList<>();
                             ArrayList<String> unit = new ArrayList<>();
@@ -117,35 +118,60 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                             ArrayList<String> media = new ArrayList<>();
                             JSONObject resultObject = json.getJSONObject(i);
                             jsonObjectArray.add(resultObject);
-                            id = resultObject.getInt("id");
-                            name = resultObject.getString("name");
+                            id = resultObject.getInt("idMeal");
+                            name = resultObject.getString("strMeal");
 
-                            JSONArray ingredients = resultObject.getJSONArray("ingredients");
-                            for(int o = 0; o < ingredients.length(); o++) {
-                                JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
-                                ingredient.add(ingredientsJSONObject.getString("ingredient"));
-                                quantity.add(ingredientsJSONObject.getInt("quantity"));
-                                unit.add(ingredientsJSONObject.getString("measure"));
+                            for(int o = 1; o < 50; o++) {
+                                if(!resultObject.getString("strIngredient" + o).isEmpty()) {
+                                    tempIngredient = resultObject.getString("strIngredient" + o);
+                                    ingredient.add(tempIngredient);
+                                } else
+                                    break;
                             }
 
+                            for(int o = 1; o < 50; o++) {
+                                if(!resultObject.getString("strMeasure" + o).isEmpty()) {
+                                    tempUnit = resultObject.getString("strMeasure" + o);
+                                    if(tempUnit.split("\\w+").length>1){
 
-                            JSONArray steps = resultObject.getJSONArray("steps");
-                            for(int o = 0; o < steps.length(); o++) {
-                                JSONObject step = steps.getJSONObject(o);
-                                shortDescription.add(step.getString("shortDescription"));
+                                        quantity.add(tempUnit.substring(tempUnit.lastIndexOf(" ")+1));
+                                        unit.add(tempUnit.substring(0, tempUnit.lastIndexOf(' ')));
+                                    }
+                                    else{
+                                        quantity.add(1);
+                                        unit.add(tempUnit);
+                                    }
+//                                    unit.add(tempUnit);
+                                } else
+                                    break;
                             }
-                            for(int o = 0; o < steps.length(); o++) {
-                                JSONObject step = steps.getJSONObject(o);
-                                description.add(step.getString("description"));
+
+//                            JSONArray ingredients = resultObject.getJSONArray("ingredients");
+//                            for(int o = 0; o < ingredients.length(); o++) {
+//                                JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
+//                                ingredient.add(ingredientsJSONObject.getString("ingredient"));
+//                                quantity.add(ingredientsJSONObject.getInt("quantity"));
+//                                unit.add(ingredientsJSONObject.getString("measure"));
+//                            }
+
+                            media.add(resultObject.getString("strYoutube"));
+
+                            description = new ArrayList<>(Arrays.asList(resultObject.getString("strInstructions").split(".")));
+
+                            for(int o = 1; o < description.size(); o++) {
+                                shortDescription.add(("Step " + o));
                             }
-                            for(int o = 0; o < steps.length(); o++) {
-                                JSONObject step = steps.getJSONObject(o);
-                                String tempUrl = step.getString("videoURL");
-                                if(tempUrl.equals(""))
-                                    media.add(step.getString("thumbnailURL"));
-                                else
-                                    media.add(step.getString("videoURL"));
-                            }
+
+//                            JSONArray steps = resultObject.getJSONArray("steps");
+//                            for(int o = 0; o < steps.length(); o++) {
+//                                JSONObject step = steps.getJSONObject(o);
+//                                shortDescription.add(step.getString("shortDescription"));
+//                            }
+//                            for(int o = 0; o < steps.length(); o++) {
+//                                JSONObject step = steps.getJSONObject(o);
+//                                description.add(step.getString("description"));
+//                            }
+
                             Recipe recipe = new Recipe(id,
                                     name, ingredient, quantity, unit, shortDescription, description, media);
 
