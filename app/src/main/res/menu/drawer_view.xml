@@ -13,5 +13,9 @@
             android:id="@+id/id_cookbook"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="Cookbook"/>
+        <item
+            android:id="@+id/id_groceries"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Groceries"/>
     </group>
 </menu>
