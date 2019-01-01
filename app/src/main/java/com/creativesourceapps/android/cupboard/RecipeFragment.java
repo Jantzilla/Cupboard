@@ -151,12 +151,11 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                     break;
                             }
 
-                            media.add(resultObject.getString("strYoutube"));
-
                             description = new ArrayList<>(Arrays.asList(resultObject.getString("strInstructions").split(".")));
 
                             for(int o = 1; o < description.size(); o++) {
                                 shortDescription.add(("Step " + o));
+                                media.add(resultObject.getString("strYoutube"));
                             }
 
                             Recipe recipe = new Recipe(id,
