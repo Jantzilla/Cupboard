@@ -13,11 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
@@ -29,7 +30,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
     private JSONObject jsonObject;
-    private String selection;
+    private String selection, tempIngredient, tempUnit;
     private RecipeAdapter recipeAdapter;
     private ArrayList<Integer> recipeIds = new ArrayList<>();
 
@@ -96,34 +97,46 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             ArrayList<String> shortDescription = new ArrayList<>();
             ArrayList<String> description = new ArrayList<>();
             ArrayList<String> media = new ArrayList<>();
-            id = jsonObject.getInt("id");
-            name = jsonObject.getString("name");
+            id = jsonObject.getInt("idMeal");
+            name = jsonObject.getString("strMeal");
 
-            JSONArray ingredients = jsonObject.getJSONArray("ingredients");
-            for(int o = 0; o < ingredients.length(); o++) {
-                JSONObject ingredientsJSONObject = ingredients.getJSONObject(o);
-                ingredient.add(ingredientsJSONObject.getString("ingredient"));
-                quantity.add(ingredientsJSONObject.getString("quantity"));
-                unit.add(ingredientsJSONObject.getString("measure"));
+            for(int o = 1; o < 50; o++) {
+                if(!jsonObject.getString("strIngredient" + o).isEmpty()) {
+                    tempIngredient = jsonObject.getString("strIngredient" + o);
+                    ingredient.add(tempIngredient);
+                } else
+                    break;
             }
 
+            for(int o = 1; o < 50; o++) {
+                if(!jsonObject.getString("strMeasure" + o).isEmpty()) {
+                    tempUnit = jsonObject.getString("strMeasure" + o);
+                    if(tempUnit.split(" ").length>1){
 
-            JSONArray steps = jsonObject.getJSONArray("steps");
-            for(int o = 0; o < steps.length(); o++) {
-                JSONObject step = steps.getJSONObject(o);
-                shortDescription.add(step.getString("shortDescription"));
+                        unit.add(tempUnit.substring(tempUnit.lastIndexOf(" ")+1));
+                        quantity.add(tempUnit.substring(0, tempUnit.lastIndexOf(' ')));
+                    }
+                    else{
+                        quantity.add("1");
+                        unit.add(tempUnit);
+                    }
+                } else
+                    break;
             }
-            for(int o = 0; o < steps.length(); o++) {
-                JSONObject step = steps.getJSONObject(o);
-                description.add(step.getString("description"));
+
+            BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+            String source = jsonObject.getString("strInstructions");
+            iterator.setText(source);
+            int start = iterator.first();
+            for (int end = iterator.next();
+                 end != BreakIterator.DONE;
+                 start = end, end = iterator.next()) {
+                description.add(source.substring(start,end));
             }
-            for(int o = 0; o < steps.length(); o++) {
-                JSONObject step = steps.getJSONObject(o);
-                String tempUrl = step.getString("videoURL");
-                if(tempUrl.equals(""))
-                    media.add(step.getString("thumbnailURL"));
-                else
-                    media.add(step.getString("videoURL"));
+
+            for(int o = 1; o < description.size(); o++) {
+                shortDescription.add(("Step " + o));
+                media.add(jsonObject.getString("strYoutube"));
             }
             Recipe recipe = new Recipe(id,
                     name, ingredient, quantity, unit, shortDescription, description, media);
