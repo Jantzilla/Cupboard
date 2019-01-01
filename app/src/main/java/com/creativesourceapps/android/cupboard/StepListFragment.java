@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 
 public class StepListFragment extends Fragment {
 
@@ -31,7 +30,6 @@ public class StepListFragment extends Fragment {
 
         // Get a reference to the ListView in the fragment_step_list xml layout file
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.steps_list_view);
-        ExpandableListView expandableListView = (ExpandableListView) rootView.findViewById(R.id.recipe_list_view);
 
         // Create the adapter
         // This adapter takes in the context and an ArrayList of ALL the image resources to display
@@ -42,7 +40,6 @@ public class StepListFragment extends Fragment {
         // Set the adapter on the ListView
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        expandableListView.setAdapter(ingredientListAdapter);
 
         // Return the root view
         return rootView;
