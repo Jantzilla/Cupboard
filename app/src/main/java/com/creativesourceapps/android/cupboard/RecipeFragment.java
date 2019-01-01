@@ -16,7 +16,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,8 +23,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.BreakIterator;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -151,7 +151,15 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                     break;
                             }
 
-                            description = new ArrayList<>(Arrays.asList(resultObject.getString("strInstructions").split(".")));
+                            BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+                            String source = resultObject.getString("strInstructions");
+                            iterator.setText(source);
+                            int start = iterator.first();
+                            for (int end = iterator.next();
+                                 end != BreakIterator.DONE;
+                                 start = end, end = iterator.next()) {
+                                description.add(source.substring(start,end));
+                            }
 
                             for(int o = 1; o < description.size(); o++) {
                                 shortDescription.add(("Step " + o));
