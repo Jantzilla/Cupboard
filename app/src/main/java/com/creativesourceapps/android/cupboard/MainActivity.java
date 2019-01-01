@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation);
         fragmentManager = getSupportFragmentManager();
-        fragment = new RecipeFragment();
+        fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
         floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
 
