@@ -1,108 +1,69 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class IngredientListAdapter extends BaseExpandableListAdapter {
+public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.ViewHolder> {
 
     private Context context;
-    private String expandableListTitle;
+    private String title;
+    private String ingredientBaseUrl = "https://www.themealdb.com/images/ingredients/";
     private ArrayList<String> ingredient;
     private ArrayList<String> quantity;
     private ArrayList<String> unit;
 
-    public IngredientListAdapter(Context context, String expandableListTitle, ArrayList<String> quantity,
+    public IngredientListAdapter(Context context, String title, ArrayList<String> quantity,
                                  ArrayList<String> unit, ArrayList<String> ingredient) {
         this.context = context;
-        this.expandableListTitle = expandableListTitle;
+        this.title = title;
         this.ingredient = ingredient;
         this.quantity = quantity;
         this.unit = unit;
     }
 
+    @NonNull
     @Override
-    public Object getChild(int listPosition, int expandedListPosition) {
-        return this.ingredient
-                .get(expandedListPosition);
+    public IngredientListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View view = inflater.inflate(R.layout.list_item_ingredient, viewGroup, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
-    public long getChildId(int listPosition, int expandedListPosition) {
-        return expandedListPosition;
+    public void onBindViewHolder(@NonNull IngredientListAdapter.ViewHolder viewHolder, int i) {
+        String uri = ingredientBaseUrl + ingredient.get(i) + ".png";
+        Glide.with(context).load(uri).into(viewHolder.ingredientImageView);
+        viewHolder.nameTextView.setText(ingredient.get(i));
+        viewHolder.quantityTextView.setText(quantity.get(i));
     }
 
     @Override
-    public View getChildView(int listPosition, final int expandedListPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
-        String ingredientListText = this.ingredient.get(expandedListPosition);
-        String unitListText = this.unit.get(expandedListPosition);
-        String quantityListText = String.valueOf(this.quantity.get(expandedListPosition));
+    public int getItemCount() {
+        return ingredient.size();
+    }
 
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView ingredientImageView, availableImageView;
+        TextView nameTextView, quantityTextView;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            ingredientImageView = itemView.findViewById(R.id.iv_ingredient);
+            availableImageView = itemView.findViewById(R.id.iv_available);
+            nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
+            quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
         }
-        TextView ingredientTextView = (TextView) convertView.findViewById(R.id.ingredientsListItem);
-        TextView quantityTextView = (TextView) convertView.findViewById(R.id.quantityListItem);
-        TextView unitTextView = (TextView) convertView.findViewById(R.id.unitListItem);
-        ingredientTextView.setText(ingredientListText);
-        quantityTextView.setText(quantityListText);
-        unitTextView.setText(unitListText);
-        return convertView;
     }
 
-    @Override
-    public int getChildrenCount(int listPosition) {
-        return this.ingredient
-                .size();
-    }
-
-    @Override
-    public Object getGroup(int listPosition) {
-        return this.expandableListTitle;
-    }
-
-    @Override
-    public int getGroupCount() {
-        return 1;
-    }
-
-    @Override
-    public long getGroupId(int listPosition) {
-        return listPosition;
-    }
-
-    @Override
-    public View getGroupView(int listPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        String listTitle = (String) getGroup(listPosition);
-        if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.context.
-                    getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group, null);
-        }
-        TextView listTitleTextView = (TextView) convertView
-                .findViewById(R.id.listTitle);
-        listTitleTextView.setTypeface(null, Typeface.BOLD);
-        listTitleTextView.setText(listTitle);
-        return convertView;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public boolean isChildSelectable(int listPosition, int expandedListPosition) {
-        return true;
-    }
 }
