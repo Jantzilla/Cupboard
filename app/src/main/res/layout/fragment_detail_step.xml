@@ -40,18 +40,8 @@
             app:autoSizeMaxTextSize="18sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="@+id/tv_step_number"
-            app:layout_constraintEnd_toStartOf="@+id/iv_expand_less"
-            app:layout_constraintStart_toEndOf="@id/tv_step_number"
-            app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
-
-        <ImageView
-            android:id="@+id/iv_expand_less"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_expand_less_24dp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_step_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/list_item_step"
+            app:layout_constraintStart_toEndOf="@id/tv_step_number"
             app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
 
         <com.google.android.exoplayer2.ui.SimpleExoPlayerView

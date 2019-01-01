@@ -11,9 +11,6 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -44,7 +41,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
     private static MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
     private TextView stepTextView, numberTextView;
-    private ImageView expandImageView;
     long playerPosition;
     private TextView textView;
 
@@ -70,7 +66,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         textView = (TextView) rootView.findViewById(R.id.text_description);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
-        expandImageView = rootView.findViewById(R.id.iv_expand_less);
         final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
 
         position = 0;
@@ -95,13 +90,6 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
             initializePlayer(Uri.parse(recipe.media.get(position)));
         else
             mPlayerView.setVisibility(View.GONE);
-
-        expandImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
 
         // Return the root view
         return rootView;
