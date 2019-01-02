@@ -3,6 +3,7 @@ package com.creativesourceapps.android.cupboard;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,15 @@ public class StepPagerFragment extends Fragment {
         wormDotsIndicator.setViewPager(viewPager);
 
         viewPager.setCurrentItem(position,true);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IngredientFragment fragment = new IngredientFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.detail_container, fragment).commit();
+            }
+        });
 
         return view;
     }
