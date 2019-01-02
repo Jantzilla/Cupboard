@@ -8,6 +8,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_ingredient_steps"
+        android:layout_marginTop="56dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

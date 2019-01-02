@@ -66,7 +66,7 @@ public class DetailStepFragment extends Fragment implements ExoPlayer.EventListe
         textView = (TextView) rootView.findViewById(R.id.text_description);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
-        final Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
+        final Recipe recipe = ((MainActivity)getActivity()).getRecipe();
 
         position = 0;
         if(getArguments() != null)

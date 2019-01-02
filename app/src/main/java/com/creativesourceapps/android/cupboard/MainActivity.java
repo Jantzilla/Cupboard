@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
+    private Recipe recipe;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateSearchListener(SearchChangeListener searchChangeListener) {
         this.searchChangeListener = searchChangeListener;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 
     @Override

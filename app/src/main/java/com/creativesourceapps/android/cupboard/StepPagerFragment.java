@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class StepPagerFragment extends Fragment {
-    int position;
     StepPagerAdapter stepPagerAdapter;
     FloatingActionButton fab;
     ViewPager viewPager;
@@ -30,9 +29,8 @@ public class StepPagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
-        Recipe recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
+        Recipe recipe = ((MainActivity)getActivity()).getRecipe();
         stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
-        position = getArguments().getInt("position", 0);
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
@@ -47,14 +45,12 @@ public class StepPagerFragment extends Fragment {
         viewPager.setAdapter(stepPagerAdapter);
         wormDotsIndicator.setViewPager(viewPager);
 
-        viewPager.setCurrentItem(position,true);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IngredientFragment fragment = new IngredientFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.detail_container, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
             }
         });
 

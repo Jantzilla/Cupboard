@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,6 +34,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private String selection, tempIngredient, tempUnit;
     private RecipeAdapter recipeAdapter;
     private ArrayList<Integer> recipeIds = new ArrayList<>();
+    private StepPagerFragment fragment;
+    private FragmentManager fragmentManager;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -189,12 +192,19 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                 break;
             case R.id.grid_item_recipe:
+                                                                        //TODO: Determine if app is running on tablet device
                 Recipe item_clicked = recipes.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
-                Intent intent = new Intent(getContext(), RecipeActivity.class);
-                intent.putExtra("parcel_data", item_clicked);
-                startActivity(intent);
+                ((MainActivity)getActivity()).setRecipe(item_clicked);
+
+                fragment = new StepPagerFragment();
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+
+//                Intent intent = new Intent(getContext(), RecipeActivity.class);
+//                intent.putExtra("parcel_data", item_clicked);
+//                startActivity(intent);
         }
     }
 
