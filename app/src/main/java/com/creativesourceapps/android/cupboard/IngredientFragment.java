@@ -25,7 +25,7 @@ public class IngredientFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ingredient, container, false);
 
         recyclerView = view.findViewById(R.id.rv_ingredients);
-        recipe = getActivity().getIntent().getParcelableExtra("parcel_data");
+        recipe = ((MainActivity)getActivity()).getRecipe();
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
         gridLayoutManager = new GridLayoutManager(getContext(), 3);
