@@ -28,7 +28,7 @@ public class IngredientFragment extends Fragment {
         recipe = ((MainActivity)getActivity()).getRecipe();
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
-        gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        gridLayoutManager = new GridLayoutManager(getContext(), 2);
 
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
