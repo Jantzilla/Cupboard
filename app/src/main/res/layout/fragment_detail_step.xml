@@ -15,17 +15,6 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tv_step_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/list_item_step"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/list_item_step"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,10 +28,9 @@
             android:textSize="18sp"
             app:autoSizeMaxTextSize="18sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_step_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_step_number"
-            app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_description"
