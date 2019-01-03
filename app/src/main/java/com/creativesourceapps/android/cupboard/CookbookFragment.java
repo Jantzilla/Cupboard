@@ -93,13 +93,12 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             jsonObject = new JSONObject(json);
 
             int id;
-            String name;
+            String name, media;
             ArrayList<String> ingredient = new ArrayList<>();
             ArrayList<String> quantity = new ArrayList<>();
             ArrayList<String> unit = new ArrayList<>();
             ArrayList<String> shortDescription = new ArrayList<>();
             ArrayList<String> description = new ArrayList<>();
-            ArrayList<String> media = new ArrayList<>();
             id = jsonObject.getInt("idMeal");
             name = jsonObject.getString("strMeal");
 
@@ -139,8 +138,10 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
             for(int o = 1; o < description.size(); o++) {
                 shortDescription.add(("Step " + o));
-                media.add(jsonObject.getString("strYoutube"));
             }
+
+            media = jsonObject.getString("strMealThumb");
+
             Recipe recipe = new Recipe(id,
                     name, ingredient, quantity, unit, shortDescription, description, media);
 

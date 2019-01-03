@@ -115,13 +115,12 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                         for (int i = 0; i < json.length(); i++) {
                             int id;
-                            String name, tempIngredient, tempUnit;
+                            String name, media, tempIngredient, tempUnit;
                             ArrayList<String> ingredient = new ArrayList<>();
                             ArrayList<String> quantity = new ArrayList<>();
                             ArrayList<String> unit = new ArrayList<>();
                             ArrayList<String> shortDescription = new ArrayList<>();
                             ArrayList<String> description = new ArrayList<>();
-                            ArrayList<String> media = new ArrayList<>();
                             JSONObject resultObject = json.getJSONObject(i);
                             jsonObjectArray.add(resultObject);
                             id = resultObject.getInt("idMeal");
@@ -163,8 +162,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                             for(int o = 1; o < description.size(); o++) {
                                 shortDescription.add(("Step " + o));
-                                media.add(resultObject.getString("strYoutube"));
                             }
+
+                            media = resultObject.getString("strMealThumb");
 
                             Recipe recipe = new Recipe(id,
                                     name, ingredient, quantity, unit, shortDescription, description, media);
