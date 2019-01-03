@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,6 +46,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private Cursor cursor;
     private String[] projection;
     private boolean savedRecipe;
+    private StepPagerFragment fragment;
+    private FragmentManager fragmentManager;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -249,9 +252,18 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                 Recipe item_clicked = recipes.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
-                Intent intent = new Intent(getContext(), RecipeActivity.class);
-                intent.putExtra("parcel_data", item_clicked);
-                startActivity(intent);
+                ((MainActivity)getActivity()).setRecipe(item_clicked);
+
+                fragment = new StepPagerFragment();
+                fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fl_fragment, fragment)
+                        .commit();
+
+//                Intent intent = new Intent(getContext(), RecipeActivity.class);
+//                intent.putExtra("parcel_data", item_clicked);
+//                startActivity(intent);
         }
     }
 

@@ -201,7 +201,10 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                 fragment = new StepPagerFragment();
                 fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                fragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fl_fragment, fragment)
+                        .commit();
 
 //                Intent intent = new Intent(getContext(), RecipeActivity.class);
 //                intent.putExtra("parcel_data", item_clicked);
