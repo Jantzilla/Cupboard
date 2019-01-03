@@ -220,4 +220,11 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).setFloatingSearchView("Cookbook");
+    }
+
 }

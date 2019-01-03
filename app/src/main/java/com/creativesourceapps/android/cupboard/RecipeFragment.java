@@ -271,4 +271,11 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     public void onSearch(String query) {
         requestRecipeData(query);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).setFloatingSearchView("Recipes");
+    }
+
 }
