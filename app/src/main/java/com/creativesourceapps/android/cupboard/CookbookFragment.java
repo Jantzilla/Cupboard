@@ -192,7 +192,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                 alertDialog.show();
 
                 break;
-            case R.id.grid_item_recipe:
+            default:
                                                                         //TODO: Determine if app is running on tablet device
                 Recipe item_clicked = recipes.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);

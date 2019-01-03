@@ -75,7 +75,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             buttonImageView = itemView.findViewById(R.id.iv_button);
 
             buttonImageView.setOnClickListener(this);
-            titleTextView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override
