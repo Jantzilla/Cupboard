@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         this.searchChangeListener = searchChangeListener;
     }
 
+    public void setFloatingSearchViewTitle(String title) {
+        floatingSearchView.setSearchBarTitle(title);
+    }
+
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
