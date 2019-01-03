@@ -41,6 +41,41 @@ public class MainActivity extends AppCompatActivity {
         floatingSearchView.setSearchFocusable(false);
     }
 
+    public void setFloatingSearchView(String title) {
+        floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
+
+        floatingSearchView.setSearchFocusable(true);
+
+        floatingSearchView.setSearchBarTitle(title);
+
+        floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HAMBURGER);
+
+        floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
+            @Override
+            public void onSearchTextChanged(String oldQuery, String newQuery) {
+                searchChangeListener.onSearch(newQuery);
+            }
+        });
+
+        floatingSearchView.setOnHomeActionClickListener(new FloatingSearchView.OnHomeActionClickListener() {
+            @Override
+            public void onHomeClicked() {
+                onBackPressed();
+            }
+        });
+
+        floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
+            @Override
+            public void onActionMenuItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.id_search:
+                        floatingSearchView.setSearchFocused(true);
+                        break;
+                }
+            }
+        });
+    }
+
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
@@ -76,34 +111,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
-        floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
-
-        floatingSearchView.setSearchBarTitle("Recipes");
-
-        floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
-            @Override
-            public void onSearchTextChanged(String oldQuery, String newQuery) {
-                searchChangeListener.onSearch(newQuery);
-            }
-        });
-
-        floatingSearchView.setOnHomeActionClickListener(new FloatingSearchView.OnHomeActionClickListener() {
-            @Override
-            public void onHomeClicked() {
-                onBackPressed();
-            }
-        });
-
-        floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
-            @Override
-            public void onActionMenuItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.id_search:
-                        floatingSearchView.setSearchFocused(true);
-                        break;
-                }
-            }
-        });
+        setFloatingSearchView("Cookbook");
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
