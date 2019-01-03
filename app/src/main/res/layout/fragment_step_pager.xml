@@ -8,9 +8,13 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_ingredient_steps"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="64dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="56dp"
+        android:padding="16dp"/>
 
     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
         android:id="@+id/worm_dots_indicator"
