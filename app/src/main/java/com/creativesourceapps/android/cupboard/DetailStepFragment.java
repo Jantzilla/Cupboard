@@ -14,6 +14,7 @@ public class DetailStepFragment extends Fragment {
     private static final String TAG = DetailStepFragment.class.getSimpleName();
     private TextView stepTextView, numberTextView;
     private TextView textView;
+    private Recipe recipe;
 
     // Override onAttach to make sure that the container activity has implemented the callback
     @Override
@@ -34,19 +35,12 @@ public class DetailStepFragment extends Fragment {
         textView = (TextView) rootView.findViewById(R.id.text_description);
         stepTextView = rootView.findViewById(R.id.list_item_step);
         numberTextView = rootView.findViewById(R.id.tv_step_number);
-        final Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        recipe = ((MainActivity)getActivity()).getRecipe();
 
-        position = 0;
-        if(getArguments() != null)
-            position = getArguments().getInt("position", 0);
-        if(position == 0) {
-            numberTextView.setText("");
-            textView.setText("");
-        }
-        else {
-            numberTextView.setText(String.valueOf(position));
-            textView.setText(recipe.instructions.get(position));
-        }
+
+        position = getArguments().getInt("position", 0);
+        numberTextView.setText(String.valueOf(position));
+        textView.setText(recipe.instructions.get(position));
         stepTextView.setText(recipe.steps.get(position));
 
         // Return the root view
