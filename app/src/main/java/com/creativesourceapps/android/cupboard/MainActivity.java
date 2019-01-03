@@ -87,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        floatingSearchView.setOnHomeActionClickListener(new FloatingSearchView.OnHomeActionClickListener() {
+            @Override
+            public void onHomeClicked() {
+                onBackPressed();
+            }
+        });
+
         floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
             @Override
             public void onActionMenuItemSelected(MenuItem item) {
