@@ -1,5 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class StepPagerFragment extends Fragment {
@@ -30,6 +35,14 @@ public class StepPagerFragment extends Fragment {
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        Glide.with(getContext()).load(recipe.media).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    viewPager.setBackground(resource);
+                }
+            }
+        });
         stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
         adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
