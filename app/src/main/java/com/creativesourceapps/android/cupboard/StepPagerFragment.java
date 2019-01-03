@@ -34,7 +34,10 @@ public class StepPagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
+
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        ((MainActivity)getActivity()).setFloatingSearchViewTitle(recipe.title);
+
         Glide.with(getContext()).load(recipe.media).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
