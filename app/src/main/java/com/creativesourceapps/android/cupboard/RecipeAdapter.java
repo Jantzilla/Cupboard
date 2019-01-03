@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 
 import java.util.ArrayList;
 
@@ -41,8 +47,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder recipeViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final RecipeViewHolder recipeViewHolder, int i) {
         recipeViewHolder.titleTextView.setText(recipes.get(i).title);
+        Glide.with(context).load(recipes.get(i).media).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    recipeViewHolder.itemView.setBackground(resource);
+                }
+            }
+        });
     }
 
     @Override
