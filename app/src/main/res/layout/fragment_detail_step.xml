@@ -44,16 +44,6 @@
             app:layout_constraintStart_toEndOf="@id/tv_step_number"
             app:layout_constraintTop_toTopOf="@+id/tv_step_number" />
 
-        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-            android:id="@+id/playerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/text_description"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_step_number" />
-
         <TextView
             android:id="@+id/text_description"
             android:layout_width="match_parent"
@@ -65,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playerView" />
+            app:layout_constraintTop_toBottomOf="@+id/list_item_step" />
 
     </android.support.constraint.ConstraintLayout>
 
