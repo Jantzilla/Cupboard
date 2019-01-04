@@ -21,6 +21,15 @@
             app:floatingSearch_menu="@menu/main"
             app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
 
+        <View
+            android:id="@+id/transparent_scrim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dark_scrim_background"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
+
     </FrameLayout>
 
     <android.support.design.widget.NavigationView
