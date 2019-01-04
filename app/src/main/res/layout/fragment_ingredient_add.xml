@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/recipe_list_background"
+    android:layout_marginTop="74dp"
+    android:layout_marginBottom="120dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     tools:context=".IngredientAddFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>
