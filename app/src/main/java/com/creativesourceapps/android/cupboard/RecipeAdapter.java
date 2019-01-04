@@ -53,7 +53,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             @Override
             public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    recipeViewHolder.itemView.setBackground(resource);
+                    recipeViewHolder.imageView.setBackground(resource);
                 }
             }
         });
@@ -67,12 +67,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView titleTextView;
         ImageView buttonImageView;
+        ImageView imageView;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
 
             titleTextView = itemView.findViewById(R.id.grid_item_recipe);
             buttonImageView = itemView.findViewById(R.id.iv_button);
+            imageView = itemView.findViewById(R.id.iv_recipe);
 
             buttonImageView.setOnClickListener(this);
             itemView.setOnClickListener(this);
