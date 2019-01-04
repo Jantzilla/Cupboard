@@ -66,7 +66,10 @@ public class StepPagerFragment extends Fragment {
             public void onClick(View v) {
                 IngredientFragment fragment = new IngredientFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                fragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fl_fragment, fragment)
+                        .commit();
             }
         });
 
