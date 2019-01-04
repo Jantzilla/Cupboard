@@ -16,7 +16,6 @@
         tools:text="Recipe Name"
         android:textColor="#1c1c1c"
         android:padding="16dp"
-        android:layout_margin="8dp"
         android:layout_gravity="top|start"
         android:textSize="32sp"/>
 
