@@ -12,6 +12,7 @@ import android.support.v7.view.menu.MenuItemImpl;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingSearchView floatingSearchView;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
+    private View view;
     private Fragment fragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
         floatingSearchView.setSearchFocused(true);
         floatingSearchView.setSearchFocused(false);
         floatingSearchView.setSearchFocusable(false);
+    }
+
+    public void setScrimVisibility(boolean visible){
+        if(visible)
+            view.setVisibility(View.VISIBLE);
+        else
+            view.setVisibility(View.GONE);
     }
 
     public void setFloatingSearchView(String title) {
@@ -116,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         floatingSearchView = findViewById(R.id.floating_search_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation);
+        view = findViewById(R.id.transparent_scrim);
         fragmentManager = getSupportFragmentManager();
         fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
