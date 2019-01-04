@@ -8,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuItemImpl;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
     private Recipe recipe;
+    private MenuItemImpl menuElement;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setFloatingSearchViewTitle(String title) {
+        menuElement = floatingSearchView.getCurrentMenuItems().get(0);
         floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HOME);
         floatingSearchView.setSearchBarTitle(title);
         floatingSearchView.getCurrentMenuItems().clear();
@@ -44,7 +47,14 @@ public class MainActivity extends AppCompatActivity {
     public void setFloatingSearchView(String title) {
         floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
 
+        if(menuElement != null)
+            floatingSearchView.getCurrentMenuItems().add(menuElement);
+
         floatingSearchView.setSearchFocusable(true);
+
+        floatingSearchView.setSearchFocused(true);
+
+        floatingSearchView.setSearchFocused(false);
 
         floatingSearchView.setSearchBarTitle(title);
 
