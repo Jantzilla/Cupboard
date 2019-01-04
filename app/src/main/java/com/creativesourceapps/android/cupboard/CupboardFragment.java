@@ -22,7 +22,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     private CupboardAdapter adapter;
     private ArrayList<String> categoryList;
     private GridLayoutManager layoutManager;
-    private DetailCupboardFragment fragment;
+    private Fragment fragment;
 
     public CupboardFragment() {
         // Required empty public constructor
@@ -93,6 +93,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
             Bundle bundle = new Bundle();
             if(clickedItem == -1) {
                 bundle.putString("Shared Element", "Add Ingredient");
+                fragment = new IngredientAddFragment();
                 fragment.setSharedElementReturnTransition(null);
             }
             else
