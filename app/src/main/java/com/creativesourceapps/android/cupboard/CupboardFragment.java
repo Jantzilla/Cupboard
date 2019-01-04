@@ -38,6 +38,18 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         fragment = new DetailCupboardFragment();
         categoryList = new ArrayList<>();
         layoutManager = new GridLayoutManager(getContext(), 2);
+
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position == 0) {
+                    return 2;
+                } else {
+                    return 1;
+                }
+            }
+        });
+
         getCategories();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
