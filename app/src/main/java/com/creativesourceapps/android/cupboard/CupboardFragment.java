@@ -53,7 +53,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         getCategories();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            fab.setTransitionName("All Ingredients");
+            fab.setTransitionName("Add Ingredient");
             setExitTransition(TransitionInflater.from(getContext())
                     .inflateTransition(R.transition.grid_exit_transition));
         }
@@ -74,6 +74,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     private void getCategories() {
 
+        categoryList.add("All Ingredients");
         categoryList.add("Seasoning");
         categoryList.add("Marinade");
         categoryList.add("Fruits");
@@ -91,7 +92,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
             Bundle bundle = new Bundle();
             if(clickedItem == -1) {
-                bundle.putString("Shared Element", "All Ingredients");
+                bundle.putString("Shared Element", "Add Ingredient");
                 fragment.setSharedElementReturnTransition(null);
             }
             else
@@ -127,6 +128,6 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     @Override
     public void onSearch(String query) {
-        startFragmentTransaction(-1, fab );
+        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(0).itemView );
     }
 }
