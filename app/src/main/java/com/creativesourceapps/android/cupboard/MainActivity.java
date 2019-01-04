@@ -47,14 +47,12 @@ public class MainActivity extends AppCompatActivity {
     public void setFloatingSearchView(String title) {
         floatingSearchView.attachNavigationDrawerToMenuButton(drawerLayout);
 
-        if(menuElement != null)
+        if(menuElement != null) {
             floatingSearchView.getCurrentMenuItems().add(menuElement);
-
-        floatingSearchView.setSearchFocusable(true);
-
-        floatingSearchView.setSearchFocused(true);
-
-        floatingSearchView.setSearchFocused(false);
+            floatingSearchView.setSearchFocusable(true);
+            floatingSearchView.setSearchFocused(true);
+            floatingSearchView.setSearchFocused(false);
+        }
 
         floatingSearchView.setSearchBarTitle(title);
 
