@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setFloatingSearchViewTitle(String title) {
-        menuElement = floatingSearchView.getCurrentMenuItems().get(0);
+        if(floatingSearchView.getCurrentMenuItems().size() != 0)
+            menuElement = floatingSearchView.getCurrentMenuItems().get(0);
+
         floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HOME);
         floatingSearchView.setSearchBarTitle(title);
         floatingSearchView.getCurrentMenuItems().clear();
