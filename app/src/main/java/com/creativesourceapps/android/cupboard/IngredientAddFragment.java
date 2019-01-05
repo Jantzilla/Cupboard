@@ -34,6 +34,7 @@ public class IngredientAddFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ingredient_add, container, false);
 
         fab = view.findViewById(R.id.fab_back);
+        addFab = view.findViewById(R.id.fab_add);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
