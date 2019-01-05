@@ -35,18 +35,12 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private LinearLayoutManager linearLayoutManager;
-    private Dialog dialog;
-    private ArrayAdapter<CharSequence> unitSpinnerAdapter, categorySpinnerAdapter;
-    private Spinner unitSpinner, categorySpinner;
-    private Button saveButton;
-    private EditText ingredientEditText, quantityEditText;
     private TextView categoryTextView;
-    private String selectedUnit, selectedCategory, category, selection, sortOrder;
+    private String category, selection, sortOrder;
     private CupboardDbHelper dbHelper;
     private SQLiteDatabase db;
     private String[] projection, selectionArgs;
     private Cursor cursor;
-    private boolean savedIngredient;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -86,121 +80,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.dialog_ingredient_add);
-                categorySpinner = dialog.findViewById(R.id.spin_group);
-                unitSpinner = dialog.findViewById(R.id.spin_unit);
-                saveButton = dialog.findViewById(R.id.btn_save);
-                ingredientEditText = dialog.findViewById(R.id.tv_ingredient);
-                quantityEditText = dialog.findViewById(R.id.tv_quantity);
 
-                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        ingredientEditText.setError(null);
-                        quantityEditText.setError(null);
-                    }
-                });
-
-                unitSpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.units_array, R.layout.dropdown_item);
-                unitSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                unitSpinner.setAdapter(unitSpinnerAdapter);
-
-                categorySpinnerAdapter = ArrayAdapter.createFromResource(getContext(),R.array.categories_array, R.layout.dropdown_item);
-                categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                categorySpinner.setAdapter(categorySpinnerAdapter);
-
-                selectedUnit = "g";              //Reset default ingredient selectedUnit
-
-                if(!category.equals("All Ingredients")) {
-                    categorySpinner.setVisibility(View.INVISIBLE);
-                    selectedCategory = category;  //Reset default ingredient selectedCategory
-                } else {
-                    selectedCategory = "Seasoning";  //Reset default ingredient selectedCategory
-
-                    categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            selectedCategory = String.valueOf(parent.getItemAtPosition(position));
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-
-                }
-
-                saveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(ingredientEditText.getText().toString().isEmpty())
-                            ingredientEditText.setError("Please enter a name.");
-                        if(quantityEditText.getText().toString().isEmpty())
-                            quantityEditText.setError("Please enter a quantity.");
-                        else {
-
-                            Ingredient ingredient = new Ingredient();
-                            ingredient.name = ingredientEditText.getText().toString();
-                            ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
-                            ingredient.unit = selectedUnit;
-                            ingredient.category = selectedCategory;
-                            ingredientsList.add(ingredient);
-
-                            db = dbHelper.getWritableDatabase();
-
-                            cursor = db.query(
-                                    CupboardContract.Ingredients.TABLE_NAME,
-                                    projection,
-                                    null,
-                                    null,
-                                    null,
-                                    null,
-                                    null
-                            );
-
-                            while(cursor.moveToNext()) {
-                                if(cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME))
-                                        .equals(ingredient.name)) {
-                                    ingredientEditText.setError("Ingredient already exists.");
-                                    savedIngredient = true;
-                                }
-                            }
-
-                            if(!savedIngredient) {
-                                ContentValues values = new ContentValues();
-                                values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
-                                values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
-                                values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
-                                values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
-                                db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
-
-                                adapter.addIngredient(ingredient);
-                                adapter.notifyItemInserted(ingredientsList.size());
-                                dialog.cancel();
-                            }
-
-                            savedIngredient = false;
-
-                        }
-                    }
-                });
-
-                unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        selectedUnit = String.valueOf(parent.getItemAtPosition(position));
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-                dialog.show();
             }
         });
 
