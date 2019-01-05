@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -23,7 +24,9 @@ public class StepPagerFragment extends Fragment {
     ViewPager viewPager;
     ImageView imageView;
     WormDotsIndicator wormDotsIndicator;
+    TextView stepTextView;
     private IngredientListAdapter adapter;
+    private String step;
 
     public StepPagerFragment() {
         // Required empty public constructor
@@ -36,6 +39,7 @@ public class StepPagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         imageView = view.findViewById(R.id.iv_recipe_step_background);
+        stepTextView = view.findViewById(R.id.tv_step_number);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
@@ -60,6 +64,24 @@ public class StepPagerFragment extends Fragment {
             detailStepFragment.setArguments(bundle);
             stepPagerAdapter.addFragment(detailStepFragment);
         }
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                step = "Step " + (i + 1);
+                stepTextView.setText(step);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
         viewPager.setAdapter(stepPagerAdapter);
         wormDotsIndicator.setViewPager(viewPager);
