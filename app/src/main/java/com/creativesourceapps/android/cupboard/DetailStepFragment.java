@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class DetailStepFragment extends Fragment {
     int position;
     private static final String TAG = DetailStepFragment.class.getSimpleName();
-    private TextView stepTextView;
     private TextView textView;
     private Recipe recipe;
 
@@ -33,13 +32,11 @@ public class DetailStepFragment extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_detail_step, container, false);
         textView = (TextView) rootView.findViewById(R.id.text_description);
-        stepTextView = rootView.findViewById(R.id.list_item_step);
         recipe = ((MainActivity)getActivity()).getRecipe();
 
 
         position = getArguments().getInt("position", 0);
         textView.setText(recipe.instructions.get(position));
-        stepTextView.setText(recipe.steps.get(position));
 
         // Return the root view
         return rootView;
