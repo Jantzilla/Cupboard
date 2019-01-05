@@ -24,17 +24,26 @@
 
     <TextView
         android:id="@+id/tv_ingredient_name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/ingredient_name_background"
+        android:padding="4dp"
         android:text="Chicken"
-        app:layout_constraintTop_toBottomOf="@id/iv_ingredient"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ingredient"
+        app:layout_constraintEnd_toEndOf="@id/iv_ingredient"
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
-        app:layout_constraintEnd_toEndOf="@id/iv_ingredient"/>
+        app:layout_constraintTop_toTopOf="@id/iv_ingredient" />
 
     <TextView
         android:id="@+id/tv_ingredient_quantity"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/ingredient_quantity_background"
+        android:textColor="#ffffff"
+        android:layout_marginTop="4dp"
+        android:padding="4dp"
         android:text="1 lbs"
         android:textSize="13sp"
         app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name"
