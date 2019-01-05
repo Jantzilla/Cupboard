@@ -52,6 +52,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:inputType="numberDecimal"
             android:hint="Quantity"/>
 
         <TextView
