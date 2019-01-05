@@ -45,7 +45,7 @@ public class IngredientAddFragment extends Fragment {
 
         ((MainActivity)getActivity()).setScrimVisibility(true);
 
-        ingredientEditText = view.findViewById(R.id.tv_ingredient);
+        ingredientEditText = view.findViewById(R.id.tv_title);
         quantityEditText = view.findViewById(R.id.tv_quantity);
         dbHelper = new CupboardDbHelper(getContext());
 
