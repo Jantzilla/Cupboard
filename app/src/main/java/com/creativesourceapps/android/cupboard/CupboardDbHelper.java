@@ -8,6 +8,11 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Cupboard.db";
 
+    private static final String SQL_CREATE_ALL_INGREDIENTS =
+            "CREATE TABLE " + CupboardContract.AllIngredients.TABLE_NAME + " (" +
+                    CupboardContract.AllIngredients._ID + " INTEGER PRIMARY KEY," +
+                    CupboardContract.AllIngredients.COLUMN_UNIT + " TEXT)";
+
     private static final String SQL_CREATE_INGREDIENTS =
             "CREATE TABLE " + CupboardContract.Ingredients.TABLE_NAME + " (" +
                     CupboardContract.Ingredients._ID + " INTEGER PRIMARY KEY," +
@@ -22,6 +27,9 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
                     CupboardContract.Recipes.COLUMN_TITLE + " TEXT," +
                     CupboardContract.Recipes.COLUMN_RECIPE + " TEXT)";
 
+    private static final String SQL_DELETE_ALL_INGREDIENTS =
+            "DROP TABLE IF EXISTS " + CupboardContract.AllIngredients.TABLE_NAME;
+
     private static final String SQL_DELETE_INGREDIENTS =
             "DROP TABLE IF EXISTS " + CupboardContract.Ingredients.TABLE_NAME;
 
@@ -34,12 +42,14 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(SQL_CREATE_ALL_INGREDIENTS);
         db.execSQL(SQL_CREATE_INGREDIENTS);
         db.execSQL(SQL_CREATE_RECIPES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(SQL_DELETE_ALL_INGREDIENTS);
         db.execSQL(SQL_DELETE_INGREDIENTS);
         db.execSQL(SQL_DELETE_RECIPES);
         onCreate(db);
