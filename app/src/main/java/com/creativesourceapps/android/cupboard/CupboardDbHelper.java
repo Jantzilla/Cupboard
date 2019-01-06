@@ -11,6 +11,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ALL_INGREDIENTS =
             "CREATE TABLE " + CupboardContract.AllIngredients.TABLE_NAME + " (" +
                     CupboardContract.AllIngredients._ID + " INTEGER PRIMARY KEY," +
+                    CupboardContract.AllIngredients.COLUMN_NAME + " TEXT," +
                     CupboardContract.AllIngredients.COLUMN_UNIT + " TEXT)";
 
     private static final String SQL_CREATE_INGREDIENTS =
