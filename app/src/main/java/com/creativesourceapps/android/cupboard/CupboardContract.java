@@ -6,6 +6,11 @@ public class CupboardContract {
 
     private CupboardContract() {}
 
+    public static class AllIngredients implements BaseColumns {
+        public static final String TABLE_NAME = "ingredients";
+        public static final String COLUMN_UNIT = "units";
+    }
+
     public static class Ingredients implements BaseColumns {
         public static final String TABLE_NAME = "ingredients";
         public static final String COLUMN_NAME = "name";
