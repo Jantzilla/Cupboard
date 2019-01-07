@@ -49,6 +49,8 @@ public class IngredientAddFragment extends Fragment {
         quantityEditText = view.findViewById(R.id.tv_quantity);
         dbHelper = new CupboardDbHelper(getContext());
 
+        db = dbHelper.getWritableDatabase();
+
         selectedUnit = "g";              //Reset default ingredient selectedUnit
 
         addFab.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +67,6 @@ public class IngredientAddFragment extends Fragment {
                     ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
                     ingredient.unit = selectedUnit;
                     ingredient.category = selectedCategory;
-
-                    db = dbHelper.getWritableDatabase();
 
                     cursor = db.query(
                             CupboardContract.Ingredients.TABLE_NAME,
