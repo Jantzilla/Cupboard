@@ -59,6 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_background"
                     android:textSize="24sp"
                     android:text="Recipes"/>
             </FrameLayout>
@@ -75,6 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_background"
                     android:textSize="24sp"
                     android:text="Cupboard"/>
             </FrameLayout>
@@ -91,6 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_background"
                     android:textSize="24sp"
                     android:text="Cookbook"/>
             </FrameLayout>
@@ -107,6 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_background"
                     android:textSize="24sp"
                     android:text="Groceries"/>
             </FrameLayout>
