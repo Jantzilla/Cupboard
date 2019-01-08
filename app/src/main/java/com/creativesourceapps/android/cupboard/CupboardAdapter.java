@@ -3,11 +3,11 @@ package com.creativesourceapps.android.cupboard;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     }
 
     public interface ItemClickListener{
-        void onItemClicked(int clickedItem, LinearLayout itemLayout);
+        void onItemClicked(int clickedItem, CardView itemLayout);
     }
 
     @NonNull
@@ -52,7 +52,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     }
 
     public class CupboardViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout listItemLayout;
+        CardView listItemLayout;
 
         public CupboardViewHolder(@NonNull View itemView) {
             super(itemView);
