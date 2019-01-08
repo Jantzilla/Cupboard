@@ -51,11 +51,13 @@
                 android:id="@+id/fl_recipes"
                 android:layout_width="match_parent"
                 android:layout_height="115dp">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/mixed_meal"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/mixed_meal"/>
+                    app:riv_corner_radius="16dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,11 +72,13 @@
                 android:id="@+id/fl_cupboard"
                 android:layout_width="match_parent"
                 android:layout_height="115dp">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/cupboard"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/cupboard"/>
+                    app:riv_corner_radius="16dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,11 +93,13 @@
                 android:id="@+id/fl_cookbook"
                 android:layout_width="match_parent"
                 android:layout_height="115dp">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/cookbook"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/cookbook"/>
+                    app:riv_corner_radius="16dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -108,11 +114,13 @@
                 android:id="@+id/fl_groceries"
                 android:layout_width="match_parent"
                 android:layout_height="115dp">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:src="@drawable/groceries_row"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/groceries_row"/>
+                    app:riv_corner_radius="16dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
