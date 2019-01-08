@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -52,12 +54,16 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     }
 
     public class CupboardViewHolder extends RecyclerView.ViewHolder {
+        TextView textView;
         CardView listItemLayout;
+        ImageView imageView;
 
         public CupboardViewHolder(@NonNull View itemView) {
             super(itemView);
 
             listItemLayout = itemView.findViewById(R.id.ll_list_item);
+            imageView = itemView.findViewById(R.id.iv_category);
+            textView = itemView.findViewById(R.id.tv_category_name);
 
             listItemLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
