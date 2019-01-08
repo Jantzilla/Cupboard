@@ -76,16 +76,16 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     private void getCategories() {
 
         categoryList.add("All Ingredients");
-        categoryList.add("Spirits & Beverages");
-        categoryList.add("Spices & Baking");
-        categoryList.add("Bread & Grains");
-        categoryList.add("Sauces & Vinegar");
-        categoryList.add("Soups & Canned");
-        categoryList.add("Snacks & Candy");
-        categoryList.add("Dairy & Eggs");
+        categoryList.add("Meat & Seafood");
         categoryList.add("Pasta & Rice");
         categoryList.add("Fruits & Vegetables");
-        categoryList.add("Meat & Seafood");
+        categoryList.add("Dairy & Eggs");
+        categoryList.add("Snacks & Candy");
+        categoryList.add("Bread & Grains");
+        categoryList.add("Spices & Baking");
+        categoryList.add("Spirits & Beverages");
+        categoryList.add("Sauces & Vinegar");
+        categoryList.add("Soups & Canned");
 
         adapter = new CupboardAdapter(categoryList, CupboardFragment.this);
 
