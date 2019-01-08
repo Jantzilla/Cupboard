@@ -56,7 +56,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
                 break;
             case 1:
                 Glide.with(context).load(R.drawable.wine).into(cupboardViewHolder.imageView);
-                cupboardViewHolder.textView.setVisibility(View.VISIBLE);
+                break;
         }
     }
 
