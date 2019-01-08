@@ -60,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_background"
+                    android:padding="8dp"
                     android:textSize="24sp"
                     android:text="Recipes"/>
             </FrameLayout>
@@ -77,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_background"
+                    android:padding="8dp"
                     android:textSize="24sp"
                     android:text="Cupboard"/>
             </FrameLayout>
@@ -94,6 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_background"
+                    android:padding="8dp"
                     android:textSize="24sp"
                     android:text="Cookbook"/>
             </FrameLayout>
@@ -111,6 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/gradient_background"
+                    android:padding="8dp"
                     android:textSize="24sp"
                     android:text="Groceries"/>
             </FrameLayout>
