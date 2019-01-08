@@ -50,7 +50,7 @@
             <FrameLayout
                 android:id="@+id/fl_recipes"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="115dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -65,7 +65,7 @@
             <FrameLayout
                 android:id="@+id/fl_cupboard"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="115dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -80,7 +80,7 @@
             <FrameLayout
                 android:id="@+id/fl_cookbook"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="115dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -95,7 +95,7 @@
             <FrameLayout
                 android:id="@+id/fl_groceries"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="115dp">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
