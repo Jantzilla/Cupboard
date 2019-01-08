@@ -1,6 +1,5 @@
 package com.creativesourceapps.android.cupboard;
 
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private SearchChangeListener searchChangeListener;
     private Recipe recipe;
     private MenuItemImpl menuElement;
+    private FrameLayout recipes, cupboard, cookbook, groceries;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -128,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation);
         view = findViewById(R.id.transparent_scrim);
+        recipes = findViewById(R.id.fl_recipes);
+        cupboard = findViewById(R.id.fl_cupboard);
+        cookbook = findViewById(R.id.fl_cookbook);
+        groceries = findViewById(R.id.fl_groceries);
         fragmentManager = getSupportFragmentManager();
         fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
@@ -135,39 +140,43 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
-        navigationView.setCheckedItem(R.id.id_recipes);
-
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
+        recipes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.id_recipes:
-                        fragment = new RecipeFragment();
-                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                        floatingSearchView.setSearchBarTitle("Recipes");
-                        break;
-                    case R.id.id_cupboard:
-                        fragment = new CupboardFragment();
-                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                        floatingSearchView.setSearchBarTitle("Cupboard");
-                        break;
-                    case R.id.id_cookbook:
-                        fragment = new CookbookFragment();
-                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                        floatingSearchView.setSearchBarTitle("Cookbook");
-                        break;
-                    case R.id.id_groceries:
-                        fragment = new GroceriesFragment();
-                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                        floatingSearchView.setSearchBarTitle("Groceries");
-                        break;
-                }
+            public void onClick(View v) {
+                fragment = new RecipeFragment();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                floatingSearchView.setSearchBarTitle("Recipes");
                 drawerLayout.closeDrawers();
-                return true;
             }
         });
-    }
+        cupboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new CupboardFragment();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                floatingSearchView.setSearchBarTitle("Cupboard");
+                drawerLayout.closeDrawers();
+            }
+        });
+        cookbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new CookbookFragment();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                floatingSearchView.setSearchBarTitle("Cookbook");
+                drawerLayout.closeDrawers();
+            }
+        });
+        groceries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new GroceriesFragment();
+                fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
+                floatingSearchView.setSearchBarTitle("Groceries");
+                drawerLayout.closeDrawers();
+            }
+        });
 
+    }
 
 }
