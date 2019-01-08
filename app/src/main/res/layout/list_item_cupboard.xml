@@ -29,7 +29,7 @@
             android:id="@+id/tv_category_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="All Ingredients"
+            android:text="All Ingredients"
             android:textColor="#1c1c1c"
             android:padding="16dp"
             android:layout_gravity="center"
