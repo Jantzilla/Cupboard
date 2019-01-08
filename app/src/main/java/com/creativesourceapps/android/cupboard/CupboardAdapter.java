@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.CupboardViewHolder> {
@@ -46,6 +48,13 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             cupboardViewHolder.listItemLayout.setTransitionName(categoryList.get(i));
+
+        switch (i) {
+            case 0:
+                Glide.with(context).load(R.drawable.ingredients).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.textView.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     @Override
