@@ -162,10 +162,6 @@ public class MainActivity extends AppCompatActivity {
                         fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                         floatingSearchView.setSearchBarTitle("Groceries");
                         break;
-                    case R.id.id_settings:
-                        fragment = new SettingsFragment();
-                        fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                        floatingSearchView.setSearchBarTitle("Settings");
                 }
                 drawerLayout.closeDrawers();
                 return true;
