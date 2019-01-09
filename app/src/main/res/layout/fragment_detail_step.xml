@@ -20,6 +20,7 @@
             android:padding="8dp"
             android:textColor="#ffffff"
             android:textSize="22sp"
+            android:fontFamily="@font/literata_book"
             android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
