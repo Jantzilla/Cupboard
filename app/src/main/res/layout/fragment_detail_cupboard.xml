@@ -17,6 +17,13 @@
     android:background="@drawable/recipe_list_background"
     tools:context=".DetailCupboardFragment">
 
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_category_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="16dp"/>
+
     <TextView
         android:id="@+id/tv_category"
         android:layout_width="wrap_content"
