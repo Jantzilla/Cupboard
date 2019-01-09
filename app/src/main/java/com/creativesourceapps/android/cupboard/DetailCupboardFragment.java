@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
+
 import java.util.ArrayList;
 
 
@@ -32,6 +34,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     RecyclerView recyclerView;
     CupboardDetailAdapter adapter;
     ImageView imageView;
+    RoundedImageView roundedImageView;
     private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
@@ -67,6 +70,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
 
         categoryTextView = view.findViewById(R.id.tv_category);
         imageView = view.findViewById(R.id.iv_collapse);
+        roundedImageView = view.findViewById(R.id.iv_category_background);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
         fab = view.findViewById(R.id.fab_add);
         linearLayoutManager = new LinearLayoutManager(getContext());
