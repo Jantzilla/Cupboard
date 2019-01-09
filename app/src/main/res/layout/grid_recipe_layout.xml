@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/gradient_background"
             tools:text="Recipe Name"
+            android:fontFamily="@font/marmelad_regular"
             android:textColor="#1c1c1c"
             android:padding="16dp"
             android:layout_gravity="top|start"
