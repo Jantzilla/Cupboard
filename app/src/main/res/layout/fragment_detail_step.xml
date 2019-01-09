@@ -11,7 +11,7 @@
         <TextView
             android:id="@+id/text_description"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="185dp"
             android:background="@drawable/recipe_step_background"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
