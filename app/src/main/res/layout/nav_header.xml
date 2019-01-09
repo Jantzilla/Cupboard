@@ -17,8 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/recipe_step_background"
+        android:fontFamily="@font/sofia_regular"
         android:padding="16dp"
-        android:textSize="32sp"
+        android:textSize="56sp"
         android:textColor="#ffffff"
         android:text="@string/app_name"/>
 
