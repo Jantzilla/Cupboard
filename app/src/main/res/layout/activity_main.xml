@@ -68,7 +68,7 @@
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
                     android:textSize="24sp"
-                    android:textColor="#1c1c1c"
+                    android:textColor="#000000"
                     android:text="Recipes"/>
             </FrameLayout>
 
@@ -93,7 +93,7 @@
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
                     android:textSize="24sp"
-                    android:textColor="#1c1c1c"
+                    android:textColor="#000000"
                     android:text="Cupboard"/>
             </FrameLayout>
 
@@ -118,7 +118,7 @@
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
                     android:textSize="24sp"
-                    android:textColor="#1c1c1c"
+                    android:textColor="#000000"
                     android:text="Cookbook"/>
             </FrameLayout>
 
@@ -143,7 +143,7 @@
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
                     android:textSize="24sp"
-                    android:textColor="#1c1c1c"
+                    android:textColor="#000000"
                     android:text="Groceries"/>
             </FrameLayout>
 
