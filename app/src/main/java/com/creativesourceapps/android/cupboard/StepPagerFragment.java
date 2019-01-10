@@ -24,7 +24,7 @@ public class StepPagerFragment extends Fragment {
     ViewPager viewPager;
     ImageView imageView;
     WormDotsIndicator wormDotsIndicator;
-    TextView stepTextView;
+    TextView stepTextView, recipeTextView;
     private IngredientListAdapter adapter;
     private String step;
 
@@ -40,9 +40,11 @@ public class StepPagerFragment extends Fragment {
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         imageView = view.findViewById(R.id.iv_recipe_step_background);
         stepTextView = view.findViewById(R.id.tv_step_number);
+        recipeTextView = view.findViewById(R.id.tv_recipe_title);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        recipeTextView.setText(recipe.title);
         ((MainActivity)getActivity()).setFloatingSearchViewTitle(recipe.title);
 
         Glide.with(getContext()).load(recipe.media).into(new SimpleTarget<Drawable>() {
