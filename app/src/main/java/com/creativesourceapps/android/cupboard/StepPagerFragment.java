@@ -45,7 +45,7 @@ public class StepPagerFragment extends Fragment {
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
         recipeTextView.setText(recipe.title);
-        ((MainActivity)getActivity()).setFloatingSearchViewTitle(recipe.title);
+        ((MainActivity)getActivity()).setFloatingSearchViewTitle(null);
 
         Glide.with(getContext()).load(recipe.media).into(new SimpleTarget<Drawable>() {
             @Override
