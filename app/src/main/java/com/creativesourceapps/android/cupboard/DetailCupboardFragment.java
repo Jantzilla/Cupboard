@@ -47,6 +47,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
+    private int imageId;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -63,6 +64,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         Bundle bundle = getArguments();
 
         category = bundle.getString("Shared Element");
+        imageId = bundle.getInt("Image Id");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             constraintLayout.setTransitionName(category);
@@ -79,6 +81,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
+
+        roundedImageView.setImageResource(imageId);
 
         ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
 
