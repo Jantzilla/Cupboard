@@ -1,13 +1,9 @@
 package com.creativesourceapps.android.cupboard;
 
-import android.app.Dialog;
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,12 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -30,7 +21,6 @@ import java.util.ArrayList;
 
 
 public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener {
-    ConstraintLayout constraintLayout;
     RecyclerView recyclerView;
     CupboardDetailAdapter adapter;
     ImageView imageView;
@@ -57,9 +47,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_cupboard, container, false);
-
-        // Inflate the layout for this fragment
-        constraintLayout = view.findViewById(R.id.cl_cupboard_detail);
+        roundedImageView = view.findViewById(R.id.iv_category_background);
 
         Bundle bundle = getArguments();
 
@@ -67,12 +55,11 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         imageId = bundle.getInt("Image Id");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            constraintLayout.setTransitionName(category);
+            roundedImageView.setTransitionName(category);
         }
 
         categoryTextView = view.findViewById(R.id.tv_category);
         imageView = view.findViewById(R.id.iv_collapse);
-        roundedImageView = view.findViewById(R.id.iv_category_background);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
         fab = view.findViewById(R.id.fab_add);
         linearLayoutManager = new LinearLayoutManager(getContext());

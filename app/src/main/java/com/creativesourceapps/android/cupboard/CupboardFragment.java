@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Transition;
@@ -12,6 +11,7 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -128,13 +128,13 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     }
 
     @Override
-    public void onItemClicked(int clickedItem, CardView itemLayout, Object tag) {
+    public void onItemClicked(int clickedItem, ImageView itemLayout, Object tag) {
 
         startFragmentTransaction(clickedItem, itemLayout, tag);
     }
 
     @Override
     public void onSearch(String query) {
-        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(0).itemView, R.drawable.ingredients);
+        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(1).itemView, R.drawable.ingredients);
     }
 }
