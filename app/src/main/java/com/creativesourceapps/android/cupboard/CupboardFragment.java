@@ -12,7 +12,6 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -63,7 +62,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
             @Override
             public void onClick(View v) {
 
-                startFragmentTransaction(-1, fab );
+                startFragmentTransaction(-1, fab, null);
 
             }
         });
@@ -94,9 +93,10 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     }
 
-    public void startFragmentTransaction(int clickedItem, View view) {
+    public void startFragmentTransaction(int clickedItem, View view, Object tag) {
 
             Bundle bundle = new Bundle();
+            bundle.putInt("Image Id", (Integer) tag);
             if(clickedItem == -1) {
                 bundle.putString("Shared Element", "Add Ingredient");
                 fragment = new IngredientAddFragment();
@@ -128,13 +128,13 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     }
 
     @Override
-    public void onItemClicked(int clickedItem, CardView itemLayout) {
+    public void onItemClicked(int clickedItem, CardView itemLayout, Object tag) {
 
-        startFragmentTransaction(clickedItem, itemLayout);
+        startFragmentTransaction(clickedItem, itemLayout, tag);
     }
 
     @Override
     public void onSearch(String query) {
-        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(0).itemView );
+        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(0).itemView, R.drawable.ingredients);
     }
 }
