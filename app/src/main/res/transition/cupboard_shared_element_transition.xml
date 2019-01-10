@@ -8,5 +8,4 @@
     tools:targetApi="lollipop">
     <changeClipBounds/>
     <changeTransform/>
-    <changeBounds/>
 </transitionSet>
