@@ -96,14 +96,15 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     public void startFragmentTransaction(int clickedItem, View view, Object tag) {
 
             Bundle bundle = new Bundle();
-            bundle.putInt("Image Id", (Integer) tag);
             if(clickedItem == -1) {
                 bundle.putString("Shared Element", "Add Ingredient");
                 fragment = new IngredientAddFragment();
                 fragment.setSharedElementReturnTransition(null);
             }
-            else
+            else {
                 bundle.putString("Shared Element", categoryList.get(clickedItem));
+                bundle.putInt("Image Id", (Integer) tag);
+            }
             fragment.setArguments(bundle);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
