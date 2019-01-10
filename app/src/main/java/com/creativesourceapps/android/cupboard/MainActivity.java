@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             menuElement = floatingSearchView.getCurrentMenuItems().get(0);
 
         floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HOME);
-        floatingSearchView.setSearchBarTitle(title);
+        if(title != null)
+            floatingSearchView.setSearchBarTitle(title);
         floatingSearchView.getCurrentMenuItems().clear();
         floatingSearchView.setSearchFocused(true);
         floatingSearchView.setSearchFocused(false);
