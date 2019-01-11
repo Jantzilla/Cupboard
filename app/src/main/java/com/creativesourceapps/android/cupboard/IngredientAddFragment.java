@@ -3,9 +3,15 @@ package com.creativesourceapps.android.cupboard;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +23,12 @@ public class IngredientAddFragment extends Fragment {
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
-    private EditText ingredientEditText, quantityEditText;
+    private EditText ingredientEditText, hintEditText, quantityEditText;
     private String selectedUnit;
     private boolean savedIngredient;
     private String selectedCategory;
     private String[] projection;
+    private int entryEnd;
 
     public IngredientAddFragment() {
         // Required empty public constructor
@@ -46,12 +53,41 @@ public class IngredientAddFragment extends Fragment {
         ((MainActivity)getActivity()).setScrimVisibility(true);
 
         ingredientEditText = view.findViewById(R.id.tv_title);
+        hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
         dbHelper = new CupboardDbHelper(getContext());
 
         db = dbHelper.getWritableDatabase();
 
         selectedUnit = "g";              //Reset default ingredient selectedUnit
+
+        ingredientEditText.requestFocus();
+
+        ingredientEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                entryEnd = count;
+
+                Spannable wordToSpan = new SpannableString("Lime");  //TODO: ADD REAL DATA
+
+                if(wordToSpan.length() > count) {
+                    wordToSpan.setSpan(new ForegroundColorSpan(Color.GRAY), entryEnd, wordToSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    hintEditText.setText(wordToSpan);
+                } if(count == 0)
+                    hintEditText.setText("");
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
