@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 
 public class IngredientAddFragment extends Fragment {
@@ -24,6 +25,7 @@ public class IngredientAddFragment extends Fragment {
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
     private EditText ingredientEditText, hintEditText, quantityEditText;
+    private ImageView ingredientImageView;
     private String selectedUnit;
     private boolean savedIngredient;
     private String selectedCategory;
@@ -55,6 +57,7 @@ public class IngredientAddFragment extends Fragment {
         ingredientEditText = view.findViewById(R.id.tv_title);
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
+        ingredientImageView = view.findViewById(R.id.iv_ingredient);
         dbHelper = new CupboardDbHelper(getContext());
 
         db = dbHelper.getWritableDatabase();
