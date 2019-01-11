@@ -18,6 +18,8 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
+import java.util.ArrayList;
+
 public class StepPagerFragment extends Fragment {
     StepPagerAdapter stepPagerAdapter;
     FloatingActionButton fab;
@@ -27,6 +29,7 @@ public class StepPagerFragment extends Fragment {
     TextView stepTextView, recipeTextView;
     private IngredientListAdapter adapter;
     private String step;
+    private ArrayList<Ingredient> ingredients;
 
     public StepPagerFragment() {
         // Required empty public constructor
@@ -42,6 +45,7 @@ public class StepPagerFragment extends Fragment {
         stepTextView = view.findViewById(R.id.tv_step_number);
         recipeTextView = view.findViewById(R.id.tv_recipe_title);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
+        ingredients = new ArrayList<>();
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
         recipeTextView.setText(recipe.title);
@@ -57,7 +61,6 @@ public class StepPagerFragment extends Fragment {
         });
         stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", recipe.quantity, recipe.unit, recipe.ingredients);
 
         for(int i = 0; i < recipe.instructions.size(); i ++) {
             Bundle bundle = new Bundle();
@@ -66,6 +69,17 @@ public class StepPagerFragment extends Fragment {
             detailStepFragment.setArguments(bundle);
             stepPagerAdapter.addFragment(detailStepFragment);
         }
+
+        for(int i = 0; i < recipe.ingredients.size(); i++) {
+            Ingredient ingredient = new Ingredient();
+            ingredient.name = recipe.ingredients.get(i);
+            ingredient.category = "Ingredients";
+            ingredient.unit = recipe.unit.get(i);
+            ingredient.quantity = recipe.quantity.get(i);
+            ingredients.add(ingredient);
+        }
+        adapter = new IngredientListAdapter(getContext(), "Ingredients", ingredients);
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

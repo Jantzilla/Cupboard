@@ -147,7 +147,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
                                     selectionArgs);
 
                             ingredientsList.get(getAdapterPosition()).name = dialogIngredientEditText.getText().toString();
-                            ingredientsList.get(getAdapterPosition()).quantity = Integer.valueOf(dialogQuantityEditText.getText().toString());
+                            ingredientsList.get(getAdapterPosition()).quantity = dialogQuantityEditText.getText().toString();
                             ingredientsList.get(getAdapterPosition()).unit = selectedUnit;
                             ingredientsList.get(getAdapterPosition()).category = selectedCategory;
 

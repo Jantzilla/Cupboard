@@ -64,7 +64,7 @@ public class IngredientAddFragment extends Fragment {
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
         Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
-        
+
         dbHelper = new CupboardDbHelper(getContext());
 
         db = dbHelper.getWritableDatabase();
@@ -110,7 +110,7 @@ public class IngredientAddFragment extends Fragment {
 
                     Ingredient ingredient = new Ingredient();
                     ingredient.name = ingredientEditText.getText().toString();
-                    ingredient.quantity = Integer.valueOf(quantityEditText.getText().toString());
+                    ingredient.quantity = quantityEditText.getText().toString();
                     ingredient.unit = selectedUnit;
                     ingredient.category = selectedCategory;
 

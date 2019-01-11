@@ -17,17 +17,12 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     private Context context;
     private String title;
     private String ingredientBaseUrl = "https://www.themealdb.com/images/ingredients/";
-    private ArrayList<String> ingredient;
-    private ArrayList<String> quantity;
-    private ArrayList<String> unit;
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
-    public IngredientListAdapter(Context context, String title, ArrayList<String> quantity,
-                                 ArrayList<String> unit, ArrayList<String> ingredient) {
+    public IngredientListAdapter(Context context, String title, ArrayList<Ingredient> ingredients) {
         this.context = context;
         this.title = title;
-        this.ingredient = ingredient;
-        this.quantity = quantity;
-        this.unit = unit;
+        this.ingredients.addAll(ingredients);
     }
 
     @NonNull
@@ -42,15 +37,15 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
     @Override
     public void onBindViewHolder(@NonNull IngredientListAdapter.ViewHolder viewHolder, int i) {
-        String uri = ingredientBaseUrl + ingredient.get(i) + ".png";
+        String uri = ingredientBaseUrl + ingredients.get(i).name + ".png";
         Glide.with(context).load(uri).into(viewHolder.ingredientImageView);
-        viewHolder.nameTextView.setText(ingredient.get(i));
-        viewHolder.quantityTextView.setText(quantity.get(i));
+        viewHolder.nameTextView.setText(ingredients.get(i).name);
+        viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
     }
 
     @Override
     public int getItemCount() {
-        return ingredient.size();
+        return ingredients.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
