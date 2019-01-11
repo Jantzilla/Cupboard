@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener {
     RecyclerView recyclerView;
-    CupboardDetailAdapter adapter;
+    IngredientListAdapter adapter;
     ImageView imageView;
     RoundedImageView roundedImageView;
     private FloatingActionButton fab;
@@ -144,7 +144,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         }
         cursor.close();
 
-        adapter = new CupboardDetailAdapter(category, ingredientsList);
+        adapter = new IngredientListAdapter(getContext(), category, ingredientsList);
         recyclerView.setAdapter(adapter);
     }
 
