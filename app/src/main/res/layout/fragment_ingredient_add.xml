@@ -26,10 +26,25 @@
         android:src="@drawable/ic_launcher_foreground"/>
 
         <EditText
+            android:id="@+id/tv_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/transparent"
+            android:background="@drawable/ingredient_name_background"
+            android:padding="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_unit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_ingredient"/>
+
+        <EditText
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ingredient_name_background"
             android:padding="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
