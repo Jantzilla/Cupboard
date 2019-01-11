@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +28,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
-    private LinearLayoutManager linearLayoutManager;
+    private GridLayoutManager gridLayoutManager;
     private TextView categoryTextView;
     private String category, selection, sortOrder;
     private CupboardDbHelper dbHelper;
@@ -62,8 +62,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         imageView = view.findViewById(R.id.iv_collapse);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
         fab = view.findViewById(R.id.fab_add);
-        linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        recyclerView.setLayoutManager(gridLayoutManager);
         ingredientsList = new ArrayList<>();
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
