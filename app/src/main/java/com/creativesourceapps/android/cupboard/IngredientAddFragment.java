@@ -26,7 +26,7 @@ public class IngredientAddFragment extends Fragment {
     private Cursor cursor;
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private ImageView ingredientImageView;
-    private String selectedUnit;
+    private String selectedUnit, baseImageUrl;
     private boolean savedIngredient;
     private String selectedCategory;
     private String[] projection;
@@ -53,6 +53,8 @@ public class IngredientAddFragment extends Fragment {
         });
 
         ((MainActivity)getActivity()).setScrimVisibility(true);
+
+        baseImageUrl = "https://www.themealdb.com/images/ingredients/";
 
         ingredientEditText = view.findViewById(R.id.tv_title);
         hintEditText = view.findViewById(R.id.tv_hint);
