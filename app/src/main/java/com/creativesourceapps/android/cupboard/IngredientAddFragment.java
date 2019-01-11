@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 
 public class IngredientAddFragment extends Fragment {
     FloatingActionButton fab, addFab;
@@ -60,6 +62,9 @@ public class IngredientAddFragment extends Fragment {
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
+
+        Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
+        
         dbHelper = new CupboardDbHelper(getContext());
 
         db = dbHelper.getWritableDatabase();
