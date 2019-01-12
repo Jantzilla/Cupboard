@@ -30,8 +30,8 @@ public class IngredientAddFragment extends Fragment {
     private ImageView ingredientImageView;
     private String selectedUnit, baseImageUrl;
     private boolean savedIngredient;
-    private String selectedCategory;
-    private String[] projection;
+    private String selection, selectedCategory;
+    private String[] projection, selectionArgs;
     private int entryEnd;
 
     public IngredientAddFragment() {
