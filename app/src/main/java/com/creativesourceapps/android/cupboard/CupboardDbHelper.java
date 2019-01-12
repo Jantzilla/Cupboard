@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class CupboardDbHelper extends SQLiteOpenHelper {
@@ -61,6 +65,34 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_INGREDIENTS);
         db.execSQL(SQL_DELETE_RECIPES);
         onCreate(db);
+    }
+
+    public ArrayList<Ingredient> parseJson(String json) {
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        JSONObject jsonObject;
+        JSONArray jsonArray;
+
+        try {
+            jsonObject = new JSONObject(json);
+            jsonArray = jsonObject.getJSONArray("ingredients");
+
+            for(int i = 0; i < jsonArray.length(); i++) {
+                Ingredient ingredient = new Ingredient();
+
+                JSONObject jsonItem = jsonArray.getJSONObject(i);
+
+                ingredient.name = jsonItem.getString("strIngredient");
+                ingredient.category = jsonItem.getString("strDescription");
+                ingredient.unit = jsonItem.optString("strType", "null");
+
+                ingredients.add(ingredient);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ingredients;
     }
 
     public void buildIngredientsTable(SQLiteDatabase db) {
