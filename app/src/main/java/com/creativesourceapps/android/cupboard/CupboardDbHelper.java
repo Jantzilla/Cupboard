@@ -1,8 +1,11 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class CupboardDbHelper extends SQLiteOpenHelper {
     public final Context context;
@@ -47,6 +50,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ALL_INGREDIENTS);
+        buildIngredientsTable(db);
         db.execSQL(SQL_CREATE_INGREDIENTS);
         db.execSQL(SQL_CREATE_RECIPES);
     }
@@ -57,5 +61,22 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_INGREDIENTS);
         db.execSQL(SQL_DELETE_RECIPES);
         onCreate(db);
+    }
+
+    public void buildIngredientsTable(SQLiteDatabase db) {
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.addAll(parseJson(retrieveJson(context)));
+
+        for(int i = 0; i < ingredients.size(); i++) {
+            ContentValues values = new ContentValues();
+
+            values.put(CupboardContract.AllIngredients.COLUMN_NAME, ingredients.get(i).name);
+            values.put(CupboardContract.AllIngredients.COLUMN_UNIT, ingredients.get(i).unit);
+
+            db.insert(
+                    CupboardContract.AllIngredients.TABLE_NAME,
+                    null,
+                    values);
+        }
     }
 }
