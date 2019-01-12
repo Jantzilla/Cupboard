@@ -83,7 +83,7 @@ public class IngredientAddFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 entryEnd = count;
 
-                Spannable wordToSpan = new SpannableString("Lime");  //TODO: ADD REAL DATA
+                Spannable wordToSpan = new SpannableString(searchIngredients(String.valueOf(s)));  //TODO: ADD REAL DATA
 
                 if(wordToSpan.length() > count) {
                     wordToSpan.setSpan(new ForegroundColorSpan(Color.GRAY), entryEnd, wordToSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
