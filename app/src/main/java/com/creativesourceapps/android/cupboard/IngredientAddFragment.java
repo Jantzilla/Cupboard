@@ -85,9 +85,10 @@ public class IngredientAddFragment extends Fragment {
 
                 Spannable wordToSpan = new SpannableString(searchIngredients(String.valueOf(s)));  //TODO: ADD REAL DATA
 
-                if(wordToSpan.length() > count) {
+                if(wordToSpan.length() > 0) {
                     wordToSpan.setSpan(new ForegroundColorSpan(Color.GRAY), entryEnd, wordToSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     hintEditText.setText(wordToSpan);
+                    Glide.with(getContext()).load(baseImageUrl + wordToSpan + ".png").into(ingredientImageView);
                 } if(count == 0 || wordToSpan.length() == 0)
                     hintEditText.setText("");
 
