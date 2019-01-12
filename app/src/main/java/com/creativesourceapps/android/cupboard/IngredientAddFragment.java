@@ -151,6 +151,28 @@ public class IngredientAddFragment extends Fragment {
         return view;
     }
 
+    private String searchIngredients(String query) {
+        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME};
+        selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
+        selectionArgs = new String[] {query + "%"};
+        String result = "";
+        cursor = db.query(
+                CupboardContract.AllIngredients.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        if(cursor.moveToFirst()) {
+            result = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
+        }
+
+        return result;
+    }
+
     @Override
     public void onPause() {
         super.onPause();
