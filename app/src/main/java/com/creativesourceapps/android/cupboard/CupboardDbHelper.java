@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class CupboardDbHelper extends SQLiteOpenHelper {
+    public final Context context;
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Cupboard.db";
 
@@ -40,6 +41,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
 
     public CupboardDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
