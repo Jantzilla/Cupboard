@@ -147,6 +147,9 @@ public class IngredientAddFragment extends Fragment {
                         values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
                         db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
 
+                        ingredientEditText.setText("");
+                        hintEditText.setText("");
+                        quantityEditText.setText("");
                     }
 
                     savedIngredient = false;
