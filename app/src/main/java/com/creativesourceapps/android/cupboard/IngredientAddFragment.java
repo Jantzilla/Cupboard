@@ -26,7 +26,7 @@ public class IngredientAddFragment extends Fragment {
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
-    private EditText ingredientEditText, hintEditText, quantityEditText;
+    private EditText ingredientEditText, hintEditText, quantityEditText, unitEditText;
     private ImageView ingredientImageView;
     private String selectedUnit, baseImageUrl;
     private boolean savedIngredient;
@@ -61,6 +61,7 @@ public class IngredientAddFragment extends Fragment {
         ingredientEditText = view.findViewById(R.id.tv_title);
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
+        unitEditText = view.findViewById(R.id.tv_unit);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
         Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
