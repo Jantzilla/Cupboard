@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -150,6 +151,8 @@ public class IngredientAddFragment extends Fragment {
                         ingredientEditText.setText("");
                         hintEditText.setText("");
                         quantityEditText.setText("");
+
+                        Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
                     }
 
                     savedIngredient = false;
