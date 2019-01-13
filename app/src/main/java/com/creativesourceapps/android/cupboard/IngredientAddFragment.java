@@ -32,7 +32,7 @@ public class IngredientAddFragment extends Fragment {
     private TextView unitTextView;
     private ImageView ingredientImageView;
     private String selectedUnit, baseImageUrl;
-    private boolean savedIngredient;
+    private boolean savedIngredient, availableIngredient;
     private String selection, selectedCategory;
     private String[] projection, selectionArgs;
     private int entryEnd;
@@ -123,6 +123,24 @@ public class IngredientAddFragment extends Fragment {
                     ingredient.category = selectedCategory;
 
                     cursor = db.query(
+                            CupboardContract.AllIngredients.TABLE_NAME,
+                            projection,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                    );
+
+                    while(cursor.moveToNext()) {
+                        if(!cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME))
+                                .equals(ingredient.name)) {
+                            ingredientEditText.setError("Invalid ingredient.");
+                            availableIngredient = false;
+                        }
+                    }
+
+                    cursor = db.query(
                             CupboardContract.Ingredients.TABLE_NAME,
                             projection,
                             null,
@@ -140,7 +158,7 @@ public class IngredientAddFragment extends Fragment {
                         }
                     }
 
-                    if(!savedIngredient) {
+                    if(!savedIngredient && availableIngredient) {
                         ContentValues values = new ContentValues();
                         values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
                         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
@@ -156,6 +174,7 @@ public class IngredientAddFragment extends Fragment {
                     }
 
                     savedIngredient = false;
+                    availableIngredient = true;
 
                 }
             }
