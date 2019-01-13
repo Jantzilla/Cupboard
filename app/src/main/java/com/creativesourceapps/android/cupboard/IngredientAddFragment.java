@@ -154,7 +154,7 @@ public class IngredientAddFragment extends Fragment {
     }
 
     private String searchIngredients(String query) {
-        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME};
+        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME, CupboardContract.AllIngredients.COLUMN_UNIT};
         selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         selectionArgs = new String[] {query + "%"};
         String result = "";
