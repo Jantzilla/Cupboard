@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -26,7 +27,8 @@ public class IngredientAddFragment extends Fragment {
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
-    private EditText ingredientEditText, hintEditText, quantityEditText, unitEditText;
+    private EditText ingredientEditText, hintEditText, quantityEditText;
+    private TextView unitTextView;
     private ImageView ingredientImageView;
     private String selectedUnit, baseImageUrl;
     private boolean savedIngredient;
@@ -61,7 +63,7 @@ public class IngredientAddFragment extends Fragment {
         ingredientEditText = view.findViewById(R.id.tv_title);
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
-        unitEditText = view.findViewById(R.id.tv_unit);
+        unitTextView = view.findViewById(R.id.tv_unit);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
         Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
@@ -84,7 +86,7 @@ public class IngredientAddFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 entryEnd = count;
 
-                Spannable wordToSpan = new SpannableString(searchIngredients(String.valueOf(s)));  //TODO: ADD REAL DATA
+                Spannable wordToSpan = new SpannableString(searchIngredients(String.valueOf(s)).name);  //TODO: ADD REAL DATA
 
                 if(wordToSpan.length() > 0) {
                     wordToSpan.setSpan(new ForegroundColorSpan(Color.GRAY), entryEnd, wordToSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -153,11 +155,12 @@ public class IngredientAddFragment extends Fragment {
         return view;
     }
 
-    private String searchIngredients(String query) {
+    private Ingredient searchIngredients(String query) {
         projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME, CupboardContract.AllIngredients.COLUMN_UNIT};
         selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         selectionArgs = new String[] {query + "%"};
-        String result = "";
+        Ingredient ingredient = new Ingredient();
+        ingredient.name = "";
         cursor = db.query(
                 CupboardContract.AllIngredients.TABLE_NAME,
                 projection,
@@ -169,10 +172,11 @@ public class IngredientAddFragment extends Fragment {
         );
 
         if(cursor.moveToFirst()) {
-            result = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
+            ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
+            ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_UNIT));
         }
 
-        return result;
+        return ingredient;
     }
 
     @Override
