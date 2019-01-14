@@ -61,7 +61,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     }
 
     @Override
-    public void onItemClickListener(int itemIndex) {
+    public void onItemClickListener(String name, String quantity, String category) {
 
     }
 }
