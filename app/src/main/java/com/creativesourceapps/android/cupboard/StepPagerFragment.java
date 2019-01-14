@@ -27,7 +27,6 @@ public class StepPagerFragment extends Fragment {
     ImageView imageView;
     WormDotsIndicator wormDotsIndicator;
     TextView stepTextView, recipeTextView;
-    private IngredientListAdapter adapter;
     private String step;
     private ArrayList<Ingredient> ingredients;
 
@@ -78,8 +77,6 @@ public class StepPagerFragment extends Fragment {
             ingredient.quantity = recipe.quantity.get(i);
             ingredients.add(ingredient);
         }
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", ingredients);
-
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
