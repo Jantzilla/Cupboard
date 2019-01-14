@@ -54,7 +54,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         return ingredients.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView ingredientImageView, availableImageView;
         TextView nameTextView, quantityTextView;
 
@@ -64,6 +64,11 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             availableImageView = itemView.findViewById(R.id.iv_available);
             nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
             quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 
