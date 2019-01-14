@@ -70,7 +70,7 @@ public class IngredientAddFragment extends Fragment {
         titleTextView = view.findViewById(R.id.tv_title);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
-        if(getArguments().getString("type") != null) {
+        if(getArguments() != null && getArguments().getString("type") != null) {
             type = getArguments().getString("type");
 
             if(getArguments().getString("type").equals("edit")) {
