@@ -83,6 +83,7 @@ public class IngredientAddFragment extends Fragment {
                 quantityEditText.setText(quantity);
                 unitTextView.setText(unit);
                 deleteFab.show();
+                addFab.setImageResource(R.drawable.edit);
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
             }
