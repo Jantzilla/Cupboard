@@ -74,6 +74,8 @@ public class IngredientAddFragment extends Fragment {
         db = dbHelper.getWritableDatabase();
 
         selectedUnit = "g";              //Reset default ingredient selectedUnit
+        savedIngredient = false;
+        availableIngredient = true;
 
         ingredientEditText.requestFocus();
 
