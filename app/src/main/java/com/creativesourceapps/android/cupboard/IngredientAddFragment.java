@@ -31,7 +31,7 @@ public class IngredientAddFragment extends Fragment {
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private TextView unitTextView, titleTextView;
     private ImageView ingredientImageView;
-    private String selectedUnit, baseImageUrl;
+    private String selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient;
     private String selection, selectedCategory;
     private String[] projection, selectionArgs;
@@ -50,6 +50,7 @@ public class IngredientAddFragment extends Fragment {
         fab = view.findViewById(R.id.fab_back);
         addFab = view.findViewById(R.id.fab_add);
         deleteFab = view.findViewById(R.id.fab_delete);
+        type = "new";
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +71,7 @@ public class IngredientAddFragment extends Fragment {
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
         if(getArguments().getString("type") != null) {
+            type = getArguments().getString("type");
 
             if(getArguments().getString("type").equals("edit")) {
                 String name = getArguments().getString("name");
@@ -84,6 +86,7 @@ public class IngredientAddFragment extends Fragment {
                 unitTextView.setText(unit);
                 deleteFab.show();
                 addFab.setImageResource(R.drawable.edit);
+
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
             }
