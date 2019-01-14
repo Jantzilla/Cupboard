@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class IngredientFragment extends Fragment {
+public class IngredientFragment extends Fragment implements IngredientListAdapter.ItemClickListener {
     RecyclerView recyclerView;
     private Recipe recipe;
     private FloatingActionButton fab;
@@ -50,7 +50,7 @@ public class IngredientFragment extends Fragment {
             ingredient.quantity = recipe.quantity.get(i);
             ingredients.add(ingredient);
         }
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", ingredients);
+        adapter = new IngredientListAdapter(getContext(), "Ingredients", ingredients, IngredientFragment.this);
 
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
 
@@ -60,4 +60,8 @@ public class IngredientFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onItemClickListener(int itemIndex) {
+
+    }
 }

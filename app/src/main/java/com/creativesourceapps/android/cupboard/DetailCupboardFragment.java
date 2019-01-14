@@ -20,7 +20,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
 
 
-public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener {
+public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
     RecyclerView recyclerView;
     IngredientListAdapter adapter;
     ImageView imageView;
@@ -144,12 +144,17 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         }
         cursor.close();
 
-        adapter = new IngredientListAdapter(getContext(), category, ingredientsList);
+        adapter = new IngredientListAdapter(getContext(), category, ingredientsList, DetailCupboardFragment.this);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onSearch(String query) {
         getIngredientData(query);
+    }
+
+    @Override
+    public void onItemClickListener(int itemIndex) {
+
     }
 }
