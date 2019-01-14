@@ -69,6 +69,10 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
         @Override
         public void onClick(View v) {
+            String name = ingredients.get(getAdapterPosition()).name;
+            String quantity = ingredients.get(getAdapterPosition()).quantity;
+            String category = ingredients.get(getAdapterPosition()).category;
+
             itemClickListener.onItemClickListener(getAdapterPosition());
         }
     }
