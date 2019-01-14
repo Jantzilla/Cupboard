@@ -139,46 +139,48 @@ public class IngredientAddFragment extends Fragment {
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ingredientEditText.getText().toString().isEmpty())
+                if(!type.equals("edit") && ingredientEditText.getText().toString().isEmpty())
                     ingredientEditText.setError("Please enter a name.");
                 if(quantityEditText.getText().toString().isEmpty())
                     quantityEditText.setError("Please enter a quantity.");
                 else {
+                    if(type.equals("edit")) {
 
-                    Ingredient ingredient = new Ingredient();
-                    ingredient.name = ingredientEditText.getText().toString();
-                    ingredient.quantity = quantityEditText.getText().toString();
-                    ingredient.unit = unitTextView.getText().toString();
-                    ingredient.category = selectedCategory;
+                    } else {
+                        Ingredient ingredient = new Ingredient();
+                        ingredient.name = ingredientEditText.getText().toString();
+                        ingredient.quantity = quantityEditText.getText().toString();
+                        ingredient.unit = unitTextView.getText().toString();
+                        ingredient.category = selectedCategory;
 
-                    if(!searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
-                        ingredientEditText.setError("Invalid ingredient.");
-                        availableIngredient = false;
+                        if (!searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                            ingredientEditText.setError("Invalid ingredient.");
+                            availableIngredient = false;
+                        }
+
+                        if (searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                            ingredientEditText.setError("Ingredient already exists.");
+                            savedIngredient = true;
+                        }
+
+                        if (!savedIngredient && availableIngredient) {
+                            ContentValues values = new ContentValues();
+                            values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
+                            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
+                            values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
+                            values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
+                            db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+
+                            ingredientEditText.setText("");
+                            hintEditText.setText("");
+                            quantityEditText.setText("");
+
+                            Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
+                        }
+
+                        savedIngredient = false;
+                        availableIngredient = true;
                     }
-
-                    if(searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
-                        ingredientEditText.setError("Ingredient already exists.");
-                        savedIngredient = true;
-                    }
-
-                    if(!savedIngredient && availableIngredient) {
-                        ContentValues values = new ContentValues();
-                        values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
-                        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
-                        values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
-                        values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
-                        db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
-
-                        ingredientEditText.setText("");
-                        hintEditText.setText("");
-                        quantityEditText.setText("");
-
-                        Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
-                    }
-
-                    savedIngredient = false;
-                    availableIngredient = true;
-
                 }
             }
         });
