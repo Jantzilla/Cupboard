@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 
 
 public class IngredientAddFragment extends Fragment {
-    FloatingActionButton fab, addFab;
+    FloatingActionButton fab, addFab, deleteFab;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
@@ -49,6 +49,7 @@ public class IngredientAddFragment extends Fragment {
 
         fab = view.findViewById(R.id.fab_back);
         addFab = view.findViewById(R.id.fab_add);
+        deleteFab = view.findViewById(R.id.fab_delete);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +82,7 @@ public class IngredientAddFragment extends Fragment {
                 titleTextView.setText(name);
                 quantityEditText.setText(quantity);
                 unitTextView.setText(unit);
+                deleteFab.show();
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
             }
