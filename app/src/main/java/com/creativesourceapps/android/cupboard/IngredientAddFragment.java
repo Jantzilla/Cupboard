@@ -87,7 +87,7 @@ public class IngredientAddFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 entryEnd = count;
 
-                Ingredient ingredient = searchIngredients(String.valueOf(s));
+                Ingredient ingredient = searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, String.valueOf(s));
 
                 Spannable wordToSpan = new SpannableString(ingredient.name);  //TODO: ADD REAL DATA
 
@@ -122,40 +122,14 @@ public class IngredientAddFragment extends Fragment {
                     ingredient.unit = selectedUnit;
                     ingredient.category = selectedCategory;
 
-                    cursor = db.query(
-                            CupboardContract.AllIngredients.TABLE_NAME,
-                            projection,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null
-                    );
-
-                    while(cursor.moveToNext()) {
-                        if(!cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME))
-                                .equals(ingredient.name)) {
-                            ingredientEditText.setError("Invalid ingredient.");
-                            availableIngredient = false;
-                        }
+                    if(!searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                        ingredientEditText.setError("Invalid ingredient.");
+                        availableIngredient = false;
                     }
 
-                    cursor = db.query(
-                            CupboardContract.Ingredients.TABLE_NAME,
-                            projection,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null
-                    );
-
-                    while(cursor.moveToNext()) {
-                        if(cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME))
-                                .equals(ingredient.name)) {
-                            ingredientEditText.setError("Ingredient already exists.");
-                            savedIngredient = true;
-                        }
+                    if(searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                        ingredientEditText.setError("Ingredient already exists.");
+                        savedIngredient = true;
                     }
 
                     if(!savedIngredient && availableIngredient) {
@@ -183,14 +157,15 @@ public class IngredientAddFragment extends Fragment {
         return view;
     }
 
-    private Ingredient searchIngredients(String query) {
+    private Ingredient searchIngredients(String table, String query) {
         projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME, CupboardContract.AllIngredients.COLUMN_UNIT};
         selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         selectionArgs = new String[] {query + "%"};
+        String tableName = table;
         Ingredient ingredient = new Ingredient();
         ingredient.name = "";
         cursor = db.query(
-                CupboardContract.AllIngredients.TABLE_NAME,
+                tableName,
                 projection,
                 selection,
                 selectionArgs,
