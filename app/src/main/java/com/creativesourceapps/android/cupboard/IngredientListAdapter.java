@@ -18,11 +18,13 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     private String title;
     private String ingredientBaseUrl = "https://www.themealdb.com/images/ingredients/";
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private ItemClickListener itemClickListener;
 
-    public IngredientListAdapter(Context context, String title, ArrayList<Ingredient> ingredients) {
+    public IngredientListAdapter(Context context, String title, ArrayList<Ingredient> ingredients, ItemClickListener itemClickListener) {
         this.context = context;
         this.title = title;
         this.ingredients.addAll(ingredients);
+        this.itemClickListener = itemClickListener;
     }
 
     public interface ItemClickListener {
