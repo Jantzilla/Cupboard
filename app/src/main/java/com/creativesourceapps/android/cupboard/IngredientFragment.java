@@ -3,6 +3,7 @@ package com.creativesourceapps.android.cupboard;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     private IngredientListAdapter adapter;
     private GridLayoutManager gridLayoutManager;
     private ArrayList<Ingredient> ingredients;
+    private IngredientAddFragment fragment;
+    private FragmentManager fragmentManager;
 
     public IngredientFragment() {
         // Required empty public constructor
@@ -32,6 +35,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         recyclerView = view.findViewById(R.id.rv_ingredients);
         fab = view.findViewById(R.id.fab_close);
         ingredients = new ArrayList<>();
+        fragmentManager = getActivity().getSupportFragmentManager();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,9 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
 
     @Override
     public void onItemClickListener(String name, String quantity, String category) {
-
+        fragment = new IngredientAddFragment();
+        fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().addToBackStack(null)
+                .replace(R.id.fl_fragment, fragment).commit();
     }
 }
