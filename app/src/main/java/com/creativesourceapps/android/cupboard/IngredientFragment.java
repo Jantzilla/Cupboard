@@ -65,7 +65,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     }
 
     @Override
-    public void onItemClickListener(String name, String quantity, String category) {
+    public void onItemClickListener(String name, String quantity, String unit) {
         fragment = new IngredientAddFragment();
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)

@@ -28,7 +28,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     }
 
     public interface ItemClickListener {
-        void onItemClickListener(String name, String quantity, String category);
+        void onItemClickListener(String name, String quantity, String unit);
     }
 
     @NonNull
@@ -71,9 +71,9 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         public void onClick(View v) {
             String name = ingredients.get(getAdapterPosition()).name;
             String quantity = ingredients.get(getAdapterPosition()).quantity;
-            String category = ingredients.get(getAdapterPosition()).category;
+            String unit = ingredients.get(getAdapterPosition()).unit;
 
-            itemClickListener.onItemClickListener(name, quantity, category);
+            itemClickListener.onItemClickListener(name, quantity, unit);
         }
     }
 
