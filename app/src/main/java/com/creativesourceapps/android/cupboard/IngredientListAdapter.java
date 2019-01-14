@@ -64,11 +64,12 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             availableImageView = itemView.findViewById(R.id.iv_available);
             nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
             quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
+            itemClickListener.onItemClickListener(getAdapterPosition());
         }
     }
 
