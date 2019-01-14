@@ -67,6 +67,12 @@ public class IngredientAddFragment extends Fragment {
         unitTextView = view.findViewById(R.id.tv_unit);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
+        if(getArguments() != null) {
+            String name = getArguments().getString("name");
+            String quantity = getArguments().getString("quantity");
+            String category = getArguments().getString("category");
+        }
+
         Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
 
         dbHelper = new CupboardDbHelper(getContext());
