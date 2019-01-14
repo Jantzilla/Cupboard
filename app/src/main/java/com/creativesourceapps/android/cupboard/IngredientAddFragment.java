@@ -61,7 +61,7 @@ public class IngredientAddFragment extends Fragment {
 
         baseImageUrl = "https://www.themealdb.com/images/ingredients/";
 
-        ingredientEditText = view.findViewById(R.id.tv_title);
+        ingredientEditText = view.findViewById(R.id.et_title);
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
         unitTextView = view.findViewById(R.id.tv_unit);
