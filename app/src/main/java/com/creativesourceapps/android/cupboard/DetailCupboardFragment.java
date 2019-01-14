@@ -154,7 +154,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     }
 
     @Override
-    public void onItemClickListener(int itemIndex) {
+    public void onItemClickListener(String name, String quantity, String category) {
         fragment = new IngredientAddFragment();
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)
