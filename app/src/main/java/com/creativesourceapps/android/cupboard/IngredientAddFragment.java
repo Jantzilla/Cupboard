@@ -142,7 +142,7 @@ public class IngredientAddFragment extends Fragment {
                     Ingredient ingredient = new Ingredient();
                     ingredient.name = ingredientEditText.getText().toString();
                     ingredient.quantity = quantityEditText.getText().toString();
-                    ingredient.unit = selectedUnit;
+                    ingredient.unit = unitTextView.getText().toString();
                     ingredient.category = selectedCategory;
 
                     if(!searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
