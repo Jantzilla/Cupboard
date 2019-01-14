@@ -68,13 +68,27 @@ public class IngredientAddFragment extends Fragment {
         titleTextView = view.findViewById(R.id.tv_title);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
-        if(getArguments() != null) {
-            String name = getArguments().getString("name");
-            String quantity = getArguments().getString("quantity");
-            String category = getArguments().getString("category");
-        }
+        if(getArguments().getString("type") != null) {
 
-        Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
+            if(getArguments().getString("type").equals("edit")) {
+                String name = getArguments().getString("name");
+                String quantity = getArguments().getString("quantity");
+                String unit = getArguments().getString("unit");
+
+                ingredientEditText.setVisibility(View.GONE);
+                hintEditText.setVisibility(View.GONE);
+                titleTextView.setVisibility(View.VISIBLE);
+                titleTextView.setText(name);
+                quantityEditText.setText(quantity);
+                unitTextView.setText(unit);
+
+                Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
+            }
+        } else {
+
+            Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
+
+        }
 
         dbHelper = new CupboardDbHelper(getContext());
 
