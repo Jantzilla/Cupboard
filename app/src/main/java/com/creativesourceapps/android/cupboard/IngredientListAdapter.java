@@ -25,6 +25,10 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         this.ingredients.addAll(ingredients);
     }
 
+    public interface ItemClickListener {
+        void onItemClickListener(int itemIndex);
+    }
+
     @NonNull
     @Override
     public IngredientListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
