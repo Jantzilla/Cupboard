@@ -63,6 +63,8 @@ public class IngredientAddFragment extends Fragment {
 
         baseImageUrl = "https://www.themealdb.com/images/ingredients/";
 
+        selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
+
         ingredientEditText = view.findViewById(R.id.et_title);
         hintEditText = view.findViewById(R.id.tv_hint);
         quantityEditText = view.findViewById(R.id.tv_quantity);
@@ -145,7 +147,15 @@ public class IngredientAddFragment extends Fragment {
                     quantityEditText.setError("Please enter a quantity.");
                 else {
                     if(type.equals("edit")) {
-
+                        ContentValues values = new ContentValues();
+                        selectionArgs = new String[] {titleTextView.getText().toString()};
+                        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, quantityEditText.getText().toString());
+                        db.update(
+                                CupboardContract.Ingredients.TABLE_NAME,
+                                values,
+                                null,
+                                null
+                        );
                     } else {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
@@ -190,7 +200,6 @@ public class IngredientAddFragment extends Fragment {
 
     private Ingredient searchIngredients(String table, String query) {
         projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME, CupboardContract.AllIngredients.COLUMN_UNIT};
-        selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         selectionArgs = new String[] {query + "%"};
         String tableName = table;
         Ingredient ingredient = new Ingredient();
