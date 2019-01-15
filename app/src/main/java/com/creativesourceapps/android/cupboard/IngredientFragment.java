@@ -66,7 +66,14 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
 
     @Override
     public void onItemClickListener(String name, String quantity, String unit) {
+        Bundle bundle = new Bundle();
+        bundle.putString("type", "detail");
+        bundle.putString("name", name);
+        bundle.putString("quantity", quantity);
+        bundle.putString("unit", unit);
+
         fragment = new IngredientAddFragment();
+        fragment.setArguments(bundle);
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)
                 .replace(R.id.fl_fragment, fragment).commit();

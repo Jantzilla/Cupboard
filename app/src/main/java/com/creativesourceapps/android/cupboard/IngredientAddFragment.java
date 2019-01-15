@@ -81,13 +81,29 @@ public class IngredientAddFragment extends Fragment {
                 String unit = getArguments().getString("unit");
 
                 ingredientEditText.setVisibility(View.GONE);
-                hintEditText.setVisibility(View.GONE);
+                hintEditText.setEnabled(false);
                 titleTextView.setVisibility(View.VISIBLE);
                 titleTextView.setText(name);
                 quantityEditText.setText(quantity);
                 unitTextView.setText(unit);
                 deleteFab.show();
                 addFab.setImageResource(R.drawable.edit);
+
+
+                Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
+
+            } if(getArguments().getString("type").equals("detail")) {
+                String name = getArguments().getString("name");
+                String quantity = getArguments().getString("quantity");
+                String unit = getArguments().getString("unit");
+
+                ingredientEditText.setVisibility(View.GONE);
+                hintEditText.setEnabled(false);
+                titleTextView.setVisibility(View.VISIBLE);
+                titleTextView.setText(name);
+                quantityEditText.setText(quantity);
+                unitTextView.setText(unit);
+                addFab.hide();
 
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
