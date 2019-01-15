@@ -156,6 +156,7 @@ public class IngredientAddFragment extends Fragment {
                                 null,
                                 null
                         );
+                        getActivity().onBackPressed();
                     } else {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
