@@ -20,10 +20,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/tv_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/tv_hint"
@@ -38,7 +38,7 @@
             android:textColor="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_ingredient" />
+            app:layout_constraintBottom_toTopOf="@+id/guideline" />
 
         <EditText
             android:id="@+id/et_title"
@@ -52,8 +52,8 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline"
-            app:layout_constraintVertical_chainStyle="spread_inside"/>
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -63,45 +63,56 @@
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@drawable/ingredient_name_background"
             android:gravity="center"
             android:padding="8dp"
-            android:textSize="18sp"
             android:textColor="#000000"
-            android:background="@drawable/ingredient_name_background"
+            android:textSize="18sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            android:visibility="gone"/>
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <EditText
             android:id="@+id/et_quantity"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:hint="Quantity"
             android:inputType="numberDecimal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_unit"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_unit"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/tv_unit"/>
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:hint="Quantity"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_unit"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/tv_unit"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_unit"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Ounces"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="@+id/et_quantity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/et_quantity"
-            app:layout_constraintTop_toTopOf="@+id/et_quantity" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
 
         <android.support.design.widget.FloatingActionButton
@@ -119,7 +130,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.63" />
+            app:layout_constraintGuide_percent="0.79" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
     </android.support.constraint.ConstraintLayout>
 
