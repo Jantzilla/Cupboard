@@ -38,7 +38,8 @@
             android:textColor="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline" />
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_chainStyle="spread_inside"/>
 
         <EditText
             android:id="@+id/et_title"
