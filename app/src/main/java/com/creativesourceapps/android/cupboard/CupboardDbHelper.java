@@ -23,6 +23,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
                     CupboardContract.AllIngredients._ID + " INTEGER PRIMARY KEY," +
                     CupboardContract.AllIngredients.COLUMN_NAME + " TEXT," +
                     CupboardContract.AllIngredients.COLUMN_UNIT + " TEXT," +
+                    CupboardContract.AllIngredients.COLUMN_SHOPPING + " INTEGER DEFAULT 0," +
                     CupboardContract.AllIngredients.COLUMN_CATEGORY + " TEXT)";
 
     private static final String SQL_CREATE_INGREDIENTS =

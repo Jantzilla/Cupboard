@@ -11,6 +11,7 @@ public class CupboardContract {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_UNIT = "unit";
         public static final String COLUMN_CATEGORY = "category";
+        public static final String COLUMN_SHOPPING = "shopping";
     }
 
     public static class Ingredients implements BaseColumns {
