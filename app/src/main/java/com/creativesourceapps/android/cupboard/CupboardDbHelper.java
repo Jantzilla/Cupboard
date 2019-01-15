@@ -128,6 +128,7 @@ public class CupboardDbHelper extends SQLiteOpenHelper {
 
             values.put(CupboardContract.AllIngredients.COLUMN_NAME, ingredients.get(i).name);
             values.put(CupboardContract.AllIngredients.COLUMN_UNIT, ingredients.get(i).unit);
+            values.put(CupboardContract.AllIngredients.COLUMN_CATEGORY, ingredients.get(i).category);
 
             db.insert(
                     CupboardContract.AllIngredients.TABLE_NAME,
