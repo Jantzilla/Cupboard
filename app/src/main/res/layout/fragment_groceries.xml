@@ -40,18 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_collapse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_expand_less_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_groceries"
         android:layout_width="0dp"
@@ -66,7 +54,7 @@
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/add"
+        android:src="@drawable/shopping_cart"
         android:layout_margin="4dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
