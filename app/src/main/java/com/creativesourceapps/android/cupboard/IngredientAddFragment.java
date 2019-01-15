@@ -29,7 +29,7 @@ public class IngredientAddFragment extends Fragment {
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
     private EditText ingredientEditText, hintEditText, quantityEditText;
-    private TextView unitTextView, titleTextView;
+    private TextView unitTextView, titleTextView, quantityTextView;
     private ImageView ingredientImageView;
     private String selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient;
@@ -70,6 +70,7 @@ public class IngredientAddFragment extends Fragment {
         quantityEditText = view.findViewById(R.id.et_quantity);
         unitTextView = view.findViewById(R.id.tv_unit);
         titleTextView = view.findViewById(R.id.tv_title);
+        quantityTextView = view.findViewById(R.id.tv_quantity);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
 
         if(getArguments() != null && getArguments().getString("type") != null) {
