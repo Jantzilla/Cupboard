@@ -70,7 +70,46 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     }
 
     public void getIngredientData(String query) {
+        ingredientsList.clear();
 
+        projection = new String[]{
+                CupboardContract.AllIngredients.COLUMN_NAME,
+                CupboardContract.AllIngredients.COLUMN_UNIT,
+                CupboardContract.AllIngredients.COLUMN_CATEGORY
+        };
+
+        sortOrder = CupboardContract.AllIngredients.COLUMN_NAME;
+
+        if(!query.equals("")) {
+            selection = CupboardContract.AllIngredients.COLUMN_SHOPPING + " = ? AND " +
+                    CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
+            selectionArgs = new String[]{Integer.toString(1) , "%" + query + "%"};
+        } else {
+            selectionArgs = new String[]{Integer.toString(1)};
+            selection = CupboardContract.AllIngredients.COLUMN_SHOPPING + " = ?";
+        }
+
+        cursor = db.query(
+                CupboardContract.AllIngredients.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
+
+        while(cursor.moveToNext()) {
+            ingredient = new Ingredient();
+            ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
+            ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_UNIT));
+            ingredient.category = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_CATEGORY));
+            ingredientsList.add(ingredient);
+        }
+        cursor.close();
+
+        adapter = new IngredientListAdapter(getContext(), "Groceries", ingredientsList, GroceriesFragment.this);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
