@@ -89,6 +89,18 @@ public class IngredientAddFragment extends Fragment {
                 deleteFab.show();
                 addFab.setImageResource(R.drawable.edit);
 
+                deleteFab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectionArgs = new String[] {titleTextView.getText().toString()};
+                        db.delete(
+                                CupboardContract.Ingredients.TABLE_NAME,
+                                selection,
+                                selectionArgs
+                        );
+                        getActivity().onBackPressed();
+                    }
+                });
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
 
