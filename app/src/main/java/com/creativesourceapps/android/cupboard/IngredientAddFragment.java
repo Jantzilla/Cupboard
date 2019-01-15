@@ -118,7 +118,7 @@ public class IngredientAddFragment extends Fragment {
                 titleTextView.setText(name);
                 quantityTextView.setText(quantity);
                 unitTextView.setText(unit);
-                addFab.hide();
+                addFab.setImageResource(R.drawable.shopping_cart);
 
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
