@@ -111,10 +111,12 @@ public class IngredientAddFragment extends Fragment {
                 String unit = getArguments().getString("unit");
 
                 ingredientEditText.setVisibility(View.GONE);
+                quantityEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);
                 titleTextView.setVisibility(View.VISIBLE);
+                quantityTextView.setVisibility(View.VISIBLE);
                 titleTextView.setText(name);
-                quantityEditText.setText(quantity);
+                quantityTextView.setText(quantity);
                 unitTextView.setText(unit);
                 addFab.hide();
 
