@@ -228,7 +228,9 @@ public class IngredientAddFragment extends Fragment {
     }
 
     private Ingredient searchIngredients(String table, String query) {
-        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME, CupboardContract.AllIngredients.COLUMN_UNIT};
+        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME,
+                CupboardContract.AllIngredients.COLUMN_UNIT,
+                CupboardContract.AllIngredients.COLUMN_CATEGORY};
         selectionArgs = new String[] {query + "%"};
         String tableName = table;
         Ingredient ingredient = new Ingredient();
@@ -246,6 +248,7 @@ public class IngredientAddFragment extends Fragment {
         if(cursor.moveToFirst()) {
             ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
             ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_UNIT));
+            selectedCategory = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_CATEGORY));
         }
 
         return ingredient;
