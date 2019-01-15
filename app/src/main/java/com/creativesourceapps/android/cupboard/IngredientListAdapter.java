@@ -46,7 +46,10 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         String uri = ingredientBaseUrl + ingredients.get(i).name + ".png";
         Glide.with(context).load(uri).into(viewHolder.ingredientImageView);
         viewHolder.nameTextView.setText(ingredients.get(i).name);
-        viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
+        if(ingredients.get(i).quantity == null)
+            viewHolder.quantityTextView.setVisibility(View.INVISIBLE);
+        else
+            viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
     }
 
     @Override
