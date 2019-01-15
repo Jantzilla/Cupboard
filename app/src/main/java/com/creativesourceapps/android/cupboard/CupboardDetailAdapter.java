@@ -83,7 +83,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             dialog.setContentView(R.layout.dialog_ingredient_edit);
 
             dialogIngredientEditText = dialog.findViewById(R.id.tv_ingredient);
-            dialogQuantityEditText = dialog.findViewById(R.id.tv_quantity);
+            dialogQuantityEditText = dialog.findViewById(R.id.et_quantity);
 
             dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 @Override
@@ -170,7 +170,7 @@ public class CupboardDetailAdapter extends RecyclerView.Adapter<CupboardDetailAd
             });
 
             ingredientTextView = itemView.findViewById(R.id.tv_ingredient);
-            quantityTextView = itemView.findViewById(R.id.tv_quantity);
+            quantityTextView = itemView.findViewById(R.id.et_quantity);
             unitTextView = itemView.findViewById(R.id.tv_unit);
 
             unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

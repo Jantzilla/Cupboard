@@ -67,7 +67,7 @@ public class IngredientAddFragment extends Fragment {
 
         ingredientEditText = view.findViewById(R.id.et_title);
         hintEditText = view.findViewById(R.id.tv_hint);
-        quantityEditText = view.findViewById(R.id.tv_quantity);
+        quantityEditText = view.findViewById(R.id.et_quantity);
         unitTextView = view.findViewById(R.id.tv_unit);
         titleTextView = view.findViewById(R.id.tv_title);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
