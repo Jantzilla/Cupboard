@@ -94,8 +94,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="16sp"
-            android:hint="Quantity"
-            android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="@+id/tv_unit"
             app:layout_constraintEnd_toStartOf="@id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/tv_unit"
