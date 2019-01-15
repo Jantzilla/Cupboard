@@ -31,6 +31,7 @@
         android:text="Chicken"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@id/iv_ingredient"
         app:layout_constraintEnd_toEndOf="@id/iv_ingredient"
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
