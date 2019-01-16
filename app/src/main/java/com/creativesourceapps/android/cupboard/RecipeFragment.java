@@ -185,7 +185,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                         @Override
                         public void run() {
                             //Handle UI here
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, RecipeFragment.this);
+                            RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, RecipeFragment.this, "Recipes");
 
                             recylcerView.setLayoutManager(layoutManager);
 

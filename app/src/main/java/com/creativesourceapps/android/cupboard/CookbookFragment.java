@@ -149,7 +149,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
         }
 
-        recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this);
+        recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this, "Cookbook");
 
         recyclerView.setLayoutManager(layoutManager);
 
