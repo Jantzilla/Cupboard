@@ -51,6 +51,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull final RecipeViewHolder recipeViewHolder, int i) {
         recipeViewHolder.titleTextView.setText(recipes.get(i).title);
+        if(type.equals("Recipes"))
+            recipeViewHolder.buttonImageView.setImageResource(R.drawable.bookmark);
+        else
+            recipeViewHolder.buttonImageView.setImageResource(R.drawable.delete);
+
         Glide.with(context).load(recipes.get(i).media).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
