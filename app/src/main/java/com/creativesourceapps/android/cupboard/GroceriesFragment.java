@@ -59,7 +59,10 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("type", "choose");
                 fragment = new IngredientAddFragment();
+                fragment.setArguments(bundle);
                 fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().addToBackStack(null)
                         .replace(R.id.fl_fragment, fragment).commit();
