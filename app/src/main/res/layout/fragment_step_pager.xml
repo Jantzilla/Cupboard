@@ -55,6 +55,18 @@
         android:fontFamily="@font/marmelad_regular"
         android:text="Step 1"/>
 
+    <Button
+        android:id="@+id/btn_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recipe_list_background"
+        android:text="Use Ingredients"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_margin="12dp"
+        android:layout_gravity="bottom|start"
+        android:visibility="gone"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_recipe_ingredients"
