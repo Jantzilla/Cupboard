@@ -223,6 +223,17 @@ public class IngredientAddFragment extends Fragment {
                     } if(type.equals("shop")) {
                         addGroceryItem();
 
+                    } if(type.equals("detail")) {
+                        ContentValues values = new ContentValues();
+                        selectionArgs = new String[] {titleTextView.getText().toString()};
+                        values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, 1);
+                        db.update(
+                                CupboardContract.AllIngredients.TABLE_NAME,
+                                values,
+                                null,
+                                null
+                        );
+
                     } else {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
