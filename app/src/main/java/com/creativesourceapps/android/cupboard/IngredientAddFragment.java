@@ -105,6 +105,37 @@ public class IngredientAddFragment extends Fragment {
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
 
+            } if(getArguments().getString("type").equals("shop")) {
+                String name = getArguments().getString("name");
+                String quantity = getArguments().getString("quantity");
+                String unit = getArguments().getString("unit");
+
+                ingredientEditText.setVisibility(View.GONE);
+                hintEditText.setEnabled(false);
+                titleTextView.setVisibility(View.VISIBLE);
+                titleTextView.setText(name);
+                quantityEditText.setText(quantity);
+                unitTextView.setText(unit);
+                deleteFab.show();
+
+                deleteFab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ContentValues values = new ContentValues();
+                        values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, Integer.toString(0));
+                        selectionArgs = new String[] {titleTextView.getText().toString()};
+                        db.update(
+                                CupboardContract.AllIngredients.TABLE_NAME,
+                                values,
+                                selection,
+                                selectionArgs
+                        );
+                        getActivity().onBackPressed();
+                    }
+                });
+
+                Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
+
             } if(getArguments().getString("type").equals("detail")) {
                 String name = getArguments().getString("name");
                 String quantity = getArguments().getString("quantity");
@@ -188,6 +219,10 @@ public class IngredientAddFragment extends Fragment {
                                 null
                         );
                         getActivity().onBackPressed();
+
+                    } if(type.equals("shop")) {
+                        addGroceryItem();
+
                     } else {
                         Ingredient ingredient = new Ingredient();
                         ingredient.name = ingredientEditText.getText().toString();
@@ -230,11 +265,58 @@ public class IngredientAddFragment extends Fragment {
         return view;
     }
 
+    private void addGroceryItem() {
+        String name = titleTextView.getText().toString();
+        String quantity = quantityEditText.getText().toString();
+        String unit = unitTextView.getText().toString();
+        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        selectionArgs = new String[]{name};
+        Ingredient ingredient;
+
+        ingredient = searchIngredients(CupboardContract.Ingredients.TABLE_NAME, name);
+
+        if (ingredient.name.equals(name)) {
+            savedIngredient = true;
+        }
+
+        if (!savedIngredient) {
+            ContentValues values = new ContentValues();
+            values.put(CupboardContract.Ingredients.COLUMN_NAME, name);
+            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, quantity);
+            values.put(CupboardContract.Ingredients.COLUMN_UNIT, unit);
+            values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, selectedCategory);
+            db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+
+        } else {
+            ContentValues values = new ContentValues();
+            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(quantity) + Integer.valueOf(ingredient.quantity));
+            db.update(
+                    CupboardContract.Ingredients.TABLE_NAME,
+                    values,
+                    selection,
+                    selectionArgs);
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, Integer.toString(0));
+        selectionArgs = new String[] {titleTextView.getText().toString()};
+        db.update(
+                CupboardContract.AllIngredients.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs
+        );
+        getActivity().onBackPressed();
+
+        savedIngredient = false;
+    }
+
     private Ingredient searchIngredients(String table, String query) {
         projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME,
                 CupboardContract.AllIngredients.COLUMN_UNIT,
                 CupboardContract.AllIngredients.COLUMN_CATEGORY};
         selectionArgs = new String[] {query + "%"};
+        selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         String tableName = table;
         Ingredient ingredient = new Ingredient();
         ingredient.name = "";
