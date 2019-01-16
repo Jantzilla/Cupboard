@@ -117,6 +117,7 @@ public class IngredientAddFragment extends Fragment {
                 quantityEditText.setText(quantity);
                 unitTextView.setText(unit);
                 deleteFab.show();
+                deleteFab.setImageResource(R.drawable.remove_shopping_cart);
 
                 deleteFab.setOnClickListener(new View.OnClickListener() {
                     @Override
