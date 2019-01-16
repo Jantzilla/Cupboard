@@ -4,12 +4,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.transition.Slide;
+import android.support.transition.TransitionManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,28 +29,36 @@ public class StepPagerFragment extends Fragment {
     FloatingActionButton fab;
     ViewPager viewPager;
     ImageView imageView;
+    android.support.transition.Transition transition;
     WormDotsIndicator wormDotsIndicator;
     TextView stepTextView, recipeTextView;
     private String step;
     private ArrayList<Ingredient> ingredients;
+    private boolean visible;
+    private Button useButton;
+    private int mid;
 
     public StepPagerFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
+        final View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
         viewPager = view.findViewById(R.id.vp_ingredient_steps);
         imageView = view.findViewById(R.id.iv_recipe_step_background);
         stepTextView = view.findViewById(R.id.tv_step_number);
         recipeTextView = view.findViewById(R.id.tv_recipe_title);
         fab = view.findViewById(R.id.fab_recipe_ingredients);
+        useButton = view.findViewById(R.id.btn_use);
         ingredients = new ArrayList<>();
+        transition = new Slide(Gravity.START);
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        mid = (recipe.steps.size() / 2) + 1;
+
         recipeTextView.setText(recipe.title);
         ((MainActivity)getActivity()).setFloatingSearchViewTitle(null);
 
@@ -88,6 +100,11 @@ public class StepPagerFragment extends Fragment {
             public void onPageSelected(int i) {
                 step = "Step " + (i + 1);
                 stepTextView.setText(step);
+                if(i == mid) {
+                    TransitionManager.beginDelayedTransition(container, transition);
+                    visible = !visible;
+                    useButton.setVisibility(visible ? View.VISIBLE : View.GONE);
+                }
             }
 
             @Override
