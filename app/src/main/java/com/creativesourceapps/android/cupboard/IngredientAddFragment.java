@@ -153,6 +153,14 @@ public class IngredientAddFragment extends Fragment {
 
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
+
+            } if(getArguments().getString("type").equals("choose")) {
+                addFab.setImageResource(R.drawable.shopping_cart);
+                quantityEditText.setVisibility(View.INVISIBLE);
+                unitTextView.setVisibility(View.INVISIBLE);
+                addFab.setImageResource(R.drawable.shopping_cart);
+
+                Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
             }
         } else {
 
@@ -205,9 +213,9 @@ public class IngredientAddFragment extends Fragment {
             public void onClick(View v) {
                 selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
                 selectionArgs = new String[] {titleTextView.getText().toString()};
-                if(type.equals("new") && ingredientEditText.getText().toString().isEmpty())
+                if(type.equals("new") || type.equals("choose") && ingredientEditText.getText().toString().isEmpty())
                     ingredientEditText.setError("Please enter a name.");
-                if(type.equals("new") && quantityEditText.getText().toString().isEmpty())
+                if(!type.equals("detail") && !type.equals("choose") && quantityEditText.getText().toString().isEmpty())
                     quantityEditText.setError("Please enter a quantity.");
                 else {
                     if(type.equals("edit")) {
@@ -246,24 +254,40 @@ public class IngredientAddFragment extends Fragment {
                             availableIngredient = false;
                         }
 
-                        if (searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                        if (type.equals("new") &&
+                                searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
                             ingredientEditText.setError("Ingredient already exists.");
                             savedIngredient = true;
                         }
 
                         if (!savedIngredient && availableIngredient) {
-                            ContentValues values = new ContentValues();
-                            values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
-                            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
-                            values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
-                            values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
-                            db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
 
-                            ingredientEditText.setText("");
-                            hintEditText.setText("");
-                            quantityEditText.setText("");
+                            if (type.equals("choose")) {
+                                ContentValues values = new ContentValues();
+                                values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, Integer.toString(1));
+                                selectionArgs = new String[]{ingredient.name};
+                                db.update(
+                                        CupboardContract.AllIngredients.TABLE_NAME,
+                                        values,
+                                        selection,
+                                        selectionArgs
+                                );
+                                getActivity().onBackPressed();
 
-                            Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
+                            } else {
+                                ContentValues values = new ContentValues();
+                                values.put(CupboardContract.Ingredients.COLUMN_NAME, ingredient.name);
+                                values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, ingredient.quantity);
+                                values.put(CupboardContract.Ingredients.COLUMN_UNIT, ingredient.unit);
+                                values.put(CupboardContract.Ingredients.COLUMN_CATEGORY, ingredient.category);
+                                db.insert(CupboardContract.Ingredients.TABLE_NAME, null, values);
+
+                                ingredientEditText.setText("");
+                                hintEditText.setText("");
+                                quantityEditText.setText("");
+
+                                Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
+                            }
                         }
 
                         savedIngredient = false;
