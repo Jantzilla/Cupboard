@@ -158,7 +158,6 @@ public class IngredientAddFragment extends Fragment {
                 addFab.setImageResource(R.drawable.shopping_cart);
                 quantityEditText.setVisibility(View.INVISIBLE);
                 unitTextView.setVisibility(View.INVISIBLE);
-                addFab.setImageResource(R.drawable.shopping_cart);
 
                 Glide.with(getContext()).load(baseImageUrl + "Allspice" + ".png").into(ingredientImageView);
             }
