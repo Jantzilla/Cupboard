@@ -1,6 +1,8 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -78,6 +80,34 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
             itemClickListener.onItemClickListener(name, quantity, unit);
         }
+    }
+
+    private boolean getAvailability(String name){
+        boolean available = false;
+        String selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
+        String[] projection, selectionArgs;
+        SQLiteDatabase db;
+        Cursor cursor;
+        CupboardDbHelper dbHelper;
+        dbHelper = new CupboardDbHelper(context);
+        db = dbHelper.getReadableDatabase();
+
+        projection = new String[] {CupboardContract.Ingredients.COLUMN_NAME};
+        selectionArgs = new String[] {name};
+
+        cursor = db.query(
+                CupboardContract.Ingredients.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+
+        if(cursor.getCount() > 0)
+            available = true;
+
+        return available;
     }
 
 }
