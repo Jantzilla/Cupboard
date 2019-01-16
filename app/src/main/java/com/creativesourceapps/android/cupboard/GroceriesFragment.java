@@ -120,7 +120,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     @Override
     public void onItemClickListener(String name, String quantity, String unit) {
         Bundle bundle = new Bundle();
-        bundle.putString("type", "edit");
+        bundle.putString("type", "shop");
         bundle.putString("name", name);
         bundle.putString("quantity", quantity);
         bundle.putString("unit", unit);
