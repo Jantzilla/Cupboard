@@ -312,9 +312,16 @@ public class IngredientAddFragment extends Fragment {
     }
 
     private Ingredient searchIngredients(String table, String query) {
-        projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME,
-                CupboardContract.AllIngredients.COLUMN_UNIT,
-                CupboardContract.AllIngredients.COLUMN_CATEGORY};
+        if(table.equals(CupboardContract.AllIngredients.TABLE_NAME)){
+            projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME,
+                    CupboardContract.AllIngredients.COLUMN_UNIT,
+                    CupboardContract.AllIngredients.COLUMN_CATEGORY};
+        } else {
+            projection = new String[] {CupboardContract.Ingredients.COLUMN_NAME,
+                    CupboardContract.Ingredients.COLUMN_UNIT,
+                    CupboardContract.Ingredients.COLUMN_QUANTITY,
+                    CupboardContract.Ingredients.COLUMN_CATEGORY};
+        }
         selectionArgs = new String[] {query + "%"};
         selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
         String tableName = table;
@@ -331,6 +338,9 @@ public class IngredientAddFragment extends Fragment {
         );
 
         if(cursor.moveToFirst()) {
+            if(table.equals(CupboardContract.Ingredients.TABLE_NAME))
+                ingredient.quantity = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY));
+
             ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_NAME));
             ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_UNIT));
             selectedCategory = cursor.getString(cursor.getColumnIndex(CupboardContract.AllIngredients.COLUMN_CATEGORY));
