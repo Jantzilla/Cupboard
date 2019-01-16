@@ -203,9 +203,9 @@ public class IngredientAddFragment extends Fragment {
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!type.equals("edit") && ingredientEditText.getText().toString().isEmpty())
+                if(type.equals("new") && ingredientEditText.getText().toString().isEmpty())
                     ingredientEditText.setError("Please enter a name.");
-                if(quantityEditText.getText().toString().isEmpty())
+                if(type.equals("new") && quantityEditText.getText().toString().isEmpty())
                     quantityEditText.setError("Please enter a quantity.");
                 else {
                     if(type.equals("edit")) {
