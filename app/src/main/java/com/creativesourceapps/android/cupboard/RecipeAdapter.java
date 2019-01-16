@@ -21,9 +21,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     private ListItemClickListener clickLister;
     private ArrayList<Recipe> recipes = new ArrayList<>();
+    private String type;
     private Context context;
 
-    public RecipeAdapter(ArrayList<Recipe> recipes, ListItemClickListener clickListener) {
+    public RecipeAdapter(ArrayList<Recipe> recipes, ListItemClickListener clickListener, String type) {
         this.recipes.addAll(recipes);
         this.clickLister = clickListener;
     }
