@@ -159,4 +159,15 @@
         android:layout_gravity="bottom|end"
         android:src="@drawable/add"/>
 
+    <Button
+        android:id="@+id/btn_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recipe_list_background"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|center"
+        android:text="Use"
+        android:textColor="#ffffff"
+        android:visibility="gone"/>
+
 </FrameLayout>
