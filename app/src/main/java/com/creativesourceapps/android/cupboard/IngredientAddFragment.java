@@ -203,6 +203,8 @@ public class IngredientAddFragment extends Fragment {
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
+                selectionArgs = new String[] {titleTextView.getText().toString()};
                 if(type.equals("new") && ingredientEditText.getText().toString().isEmpty())
                     ingredientEditText.setError("Please enter a name.");
                 if(type.equals("new") && quantityEditText.getText().toString().isEmpty())
@@ -210,13 +212,12 @@ public class IngredientAddFragment extends Fragment {
                 else {
                     if(type.equals("edit")) {
                         ContentValues values = new ContentValues();
-                        selectionArgs = new String[] {titleTextView.getText().toString()};
                         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, quantityEditText.getText().toString());
                         db.update(
                                 CupboardContract.Ingredients.TABLE_NAME,
                                 values,
-                                null,
-                                null
+                                selection,
+                                selectionArgs
                         );
                         getActivity().onBackPressed();
 
@@ -225,13 +226,12 @@ public class IngredientAddFragment extends Fragment {
 
                     } if(type.equals("detail")) {
                         ContentValues values = new ContentValues();
-                        selectionArgs = new String[] {titleTextView.getText().toString()};
                         values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, 1);
                         db.update(
                                 CupboardContract.AllIngredients.TABLE_NAME,
                                 values,
-                                null,
-                                null
+                                selection,
+                                selectionArgs
                         );
 
                     } else {
