@@ -27,6 +27,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public RecipeAdapter(ArrayList<Recipe> recipes, ListItemClickListener clickListener, String type) {
         this.recipes.addAll(recipes);
         this.clickLister = clickListener;
+        this.type = type;
     }
 
     public void remove(int itemClicked) {
