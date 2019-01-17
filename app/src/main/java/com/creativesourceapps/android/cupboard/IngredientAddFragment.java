@@ -149,7 +149,6 @@ public class IngredientAddFragment extends Fragment {
                 ingredientEditText.setVisibility(View.GONE);
                 quantityEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);
-                useButton.setVisibility(available ? View.VISIBLE : View.GONE);
                 titleTextView.setVisibility(View.VISIBLE);
                 quantityTextView.setVisibility(View.VISIBLE);
                 titleTextView.setText(name);
@@ -157,6 +156,9 @@ public class IngredientAddFragment extends Fragment {
                 unitTextView.setText(unit);
                 addFab.setImageResource(R.drawable.shopping_cart);
 
+                if(available) {
+                    useButton.setVisibility(View.VISIBLE);
+                }
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
 
