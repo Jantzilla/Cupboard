@@ -30,7 +30,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     }
 
     public interface ItemClickListener {
-        void onItemClickListener(String name, String quantity, String unit, boolean availability);
+        void onItemClickListener(int index, String name, String quantity, String unit, boolean availability);
     }
 
     @NonNull
@@ -91,7 +91,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             String unit = ingredients.get(getAdapterPosition()).unit;
             boolean availability = unavailableView.getVisibility() == View.GONE;
 
-            itemClickListener.onItemClickListener(name, quantity, unit, availability);
+            itemClickListener.onItemClickListener(getAdapterPosition(), name, quantity, unit, availability);
         }
     }
 
