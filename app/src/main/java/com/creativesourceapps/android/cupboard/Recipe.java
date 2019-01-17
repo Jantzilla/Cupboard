@@ -13,6 +13,7 @@ public class Recipe implements Parcelable {
     ArrayList<String> ingredients;
     ArrayList<String> steps;
     ArrayList<String> instructions;
+    ArrayList<Boolean> used;
 
     public Recipe(int id, String title, ArrayList<String> ingredients, ArrayList<String> quantity, ArrayList<String> unit,
                   ArrayList<String> shortDescription, ArrayList<String> description, String media)
@@ -25,6 +26,11 @@ public class Recipe implements Parcelable {
         this.steps = shortDescription;
         this.instructions = description;
         this.media = media;
+        this.used = new ArrayList<>();
+
+        for(int i = 0; i < ingredients.size(); i++) {
+            this.used.add(false);
+        }
     }
 
     private Recipe(Parcel in) {
@@ -36,11 +42,13 @@ public class Recipe implements Parcelable {
         unit = new ArrayList<String>();
         steps = new ArrayList<String>();
         instructions = new ArrayList<String>();
+        used = new ArrayList<Boolean>();
         in.readList(ingredients, getClass().getClassLoader());
         in.readList(quantity, getClass().getClassLoader());
         in.readList(unit, getClass().getClassLoader());
         in.readList(steps, getClass().getClassLoader());
         in.readList(instructions, getClass().getClassLoader());
+        in.readList(used, getClass().getClassLoader());
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -70,5 +78,6 @@ public class Recipe implements Parcelable {
         parcel.writeList(unit);
         parcel.writeList(steps);
         parcel.writeList(instructions);
+        parcel.writeList(used);
     }
 }
