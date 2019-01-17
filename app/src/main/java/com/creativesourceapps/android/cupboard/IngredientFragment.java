@@ -102,13 +102,14 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     }
 
     @Override
-    public void onItemClickListener(String name, String quantity, String unit, boolean availability) {
+    public void onItemClickListener(int index, String name, String quantity, String unit, boolean availability) {
         Bundle bundle = new Bundle();
         bundle.putString("type", "detail");
         bundle.putBoolean("availability", availability);
         bundle.putString("name", name);
         bundle.putString("quantity", quantity);
         bundle.putString("unit", unit);
+        bundle.putInt("index", index);
 
         fragment = new IngredientAddFragment();
         fragment.setArguments(bundle);
