@@ -106,6 +106,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         Bundle bundle = new Bundle();
         bundle.putString("type", "detail");
         bundle.putBoolean("availability", availability);
+        bundle.putBoolean("used", ingredients.get(index).used);
         bundle.putString("name", name);
         bundle.putString("quantity", quantity);
         bundle.putString("unit", unit);
