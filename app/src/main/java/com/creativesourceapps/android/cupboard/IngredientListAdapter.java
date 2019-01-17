@@ -17,14 +17,14 @@ import java.util.ArrayList;
 public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.ViewHolder> {
 
     private Context context;
-    private boolean isCupboard;
+    private boolean isRecipe;
     private String ingredientBaseUrl = "https://www.themealdb.com/images/ingredients/";
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
-    public IngredientListAdapter(Context context, boolean isCupboard, ArrayList<Ingredient> ingredients, ItemClickListener itemClickListener) {
+    public IngredientListAdapter(Context context, boolean isRecipe, ArrayList<Ingredient> ingredients, ItemClickListener itemClickListener) {
         this.context = context;
-        this.isCupboard = isCupboard;
+        this.isRecipe = isRecipe;
         this.ingredients.addAll(ingredients);
         this.itemClickListener = itemClickListener;
     }
@@ -53,7 +53,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         else
             viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
 
-        if(isCupboard && getAvailability(ingredients.get(i).name))
+        if(isRecipe && getAvailability(ingredients.get(i).name))
             viewHolder.availableImageView.setVisibility(View.VISIBLE);
     }
 
