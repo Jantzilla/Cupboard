@@ -389,6 +389,28 @@ public class IngredientAddFragment extends Fragment {
         return ingredient;
     }
 
+    private void useIngredient() {
+        String name = titleTextView.getText().toString();
+        String quantity = quantityTextView.getText().toString();
+        String unit = unitTextView.getText().toString();
+        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        selectionArgs = new String[]{name};
+
+        Ingredient ingredient;
+        ingredient = searchIngredients(CupboardContract.Ingredients.TABLE_NAME, name);
+
+        ContentValues values = new ContentValues();
+        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
+        db.update(
+                CupboardContract.Ingredients.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        getActivity().onBackPressed();
+
+    }
+
     @Override
     public void onPause() {
         super.onPause();
