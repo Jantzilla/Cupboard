@@ -149,6 +149,7 @@ public class IngredientAddFragment extends Fragment {
                 String name = getArguments().getString("name");
                 String quantity = getArguments().getString("quantity");
                 String unit = getArguments().getString("unit");
+                final int index = getArguments().getInt("index");
 
                 ingredientEditText.setVisibility(View.GONE);
                 quantityEditText.setVisibility(View.GONE);
@@ -165,7 +166,7 @@ public class IngredientAddFragment extends Fragment {
                     useButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            useIngredient();
+                            useIngredient(index);
                         }
                     });
                 }
@@ -408,7 +409,7 @@ public class IngredientAddFragment extends Fragment {
         return ingredient;
     }
 
-    private void useIngredient() {
+    private void useIngredient(int index) {
         String name = titleTextView.getText().toString();
         String quantity = quantityTextView.getText().toString();
         String unit = unitTextView.getText().toString();
@@ -417,6 +418,9 @@ public class IngredientAddFragment extends Fragment {
 
         Ingredient ingredient;
         ingredient = searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, name);
+
+        if(!ingredient.name.equals(""))
+            ((MainActivity)getActivity()).useIngredients(index);
 
         ContentValues values = new ContentValues();
         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
