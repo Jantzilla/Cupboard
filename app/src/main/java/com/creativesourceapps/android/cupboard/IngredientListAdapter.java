@@ -53,8 +53,10 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         else
             viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
 
-        if(isRecipe && getAvailability(ingredients.get(i).name))
-            viewHolder.availableImageView.setVisibility(View.VISIBLE);
+        if(isRecipe && !getAvailability(ingredients.get(i).name))
+            viewHolder.unavailableView.setVisibility(View.VISIBLE);
+        else
+            viewHolder.unavailableView.setVisibility(View.GONE);
     }
 
     @Override
