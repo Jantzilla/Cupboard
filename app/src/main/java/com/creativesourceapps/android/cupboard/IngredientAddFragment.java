@@ -138,6 +138,7 @@ public class IngredientAddFragment extends Fragment {
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
 
             } if(getArguments().getString("type").equals("detail")) {
+                boolean available = getArguments().getBoolean("availability");
                 String name = getArguments().getString("name");
                 String quantity = getArguments().getString("quantity");
                 String unit = getArguments().getString("unit");
