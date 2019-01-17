@@ -158,6 +158,12 @@ public class IngredientAddFragment extends Fragment {
 
                 if(available) {
                     useButton.setVisibility(View.VISIBLE);
+                    useButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            useIngredient();
+                        }
+                    });
                 }
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
