@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
 
 public class IngredientAddFragment extends Fragment {
     FloatingActionButton fab, addFab, deleteFab;
@@ -35,7 +38,8 @@ public class IngredientAddFragment extends Fragment {
     private ImageView ingredientImageView;
     private String selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient;
-    private String selection, selectedCategory;
+    private String selection;
+    private static String selectedCategory;
     private String[] projection, selectionArgs;
     private int entryEnd;
 
@@ -201,7 +205,7 @@ public class IngredientAddFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 entryEnd = count;
 
-                Ingredient ingredient = searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, String.valueOf(s));
+                Ingredient ingredient = searchIngredients(getContext(), CupboardContract.AllIngredients.TABLE_NAME, String.valueOf(s));
 
                 Spannable wordToSpan = new SpannableString(ingredient.name);  //TODO: ADD REAL DATA
 
@@ -262,13 +266,13 @@ public class IngredientAddFragment extends Fragment {
                         ingredient.unit = unitTextView.getText().toString();
                         ingredient.category = selectedCategory;
 
-                        if (!searchIngredients(CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                        if (!searchIngredients(getContext(), CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
                             ingredientEditText.setError("Invalid ingredient.");
                             availableIngredient = false;
                         }
 
                         if (type.equals("new") &&
-                                searchIngredients(CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
+                                searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
                             ingredientEditText.setError("Ingredient already exists.");
                             savedIngredient = true;
                         }
@@ -321,7 +325,7 @@ public class IngredientAddFragment extends Fragment {
         selectionArgs = new String[]{name};
         Ingredient ingredient;
 
-        ingredient = searchIngredients(CupboardContract.Ingredients.TABLE_NAME, name);
+        ingredient = searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, name);
 
         if (ingredient.name.equals(name)) {
             savedIngredient = true;
@@ -359,7 +363,14 @@ public class IngredientAddFragment extends Fragment {
         savedIngredient = false;
     }
 
-    private Ingredient searchIngredients(String table, String query) {
+    public static Ingredient searchIngredients(Context context, String table, String query) {
+        SQLiteDatabase db;
+        CupboardDbHelper dbHelper = new CupboardDbHelper(context);
+        String[] projection, selectionArgs;
+        String selection;
+        Cursor cursor;
+        db = dbHelper.getWritableDatabase();
+
         if(table.equals(CupboardContract.AllIngredients.TABLE_NAME)){
             projection = new String[] {CupboardContract.AllIngredients.COLUMN_NAME,
                     CupboardContract.AllIngredients.COLUMN_UNIT,
@@ -405,7 +416,7 @@ public class IngredientAddFragment extends Fragment {
         selectionArgs = new String[]{name};
 
         Ingredient ingredient;
-        ingredient = searchIngredients(CupboardContract.Ingredients.TABLE_NAME, name);
+        ingredient = searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, name);
 
         ContentValues values = new ContentValues();
         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
@@ -417,6 +428,32 @@ public class IngredientAddFragment extends Fragment {
 
         getActivity().onBackPressed();
 
+    }
+
+    public static void useAllIngredients(Context context, ArrayList<Ingredient> ingredients) {
+        SQLiteDatabase db;
+        CupboardDbHelper dbHelper = new CupboardDbHelper(context);
+        String[] selectionArgs;
+        String selection;
+        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        db = dbHelper.getWritableDatabase();
+
+
+        for(int i = 0; i < ingredients.size(); i++) {
+
+            selectionArgs = new String[]{ingredients.get(i).name};
+
+            Ingredient ingredient;
+            ingredient = searchIngredients(context, CupboardContract.Ingredients.TABLE_NAME, ingredients.get(i).name);
+
+            ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
+            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(ingredients.get(i).quantity));
+            db.update(
+                    CupboardContract.Ingredients.TABLE_NAME,
+                    values,
+                    selection,
+                    selectionArgs);
+        }
     }
 
     @Override
