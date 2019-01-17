@@ -52,6 +52,9 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             viewHolder.quantityTextView.setVisibility(View.INVISIBLE);
         else
             viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
+
+        if(isCupboard && getAvailability(ingredients.get(i).name))
+            viewHolder.availableImageView.setVisibility(View.VISIBLE);
     }
 
     @Override
