@@ -73,6 +73,13 @@ public class StepPagerFragment extends Fragment {
         stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
 
+        useButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IngredientAddFragment.useAllIngredients(getContext(), ingredients);
+            }
+        });
+
         for(int i = 0; i < recipe.instructions.size(); i ++) {
             Bundle bundle = new Bundle();
             bundle.putInt("position", i);

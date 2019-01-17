@@ -47,6 +47,13 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         fragmentManager = getActivity().getSupportFragmentManager();
         transition = new Slide(Gravity.START);
 
+        useButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IngredientAddFragment.useAllIngredients(getContext(), ingredients);
+            }
+        });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
