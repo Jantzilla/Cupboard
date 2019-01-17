@@ -97,6 +97,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     public void onItemClickListener(String name, String quantity, String unit, boolean availability) {
         Bundle bundle = new Bundle();
         bundle.putString("type", "detail");
+        bundle.putBoolean("availability", availability);
         bundle.putString("name", name);
         bundle.putString("quantity", quantity);
         bundle.putString("unit", unit);
