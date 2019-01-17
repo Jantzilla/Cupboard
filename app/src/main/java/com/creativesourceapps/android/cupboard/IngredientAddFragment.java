@@ -15,6 +15,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class IngredientAddFragment extends Fragment {
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
+    private Button useButton;
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private TextView unitTextView, titleTextView, quantityTextView;
     private ImageView ingredientImageView;
@@ -72,6 +74,7 @@ public class IngredientAddFragment extends Fragment {
         titleTextView = view.findViewById(R.id.tv_title);
         quantityTextView = view.findViewById(R.id.tv_quantity);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
+        useButton = view.findViewById(R.id.btn_use);
 
         if(getArguments() != null && getArguments().getString("type") != null) {
             type = getArguments().getString("type");
