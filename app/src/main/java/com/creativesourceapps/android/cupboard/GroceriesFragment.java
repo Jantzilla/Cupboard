@@ -111,7 +111,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         }
         cursor.close();
 
-        adapter = new IngredientListAdapter(getContext(), "Groceries", ingredientsList, GroceriesFragment.this);
+        adapter = new IngredientListAdapter(getContext(), false, ingredientsList, GroceriesFragment.this);
         recyclerView.setAdapter(adapter);
     }
 

@@ -65,7 +65,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
             ingredient.quantity = recipe.quantity.get(i);
             ingredients.add(ingredient);
         }
-        adapter = new IngredientListAdapter(getContext(), "Ingredients", ingredients, IngredientFragment.this);
+        adapter = new IngredientListAdapter(getContext(), true, ingredients, IngredientFragment.this);
 
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
 

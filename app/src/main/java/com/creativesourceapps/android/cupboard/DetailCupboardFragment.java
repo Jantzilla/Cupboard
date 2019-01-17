@@ -144,7 +144,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         }
         cursor.close();
 
-        adapter = new IngredientListAdapter(getContext(), category, ingredientsList, DetailCupboardFragment.this);
+        adapter = new IngredientListAdapter(getContext(), false, ingredientsList, DetailCupboardFragment.this);
         recyclerView.setAdapter(adapter);
     }
 
