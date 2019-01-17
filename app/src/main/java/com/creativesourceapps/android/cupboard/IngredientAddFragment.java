@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.transition.Fade;
+import android.support.transition.Slide;
+import android.support.transition.TransitionSet;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Spannable;
@@ -16,6 +18,7 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +48,9 @@ public class IngredientAddFragment extends Fragment {
     private static String selectedCategory;
     private String[] projection, selectionArgs;
     private int entryEnd;
-    private Transition transition;
+    private Transition transitionFade, transitionSlide;
     private ViewGroup viewGroup;
+    private TransitionSet usedTransitionSet;
 
     public IngredientAddFragment() {
         // Required empty public constructor
@@ -63,7 +67,6 @@ public class IngredientAddFragment extends Fragment {
         deleteFab = view.findViewById(R.id.fab_delete);
         type = "new";
 
-        transition = new Fade();
         viewGroup = container;
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +91,13 @@ public class IngredientAddFragment extends Fragment {
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
         useButton = view.findViewById(R.id.btn_use);
         usedImageView = view.findViewById(R.id.iv_used);
+
+        usedTransitionSet = new TransitionSet();
+        transitionFade = new Fade();
+        transitionSlide = new Slide(Gravity.BOTTOM);
+        transitionFade.addTarget(usedImageView);
+        transitionSlide.setStartDelay(300).addTarget(useButton);
+        usedTransitionSet.addTransition(transitionFade).addTransition(transitionSlide);
 
         if(getArguments() != null && getArguments().getString("type") != null) {
             type = getArguments().getString("type");
@@ -166,11 +176,15 @@ public class IngredientAddFragment extends Fragment {
                 hintEditText.setEnabled(false);
                 titleTextView.setVisibility(View.VISIBLE);
                 quantityTextView.setVisibility(View.VISIBLE);
-                usedImageView.setVisibility(used ? View.VISIBLE : View.GONE);
                 titleTextView.setText(name);
                 quantityTextView.setText(quantity);
                 unitTextView.setText(unit);
                 addFab.setImageResource(R.drawable.shopping_cart);
+
+                if(used) {
+                    useButton.setVisibility(View.GONE);
+                    usedImageView.setVisibility(View.VISIBLE);
+                }
 
                 if(available) {
                     useButton.setVisibility(View.VISIBLE);
@@ -434,8 +448,9 @@ public class IngredientAddFragment extends Fragment {
             ((MainActivity)getActivity()).useIngredients(index);
 
         if(!isUsed) {
-            TransitionManager.beginDelayedTransition(viewGroup, transition);
+            TransitionManager.beginDelayedTransition(viewGroup, usedTransitionSet);
             usedImageView.setVisibility(View.VISIBLE);
+            useButton.setVisibility(View.GONE);
         }
 
         isUsed = true;
