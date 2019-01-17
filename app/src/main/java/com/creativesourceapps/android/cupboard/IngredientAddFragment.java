@@ -149,6 +149,7 @@ public class IngredientAddFragment extends Fragment {
                 ingredientEditText.setVisibility(View.GONE);
                 quantityEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);
+                useButton.setVisibility(available ? View.VISIBLE : View.GONE);
                 titleTextView.setVisibility(View.VISIBLE);
                 quantityTextView.setVisibility(View.VISIBLE);
                 titleTextView.setText(name);
