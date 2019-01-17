@@ -446,13 +446,16 @@ public class IngredientAddFragment extends Fragment {
             Ingredient ingredient;
             ingredient = searchIngredients(context, CupboardContract.Ingredients.TABLE_NAME, ingredients.get(i).name);
 
-            ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
-            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(ingredients.get(i).quantity));
-            db.update(
-                    CupboardContract.Ingredients.TABLE_NAME,
-                    values,
-                    selection,
-                    selectionArgs);
+            if(!ingredient.name.equals(""))
+                ((MainActivity)context).useIngredients(i);
+
+//            ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
+//            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(ingredients.get(i).quantity));
+//            db.update(
+//                    CupboardContract.Ingredients.TABLE_NAME,
+//                    values,
+//                    selection,
+//                    selectionArgs);
         }
     }
 
