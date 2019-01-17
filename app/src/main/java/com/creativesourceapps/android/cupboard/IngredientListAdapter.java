@@ -65,6 +65,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView ingredientImageView, availableImageView;
         TextView nameTextView, quantityTextView;
+        View unavailableView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +73,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             availableImageView = itemView.findViewById(R.id.iv_available);
             nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
             quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
+            unavailableView = itemView.findViewById(R.id.view_unavailable);
             itemView.setOnClickListener(this);
         }
 
