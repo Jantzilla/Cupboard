@@ -51,4 +51,15 @@
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
         app:layout_constraintEnd_toEndOf="@id/iv_ingredient"/>
 
+    <View
+        android:id="@+id/view_unavailable"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:foreground="@color/semi_transparent"
+        android:visibility="gone"/>
+
 </android.support.constraint.ConstraintLayout>
