@@ -80,6 +80,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             String name = ingredients.get(getAdapterPosition()).name;
             String quantity = ingredients.get(getAdapterPosition()).quantity;
             String unit = ingredients.get(getAdapterPosition()).unit;
+            boolean availability = availableImageView.getVisibility() == View.VISIBLE;
 
             itemClickListener.onItemClickListener(name, quantity, unit);
         }
