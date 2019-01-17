@@ -105,6 +105,16 @@ public class MainActivity extends AppCompatActivity {
         return recipe;
     }
 
+    public void useIngredients(int index) {
+        if(index == -1) {
+            for(int i = 0; i < recipe.used.size(); i++) {
+                recipe.used.set(i, true);
+            }
+        } else {
+            recipe.used.set(index, true);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
