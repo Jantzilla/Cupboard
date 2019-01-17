@@ -57,6 +57,11 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             viewHolder.unavailableView.setVisibility(View.VISIBLE);
         else
             viewHolder.unavailableView.setVisibility(View.GONE);
+
+        if(ingredients.get(i).used)
+            viewHolder.availableImageView.setVisibility(View.VISIBLE);
+        else
+            viewHolder.availableImageView.setVisibility(View.GONE);
     }
 
     @Override
