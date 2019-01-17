@@ -7,12 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.support.transition.Transition;
+import android.support.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,13 +38,15 @@ public class IngredientAddFragment extends Fragment {
     private Button useButton;
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private TextView unitTextView, titleTextView, quantityTextView;
-    private ImageView ingredientImageView;
+    private ImageView ingredientImageView, usedImageView;
     private String selectedUnit, type, baseImageUrl;
-    private boolean savedIngredient, availableIngredient;
+    private boolean savedIngredient, availableIngredient, isUsed;
     private String selection;
     private static String selectedCategory;
     private String[] projection, selectionArgs;
     private int entryEnd;
+    private Transition transition;
+    private ViewGroup viewGroup;
 
     public IngredientAddFragment() {
         // Required empty public constructor
@@ -57,6 +62,9 @@ public class IngredientAddFragment extends Fragment {
         addFab = view.findViewById(R.id.fab_add);
         deleteFab = view.findViewById(R.id.fab_delete);
         type = "new";
+
+        transition = new Fade();
+        viewGroup = container;
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +87,7 @@ public class IngredientAddFragment extends Fragment {
         quantityTextView = view.findViewById(R.id.tv_quantity);
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
         useButton = view.findViewById(R.id.btn_use);
+        usedImageView = view.findViewById(R.id.iv_used);
 
         if(getArguments() != null && getArguments().getString("type") != null) {
             type = getArguments().getString("type");
@@ -146,6 +155,7 @@ public class IngredientAddFragment extends Fragment {
 
             } if(getArguments().getString("type").equals("detail")) {
                 boolean available = getArguments().getBoolean("availability");
+                boolean used = getArguments().getBoolean("used", false);
                 String name = getArguments().getString("name");
                 String quantity = getArguments().getString("quantity");
                 String unit = getArguments().getString("unit");
@@ -156,6 +166,7 @@ public class IngredientAddFragment extends Fragment {
                 hintEditText.setEnabled(false);
                 titleTextView.setVisibility(View.VISIBLE);
                 quantityTextView.setVisibility(View.VISIBLE);
+                usedImageView.setVisibility(used ? View.VISIBLE : View.GONE);
                 titleTextView.setText(name);
                 quantityTextView.setText(quantity);
                 unitTextView.setText(unit);
@@ -422,15 +433,22 @@ public class IngredientAddFragment extends Fragment {
         if(!ingredient.name.equals(""))
             ((MainActivity)getActivity()).useIngredients(index);
 
-        ContentValues values = new ContentValues();
-        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
-        db.update(
-                CupboardContract.Ingredients.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
+        if(!isUsed) {
+            TransitionManager.beginDelayedTransition(viewGroup, transition);
+            usedImageView.setVisibility(View.VISIBLE);
+        }
 
-        getActivity().onBackPressed();
+        isUsed = true;
+
+//        ContentValues values = new ContentValues();                            //TODO: Change ingredients.quantity value to Int parsable String
+//        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
+//        db.update(
+//                CupboardContract.Ingredients.TABLE_NAME,
+//                values,
+//                selection,
+//                selectionArgs);
+//
+//        getActivity().onBackPressed();
 
     }
 
