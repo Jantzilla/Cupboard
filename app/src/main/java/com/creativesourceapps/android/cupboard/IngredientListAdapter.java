@@ -17,14 +17,14 @@ import java.util.ArrayList;
 public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.ViewHolder> {
 
     private Context context;
-    private String title;
+    private boolean isCupboard;
     private String ingredientBaseUrl = "https://www.themealdb.com/images/ingredients/";
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
-    public IngredientListAdapter(Context context, String title, ArrayList<Ingredient> ingredients, ItemClickListener itemClickListener) {
+    public IngredientListAdapter(Context context, boolean isCupboard, ArrayList<Ingredient> ingredients, ItemClickListener itemClickListener) {
         this.context = context;
-        this.title = title;
+        this.isCupboard = isCupboard;
         this.ingredients.addAll(ingredients);
         this.itemClickListener = itemClickListener;
     }
