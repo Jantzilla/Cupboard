@@ -29,6 +29,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
     private FragmentManager fragmentManager;
     private Transition transition;
     private Button useButton;
+    private boolean isUsed;
 
     public IngredientFragment() {
         // Required empty public constructor
@@ -51,6 +52,10 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
             @Override
             public void onClick(View v) {
                 IngredientAddFragment.useAllIngredients(getContext(), ingredients);
+
+                isUsed = true;
+                TransitionManager.beginDelayedTransition(container, transition);
+                useButton.setVisibility(View.GONE);
             }
         });
 
@@ -86,14 +91,17 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
                 super.onScrollStateChanged(recyclerView, newState);
                 transition.addTarget(useButton);
 
-                if(gridLayoutManager.findLastVisibleItemPosition() == ingredients.size() - 1) {
-                    ((MainActivity)getActivity()).setScrimVisibility(true);
-                    TransitionManager.beginDelayedTransition(container, transition);
-                    useButton.setVisibility(View.VISIBLE);
-                } else {
-                    ((MainActivity)getActivity()).setScrimVisibility(false);
-                    TransitionManager.beginDelayedTransition(container, transition);
-                    useButton.setVisibility(View.GONE);
+                if(!isUsed) {
+
+                    if (gridLayoutManager.findLastVisibleItemPosition() == ingredients.size() - 1) {
+                        ((MainActivity) getActivity()).setScrimVisibility(true);
+                        TransitionManager.beginDelayedTransition(container, transition);
+                        useButton.setVisibility(View.VISIBLE);
+                    } else {
+                        ((MainActivity) getActivity()).setScrimVisibility(false);
+                        TransitionManager.beginDelayedTransition(container, transition);
+                        useButton.setVisibility(View.GONE);
+                    }
                 }
             }
         });

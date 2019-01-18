@@ -34,7 +34,7 @@ public class StepPagerFragment extends Fragment {
     TextView stepTextView, recipeTextView;
     private String step;
     private ArrayList<Ingredient> ingredients;
-    private boolean visible;
+    private boolean visible, isUsed;
     private Button useButton;
     private int mid;
 
@@ -77,6 +77,9 @@ public class StepPagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 IngredientAddFragment.useAllIngredients(getContext(), ingredients);
+                isUsed = true;
+                TransitionManager.beginDelayedTransition(container, transition);
+                useButton.setVisibility(View.GONE);
             }
         });
 
@@ -107,7 +110,7 @@ public class StepPagerFragment extends Fragment {
             public void onPageSelected(int i) {
                 step = "Step " + (i + 1);
                 stepTextView.setText(step);
-                if(i == mid) {
+                if(i == mid && !isUsed) {
                     TransitionManager.beginDelayedTransition(container, transition);
                     visible = !visible;
                     useButton.setVisibility(visible ? View.VISIBLE : View.GONE);
