@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             recipe.used.set(index, true);
+            recipe.ingredientsUsed = 1;
         }
     }
 
