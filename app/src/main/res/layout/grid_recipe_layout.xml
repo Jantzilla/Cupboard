@@ -42,6 +42,17 @@
             android:layout_gravity="top|end"
             android:src="@drawable/ic_launcher_foreground"/>
 
+        <TextView
+            android:id="@+id/tv_availability"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ingredient_available_background"
+            android:layout_gravity="bottom|end"
+            android:gravity="center"
+            tools:text="5/10"
+            android:textSize="18sp"
+            android:textColor="#ffffff"/>
+
     </FrameLayout>
 
 </android.support.v7.widget.CardView>
