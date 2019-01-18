@@ -181,11 +181,6 @@ public class IngredientAddFragment extends Fragment {
                 unitTextView.setText(unit);
                 addFab.setImageResource(R.drawable.shopping_cart);
 
-                if(used) {
-                    useButton.setVisibility(View.GONE);
-                    usedImageView.setVisibility(View.VISIBLE);
-                }
-
                 if(available) {
                     useButton.setVisibility(View.VISIBLE);
                     useButton.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +189,11 @@ public class IngredientAddFragment extends Fragment {
                             useIngredient(index);
                         }
                     });
+                }
+
+                if(used) {
+                    useButton.setVisibility(View.GONE);
+                    usedImageView.setVisibility(View.VISIBLE);
                 }
 
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
