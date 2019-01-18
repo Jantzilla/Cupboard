@@ -57,6 +57,7 @@ public class StepPagerFragment extends Fragment {
         transition = new Slide(Gravity.START);
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
+        isUsed = recipe.ingredientsUsed == 1;
         mid = (recipe.steps.size() / 2) + 1;
 
         recipeTextView.setText(recipe.title);
