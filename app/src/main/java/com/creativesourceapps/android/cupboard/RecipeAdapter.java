@@ -71,6 +71,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 recipeViewHolder.availableCount++;
             }
         }
+        String ingredientFraction = recipeViewHolder.availableCount + "/" + recipes.get(i).ingredients.size();
+
+        recipeViewHolder.availabilityTextView.setText(ingredientFraction);
     }
 
     @Override
@@ -79,7 +82,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView titleTextView;
+        TextView titleTextView, availabilityTextView;
         ImageView buttonImageView;
         ImageView imageView;
         int availableCount;
@@ -88,6 +91,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             super(itemView);
 
             titleTextView = itemView.findViewById(R.id.grid_item_recipe);
+            availabilityTextView = itemView.findViewById(R.id.tv_availability);
             buttonImageView = itemView.findViewById(R.id.iv_button);
             imageView = itemView.findViewById(R.id.iv_recipe);
 
