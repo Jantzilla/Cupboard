@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Recipe implements Parcelable {
     final int id;
+    int ingredientsUsed;
     final String title, media;
     ArrayList<String> unit;
     ArrayList<String> quantity;
@@ -19,6 +20,7 @@ public class Recipe implements Parcelable {
                   ArrayList<String> shortDescription, ArrayList<String> description, String media)
     {
         this.id = id;
+        this.ingredientsUsed = 0;
         this.title = title;
         this.ingredients = ingredients;
         this.quantity = quantity;
@@ -35,6 +37,7 @@ public class Recipe implements Parcelable {
 
     private Recipe(Parcel in) {
         id = in.readInt();
+        ingredientsUsed = in.readInt();
         title = in.readString();
         media = in.readString();
         ingredients = new ArrayList<String>();
@@ -71,6 +74,7 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
+        parcel.writeInt(ingredientsUsed);
         parcel.writeString(title);
         parcel.writeString(media);
         parcel.writeList(ingredients);
