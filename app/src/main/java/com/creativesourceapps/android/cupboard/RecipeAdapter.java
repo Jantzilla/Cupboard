@@ -64,6 +64,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 }
             }
         });
+
+        for(int o = 0; o < recipes.get(i).ingredients.size(); o++) {
+            if(!IngredientAddFragment.searchIngredients(context,CupboardContract.Ingredients.
+                    TABLE_NAME,recipes.get(i).ingredients.get(o)).name.equals("")) {
+                recipeViewHolder.availableCount++;
+            }
+        }
     }
 
     @Override
@@ -75,6 +82,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         TextView titleTextView;
         ImageView buttonImageView;
         ImageView imageView;
+        int availableCount;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
