@@ -44,29 +44,29 @@
             android:id="@+id/ll_drawer_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="192dp">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_gravity="top"
-                android:background="#000000"/>
+            android:layout_marginTop="230dp">
 
             <FrameLayout
                 android:id="@+id/fl_recipes"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/fl_cupboard">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:riv_corner_radius="8dp"
                     android:src="@drawable/mixed_meal"
                     android:scaleType="centerCrop"/>
                 <View
-                    android:layout_width="165dp"
-                    android:layout_height="60dp"
+                    android:layout_width="185dp"
+                    android:layout_height="75dp"
                     android:layout_gravity="center"
                     android:background="@drawable/rounded_border_background"/>
                 <TextView
@@ -78,33 +78,29 @@
                     android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Recipes"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="top"
-                    android:background="#000000"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="bottom"
-                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_cupboard"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_recipes"
                 app:layout_constraintBottom_toTopOf="@id/fl_cookbook">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:riv_corner_radius="8dp"
                     android:src="@drawable/cupboard"
                     android:scaleType="centerCrop"/>
                 <View
-                    android:layout_width="165dp"
-                    android:layout_height="60dp"
+                    android:layout_width="185dp"
+                    android:layout_height="75dp"
                     android:layout_gravity="center"
                     android:background="@drawable/rounded_border_background"/>
                 <TextView
@@ -116,33 +112,29 @@
                     android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Cupboard"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="top"
-                    android:background="#000000"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="bottom"
-                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_cookbook"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_cupboard"
                 app:layout_constraintBottom_toTopOf="@id/fl_groceries">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:riv_corner_radius="8dp"
                     android:src="@drawable/cookbook"
                     android:scaleType="centerCrop"/>
                 <View
-                    android:layout_width="165dp"
-                    android:layout_height="60dp"
+                    android:layout_width="185dp"
+                    android:layout_height="75dp"
                     android:layout_gravity="center"
                     android:background="@drawable/rounded_border_background"/>
                 <TextView
@@ -154,33 +146,29 @@
                     android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Cookbook"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="top"
-                    android:background="#000000"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="bottom"
-                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_groceries"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="0dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_cookbook"
                 app:layout_constraintBottom_toBottomOf="parent">
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:riv_corner_radius="8dp"
                     android:src="@drawable/groceries_row"
                     android:scaleType="centerCrop"/>
                 <View
-                    android:layout_width="165dp"
-                    android:layout_height="60dp"
+                    android:layout_width="185dp"
+                    android:layout_height="75dp"
                     android:layout_gravity="center"
                     android:background="@drawable/rounded_border_background"/>
                 <TextView
@@ -192,16 +180,6 @@
                     android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Groceries"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="top"
-                    android:background="#000000"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_gravity="bottom"
-                    android:background="#000000"/>
             </FrameLayout>
 
         </android.support.constraint.ConstraintLayout>
