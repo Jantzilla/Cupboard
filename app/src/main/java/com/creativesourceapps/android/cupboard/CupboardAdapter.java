@@ -50,48 +50,47 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
 
         switch (i) {
             case 0:
-                Glide.with(context).load(R.drawable.ingredients).into(cupboardViewHolder.imageView);
                 cupboardViewHolder.imageView.setTag(R.drawable.ingredients);
                 cupboardViewHolder.textView.setVisibility(View.VISIBLE);
                 break;
             case 8:
-                Glide.with(context).load(R.drawable.wine).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.wine);
                 break;
             case 7:
-                Glide.with(context).load(R.drawable.spices).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.spices);
                 break;
             case 6:
-                Glide.with(context).load(R.drawable.bread).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.bread);
                 break;
             case 9:
-                Glide.with(context).load(R.drawable.olive_oil).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.olive_oil);
                 break;
             case 10:
-                Glide.with(context).load(R.drawable.cans).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.cans);
                 break;
             case 5:
-                Glide.with(context).load(R.drawable.nuts).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.nuts);
                 break;
             case 4:
-                Glide.with(context).load(R.drawable.eggs_milk).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.eggs_milk);
                 break;
             case 2:
-                Glide.with(context).load(R.drawable.pasta).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.pasta);
                 break;
             case 3:
-                Glide.with(context).load(R.drawable.produce).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.produce);
                 break;
             case 1:
-                Glide.with(context).load(R.drawable.meat).into(cupboardViewHolder.imageView);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
                 cupboardViewHolder.imageView.setTag(R.drawable.meat);
                 break;
         }
