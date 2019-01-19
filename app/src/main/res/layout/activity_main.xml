@@ -46,128 +46,162 @@
             android:layout_height="match_parent"
             android:layout_marginTop="192dp">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="top"
+                android:background="#000000"/>
+
             <FrameLayout
                 android:id="@+id/fl_recipes"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/fl_cupboard">
-                <com.makeramen.roundedimageview.RoundedImageView
+                <ImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/mixed_meal"
-                    android:scaleType="centerCrop"
-                    app:riv_corner_radius="16dp"
-                    app:riv_border_color="#000000"
-                    app:riv_border_width="4dp"/>
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="165dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_border_background"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_background"
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Recipes"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="top"
+                    android:background="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom"
+                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_cupboard"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_recipes"
                 app:layout_constraintBottom_toTopOf="@id/fl_cookbook">
-                <com.makeramen.roundedimageview.RoundedImageView
+                <ImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/cupboard"
-                    android:scaleType="centerCrop"
-                    app:riv_corner_radius="16dp"
-                    app:riv_border_color="#000000"
-                    app:riv_border_width="4dp"/>
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="165dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_border_background"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_background"
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Cupboard"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="top"
+                    android:background="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom"
+                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_cookbook"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_cupboard"
                 app:layout_constraintBottom_toTopOf="@id/fl_groceries">
-                <com.makeramen.roundedimageview.RoundedImageView
+                <ImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/cookbook"
-                    android:scaleType="centerCrop"
-                    app:riv_corner_radius="16dp"
-                    app:riv_border_color="#000000"
-                    app:riv_border_width="4dp"/>
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="165dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_border_background"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_background"
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Cookbook"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="top"
+                    android:background="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom"
+                    android:background="#000000"/>
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/fl_groceries"
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
                 app:layout_constraintTop_toBottomOf="@id/fl_cookbook"
                 app:layout_constraintBottom_toBottomOf="parent">
-                <com.makeramen.roundedimageview.RoundedImageView
+                <ImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/groceries_row"
-                    android:scaleType="centerCrop"
-                    app:riv_corner_radius="16dp"
-                    app:riv_border_color="#000000"
-                    app:riv_border_width="4dp"/>
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="165dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_border_background"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/gradient_background"
                     android:fontFamily="@font/marmelad_regular"
                     android:padding="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:textSize="32sp"
                     android:textColor="#000000"
                     android:text="Groceries"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="top"
+                    android:background="#000000"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom"
+                    android:background="#000000"/>
             </FrameLayout>
 
         </android.support.constraint.ConstraintLayout>
