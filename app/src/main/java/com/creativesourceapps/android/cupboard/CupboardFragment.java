@@ -103,7 +103,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
             }
             else {
                 bundle.putString("Shared Element", categoryList.get(clickedItem));
-                bundle.putInt("Image Id", (Integer) tag);
+                bundle.putString("Image Id",(String) tag);
             }
             fragment.setArguments(bundle);
 
