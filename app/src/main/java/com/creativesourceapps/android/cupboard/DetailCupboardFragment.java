@@ -2,7 +2,6 @@ package com.creativesourceapps.android.cupboard;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.makeramen.roundedimageview.RoundedImageView;
-
 import java.util.ArrayList;
 
 
@@ -24,7 +21,6 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     RecyclerView recyclerView;
     IngredientListAdapter adapter;
     ImageView imageView;
-    RoundedImageView roundedImageView;
     private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
@@ -37,7 +33,6 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
-    private int imageId;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -47,16 +42,10 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_cupboard, container, false);
-        roundedImageView = view.findViewById(R.id.iv_category_background);
 
         Bundle bundle = getArguments();
 
         category = bundle.getString("Shared Element");
-        imageId = bundle.getInt("Image Id");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            roundedImageView.setTransitionName(category);
-        }
 
         categoryTextView = view.findViewById(R.id.tv_category);
         imageView = view.findViewById(R.id.iv_collapse);
@@ -68,8 +57,6 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
-
-        roundedImageView.setImageResource(imageId);
 
         ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
 
