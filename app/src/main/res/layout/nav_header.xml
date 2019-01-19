@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/kitchen"/>
+        android:src="@drawable/kitchen"
+        android:foreground="@drawable/nav_header_background"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/recipe_step_background"
         android:fontFamily="@font/sofia_regular"
         android:padding="16dp"
         android:textSize="56sp"
