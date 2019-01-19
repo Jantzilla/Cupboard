@@ -13,13 +13,6 @@
     android:layout_marginBottom="8dp"
     tools:context=".DetailCupboardFragment">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/iv_category_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:riv_corner_radius="16dp"/>
-
     <View
         android:id="@+id/view_screen"
         android:layout_width="match_parent"
