@@ -136,6 +136,6 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     @Override
     public void onSearch(String query) {
-        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(1).itemView, R.drawable.ingredients);
+        startFragmentTransaction(0, recyclerView.findViewHolderForAdapterPosition(1).itemView, "ingredients");
     }
 }
