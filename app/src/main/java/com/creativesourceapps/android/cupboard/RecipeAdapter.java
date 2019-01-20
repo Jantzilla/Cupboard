@@ -52,7 +52,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull final RecipeViewHolder recipeViewHolder, int i) {
         recipeViewHolder.titleTextView.setText(recipes.get(i).title);
         if(type.equals("Recipes"))
-            recipeViewHolder.buttonImageView.setImageResource(R.drawable.bookmark);
+            recipeViewHolder.buttonImageView.setImageResource(R.drawable.add_cookbook);
         else
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.delete);
 
