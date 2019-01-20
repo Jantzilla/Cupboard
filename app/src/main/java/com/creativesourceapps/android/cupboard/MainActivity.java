@@ -1,18 +1,26 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.animation.ValueAnimator;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.view.menu.MenuItemImpl;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -28,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Recipe recipe;
     private MenuItemImpl menuElement;
     private FrameLayout recipes, cupboard, cookbook, groceries;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -151,6 +160,43 @@ public class MainActivity extends AppCompatActivity {
         setFloatingSearchView("Cookbook");
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
+
+        final DrawerArrowDrawable drawable = new DrawerArrowDrawable(this);
+        drawable.setColor(Color.WHITE);
+        final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_close);
+        floatingActionButton.setImageDrawable(drawable);
+
+        final ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override public void onAnimationUpdate(ValueAnimator animation) {
+                drawable.setProgress((Float)animation.getAnimatedValue());
+                floatingActionButton.setTranslationX((Float)animation.getAnimatedValue() * (-700));
+            }
+        });
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                null,
+                0,
+                0
+        ) {
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                animator.setCurrentFraction(slideOffset);
+                super.onDrawerSlide(drawerView, slideOffset);
+            }
+        };
+        drawerLayout.setDrawerListener(mDrawerToggle);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawers();
+            }
+        });
 
         recipes.setOnClickListener(new View.OnClickListener() {
             @Override
