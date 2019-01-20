@@ -26,6 +26,7 @@
             android:id="@+id/grid_item_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="200dp"
             android:background="@drawable/gradient_background"
             tools:text="Recipe Name"
             android:fontFamily="@font/marmelad_regular"
@@ -33,6 +34,7 @@
             android:padding="16dp"
             android:layout_margin="8dp"
             android:layout_gravity="top|start"
+            android:gravity="center"
             android:textSize="32sp"/>
 
         <ImageView
