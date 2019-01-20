@@ -22,7 +22,8 @@
             android:id="@+id/iv_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:padding="16dp"
+            android:scaleType="fitCenter"/>
 
         <TextView
             android:id="@+id/tv_category_name"
