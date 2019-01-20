@@ -36,23 +36,39 @@
 
         <ImageView
             android:id="@+id/iv_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:padding="8dp"
             android:background="@drawable/recipe_list_icon_background"
             android:layout_gravity="top|end"
             android:src="@drawable/ic_launcher_foreground"/>
 
-        <TextView
-            android:id="@+id/tv_availability"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ingredient_available_background"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_gravity="bottom|end"
-            android:gravity="center"
-            tools:text="5/10"
-            android:textSize="18sp"
-            android:textColor="#ffffff"/>
+            android:background="@drawable/ingredient_available_background">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:src="@drawable/add_ingredients"/>
+
+            <TextView
+                android:id="@+id/tv_availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:text="5/10"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
 
     </FrameLayout>
 
