@@ -54,7 +54,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         if(type.equals("Recipes"))
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.add_cookbook);
         else
-            recipeViewHolder.buttonImageView.setImageResource(R.drawable.delete);
+            recipeViewHolder.buttonImageView.setImageResource(R.drawable.minus_cookbook);
 
         Glide.with(context).load(recipes.get(i).media).into(new SimpleTarget<Drawable>() {
             @Override
