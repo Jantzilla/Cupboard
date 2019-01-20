@@ -54,43 +54,43 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
                 cupboardViewHolder.textView.setVisibility(View.VISIBLE);
                 break;
             case 8:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.wine);
                 cupboardViewHolder.imageView.setTag("wine");
                 break;
             case 7:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.spices);
                 cupboardViewHolder.imageView.setTag("spices");
                 break;
             case 6:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.bread);
                 cupboardViewHolder.imageView.setTag("bread");
                 break;
             case 9:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.olive_oil);
                 cupboardViewHolder.imageView.setTag("oil");
                 break;
             case 10:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.cans);
                 cupboardViewHolder.imageView.setTag("cans");
                 break;
             case 5:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.snacks);
                 cupboardViewHolder.imageView.setTag("snacks");
                 break;
             case 4:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.cheese);
                 cupboardViewHolder.imageView.setTag("dairy");
                 break;
             case 2:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.pasta);
                 cupboardViewHolder.imageView.setTag("pasta");
                 break;
             case 3:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.produce);
                 cupboardViewHolder.imageView.setTag("produce");
                 break;
             case 1:
-                cupboardViewHolder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                cupboardViewHolder.imageView.setImageResource(R.drawable.meat);
                 cupboardViewHolder.imageView.setTag("meat");
                 break;
         }
