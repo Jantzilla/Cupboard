@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,47 +51,59 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
 
         switch (i) {
             case 0:
+                cupboardViewHolder.imageView.setVisibility(View.GONE);
                 cupboardViewHolder.imageView.setTag("ingredients");
                 cupboardViewHolder.textView.setVisibility(View.VISIBLE);
+                cupboardViewHolder.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,32);
                 break;
             case 8:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.wine);
+                cupboardViewHolder.textView.setText("Spirits & Beverages");
                 cupboardViewHolder.imageView.setTag("wine");
                 break;
             case 7:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.spices);
+                cupboardViewHolder.textView.setText("Spices & Baking");
                 cupboardViewHolder.imageView.setTag("spices");
                 break;
             case 6:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.bread);
+                cupboardViewHolder.textView.setText("Bread & Grains");
                 cupboardViewHolder.imageView.setTag("bread");
                 break;
             case 9:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.olive_oil);
+                cupboardViewHolder.textView.setText("Sauces & Vinegar");
                 cupboardViewHolder.imageView.setTag("oil");
                 break;
             case 10:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.cans);
+                cupboardViewHolder.textView.setText("Soups & Canned");
                 cupboardViewHolder.imageView.setTag("cans");
                 break;
             case 5:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.snacks);
+                cupboardViewHolder.textView.setText("Snacks & Candy");
                 cupboardViewHolder.imageView.setTag("snacks");
                 break;
             case 4:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.cheese);
+                cupboardViewHolder.textView.setText("Dairy & Eggs");
                 cupboardViewHolder.imageView.setTag("dairy");
                 break;
             case 2:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.pasta);
+                cupboardViewHolder.textView.setText("Pasta & Rice");
                 cupboardViewHolder.imageView.setTag("pasta");
                 break;
             case 3:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.produce);
+                cupboardViewHolder.textView.setText("Fruits & Vegetables");
                 cupboardViewHolder.imageView.setTag("produce");
                 break;
             case 1:
                 cupboardViewHolder.imageView.setImageResource(R.drawable.meat);
+                cupboardViewHolder.textView.setText("Meat & Seafood");
                 cupboardViewHolder.imageView.setTag("meat");
                 break;
         }
