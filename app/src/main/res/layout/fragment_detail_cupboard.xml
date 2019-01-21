@@ -16,12 +16,12 @@
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="8dp"
     card_view:cardPreventCornerOverlap="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".DetailCupboardFragment">
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DetailCupboardFragment">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tv_category"
