@@ -5,6 +5,7 @@
     android:id="@+id/cl_cupboard_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/category_background"
     android:layout_marginStart="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="64dp"
@@ -12,12 +13,6 @@
     android:layout_marginRight="8dp"
     android:layout_marginBottom="8dp"
     tools:context=".DetailCupboardFragment">
-
-    <View
-        android:id="@+id/view_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/rounded_scrim_background"/>
 
     <TextView
         android:id="@+id/tv_category"
