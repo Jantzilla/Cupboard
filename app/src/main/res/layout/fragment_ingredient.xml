@@ -39,7 +39,7 @@
         android:id="@+id/btn_use"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@drawable/rounded_black_background"
         android:text="Use Ingredients"
         android:textColor="#ffffff"
         android:textSize="18sp"
