@@ -140,15 +140,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                             for(int o = 1; o < 50; o++) {
                                 if(!resultObject.getString("strMeasure" + o).isEmpty()) {
                                     tempUnit = resultObject.getString("strMeasure" + o);
-                                    if(tempUnit.split(" ").length>1){
-
-                                        unit.add(tempUnit.substring(tempUnit.lastIndexOf(" ")+1));
-                                        quantity.add(tempUnit.substring(0, tempUnit.lastIndexOf(' ')));
-                                    }
-                                    else{
-                                        quantity.add("1");
-                                        unit.add(tempUnit);
-                                    }
+                                    String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                                    quantity.add(quantityUnit[0]);
+                                    unit.add(quantityUnit[1]);
                                 } else
                                     break;
                             }

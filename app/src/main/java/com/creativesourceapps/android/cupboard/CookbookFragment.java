@@ -113,15 +113,9 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             for(int o = 1; o < 50; o++) {
                 if(!jsonObject.getString("strMeasure" + o).isEmpty()) {
                     tempUnit = jsonObject.getString("strMeasure" + o);
-                    if(tempUnit.split(" ").length>1){
-
-                        unit.add(tempUnit.substring(tempUnit.lastIndexOf(" ")+1));
-                        quantity.add(tempUnit.substring(0, tempUnit.lastIndexOf(' ')));
-                    }
-                    else{
-                        quantity.add("1");
-                        unit.add(tempUnit);
-                    }
+                    String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                    quantity.add(quantityUnit[0]);
+                    unit.add(quantityUnit[1]);
                 } else
                     break;
             }
