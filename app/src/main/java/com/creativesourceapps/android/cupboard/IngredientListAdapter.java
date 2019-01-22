@@ -48,10 +48,13 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         String uri = ingredientBaseUrl + ingredients.get(i).name + ".png";
         Glide.with(context).load(uri).into(viewHolder.ingredientImageView);
         viewHolder.nameTextView.setText(ingredients.get(i).name);
-        if(ingredients.get(i).quantity == null)
+        if(ingredients.get(i).quantity == null) {
             viewHolder.quantityTextView.setVisibility(View.INVISIBLE);
-        else
+            viewHolder.unitTextView.setVisibility(View.INVISIBLE);
+        } else {
             viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
+            viewHolder.unitTextView.setText(ingredients.get(i).unit);
+        }
 
         if(isRecipe && !getAvailability(ingredients.get(i).name))
             viewHolder.unavailableView.setVisibility(View.VISIBLE);
@@ -71,7 +74,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView ingredientImageView, availableImageView;
-        TextView nameTextView, quantityTextView;
+        TextView nameTextView, quantityTextView, unitTextView;
         View unavailableView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -80,6 +83,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             availableImageView = itemView.findViewById(R.id.iv_available);
             nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
             quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
+            unitTextView = itemView.findViewById(R.id.tv_ingredient_unit);
             unavailableView = itemView.findViewById(R.id.view_unavailable);
             itemView.setOnClickListener(this);
         }
