@@ -37,19 +37,33 @@
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
         app:layout_constraintTop_toTopOf="@id/iv_ingredient" />
 
-    <TextView
-        android:id="@+id/tv_ingredient_quantity"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:background="@drawable/ingredient_quantity_background"
-        android:textColor="#ffffff"
-        android:layout_marginTop="4dp"
-        android:padding="4dp"
-        android:text="1 lbs"
-        android:textSize="13sp"
         app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name"
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
-        app:layout_constraintEnd_toEndOf="@id/iv_ingredient"/>
+        app:layout_constraintEnd_toEndOf="@id/iv_ingredient"
+        android:layout_marginTop="4dp"
+        android:padding="4dp">
+        <TextView
+            android:id="@+id/tv_ingredient_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="4dp"
+            android:paddingRight="4dp"
+            android:textColor="#ffffff"
+            android:text="1"
+            android:textSize="13sp"/>
+        <TextView
+            android:id="@+id/tv_ingredient_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="lbs"
+            android:textSize="13sp"/>
+    </LinearLayout>
 
     <View
         android:id="@+id/view_unavailable"
