@@ -126,7 +126,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
             imageView = itemView.findViewById(R.id.iv_category);
             textView = itemView.findViewById(R.id.tv_category_name);
 
-            listItemLayout.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     clickListener.onItemClicked(getAdapterPosition(),listItemLayout, imageView.getTag());
