@@ -177,6 +177,7 @@
         android:layout_gravity="bottom|center"
         android:text="Use"
         android:textSize="16sp"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:visibility="gone"/>
 
 </FrameLayout>
