@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         setFloatingSearchView("Cookbook");
 
-        animateNavigation(cupboardView);
+        animateNavigation(cookbookView);
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
@@ -250,13 +250,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void animateNavigation(View view) {
 
-        if(navigation != null) {
+        if(navigation != null && !view.equals(navigation)) {
             transition = (TransitionDrawable) navigation.getBackground();
             transition.reverseTransition(300);
         }
 
-        transition = (TransitionDrawable) view.getBackground();
-        transition.reverseTransition(300);
+        if(!view.equals(navigation)) {
+            transition = (TransitionDrawable) view.getBackground();
+            transition.startTransition(300);
+        }
 
         navigation = view;
     }
