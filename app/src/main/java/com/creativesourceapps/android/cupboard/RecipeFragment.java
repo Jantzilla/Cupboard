@@ -242,7 +242,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                 savedRecipe = false;
                 break;
-            case R.id.grid_item_recipe:
+            default:
                 Recipe item_clicked = recipes.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
