@@ -2,6 +2,7 @@ package com.creativesourceapps.android.cupboard;
 
 import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +21,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingSearchView floatingSearchView;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private View view;
+    private View view, navigation, cupboardView, cookbookView, recipesView, groceriesView;
     private Fragment fragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private MenuItemImpl menuElement;
     private FrameLayout recipes, cupboard, cookbook, groceries;
     private ActionBarDrawerToggle mDrawerToggle;
+    private TransitionDrawable transition;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -149,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
         floatingSearchView = findViewById(R.id.floating_search_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation);
+        cupboardView = findViewById(R.id.view_cupboard);
+        cookbookView = findViewById(R.id.view_cookbook);
+        recipesView = findViewById(R.id.view_recipes);
+        groceriesView = findViewById(R.id.view_groceries);
         view = findViewById(R.id.transparent_scrim);
         recipes = findViewById(R.id.fl_recipes);
         cupboard = findViewById(R.id.fl_cupboard);
@@ -158,6 +163,8 @@ public class MainActivity extends AppCompatActivity {
         fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
         setFloatingSearchView("Cookbook");
+
+        animateNavigation(cupboardView);
 
         fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
 
@@ -201,40 +208,56 @@ public class MainActivity extends AppCompatActivity {
         recipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateNavigation(recipesView);
+                drawerLayout.closeDrawers();
                 fragment = new RecipeFragment();
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Recipes");
-                drawerLayout.closeDrawers();
             }
         });
         cupboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateNavigation(cupboardView);
+                drawerLayout.closeDrawers();
                 fragment = new CupboardFragment();
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Cupboard");
-                drawerLayout.closeDrawers();
             }
         });
         cookbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateNavigation(cookbookView);
+                drawerLayout.closeDrawers();
                 fragment = new CookbookFragment();
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Cookbook");
-                drawerLayout.closeDrawers();
             }
         });
         groceries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animateNavigation(groceriesView);
+                drawerLayout.closeDrawers();
                 fragment = new GroceriesFragment();
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Groceries");
-                drawerLayout.closeDrawers();
             }
         });
 
     }
 
+    private void animateNavigation(View view) {
+
+        if(navigation != null) {
+            transition = (TransitionDrawable) navigation.getBackground();
+            transition.reverseTransition(300);
+        }
+
+        transition = (TransitionDrawable) view.getBackground();
+        transition.reverseTransition(300);
+
+        navigation = view;
+    }
 }
