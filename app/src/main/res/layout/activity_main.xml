@@ -75,15 +75,10 @@
                     android:src="@drawable/mixed_meal"
                     android:scaleType="centerCrop"/>
                 <View
+                    android:id="@+id/view_recipes"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_border_background"/>
+                    android:background="@drawable/navigation_item_transition"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,15 +109,10 @@
                     android:src="@drawable/cupboard"
                     android:scaleType="centerCrop"/>
                 <View
+                    android:id="@+id/view_cupboard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_border_background"/>
+                    android:background="@drawable/navigation_item_transition"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,15 +143,10 @@
                     android:src="@drawable/cookbook"
                     android:scaleType="centerCrop"/>
                 <View
+                    android:id="@+id/view_cookbook"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_border_background"/>
+                    android:background="@drawable/navigation_item_transition"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,15 +177,10 @@
                     android:src="@drawable/groceries_row"
                     android:scaleType="centerCrop"/>
                 <View
+                    android:id="@+id/view_groceries"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_border_background"/>
+                    android:background="@drawable/navigation_item_transition"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
