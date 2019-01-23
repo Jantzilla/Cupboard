@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,14 +26,15 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
-    private TextView categoryTextView;
-    private String category, selection, sortOrder;
+    private TextView categoryTextView, emptyTextView;
+    private String category, selection, sortOrder, message, isEmpty = "is empty.";
     private CupboardDbHelper dbHelper;
     private SQLiteDatabase db;
     private String[] projection, selectionArgs;
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
+    private ProgressBar pb;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -50,6 +52,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         categoryTextView = view.findViewById(R.id.tv_category);
         imageView = view.findViewById(R.id.iv_collapse);
         recyclerView = view.findViewById(R.id.rv_cupboard_detail);
+        pb = view.findViewById(R.id.pb);
+        emptyTextView = view.findViewById(R.id.tv_empty_message);
         fab = view.findViewById(R.id.fab_add);
         gridLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -95,6 +99,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
 
         if(category.equals("All Ingredients")) {
+            message = R.string.app_name + " " + isEmpty;
+            emptyTextView.setText(message);
             selection = null;
             selectionArgs = null;
             if(!query.equals("")) {
@@ -102,6 +108,8 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
                 selectionArgs = new String[]{"%" + query + "%"};
             }
         } else {
+            message = category + "\n" + isEmpty;
+            emptyTextView.setText(message);
             selection = CupboardContract.Ingredients.COLUMN_CATEGORY + " = ?";
             selectionArgs = new String[]{category};
             if(!query.equals("")) {
@@ -131,8 +139,14 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         }
         cursor.close();
 
-        adapter = new IngredientListAdapter(getContext(), false, ingredientsList, DetailCupboardFragment.this);
-        recyclerView.setAdapter(adapter);
+        if(ingredientsList.size() == 0)
+            pb.setVisibility(View.GONE);
+        else {
+            emptyTextView.setVisibility(View.GONE);
+            pb.setVisibility(View.GONE);
+            adapter = new IngredientListAdapter(getContext(), false, ingredientsList, DetailCupboardFragment.this);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     @Override
