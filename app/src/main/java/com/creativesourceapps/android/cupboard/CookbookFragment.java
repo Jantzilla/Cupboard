@@ -2,7 +2,6 @@ package com.creativesourceapps.android.cupboard;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +25,8 @@ import java.util.Locale;
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
     private RecyclerView recyclerView;
+    private TextView emptyTextView;
+    private ProgressBar pb;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
     private Cursor cursor;
@@ -52,6 +55,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         };
 
         recyclerView = view.findViewById(R.id.cookbook_grid_view);
+        emptyTextView = view.findViewById(R.id.tv_empty_message);
+        pb = view.findViewById(R.id.pb);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
         layoutManager = new GridLayoutManager(getContext(), 1);
@@ -143,11 +148,17 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
         }
 
-        recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this, "Cookbook");
+        if(recipes.size() == 0)
+            pb.setVisibility(View.GONE);
+        else {
+            pb.setVisibility(View.GONE);
+            emptyTextView.setVisibility(View.GONE);
+            recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this, "Cookbook");
 
-        recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.setAdapter(recipeAdapter);
+            recyclerView.setAdapter(recipeAdapter);
+        }
 
     }
 
@@ -181,6 +192,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                         recipes.remove(itemClicked);
                         recipeAdapter.remove(itemClicked);
 
+                        if(recipes.size() == 0)
+                            emptyTextView.setVisibility(View.VISIBLE);
                     }
                 });
                 alertDialog.show();
