@@ -342,6 +342,8 @@ public class IngredientAddFragment extends Fragment {
                                 ingredientEditText.setText("");
                                 hintEditText.setText("");
                                 quantityEditText.setText("");
+                                ingredientEditText.setError(null);
+                                quantityEditText.setError(null);
 
                                 Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
                             }
