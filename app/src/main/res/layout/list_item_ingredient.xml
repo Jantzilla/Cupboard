@@ -45,14 +45,17 @@
         app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name"
         app:layout_constraintStart_toStartOf="@id/iv_ingredient"
         app:layout_constraintEnd_toEndOf="@id/iv_ingredient"
-        android:layout_marginTop="4dp"
-        android:padding="4dp">
+        android:layout_marginTop="4dp">
         <TextView
             android:id="@+id/tv_ingredient_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="4dp"
-            android:paddingRight="4dp"
+            android:paddingStart="4dp"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="2dp"
+            android:paddingRight="2dp"
             android:textColor="#ffffff"
             android:text="1"
             android:textSize="13sp"/>
@@ -60,6 +63,12 @@
             android:id="@+id/tv_ingredient_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingEnd="4dp"
+            android:paddingRight="4dp"
             android:textColor="#ffffff"
             android:text="lbs"
             android:textSize="13sp"/>
