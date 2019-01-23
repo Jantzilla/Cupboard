@@ -5,11 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".CookbookFragment">
 
+    <TextView
+        android:id="@+id/tv_empty_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/marmelad_regular"
+        android:text="Cookbook is empty."/>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#ffffff"/>
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cookbook_grid_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:layout_marginTop="?attr/actionBarSize"
         android:adjustViewBounds="true"
         android:columnWidth="180dp"
