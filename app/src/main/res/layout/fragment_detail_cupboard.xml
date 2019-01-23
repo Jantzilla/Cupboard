@@ -49,6 +49,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_empty_message"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/marmelad_regular"
+        tools:text="Category is empty."/>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#ffffff"
+        android:visibility="gone"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_cupboard_detail"
