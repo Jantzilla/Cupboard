@@ -109,7 +109,7 @@ public class StepPagerFragment extends Fragment {
 
             @Override
             public void onPageSelected(int i) {
-                step = "Step " + (i + 1);
+                step = String.valueOf(i + 1);
                 stepTextView.setText(step);
                 if(i == mid && !isUsed) {
                     TransitionManager.beginDelayedTransition(container, transition);
