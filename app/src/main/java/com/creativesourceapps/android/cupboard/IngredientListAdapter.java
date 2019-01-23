@@ -49,8 +49,8 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         Glide.with(context).load(uri).into(viewHolder.ingredientImageView);
         viewHolder.nameTextView.setText(ingredients.get(i).name);
         if(ingredients.get(i).quantity == null) {
-            viewHolder.quantityTextView.setVisibility(View.INVISIBLE);
-            viewHolder.unitTextView.setVisibility(View.INVISIBLE);
+            viewHolder.quantityTextView.setVisibility(View.GONE);
+            viewHolder.unitTextView.setVisibility(View.GONE);
         } else {
             viewHolder.quantityTextView.setText(ingredients.get(i).quantity);
             viewHolder.unitTextView.setText(ingredients.get(i).unit);
