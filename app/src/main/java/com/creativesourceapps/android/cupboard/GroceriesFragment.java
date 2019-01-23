@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -34,6 +36,8 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
+    private ProgressBar pb;
+    private TextView emptyTextView;
 
     public GroceriesFragment() {
         // Required empty public constructor
@@ -45,6 +49,8 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         View view = inflater.inflate(R.layout.fragment_groceries, container, false);
         roundedImageView = view.findViewById(R.id.iv_category_background);
         recyclerView = view.findViewById(R.id.rv_groceries);
+        pb = view.findViewById(R.id.pb);
+        emptyTextView = view.findViewById(R.id.tv_empty_message);
         fab = view.findViewById(R.id.fab_add);
         gridLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -111,8 +117,14 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         }
         cursor.close();
 
-        adapter = new IngredientListAdapter(getContext(), false, ingredientsList, GroceriesFragment.this);
-        recyclerView.setAdapter(adapter);
+        if(ingredientsList.size() == 0)
+            pb.setVisibility(View.GONE);
+        else {
+            emptyTextView.setVisibility(View.GONE);
+            pb.setVisibility(View.GONE);
+            adapter = new IngredientListAdapter(getContext(), false, ingredientsList, GroceriesFragment.this);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     @Override
