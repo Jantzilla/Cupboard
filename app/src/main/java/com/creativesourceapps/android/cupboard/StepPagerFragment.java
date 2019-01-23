@@ -71,7 +71,7 @@ public class StepPagerFragment extends Fragment {
                 }
             }
         });
-        stepPagerAdapter = new StepPagerAdapter(getActivity().getSupportFragmentManager());
+        stepPagerAdapter = new StepPagerAdapter(getChildFragmentManager());
         wormDotsIndicator = view.findViewById(R.id.worm_dots_indicator);
 
         useButton.setOnClickListener(new View.OnClickListener() {
