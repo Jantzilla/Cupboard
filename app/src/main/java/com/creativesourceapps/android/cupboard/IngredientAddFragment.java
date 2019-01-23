@@ -19,9 +19,11 @@ import android.text.style.ForegroundColorSpan;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -91,6 +93,18 @@ public class IngredientAddFragment extends Fragment {
         ingredientImageView = view.findViewById(R.id.iv_ingredient);
         useButton = view.findViewById(R.id.btn_use);
         usedImageView = view.findViewById(R.id.iv_used);
+
+        ingredientEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_SEND) {
+                    ingredientEditText.setText(hintEditText.getText().toString());
+                    ingredientEditText.setSelection(ingredientEditText.getText().length());
+                    return true;
+                }
+                return false;
+            }
+        });
 
         usedTransitionSet = new TransitionSet();
         transitionFade = new Fade();
