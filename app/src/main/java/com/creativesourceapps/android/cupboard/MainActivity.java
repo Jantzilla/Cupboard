@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.view.menu.MenuItemImpl;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout recipes, cupboard, cookbook, groceries;
     private ActionBarDrawerToggle mDrawerToggle;
     private TransitionDrawable transition;
+    public static int availableCount;
 
     public interface SearchChangeListener {
         void onSearch(String query);
@@ -108,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
+        MainActivity.recipe = recipe;
+        availableCount = 0;
+        availableCount = RecipeUtils.checkAvailable(this, recipe.ingredients);
     }
 
     public Recipe getRecipe() {
@@ -116,13 +120,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void useIngredients(int index) {
-        if(index == -1) {
-            for(int i = 0; i < recipe.used.size(); i++) {
-                recipe.used.set(i, true);
-            }
-        } else {
-            recipe.used.set(index, true);
-        }
+        recipe.used.set(index, true);
+        availableCount--;
+
+        if(availableCount == 0)
+            MainActivity.recipe.ingredientsUsed = 1;
     }
 
     @Override
