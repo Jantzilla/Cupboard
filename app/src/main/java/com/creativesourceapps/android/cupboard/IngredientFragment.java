@@ -51,11 +51,15 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         useButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IngredientAddFragment.useAllIngredients(getContext(), ingredients);
+
+                for (Integer index : IngredientAddFragment.useAllIngredients(getContext(), ingredients)) {
+                    ingredients.get(index).used = true;
+                }
 
                 isUsed = true;
                 TransitionManager.beginDelayedTransition(container, transition);
                 useButton.setVisibility(View.GONE);
+                adapter.notifyDataSetChanged();
             }
         });
 
