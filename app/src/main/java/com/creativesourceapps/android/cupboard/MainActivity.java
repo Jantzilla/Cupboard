@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
-    private Recipe recipe;
+    public static Recipe recipe;
     private MenuItemImpl menuElement;
     private FrameLayout recipes, cupboard, cookbook, groceries;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             recipe.used.set(index, true);
-            recipe.ingredientsUsed = 1;
         }
     }
 
