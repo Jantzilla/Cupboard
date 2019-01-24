@@ -1,7 +1,11 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,6 +82,44 @@ public class RecipeUtils {
         String[] quantityUnit = result.split("\\s+");
 
         return quantityUnit;
+    }
+
+    public static int checkAvailable(Context context, ArrayList<String> ingredients) {
+        SQLiteDatabase db;
+        CupboardDbHelper dbHelper = new CupboardDbHelper(context);
+        String[] projection, selectionArgs;
+        String selection;
+        Cursor cursor;
+        int count = 0;
+        db = dbHelper.getWritableDatabase();
+        projection = new String[] {CupboardContract.Ingredients.COLUMN_NAME,
+                CupboardContract.Ingredients.COLUMN_UNIT,
+                CupboardContract.Ingredients.COLUMN_QUANTITY,
+                CupboardContract.Ingredients.COLUMN_CATEGORY};
+
+        for(int i = 0; i < ingredients.size(); i++) {
+
+            selectionArgs = new String[]{ingredients.get(i)};
+            selection = CupboardContract.AllIngredients.COLUMN_NAME + " = ?";
+            cursor = db.query(
+                    CupboardContract.Ingredients.TABLE_NAME,
+                    projection,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+
+            if(cursor.moveToFirst()) {
+                count++;
+            }
+
+            cursor.close();
+
+        }
+
+        return count;
     }
 
 }
