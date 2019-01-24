@@ -99,7 +99,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         }
     }
 
-    private boolean getAvailability(String name){
+    private boolean getAvailability(String name){  //TODO Consolidate
         boolean available = false;
         String selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         String[] projection, selectionArgs;
