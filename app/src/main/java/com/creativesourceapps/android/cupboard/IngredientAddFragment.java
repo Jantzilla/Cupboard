@@ -490,7 +490,7 @@ public class IngredientAddFragment extends Fragment {
         String selection;
         selection = CupboardContract.Ingredients.COLUMN_NAME;
         db = dbHelper.getWritableDatabase();
-
+        MainActivity.recipe.ingredientsUsed = 1;
 
         for(int i = 0; i < ingredients.size(); i++) {
 
