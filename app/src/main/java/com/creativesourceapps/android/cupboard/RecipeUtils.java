@@ -122,4 +122,112 @@ public class RecipeUtils {
         return count;
     }
 
+    public static double getConversion(String name, int quantity, String startUnit, String endUnit) {
+
+        // MASS CONVERSIONS
+        final double KG_TO_LBS = 2.20;
+        final double KG_TO_OZ = 35.274;
+        final double G_TO_LBS = 0.0022;
+        final double G_TO_OZ = 0.035;
+        final double OZ_TO_LBS = 0.0625;
+
+        // VOLUME CONVERSIONS
+        final double CUP_TO_FL_OZ = 8;
+        final double CUP_TO_GAL = 0.0625;
+        final double QT_TO_FL_OZ = 32;
+        final double QT_TO_GAL = 0.25;
+        final double PT_TO_FL_OZ = 16;
+        final double PT_TO_GAL = 0.125;
+        final double FL_OZ_TO_GAL = 0.0078;
+        final double TBSP_TO_GAL = 0.0039;
+        final double TBSP_TO_FL_OZ = 0.5;
+        final double TSP_TO_GAL = 0.0013;
+        final double TSP_TO_FL_OZ = 0.166;
+        final double L_TO_GAL = 0.264;
+        final double L_TO_FL_OZ = 33.81;
+        final double ML_TO_GAL = 0.000264;
+        final double ML_TO_FL_OZ = 0.0338;
+
+        if(startUnit.equals(endUnit))
+            return quantity;
+
+        switch (startUnit) {
+            case "kg":
+                switch (endUnit) {
+                    case "lbs":
+                        return quantity * KG_TO_LBS;
+                    case "oz":
+                        return quantity * KG_TO_OZ;
+                }
+            case "g":
+                switch (endUnit) {
+                    case "lbs":
+                        return quantity * G_TO_LBS;
+                    case "oz":
+                        return quantity * G_TO_OZ;
+                }
+            case "oz":
+                switch (endUnit) {
+                    case "lbs":
+                        return quantity * OZ_TO_LBS;
+                }
+            case "cup":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * CUP_TO_FL_OZ;
+                    case "gal":
+                        return quantity * CUP_TO_GAL;
+                }
+            case "qt":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * QT_TO_FL_OZ;
+                    case "gal":
+                        return quantity * QT_TO_GAL;
+                }
+            case "pt":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * PT_TO_FL_OZ;
+                    case "gal":
+                        return quantity * PT_TO_GAL;
+                }
+            case "tbsp":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * TBSP_TO_FL_OZ;
+                    case "gal":
+                        return quantity * TBSP_TO_GAL;
+                }
+            case "tsp":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * TSP_TO_FL_OZ;
+                    case "gal":
+                        return quantity * TSP_TO_GAL;
+                }
+            case "l":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * L_TO_FL_OZ;
+                    case "gal":
+                        return quantity * L_TO_GAL;
+                }
+            case "ml":
+                switch (endUnit) {
+                    case "fl oz":
+                        return quantity * ML_TO_FL_OZ;
+                    case "gal":
+                        return quantity * ML_TO_GAL;
+                }
+            case "fl oz":
+                switch (endUnit) {
+                    case "gal":
+                        return quantity * FL_OZ_TO_GAL;
+                }
+        }
+
+        return quantity;
+    }
+
 }
