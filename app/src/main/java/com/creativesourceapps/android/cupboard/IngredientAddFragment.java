@@ -483,7 +483,8 @@ public class IngredientAddFragment extends Fragment {
 
     }
 
-    public static void useAllIngredients(Context context, ArrayList<Ingredient> ingredients) {
+    public static ArrayList<Integer> useAllIngredients(Context context, ArrayList<Ingredient> ingredients) {
+        ArrayList<Integer> usedIndices = new ArrayList<>();
         SQLiteDatabase db;
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String[] selectionArgs;
@@ -499,8 +500,10 @@ public class IngredientAddFragment extends Fragment {
             Ingredient ingredient;
             ingredient = searchIngredients(context, CupboardContract.Ingredients.TABLE_NAME, ingredients.get(i).name);
 
-            if(!ingredient.name.equals(""))
-                ((MainActivity)context).useIngredients(i);
+            if(!ingredient.name.equals("")) {
+                ((MainActivity) context).useIngredients(i);
+                usedIndices.add(i);
+            }
 
 //            ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
 //            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(ingredients.get(i).quantity));
@@ -510,6 +513,8 @@ public class IngredientAddFragment extends Fragment {
 //                    selection,
 //                    selectionArgs);
         }
+
+        return usedIndices;
     }
 
     @Override
