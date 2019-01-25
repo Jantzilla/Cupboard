@@ -82,6 +82,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
             ingredient.unit = recipe.unit.get(i);
             ingredient.quantity = recipe.quantity.get(i);
             ingredient.used = recipe.used.get(i);
+            ingredient.available = recipe.available.get(i);
             ingredients.add(ingredient);
         }
         adapter = new IngredientListAdapter(getContext(), true, ingredients, IngredientFragment.this);
