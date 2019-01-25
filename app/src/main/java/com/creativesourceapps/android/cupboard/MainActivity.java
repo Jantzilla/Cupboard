@@ -112,7 +112,10 @@ public class MainActivity extends AppCompatActivity {
     public void setRecipe(Recipe recipe) {
         MainActivity.recipe = recipe;
         availableCount = 0;
-        availableCount = RecipeUtils.checkAvailable(this, recipe.ingredients);
+        for (int index : RecipeUtils.checkAvailable(this, recipe.ingredients, recipe.quantity, recipe.unit)) {
+            MainActivity.recipe.available.set(index, true);
+            availableCount++;
+        }
     }
 
     public Recipe getRecipe() {
