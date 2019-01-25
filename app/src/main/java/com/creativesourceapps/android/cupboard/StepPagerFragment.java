@@ -98,6 +98,7 @@ public class StepPagerFragment extends Fragment {
             ingredient.category = "Ingredients";
             ingredient.unit = recipe.unit.get(i);
             ingredient.quantity = recipe.quantity.get(i);
+            ingredient.available = recipe.available.get(i);
             ingredients.add(ingredient);
         }
 
@@ -111,7 +112,7 @@ public class StepPagerFragment extends Fragment {
             public void onPageSelected(int i) {
                 step = String.valueOf(i + 1);
                 stepTextView.setText(step);
-                if(i == mid && !isUsed) {
+                if(i == mid && !isUsed && MainActivity.availableCount != 0) {
                     TransitionManager.beginDelayedTransition(container, transition);
                     visible = !visible;
                     useButton.setVisibility(visible ? View.VISIBLE : View.GONE);
