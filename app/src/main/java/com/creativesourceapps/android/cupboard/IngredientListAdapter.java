@@ -56,7 +56,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             viewHolder.unitTextView.setText(ingredients.get(i).unit);
         }
 
-        if(isRecipe && !getAvailability(ingredients.get(i).name))
+        if(isRecipe && !ingredients.get(i).available)
             viewHolder.unavailableView.setVisibility(View.VISIBLE);
         else
             viewHolder.unavailableView.setVisibility(View.GONE);
@@ -98,33 +98,4 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
             itemClickListener.onItemClickListener(getAdapterPosition(), name, quantity, unit, availability);
         }
     }
-
-    private boolean getAvailability(String name){  //TODO Consolidate
-        boolean available = false;
-        String selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
-        String[] projection, selectionArgs;
-        SQLiteDatabase db;
-        Cursor cursor;
-        CupboardDbHelper dbHelper;
-        dbHelper = new CupboardDbHelper(context);
-        db = dbHelper.getReadableDatabase();
-
-        projection = new String[] {CupboardContract.Ingredients.COLUMN_NAME};
-        selectionArgs = new String[] {name};
-
-        cursor = db.query(
-                CupboardContract.Ingredients.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null);
-
-        if(cursor.getCount() > 0)
-            available = true;
-
-        return available;
-    }
-
 }
