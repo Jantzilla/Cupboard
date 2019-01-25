@@ -286,10 +286,10 @@ public class IngredientAddFragment extends Fragment {
                         );
                         getActivity().onBackPressed();
 
-                    } if(type.equals("shop")) {
+                    } else if(type.equals("shop")) {
                         addGroceryItem();
 
-                    } if(type.equals("detail")) {
+                    } else if(type.equals("detail")) {
                         ContentValues values = new ContentValues();
                         values.put(CupboardContract.AllIngredients.COLUMN_SHOPPING, 1);
                         db.update(
@@ -363,7 +363,7 @@ public class IngredientAddFragment extends Fragment {
         String name = titleTextView.getText().toString();
         String quantity = quantityEditText.getText().toString();
         String unit = unitTextView.getText().toString();
-        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         selectionArgs = new String[]{name};
         Ingredient ingredient;
 
@@ -454,11 +454,12 @@ public class IngredientAddFragment extends Fragment {
         String name = titleTextView.getText().toString();
         String quantity = quantityTextView.getText().toString();
         String unit = unitTextView.getText().toString();
-        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         selectionArgs = new String[]{name};
 
         Ingredient ingredient;
         ingredient = searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, name);
+        double finalQuantity = RecipeUtils.getConversion(name, Double.valueOf(quantity),unit,ingredient.unit);
 
         if(!ingredient.name.equals(""))
             ((MainActivity)getActivity()).useIngredients(index);
@@ -471,15 +472,15 @@ public class IngredientAddFragment extends Fragment {
 
         isUsed = true;
 
-//        ContentValues values = new ContentValues();                            //TODO: Change ingredients.quantity value to Int parsable String
-//        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(quantity));
-//        db.update(
-//                CupboardContract.Ingredients.TABLE_NAME,
-//                values,
-//                selection,
-//                selectionArgs);
-//
-//        getActivity().onBackPressed();
+        ContentValues values = new ContentValues();                            //TODO: Change ingredients.quantity value to Int parsable String
+        values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, String.valueOf(Double.valueOf(ingredient.quantity) - finalQuantity));
+        db.update(
+                CupboardContract.Ingredients.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        getActivity().onBackPressed();
 
     }
 
@@ -489,7 +490,7 @@ public class IngredientAddFragment extends Fragment {
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String[] selectionArgs;
         String selection;
-        selection = CupboardContract.Ingredients.COLUMN_NAME;
+        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         db = dbHelper.getWritableDatabase();
         MainActivity.recipe.ingredientsUsed = 1;
 
@@ -503,15 +504,17 @@ public class IngredientAddFragment extends Fragment {
             if(!ingredient.name.equals("")) {
                 ((MainActivity) context).useIngredients(i);
                 usedIndices.add(i);
-            }
+                double finalQuantity = RecipeUtils.getConversion(ingredients.get(i).name,
+                        Double.valueOf(ingredients.get(i).quantity),ingredients.get(i).unit,ingredient.unit);
 
-//            ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
-//            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(ingredient.quantity) - Integer.valueOf(ingredients.get(i).quantity));
-//            db.update(
-//                    CupboardContract.Ingredients.TABLE_NAME,
-//                    values,
-//                    selection,
-//                    selectionArgs);
+                ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
+                values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, String.valueOf(Double.valueOf(ingredient.quantity) - finalQuantity));
+                db.update(
+                        CupboardContract.Ingredients.TABLE_NAME,
+                        values,
+                        selection,
+                        selectionArgs);
+            }
         }
 
         return usedIndices;
