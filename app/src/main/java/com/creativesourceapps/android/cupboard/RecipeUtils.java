@@ -84,7 +84,8 @@ public class RecipeUtils {
         return quantityUnit;
     }
 
-    public static int checkAvailable(Context context, ArrayList<String> ingredients) {
+    public static ArrayList<Integer> checkAvailable(Context context, ArrayList<String> ingredients, ArrayList<String> quantities, ArrayList<String> units) {
+        ArrayList<Integer> indices = new ArrayList<>();
         SQLiteDatabase db;
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String[] projection, selectionArgs;
@@ -112,17 +113,23 @@ public class RecipeUtils {
             );
 
             if(cursor.moveToFirst()) {
-                count++;
+                double available = Double.valueOf(cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY)));
+                double quantity = Double.valueOf(quantities.get(i));
+                String startUnit = units.get(i);
+                String endUnit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
+
+                if(available >= getConversion(ingredients.get(i),quantity,startUnit,endUnit))
+                    indices.add(i);
             }
 
             cursor.close();
 
         }
 
-        return count;
+        return indices;
     }
 
-    public static double getConversion(String name, int quantity, String startUnit, String endUnit) {
+    public static double getConversion(String name, double quantity, String startUnit, String endUnit) {
 
         // MASS CONVERSIONS
         final double KG_TO_LBS = 2.20;
