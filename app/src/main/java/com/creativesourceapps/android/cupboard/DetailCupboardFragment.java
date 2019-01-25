@@ -99,7 +99,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
 
         if(category.equals("All Ingredients")) {
-            message = R.string.app_name + " " + isEmpty;
+            message = getString(R.string.app_name) + " " + isEmpty;
             emptyTextView.setText(message);
             selection = null;
             selectionArgs = null;
