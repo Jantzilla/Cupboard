@@ -50,13 +50,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     @Override
     public void onBindViewHolder(@NonNull final RecipeViewHolder recipeViewHolder, int i) {
-        recipeViewHolder.titleTextView.setText(recipes.get(i).title);
+        Recipe recipe = recipes.get(i);
+
+        recipeViewHolder.titleTextView.setText(recipe.title);
         if(type.equals("Recipes"))
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.add_cookbook);
         else
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.minus_cookbook);
 
-        Glide.with(context).load(recipes.get(i).media).into(new SimpleTarget<Drawable>() {
+        Glide.with(context).load(recipe.media).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -65,13 +67,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             }
         });
 
-        for(int o = 0; o < recipes.get(i).ingredients.size(); o++) {
-            if(!IngredientAddFragment.searchIngredients(context,CupboardContract.Ingredients.
-                    TABLE_NAME,recipes.get(i).ingredients.get(o)).name.equals("")) {
-                recipeViewHolder.availableCount++;
-            }
-        }
-        String ingredientFraction = recipeViewHolder.availableCount + "/" + recipes.get(i).ingredients.size();
+        recipeViewHolder.availableCount = RecipeUtils.checkAvailable(context,recipe.ingredients,recipe.quantity,recipe.unit).size();
+
+        String ingredientFraction = recipeViewHolder.availableCount + "/" + recipe.ingredients.size();
 
         recipeViewHolder.availabilityTextView.setText(ingredientFraction);
     }
