@@ -103,7 +103,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
 
                 if(!isUsed) {
 
-                    if (gridLayoutManager.findLastVisibleItemPosition() == ingredients.size() - 1) {
+                    if (gridLayoutManager.findLastVisibleItemPosition() == ingredients.size() - 1 && MainActivity.availableCount != 0) {
                         ((MainActivity) getActivity()).setScrimVisibility(true);
                         TransitionManager.beginDelayedTransition(recyclerView, transition);
                         useButton.setVisibility(View.VISIBLE);
