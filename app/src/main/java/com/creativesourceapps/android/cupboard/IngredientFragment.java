@@ -48,6 +48,9 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         fragmentManager = getActivity().getSupportFragmentManager();
         transition = new Slide(Gravity.START);
 
+        if(getArguments() == null)
+            fab.hide();
+
         useButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,11 +105,11 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
 
                     if (gridLayoutManager.findLastVisibleItemPosition() == ingredients.size() - 1) {
                         ((MainActivity) getActivity()).setScrimVisibility(true);
-                        TransitionManager.beginDelayedTransition(container, transition);
+                        TransitionManager.beginDelayedTransition(recyclerView, transition);
                         useButton.setVisibility(View.VISIBLE);
                     } else {
                         ((MainActivity) getActivity()).setScrimVisibility(false);
-                        TransitionManager.beginDelayedTransition(container, transition);
+                        TransitionManager.beginDelayedTransition(recyclerView, transition);
                         useButton.setVisibility(View.GONE);
                     }
                 }
