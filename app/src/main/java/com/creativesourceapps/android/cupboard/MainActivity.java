@@ -51,16 +51,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setFloatingSearchViewTitle(String title) {
-        if(floatingSearchView.getCurrentMenuItems().size() != 0)
-            menuElement = floatingSearchView.getCurrentMenuItems().get(0);
+        if(floatingSearchView.getCurrentMenuItems() != null) {
+            if (floatingSearchView.getCurrentMenuItems().size() != 0)
+                menuElement = floatingSearchView.getCurrentMenuItems().get(0);
 
-        floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HOME);
-        if(title != null)
-            floatingSearchView.setSearchBarTitle(title);
-        floatingSearchView.getCurrentMenuItems().clear();
-        floatingSearchView.setSearchFocused(true);
-        floatingSearchView.setSearchFocused(false);
-        floatingSearchView.setSearchFocusable(false);
+            floatingSearchView.setLeftActionMode(FloatingSearchView.LEFT_ACTION_MODE_SHOW_HOME);
+            if (title != null)
+                floatingSearchView.setSearchBarTitle(title);
+            floatingSearchView.getCurrentMenuItems().clear();
+            floatingSearchView.setSearchFocused(true);
+            floatingSearchView.setSearchFocused(false);
+            floatingSearchView.setSearchFocusable(false);
+        }
     }
 
     public void setScrimVisibility(boolean visible){
