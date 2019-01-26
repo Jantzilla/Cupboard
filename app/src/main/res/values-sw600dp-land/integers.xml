@@ -2,4 +2,5 @@
 <resources>
     <integer name="button_translate">600</integer>
     <integer name="recipe_column_count">2</integer>
+    <integer name="cupboard_column_count">3</integer>
 </resources>
