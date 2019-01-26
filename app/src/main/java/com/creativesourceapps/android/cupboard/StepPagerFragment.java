@@ -64,7 +64,7 @@ public class StepPagerFragment extends Fragment {
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
         isUsed = recipe.ingredientsUsed == 1;
-        mid = (recipe.steps.size() / 2) + 1;
+        mid = recipe.steps.size() / 2;
 
         recipeTextView.setText(recipe.title);
         ((MainActivity)getActivity()).setFloatingSearchViewTitle(null);
