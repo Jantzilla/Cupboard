@@ -35,7 +35,11 @@
         android:gravity="center"
         android:horizontalSpacing="8dp"
         android:numColumns="1"
-        android:padding="8dp"
+        android:paddingTop="8dp"
+        android:paddingStart="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="@dimen/recipe_grid_border"
+        android:paddingEnd="@dimen/recipe_grid_border"
         android:stretchMode="columnWidth"
         android:verticalSpacing="8dp">
     </android.support.v7.widget.RecyclerView>
