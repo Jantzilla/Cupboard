@@ -87,7 +87,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         }
         adapter = new IngredientListAdapter(getContext(), true, ingredients, IngredientFragment.this);
 
-        gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        gridLayoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.cupboard_column_count));
 
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
