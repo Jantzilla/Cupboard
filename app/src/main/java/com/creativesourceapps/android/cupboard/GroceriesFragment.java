@@ -52,7 +52,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         pb = view.findViewById(R.id.pb);
         emptyTextView = view.findViewById(R.id.tv_empty_message);
         fab = view.findViewById(R.id.fab_add);
-        gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        gridLayoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.ingredient_column_count));
         recyclerView.setLayoutManager(gridLayoutManager);
         ingredientsList = new ArrayList<>();
         dbHelper = new CupboardDbHelper(getContext());
