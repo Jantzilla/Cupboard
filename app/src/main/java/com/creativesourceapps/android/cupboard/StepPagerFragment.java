@@ -37,6 +37,7 @@ public class StepPagerFragment extends Fragment {
     private boolean visible, isUsed;
     private Button useButton;
     private int mid;
+    private Bundle bundle;
 
     public StepPagerFragment() {
         // Required empty public constructor
@@ -55,6 +56,11 @@ public class StepPagerFragment extends Fragment {
         useButton = view.findViewById(R.id.btn_use);
         ingredients = new ArrayList<>();
         transition = new Slide(Gravity.START);
+
+        if(view.findViewById(R.id.master_list_fragment) != null) {
+            fab.hide();
+            useButton.setVisibility(View.GONE);
+        }
 
         Recipe recipe = ((MainActivity)getActivity()).getRecipe();
         isUsed = recipe.ingredientsUsed == 1;
@@ -132,6 +138,9 @@ public class StepPagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 IngredientFragment fragment = new IngredientFragment();
+                bundle = new Bundle();
+                bundle.putBoolean("twoPane", false);
+                fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
