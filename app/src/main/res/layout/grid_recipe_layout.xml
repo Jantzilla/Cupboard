@@ -7,6 +7,8 @@
     android:background="@drawable/recipe_list_background"
     android:gravity="center_vertical"
     android:layout_marginBottom="8dp"
+    android:layout_marginRight="@dimen/recipe_card_space"
+    android:layout_marginEnd="@dimen/recipe_card_space"
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="8dp"
     card_view:cardPreventCornerOverlap="false"
