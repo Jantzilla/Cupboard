@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override public void onAnimationUpdate(ValueAnimator animation) {
                 drawable.setProgress((Float)animation.getAnimatedValue());
-                floatingActionButton.setTranslationX((Float)animation.getAnimatedValue() * (-700));
+                floatingActionButton.setTranslationX((Float)animation.getAnimatedValue() * -(getResources().getInteger(R.integer.button_translate)));
             }
         });
 
