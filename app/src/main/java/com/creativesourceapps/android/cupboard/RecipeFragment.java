@@ -60,7 +60,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         recylcerView = view.findViewById(R.id.recipes_grid_view);
         jsonObjectArray = new ArrayList<>();
-        layoutManager = new GridLayoutManager(getContext(), 1);
+        layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
         values = new ContentValues();
