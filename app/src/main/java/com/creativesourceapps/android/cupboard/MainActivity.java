@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.view.menu.MenuItemImpl;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -177,11 +178,14 @@ public class MainActivity extends AppCompatActivity {
         final FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_close);
         floatingActionButton.setImageDrawable(drawable);
 
+        final int value = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, getResources().getInteger(R.integer.button_translate),
+                (this).getResources().getDisplayMetrics());
+
         final ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override public void onAnimationUpdate(ValueAnimator animation) {
                 drawable.setProgress((Float)animation.getAnimatedValue());
-                floatingActionButton.setTranslationX((Float)animation.getAnimatedValue() * -(getResources().getInteger(R.integer.button_translate)));
+                floatingActionButton.setTranslationX((Float)animation.getAnimatedValue() * -(value));
             }
         });
 
