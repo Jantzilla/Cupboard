@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="recipe_grid_border">0dp</dimen>
+    <dimen name="recipe_card_space">8dp</dimen>
 </resources>
