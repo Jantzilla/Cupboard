@@ -3,5 +3,6 @@
     <dimen name="recipe_grid_border">0dp</dimen>
     <dimen name="recipe_card_space">8dp</dimen>
     <dimen name="ingredient_add_space">256dp</dimen>
+    <dimen name="ingredient_field_margin">32dp</dimen>
     <dimen name="drawer_header_height">200dp</dimen>
 </resources>
