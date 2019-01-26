@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
 
-    <item android:top="12dp" android:start="16dp" android:end="16dp" android:bottom="16dp">
+    <item android:top="12dp" android:left="16dp" android:right="16dp" android:bottom="16dp">
         <shape android:shape="rectangle">
             <solid android:color="#A6ffffff"/>
             <corners android:radius="8dp"/>
