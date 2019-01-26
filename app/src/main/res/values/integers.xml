@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="button_translate">700</integer>
+    <integer name="recipe_column_count">1</integer>
 </resources>
