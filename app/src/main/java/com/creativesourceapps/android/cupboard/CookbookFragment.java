@@ -59,7 +59,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         pb = view.findViewById(R.id.pb);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
-        layoutManager = new GridLayoutManager(getContext(), 1);
+        layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
 
         try {
             requestRecipeData("");
