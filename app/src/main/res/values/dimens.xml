@@ -7,4 +7,5 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
+    <dimen name="recipe_grid_border">8dp</dimen>
 </resources>
