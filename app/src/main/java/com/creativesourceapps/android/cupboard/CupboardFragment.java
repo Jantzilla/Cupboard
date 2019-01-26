@@ -37,7 +37,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         fab = view.findViewById(R.id.fab_ingredient_list);
         fragment = new DetailCupboardFragment();
         categoryList = new ArrayList<>();
-        layoutManager = new GridLayoutManager(getContext(), 2);
+        layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.cupboard_column_count));
 
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
