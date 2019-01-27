@@ -3,4 +3,9 @@
     <dimen name="drawer_header_height">0dp</dimen>
     <dimen name="home_fab_top_margin">-40dp</dimen>
     <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="recipe_grid_border">8dp</dimen>
+    <dimen name="recipe_card_space">0dp</dimen>
+    <dimen name="ingredient_add_space">16dp</dimen>
+    <dimen name="ingredient_field_margin">16dp</dimen>
 </resources>
