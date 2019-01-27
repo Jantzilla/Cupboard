@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private View view, navigation, cupboardView, cookbookView, recipesView, groceriesView;
     private Fragment fragment;
+    public static Fragment restoreFragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
     public static Recipe recipe;
@@ -169,11 +170,25 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
 
-        setFloatingSearchView("Cookbook");
+        if (savedInstanceState != null) {
+            //Restore the fragment's instance
+            setFloatingSearchView("");
+            animateNavigation(findViewById(savedInstanceState.getInt("navigationId")));
 
-        animateNavigation(cookbookView);
+            if(restoreFragment != null) {
+                fragment = restoreFragment;
+                fragmentManager.popBackStackImmediate();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fl_fragment, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
 
-        fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
+        } else {
+            setFloatingSearchView("Cookbook");
+            animateNavigation(cookbookView);
+            fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
+        }
 
         final DrawerArrowDrawable drawable = new DrawerArrowDrawable(this);
         drawable.setColor(Color.WHITE);
@@ -221,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
                 animateNavigation(recipesView);
                 drawerLayout.closeDrawers();
                 fragment = new RecipeFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Recipes");
             }
@@ -231,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 animateNavigation(cupboardView);
                 drawerLayout.closeDrawers();
                 fragment = new CupboardFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Cupboard");
             }
@@ -241,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 animateNavigation(cookbookView);
                 drawerLayout.closeDrawers();
                 fragment = new CookbookFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Cookbook");
             }
@@ -251,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
                 animateNavigation(groceriesView);
                 drawerLayout.closeDrawers();
                 fragment = new GroceriesFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
                 floatingSearchView.setSearchBarTitle("Groceries");
             }
@@ -271,5 +290,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigation = view;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("navigationId", navigation.getId());
     }
 }
