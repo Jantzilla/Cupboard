@@ -46,7 +46,7 @@ public class IngredientAddFragment extends Fragment {
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private TextView unitTextView, titleTextView, quantityTextView;
     private ImageView ingredientImageView, usedImageView;
-    private String selectedUnit, type, baseImageUrl;
+    private String name, quantity, unit, selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient, isUsed;
     private String selection;
     private static String selectedCategory;
@@ -133,9 +133,9 @@ public class IngredientAddFragment extends Fragment {
             type = getArguments().getString("type");
 
             if(getArguments().getString("type").equals("edit")) {
-                String name = getArguments().getString("name");
-                String quantity = getArguments().getString("quantity");
-                String unit = getArguments().getString("unit");
+                name = getArguments().getString("name");
+                quantity = getArguments().getString("quantity");
+                unit = getArguments().getString("unit");
 
                 ingredientEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);
@@ -162,9 +162,9 @@ public class IngredientAddFragment extends Fragment {
                 Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
 
             } if(getArguments().getString("type").equals("shop")) {
-                String name = getArguments().getString("name");
-                String quantity = getArguments().getString("quantity");
-                String unit = getArguments().getString("unit");
+                name = getArguments().getString("name");
+                quantity = getArguments().getString("quantity");
+                unit = getArguments().getString("unit");
 
                 ingredientEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);
@@ -196,9 +196,9 @@ public class IngredientAddFragment extends Fragment {
             } if(getArguments().getString("type").equals("detail")) {
                 boolean available = getArguments().getBoolean("availability");
                 boolean used = getArguments().getBoolean("used", false);
-                String name = getArguments().getString("name");
-                String quantity = getArguments().getString("quantity");
-                String unit = getArguments().getString("unit");
+                name = getArguments().getString("name");
+                quantity = getArguments().getString("quantity");
+                unit = getArguments().getString("unit");
                 final int index = getArguments().getInt("index");
 
                 ingredientEditText.setVisibility(View.GONE);
@@ -376,9 +376,9 @@ public class IngredientAddFragment extends Fragment {
     }
 
     private void addGroceryItem() {
-        String name = titleTextView.getText().toString();
-        String quantity = quantityEditText.getText().toString();
-        String unit = unitTextView.getText().toString();
+        name = titleTextView.getText().toString();
+        quantity = quantityEditText.getText().toString();
+        unit = unitTextView.getText().toString();
         selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         selectionArgs = new String[]{name};
         Ingredient ingredient;
@@ -467,9 +467,9 @@ public class IngredientAddFragment extends Fragment {
     }
 
     private void useIngredient(int index) {
-        String name = titleTextView.getText().toString();
-        String quantity = quantityTextView.getText().toString();
-        String unit = unitTextView.getText().toString();
+        name = titleTextView.getText().toString();
+        quantity = quantityTextView.getText().toString();
+        unit = unitTextView.getText().toString();
         selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
         selectionArgs = new String[]{name};
 
@@ -540,5 +540,14 @@ public class IngredientAddFragment extends Fragment {
     public void onPause() {
         super.onPause();
         ((MainActivity)getActivity()).setScrimVisibility(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!titleTextView.getText().toString().isEmpty()) {
+            Glide.with(getContext()).load(baseImageUrl + name + ".png").into(ingredientImageView);
+            unitTextView.setText(unit);
+        }
     }
 }
