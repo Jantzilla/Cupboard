@@ -5,4 +5,5 @@
     <dimen name="ingredient_add_space">256dp</dimen>
     <dimen name="ingredient_field_margin">32dp</dimen>
     <dimen name="drawer_header_height">200dp</dimen>
+    <dimen name="home_fab_top_margin">12dp</dimen>
 </resources>
