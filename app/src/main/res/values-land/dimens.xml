@@ -6,6 +6,6 @@
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="recipe_grid_border">8dp</dimen>
     <dimen name="recipe_card_space">0dp</dimen>
-    <dimen name="ingredient_add_space">16dp</dimen>
+    <dimen name="ingredient_add_space">120dp</dimen>
     <dimen name="ingredient_field_margin">16dp</dimen>
 </resources>
