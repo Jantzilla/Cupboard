@@ -70,6 +70,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
             @Override
             public void onClick(View v) {
                 fragment = new IngredientAddFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().addToBackStack(null)
                         .replace(R.id.fl_fragment, fragment).commit();
