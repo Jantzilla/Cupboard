@@ -110,6 +110,18 @@ public class IngredientAddFragment extends Fragment {
             }
         });
 
+        quantityEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_SEND) {
+                    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        });
+
         usedTransitionSet = new TransitionSet();
         transitionFade = new Fade();
         transitionSlide = new Slide(Gravity.BOTTOM);
