@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="recipe_grid_border">0dp</dimen>
     <dimen name="recipe_card_space">8dp</dimen>
     <dimen name="ingredient_add_space">256dp</dimen>
     <dimen name="ingredient_field_margin">32dp</dimen>
     <dimen name="drawer_header_height">200dp</dimen>
     <dimen name="home_fab_top_margin">12dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
 </resources>
