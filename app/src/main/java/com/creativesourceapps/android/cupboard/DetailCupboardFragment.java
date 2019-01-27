@@ -163,9 +163,17 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         bundle.putString("unit", unit);
 
         fragment = new IngredientAddFragment();
+        MainActivity.restoreFragment = fragment;
         fragment.setArguments(bundle);
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)
                 .replace(R.id.fl_fragment, fragment).commit();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).setFloatingSearchView("Cupboard");
+        MainActivity.restoreFragment = this;
     }
 }

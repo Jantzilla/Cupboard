@@ -249,6 +249,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                 ((MainActivity)getActivity()).setRecipe(item_clicked);
 
                 fragment = new StepPagerFragment();
+                MainActivity.restoreFragment = fragment;
                 fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
@@ -270,6 +271,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     public void onResume() {
         super.onResume();
         ((MainActivity)getActivity()).setFloatingSearchView("Recipes");
+        MainActivity.restoreFragment = this;
     }
 
 }

@@ -68,6 +68,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
                 Bundle bundle = new Bundle();
                 bundle.putString("type", "choose");
                 fragment = new IngredientAddFragment();
+                MainActivity.restoreFragment = fragment;
                 fragment.setArguments(bundle);
                 fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().addToBackStack(null)
@@ -141,9 +142,17 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
         bundle.putString("unit", unit);
 
         fragment = new IngredientAddFragment();
+        MainActivity.restoreFragment = fragment;
         fragment.setArguments(bundle);
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)
                 .replace(R.id.fl_fragment, fragment).commit();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).setFloatingSearchView("Groceries");
+        MainActivity.restoreFragment = this;
     }
 }

@@ -131,6 +131,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         bundle.putInt("index", index);
 
         fragment = new IngredientAddFragment();
+        MainActivity.restoreFragment = fragment;
         fragment.setArguments(bundle);
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null)

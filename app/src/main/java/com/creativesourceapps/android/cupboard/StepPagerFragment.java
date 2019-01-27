@@ -138,6 +138,7 @@ public class StepPagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 IngredientFragment fragment = new IngredientFragment();
+                MainActivity.restoreFragment = fragment;
                 bundle = new Bundle();
                 bundle.putBoolean("twoPane", false);
                 fragment.setArguments(bundle);
@@ -151,4 +152,11 @@ public class StepPagerFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.restoreFragment = this;
+    }
+
 }
