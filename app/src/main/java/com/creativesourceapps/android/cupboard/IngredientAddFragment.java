@@ -1,5 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -24,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -62,7 +64,7 @@ public class IngredientAddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ingredient_add, container, false);
+        final View view = inflater.inflate(R.layout.fragment_ingredient_add, container, false);
 
         fab = view.findViewById(R.id.fab_back);
         addFab = view.findViewById(R.id.fab_add);
@@ -100,6 +102,8 @@ public class IngredientAddFragment extends Fragment {
                 if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_SEND) {
                     ingredientEditText.setText(hintEditText.getText().toString());
                     ingredientEditText.setSelection(ingredientEditText.getText().length());
+                    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     return true;
                 }
                 return false;
