@@ -39,12 +39,12 @@ public class RecipeUtils {
         result = result.replaceAll("lb|LB|LBS|Pounds|Pound|pound|pounds", "lbs");
         result = result.replaceAll("OZ|Ounce|Ounces|OUNCES|OUNCE|ounce", "oz");
         result = result.replaceAll("mL|ML|Ml", "ml");
-        result = result.replaceAll("L|Liters|liters|Liter|liter", "l");
+        result = result.replaceAll("L|Litres|litres|Litre|litre|Liters|liters|Liter|liter", "l");
         result = result.replaceAll("grams|Grams|G", "g");
         result = result.replaceAll("KGS|Kgs|kgs|KG|Kg|kg|kilograms|Kilograms", "kg");
         result = result.replaceAll("QTS|Qts|qts|QT|Qt|qt|Quarts|quarts|Quart|quart", "qt");
         result = result.replaceAll("CUPS|Cups|CUP|Cup|cups|cup", "cup");
-        result = result.replaceAll("Dash|Pinches|pinches|Pinch|pinch|Sprinkling|sprinkling|sprinking|spinkling|Topping|drizzle|garnish|dusting|Dusting", "1 dash"); // (subtract "1 tsp")
+        result = result.replaceAll("Splash|splash|Dash|Pinches|pinches|Pinch|pinch|Sprinkling|sprinkling|sprinking|spinkling|Topping|drizzle|garnish|dusting|Dusting", "1 dash"); // (subtract "1 tsp")
         result = result.replaceAll("to serve", "1 pcs");
 
         result = result.trim();
