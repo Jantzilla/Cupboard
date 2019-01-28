@@ -5,7 +5,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -127,6 +132,28 @@ public class RecipeUtils {
         }
 
         return indices;
+    }
+
+    public static ArrayList<String> parseSteps(JSONObject instructions) {
+        ArrayList<String> descriptions = new ArrayList<>();
+
+        BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+        String source = null;
+        try {
+            source = instructions.getString("strInstructions").replaceAll("\r|\n", "").replaceAll("\\.", ". ");
+            iterator.setText(source);
+            int start = iterator.first();
+            for (int end = iterator.next();
+                 end != BreakIterator.DONE;
+                 start = end, end = iterator.next()) {
+                descriptions.add(source.substring(start,end));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return descriptions;
     }
 
     public static double getConversion(String name, double quantity, String startUnit, String endUnit) {
