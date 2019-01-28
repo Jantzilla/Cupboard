@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -123,7 +125,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                             ArrayList<String> quantity = new ArrayList<>();
                             ArrayList<String> unit = new ArrayList<>();
                             ArrayList<String> shortDescription = new ArrayList<>();
-                            ArrayList<String> description = new ArrayList<>();
                             JSONObject resultObject = json.getJSONObject(i);
                             jsonObjectArray.add(resultObject);
                             id = resultObject.getInt("idMeal");
@@ -147,15 +148,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                     break;
                             }
 
-                            BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
-                            String source = resultObject.getString("strInstructions");
-                            iterator.setText(source);
-                            int start = iterator.first();
-                            for (int end = iterator.next();
-                                 end != BreakIterator.DONE;
-                                 start = end, end = iterator.next()) {
-                                description.add(source.substring(start,end));
-                            }
+                            ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(resultObject));
 
                             for(int o = 1; o < description.size(); o++) {
                                 shortDescription.add(("Step " + o));

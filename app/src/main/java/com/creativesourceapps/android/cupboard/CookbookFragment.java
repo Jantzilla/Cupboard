@@ -103,7 +103,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             ArrayList<String> quantity = new ArrayList<>();
             ArrayList<String> unit = new ArrayList<>();
             ArrayList<String> shortDescription = new ArrayList<>();
-            ArrayList<String> description = new ArrayList<>();
             id = jsonObject.getInt("idMeal");
             name = jsonObject.getString("strMeal");
 
@@ -125,15 +124,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                     break;
             }
 
-            BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
-            String source = jsonObject.getString("strInstructions");
-            iterator.setText(source);
-            int start = iterator.first();
-            for (int end = iterator.next();
-                 end != BreakIterator.DONE;
-                 start = end, end = iterator.next()) {
-                description.add(source.substring(start,end));
-            }
+            ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(jsonObject));
 
             for(int o = 1; o < description.size(); o++) {
                 shortDescription.add(("Step " + o));
