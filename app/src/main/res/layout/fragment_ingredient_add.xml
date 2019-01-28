@@ -9,10 +9,10 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/ingredient_add_space"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="@dimen/ingredient_add_space"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="@dimen/ingredient_add_horizontal_space"
+        android:layout_marginTop="@dimen/ingredient_add_vertical_space"
+        android:layout_marginEnd="@dimen/ingredient_add_horizontal_space"
+        android:layout_marginBottom="@dimen/ingredient_add_vertical_space"
         android:background="@drawable/recipe_list_background">
 
         <ImageView
