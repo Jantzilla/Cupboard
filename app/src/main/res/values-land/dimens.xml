@@ -4,8 +4,8 @@
     <dimen name="home_fab_top_margin">-40dp</dimen>
     <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
     <dimen name="widget_margin">8dp</dimen>
-    <dimen name="recipe_grid_border">8dp</dimen>
-    <dimen name="recipe_card_space">0dp</dimen>
+    <dimen name="recipe_grid_border">0dp</dimen>
+    <dimen name="recipe_card_space">8dp</dimen>
     <dimen name="ingredient_add_horizontal_space">120dp</dimen>
     <dimen name="ingredient_add_vertical_space">72dp</dimen>
     <dimen name="ingredient_field_margin">48dp</dimen>
