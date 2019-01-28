@@ -91,6 +91,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         String searchUrl = baseUrl + query;
 
         recipes.clear();
+        jsonObjectArray.clear();
 
 
         if (isOnline()) {
