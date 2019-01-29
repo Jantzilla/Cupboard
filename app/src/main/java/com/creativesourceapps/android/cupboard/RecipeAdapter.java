@@ -24,15 +24,29 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     private String type;
     private Context context;
 
-    public RecipeAdapter(ArrayList<Recipe> recipes, ListItemClickListener clickListener, String type) {
+    public RecipeAdapter(Context context, ArrayList<Recipe> recipes, ListItemClickListener clickListener, String type) {
         this.recipes.addAll(recipes);
         this.clickLister = clickListener;
         this.type = type;
+        this.context = context;
     }
 
     public void remove(int itemClicked) {
         recipes.remove(itemClicked);
-        notifyItemRemoved(itemClicked);
+        this.notifyItemRemoved(itemClicked);
+    }
+
+    public void add(Recipe recipe) {
+        this.recipes.add(recipe);
+    }
+
+    public void clear() {
+        recipes.clear();
+        this.notifyDataSetChanged();
+    }
+
+    public String get(int itemClicked) {
+        return recipes.get(itemClicked).title;
     }
 
     public interface ListItemClickListener {
@@ -42,7 +56,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @NonNull
     @Override
     public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        context = viewGroup.getContext();
+        Context context = viewGroup.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.grid_recipe_layout,viewGroup,false);
         RecipeViewHolder viewHolder = new RecipeViewHolder(view);
         return viewHolder;
