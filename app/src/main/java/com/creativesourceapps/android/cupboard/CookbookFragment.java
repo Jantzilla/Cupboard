@@ -144,7 +144,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         else {
             pb.setVisibility(View.GONE);
             emptyTextView.setVisibility(View.GONE);
-            recipeAdapter = new RecipeAdapter(recipes, CookbookFragment.this, "Cookbook");
+            recipeAdapter = new RecipeAdapter(getContext(), recipes, CookbookFragment.this, "Cookbook");
 
             recyclerView.setLayoutManager(layoutManager);
 
