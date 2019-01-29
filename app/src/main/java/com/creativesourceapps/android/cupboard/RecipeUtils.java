@@ -73,6 +73,8 @@ public class RecipeUtils {
         //Match words([Aa-Zz]) not equal to above unit keywords & remove
         result = result.replaceAll("\\b(?!\\d+\\b|(\\.)|pcs|tsp|tbsp|lbs|oz|qt|dash|g\\b|kg|ml|l\\b|cup\\b)\\w+","");
 
+        result = result.replaceAll(",", "");
+
         if(result.split("\\s+").length > 2) {
             result = result.replaceAll("^\\d+\\w*", "");
         }
