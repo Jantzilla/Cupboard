@@ -58,7 +58,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         emptyTextView = view.findViewById(R.id.tv_empty_message);
         pb = view.findViewById(R.id.pb);
         dbHelper = new CupboardDbHelper(getContext());
-        db = dbHelper.getReadableDatabase();
+        db = dbHelper.getWritableDatabase();
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
 
         try {
