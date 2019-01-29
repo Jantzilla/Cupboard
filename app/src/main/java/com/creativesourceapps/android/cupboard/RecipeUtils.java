@@ -154,7 +154,8 @@ public class RecipeUtils {
             for (int end = iterator.next();
                  end != BreakIterator.DONE;
                  start = end, end = iterator.next()) {
-                descriptions.add(source.substring(start,end));
+                if(source.substring(start,end).length() > 4)
+                    descriptions.add(source.substring(start,end));
             }
 
         } catch (JSONException e) {
