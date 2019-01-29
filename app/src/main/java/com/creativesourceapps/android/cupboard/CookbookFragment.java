@@ -139,6 +139,8 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
         }
 
+        cursor.close();
+
         if(recipes.size() == 0)
             pb.setVisibility(View.GONE);
         else {
@@ -227,4 +229,11 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         MainActivity.restoreFragment = this;
     }
 
+    @Override
+    public void onDestroy() {
+        cursor.close();
+        dbHelper.close();
+        db.close();
+        super.onDestroy();
+    }
 }
