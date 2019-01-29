@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".RecipeFragment">
 
+    <TextView
+        android:id="@+id/tv_no_results_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/marmelad_regular"
+        android:text="No Recipes Available."/>
+
     <ProgressBar
         android:id="@+id/pb"
         android:layout_width="match_parent"
