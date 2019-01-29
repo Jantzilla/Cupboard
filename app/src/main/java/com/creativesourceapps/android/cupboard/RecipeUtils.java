@@ -26,10 +26,13 @@ public class RecipeUtils {
         if (m.find())
             result = "";
 
+        if(result.matches("\\d+-\\d+"))
+            result = result.replaceAll("-\\d+","");
+
         //Reform Quantity
         result = result.replaceAll("1\\/2|\u00BD", ".50").replaceAll("1\\/4|\u00BC", ".25")
                 .replaceAll("1\\/3|\u2153|3rd", ".33").replaceAll("3\\/4|\u00BE", ".75")
-                .replaceAll("1\\/8|\u215B", ".13").replaceAll("-", "");
+                .replaceAll("1\\/8|\u215B", ".13").replaceAll(" - |-", "");
 
         result = result.replaceAll("\\/\\d+\\D+.*", "");
 
@@ -140,6 +143,9 @@ public class RecipeUtils {
             cursor.close();
 
         }
+
+        dbHelper.close();
+        db.close();
 
         return indices;
     }
