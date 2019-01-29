@@ -42,7 +42,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     public void clear() {
         recipes.clear();
-        this.notifyDataSetChanged();
+        notifyItemRangeRemoved(0, getItemCount());
     }
 
     public String get(int itemClicked) {
