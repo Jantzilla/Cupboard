@@ -10,13 +10,13 @@
          "idIngredient":"5",
          "strIngredient":"Almond Extract",
          "strDescription":"Spices & Baking",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"6",
          "strIngredient":"Almond Milk",
          "strDescription":"Spirits & Beverages",
-         "strType":"gallons"
+         "strType":"gal"
       },
       {
          "idIngredient":"7",
@@ -34,7 +34,7 @@
          "idIngredient":"9",
          "strIngredient":"Apple Cider Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"10",
@@ -76,7 +76,7 @@
          "idIngredient":"16",
          "strIngredient":"Balsamic Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"17",
@@ -130,7 +130,7 @@
          "idIngredient":"26",
          "strIngredient":"Beef Stock",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"27",
@@ -178,13 +178,13 @@
          "idIngredient":"34",
          "strIngredient":"Brandy",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"35",
          "strIngredient":"Bread",
          "strDescription":"Bread & Grains",
-         "strType":"loafs"
+         "strType":"loaf"
       },
       {
          "idIngredient":"36",
@@ -352,7 +352,7 @@
          "idIngredient":"68",
          "strIngredient":"Chicken Stock",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"70",
@@ -460,13 +460,13 @@
          "idIngredient":"90",
          "strIngredient":"Coconut Cream",
          "strDescription":"Spices & Baking",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"91",
          "strIngredient":"Coconut Milk",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"92",
@@ -478,7 +478,7 @@
          "idIngredient":"93",
          "strIngredient":"Cold Water",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"94",
@@ -514,7 +514,7 @@
          "idIngredient":"100",
          "strIngredient":"Cream",
          "strDescription":"Dairy & Eggs",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"101",
@@ -568,7 +568,7 @@
          "idIngredient":"109",
          "strIngredient":"Dark Soy Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"110",
@@ -616,7 +616,7 @@
          "idIngredient":"117",
          "strIngredient":"Dry White Wine",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"119",
@@ -652,19 +652,19 @@
          "idIngredient":"124",
          "strIngredient":"Enchilada Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"125",
          "strIngredient":"English Mustard",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"126",
          "strIngredient":"Extra Virgin Olive Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"127",
@@ -706,7 +706,7 @@
          "idIngredient":"134",
          "strIngredient":"Fish Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"135",
@@ -748,19 +748,19 @@
          "idIngredient":"143",
          "strIngredient":"Fresh Basil",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"g"
       },
       {
          "idIngredient":"144",
          "strIngredient":"Fresh Thyme",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"g"
       },
       {
          "idIngredient":"145",
          "strIngredient":"Freshly Chopped Parsley",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"g"
       },
       {
          "idIngredient":"146",
@@ -796,7 +796,7 @@
          "idIngredient":"152",
          "strIngredient":"Garlic Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"153",
@@ -814,7 +814,7 @@
          "idIngredient":"155",
          "strIngredient":"Ginger Cordial",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"156",
@@ -832,7 +832,7 @@
          "idIngredient":"158",
          "strIngredient":"Golden Syrup",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"159",
@@ -952,7 +952,7 @@
          "idIngredient":"180",
          "strIngredient":"Hotsauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"181",
@@ -994,7 +994,7 @@
          "idIngredient":"187",
          "strIngredient":"Kale",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"g"
       },
       {
          "idIngredient":"188",
@@ -1036,7 +1036,7 @@
          "idIngredient":"194",
          "strIngredient":"Lasagne Sheets",
          "strDescription":"Pasta & Rice",
-         "strType":"boxes"
+         "strType":"pcs"
       },
       {
          "idIngredient":"195",
@@ -1060,7 +1060,7 @@
          "idIngredient":"198",
          "strIngredient":"Lemon Juice",
          "strDescription":"Spirits & Beverages",
-         "strType":"oz"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"201",
@@ -1090,7 +1090,7 @@
          "idIngredient":"205",
          "strIngredient":"Mackerel",
          "strDescription":"Meat & Seafood",
-         "strType":"fish"
+         "strType":"pcs"
       },
       {
          "idIngredient":"206",
@@ -1102,1909 +1102,1909 @@
          "idIngredient":"207",
          "strIngredient":"Marjoram",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"208",
          "strIngredient":"Massaman Curry Paste",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"209",
          "strIngredient":"Medjool Dates",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"g"
       },
       {
          "idIngredient":"210",
          "strIngredient":"Meringue Nests",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"211",
          "strIngredient":"Milk",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"gal"
       },
       {
          "idIngredient":"212",
          "strIngredient":"Minced Garlic",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"213",
          "strIngredient":"Miniature Marshmallows",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"214",
          "strIngredient":"Mint",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"g"
       },
       {
          "idIngredient":"215",
          "strIngredient":"Monterey Jack Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"216",
          "strIngredient":"Mozzarella Balls",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"217",
          "strIngredient":"Muscovado Sugar",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"218",
          "strIngredient":"Mushrooms",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"219",
          "strIngredient":"Mustard",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"220",
          "strIngredient":"Mustard Powder",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"221",
          "strIngredient":"Mustard Seeds",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"222",
          "strIngredient":"Nutmeg",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"223",
          "strIngredient":"Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"224",
          "strIngredient":"Olive Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"226",
          "strIngredient":"Onion Salt",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"227",
          "strIngredient":"Onions",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"228",
          "strIngredient":"Orange",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"229",
          "strIngredient":"Orange Zest",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"230",
          "strIngredient":"Oregano",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"231",
          "strIngredient":"Oyster Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"232",
          "strIngredient":"Paprika",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"233",
          "strIngredient":"Parma Ham",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"234",
          "strIngredient":"Parmesan",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"235",
          "strIngredient":"Parmesan Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"236",
          "strIngredient":"Parmigiano-reggiano",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"237",
          "strIngredient":"Parsley",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"238",
          "strIngredient":"Peanut Butter",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"239",
          "strIngredient":"Peanut Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"240",
          "strIngredient":"Peanuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"241",
          "strIngredient":"Peas",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"242",
          "strIngredient":"Pecorino",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"243",
          "strIngredient":"Penne Rigate",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"244",
          "strIngredient":"Pepper",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"245",
          "strIngredient":"Pine Nuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"246",
          "strIngredient":"Pitted Black Olives",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"247",
          "strIngredient":"Plain Chocolate",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"248",
          "strIngredient":"Plain Flour",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"249",
          "strIngredient":"Plum Tomatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"250",
          "strIngredient":"Pork",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"252",
          "strIngredient":"Potato Starch",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"253",
          "strIngredient":"Potatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"254",
          "strIngredient":"Prawns",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"255",
          "strIngredient":"Puff Pastry",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"256",
          "strIngredient":"Raspberry Jam",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"257",
          "strIngredient":"Raw King Prawns",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"258",
          "strIngredient":"Red Chile Flakes",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"259",
          "strIngredient":"Red Chilli",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"261",
          "strIngredient":"Red Chilli Powder",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"263",
          "strIngredient":"Red Onions",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"264",
          "strIngredient":"Red Pepper",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"265",
          "strIngredient":"Red Pepper Flakes",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"266",
          "strIngredient":"Red Wine",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"267",
          "strIngredient":"Refried Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"268",
          "strIngredient":"Rice",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"269",
          "strIngredient":"Rice Noodles",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"270",
          "strIngredient":"Rice Stick Noodles",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"271",
          "strIngredient":"Rice Vermicelli",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"272",
          "strIngredient":"Rigatoni",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"273",
          "strIngredient":"Rocket",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"274",
          "strIngredient":"Rolled Oats",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"275",
          "strIngredient":"Rosemary",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"276",
          "strIngredient":"Saffron",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"277",
          "strIngredient":"Sage",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"278",
          "strIngredient":"Sake",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"279",
          "strIngredient":"Salmon",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"280",
          "strIngredient":"Salsa",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"281",
          "strIngredient":"Salt",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"282",
          "strIngredient":"Salted Butter",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"283",
          "strIngredient":"Sausages",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"284",
          "strIngredient":"Sea Salt",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"286",
          "strIngredient":"Self-raising Flour",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"287",
          "strIngredient":"Semi-skimmed Milk",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"gal"
       },
       {
          "idIngredient":"288",
          "strIngredient":"Sesame Seed",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"289",
          "strIngredient":"Shallots",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"290",
          "strIngredient":"Shredded Mexican Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"291",
          "strIngredient":"Shredded Monterey Jack Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"292",
          "strIngredient":"Small Potatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"293",
          "strIngredient":"Smoked Paprika",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"294",
          "strIngredient":"Smoky Paprika",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"295",
          "strIngredient":"Sour Cream",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"296",
          "strIngredient":"Soy Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"297",
          "strIngredient":"Soya Milk",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"298",
          "strIngredient":"Spaghetti",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"299",
          "strIngredient":"Spinach",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"301",
          "strIngredient":"Spring Onions",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"302",
          "strIngredient":"Squash",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"303",
          "strIngredient":"Stir-fry Vegetables",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"304",
          "strIngredient":"Strawberries",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"305",
          "strIngredient":"Sugar",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"306",
          "strIngredient":"Sultanas",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"307",
          "strIngredient":"Sunflower Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"308",
          "strIngredient":"Tamarind Ball",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"309",
          "strIngredient":"Tamarind Paste",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"310",
          "strIngredient":"Thai Fish Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"311",
          "strIngredient":"Thai Green Curry Paste",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"312",
          "strIngredient":"Thai Red Curry Paste",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"313",
          "strIngredient":"Thyme",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"315",
          "strIngredient":"Tomato Ketchup",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"316",
          "strIngredient":"Tomato Puree",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"317",
          "strIngredient":"Tomatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"318",
          "strIngredient":"Toor Dal",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"319",
          "strIngredient":"Tuna",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"320",
          "strIngredient":"Turmeric",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"321",
          "strIngredient":"Turmeric Powder",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"322",
          "strIngredient":"Turnips",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"323",
          "strIngredient":"Vanilla",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"324",
          "strIngredient":"Vanilla Extract",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"325",
          "strIngredient":"Veal",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"326",
          "strIngredient":"Vegan Butter",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"327",
          "strIngredient":"Vegetable Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"328",
          "strIngredient":"Vegetable Stock",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"329",
          "strIngredient":"Vegetable Stock Cube",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"330",
          "strIngredient":"Vinaigrette Dressing",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"331",
          "strIngredient":"Vine Leaves",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"332",
          "strIngredient":"Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"333",
          "strIngredient":"Water",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"334",
          "strIngredient":"White Chocolate Chips",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"335",
          "strIngredient":"White Fish",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"336",
          "strIngredient":"White Fish Fillets",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"337",
          "strIngredient":"White Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"338",
          "strIngredient":"White Wine",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"339",
          "strIngredient":"Whole Milk",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"gal"
       },
       {
          "idIngredient":"340",
          "strIngredient":"Whole Wheat",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"341",
          "strIngredient":"Wholegrain Bread",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"loaf"
       },
       {
          "idIngredient":"342",
          "strIngredient":"Worcestershire Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"343",
          "strIngredient":"Yogurt",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"344",
          "strIngredient":"Zucchini",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"345",
          "strIngredient":"Pretzels",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"346",
          "strIngredient":"Cream Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"347",
          "strIngredient":"Icing Sugar",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"348",
          "strIngredient":"Toffee Popcorn",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"349",
          "strIngredient":"Caramel",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"350",
          "strIngredient":"Caramel Sauce",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"351",
          "strIngredient":"Tagliatelle",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"352",
          "strIngredient":"Fettuccine",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"353",
          "strIngredient":"Clotted Cream",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"354",
          "strIngredient":"Corn Flour",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"355",
          "strIngredient":"Mussels",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"356",
          "strIngredient":"Fideo",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"357",
          "strIngredient":"Monkfish",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"358",
          "strIngredient":"Vermicelli Pasta",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"359",
          "strIngredient":"Baby Squid",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"360",
          "strIngredient":"Squid",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"361",
          "strIngredient":"Fish Stock",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"362",
          "strIngredient":"Pilchards",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"363",
          "strIngredient":"Black Olives",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"364",
          "strIngredient":"Onion",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"365",
          "strIngredient":"Tomato",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"366",
          "strIngredient":"Duck",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"367",
          "strIngredient":"Duck Legs",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"368",
          "strIngredient":"Chicken Stock Cube",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"369",
          "strIngredient":"Pappardelle Pasta",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"370",
          "strIngredient":"Paccheri Pasta",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"371",
          "strIngredient":"Linguine Pasta",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"373",
          "strIngredient":"Sugar Snap Peas",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"374",
          "strIngredient":"Crusty Bread",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"loaf"
       },
       {
          "idIngredient":"375",
          "strIngredient":"Fromage Frais",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"376",
          "strIngredient":"Clams",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"377",
          "strIngredient":"Passata",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"378",
          "strIngredient":"Rapeseed Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"379",
          "strIngredient":"Stilton Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"380",
          "strIngredient":"Lamb Leg",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"381",
          "strIngredient":"Lamb Shoulder",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"382",
          "strIngredient":"Apricot",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"383",
          "strIngredient":"Butternut Squash",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"384",
          "strIngredient":"Couscous",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"387",
          "strIngredient":"Minced Beef",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"388",
          "strIngredient":"Turkey Mince",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"389",
          "strIngredient":"Barbeque Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"390",
          "strIngredient":"Sweetcorn",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"391",
          "strIngredient":"Goose Fat",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"392",
          "strIngredient":"Duck Fat",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"393",
          "strIngredient":"Fennel",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"394",
          "strIngredient":"Red Wine Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"395",
          "strIngredient":"Haricot Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"396",
          "strIngredient":"Rosemary",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"397",
          "strIngredient":"Butter Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"398",
          "strIngredient":"Pinto Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"399",
          "strIngredient":"Tomato Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"400",
          "strIngredient":"Tomato Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"401",
          "strIngredient":"Mascarpone",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"402",
          "strIngredient":"Mozzarella",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"403",
          "strIngredient":"Ricotta",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"405",
          "strIngredient":"Dried Apricots",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"406",
          "strIngredient":"Capers",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"407",
          "strIngredient":"Banana",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"408",
          "strIngredient":"Raspberries",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"409",
          "strIngredient":"Blueberries",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"410",
          "strIngredient":"Walnuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"411",
          "strIngredient":"Pecan Nuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"412",
          "strIngredient":"Maple Syrup",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"413",
          "strIngredient":"Light Brown Soft Sugar",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"414",
          "strIngredient":"Dark Brown Soft Sugar",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"415",
          "strIngredient":"Dark Chocolate Chips",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"416",
          "strIngredient":"Milk Chocolate",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"417",
          "strIngredient":"Dark Chocolate",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"418",
          "strIngredient":"Pumpkin",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"419",
          "strIngredient":"Shortcrust Pastry",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"420",
          "strIngredient":"Peanut Cookies",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"421",
          "strIngredient":"Gelatine Leafs",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"422",
          "strIngredient":"Peanut Brittle",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"423",
          "strIngredient":"Peaches",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"424",
          "strIngredient":"Yellow Pepper",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"425",
          "strIngredient":"Green Pepper",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"426",
          "strIngredient":"Courgettes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"427",
          "strIngredient":"Tinned Tomatos",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"428",
          "strIngredient":"Chestnuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"429",
          "strIngredient":"Wild Mushrooms",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"430",
          "strIngredient":"Truffle Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"431",
          "strIngredient":"Paneer",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"432",
          "strIngredient":"Naan Bread",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"433",
          "strIngredient":"Lentils",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"434",
          "strIngredient":"Roasted Vegetables",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"435",
          "strIngredient":"Kidney Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"436",
          "strIngredient":"Mixed Grain",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"437",
          "strIngredient":"Tahini",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"438",
          "strIngredient":"Tortillas",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"439",
          "strIngredient":"Udon Noodles",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"440",
          "strIngredient":"Cabbage",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"441",
          "strIngredient":"Shiitake Mushrooms",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"442",
          "strIngredient":"Mirin",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"443",
          "strIngredient":"Sesame Seed Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"444",
          "strIngredient":"Baguette",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"loaf"
       },
       {
          "idIngredient":"445",
          "strIngredient":"Vine Tomatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"446",
          "strIngredient":"Suet",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"447",
          "strIngredient":"Swede",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"448",
          "strIngredient":"Ham",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"449",
          "strIngredient":"Oysters",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"450",
          "strIngredient":"Stout",
          "strDescription":"Spirits & Beverages",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"451",
          "strIngredient":"Lard",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"452",
          "strIngredient":"Lamb Kidney",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"453",
          "strIngredient":"Beef Kidney",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"454",
          "strIngredient":"Haddock",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"455",
          "strIngredient":"Smoked Haddock",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"456",
          "strIngredient":"Brussels Sprouts",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"457",
          "strIngredient":"Raisins",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"458",
          "strIngredient":"Currants",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"459",
          "strIngredient":"Custard",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"460",
          "strIngredient":"Mixed Peel",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"461",
          "strIngredient":"Redcurrants",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"462",
          "strIngredient":"Blackberries",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"463",
          "strIngredient":"Hazlenuts",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"464",
          "strIngredient":"Braeburn Apples",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"465",
          "strIngredient":"Red Food Colouring",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"466",
          "strIngredient":"Pink Food Colouring",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"467",
          "strIngredient":"Blue Food Colouring",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"468",
          "strIngredient":"Yellow Food Colouring",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"469",
          "strIngredient":"Apricot Jam",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"470",
          "strIngredient":"Marzipan",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"471",
          "strIngredient":"Almonds",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"472",
          "strIngredient":"Black Pudding",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"473",
          "strIngredient":"Baked Beans",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"474",
          "strIngredient":"White Flour",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"475",
          "strIngredient":"Yeast",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"476",
          "strIngredient":"Fruit Mix",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"477",
          "strIngredient":"Dried Fruit",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"478",
          "strIngredient":"Cherry",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"479",
          "strIngredient":"Glace Cherry",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"480",
          "strIngredient":"Treacle",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"481",
          "strIngredient":"Oatmeal",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"482",
          "strIngredient":"Oats",
          "strDescription":"Bread & Grains",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"483",
          "strIngredient":"Egg",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"484",
          "strIngredient":"Beef Shin",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"485",
          "strIngredient":"Bouquet Garni",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"486",
          "strIngredient":"Single Cream",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"487",
          "strIngredient":"Red Wine Jelly",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"488",
          "strIngredient":"Apples",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"489",
          "strIngredient":"Goats Cheese",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"490",
          "strIngredient":"Prosciutto",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"491",
          "strIngredient":"Unsalted Butter",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"492",
          "strIngredient":"Brie",
          "strDescription":"Dairy & Eggs",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"493",
          "strIngredient":"Tarragon Leaves",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"494",
          "strIngredient":"Chives",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"495",
          "strIngredient":"Pears",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"496",
          "strIngredient":"White Chocolate",
          "strDescription":"Snacks & Candy",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"497",
          "strIngredient":"Star Anise",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"498",
          "strIngredient":"Tiger Prawns",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"499",
          "strIngredient":"Custard Powder",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"500",
          "strIngredient":"Desiccated Coconut",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"501",
          "strIngredient":"Frozen Peas",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"502",
          "strIngredient":"Minced Pork",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"503",
          "strIngredient":"Creamed Corn",
          "strDescription":"Soups & Canned",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"504",
          "strIngredient":"Sun-Dried Tomatoes",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"pcs"
       },
       {
          "idIngredient":"505",
          "strIngredient":"Dijon Mustard",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"506",
          "strIngredient":"Tabasco Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"507",
          "strIngredient":"Canola Oil",
          "strDescription":"Sauces & Vinegar",
-         "strType":null
+         "strType":"fl oz"
       },
       {
          "idIngredient":"508",
          "strIngredient":"Cod",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"509",
          "strIngredient":"Salt Cod",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"510",
          "strIngredient":"Ackee",
          "strDescription":"Fruits & Vegetables",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"511",
          "strIngredient":"Jerk",
          "strDescription":"Spices & Baking",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"512",
          "strIngredient":"Ground Beef",
          "strDescription":"Meat & Seafood",
-         "strType":null
+         "strType":"lbs"
       },
       {
          "idIngredient":"513",
          "strIngredient":"Baby Aubergine",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"pcs"
       },
       {
          "idIngredient":"514",
          "strIngredient":"Paella Rice",
          "strDescription":"Pasta & Rice",
-         "strType":null
+         "strType":"oz"
       },
       {
          "idIngredient":"515",
          "strIngredient":"Scotch Bonnet",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"pcs"
       },
       {
          "idIngredient":"516",
          "strIngredient":"Oxtail",
          "strDescription":"Meat & Seafood",
-         "strType":"Meat"
+         "strType":"lbs"
       },
       {
          "idIngredient":"517",
          "strIngredient":"Broad Beans",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"oz"
       },
       {
          "idIngredient":"518",
          "strIngredient":"Red Snapper",
          "strDescription":"Meat & Seafood",
-         "strType":"Fish"
+         "strType":"lbs"
       },
       {
          "idIngredient":"519",
          "strIngredient":"Malt Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":"Seasoning"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"520",
          "strIngredient":"Rice Vinegar",
          "strDescription":"Sauces & Vinegar",
-         "strType":"Vinegar"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"521",
          "strIngredient":"Water Chestnut",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Sedge"
+         "strType":"oz"
       },
       {
          "idIngredient":"522",
          "strIngredient":"Tofu",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Curd"
+         "strType":"oz"
       },
       {
          "idIngredient":"523",
          "strIngredient":"Doubanjiang",
          "strDescription":"Sauces & Vinegar",
-         "strType":"Sauce"
+         "strType":"oz"
       },
       {
          "idIngredient":"524",
          "strIngredient":"Fermented Black Beans",
          "strDescription":"Soups & Canned",
-         "strType":"Bean"
+         "strType":"oz"
       },
       {
          "idIngredient":"525",
          "strIngredient":"Scallions",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"oz"
       },
       {
          "idIngredient":"526",
          "strIngredient":"Sichuan Pepper",
          "strDescription":"Spices & Baking",
-         "strType":"Spice"
+         "strType":"oz"
       },
       {
          "idIngredient":"527",
          "strIngredient":"Wonton Skin",
          "strDescription":"Pasta & Rice",
-         "strType":"Pastry"
+         "strType":"pcs"
       },
       {
          "idIngredient":"528",
          "strIngredient":"Starch",
          "strDescription":"Spices & Baking",
-         "strType":"side"
+         "strType":"oz"
       },
       {
          "idIngredient":"529",
          "strIngredient":"Rice wine",
          "strDescription":"Spirits & Beverages",
-         "strType":"Wine"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"530",
          "strIngredient":"Cooking wine",
          "strDescription":"Spirits & Beverages",
-         "strType":"Wine"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"531",
          "strIngredient":"Duck Sauce",
          "strDescription":"Sauces & Vinegar",
-         "strType":"Sauce"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"532",
          "strIngredient":"Gochujang",
          "strDescription":"Sauces & Vinegar",
-         "strType":"Sauce"
+         "strType":"oz"
       },
       {
          "idIngredient":"533",
          "strIngredient":"Bean Sprouts",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"fl oz"
       },
       {
          "idIngredient":"534",
          "strIngredient":"Noodles",
          "strDescription":"Pasta & Rice",
-         "strType":"Side"
+         "strType":"oz"
       },
       {
          "idIngredient":"535",
          "strIngredient":"Wood Ear Mushrooms",
          "strDescription":"Fruits & Vegetables",
-         "strType":"Vegetable"
+         "strType":"oz"
       }
    ]
 }
