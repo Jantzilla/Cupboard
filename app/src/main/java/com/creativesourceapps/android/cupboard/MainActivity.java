@@ -113,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void clearSearchFocus() {
+        if(floatingSearchView.isSearchBarFocused())
+            floatingSearchView.clearSearchFocus();
+    }
+
     public void setRecipe(Recipe recipe) {
         MainActivity.recipe = recipe;
         availableCount = 0;
