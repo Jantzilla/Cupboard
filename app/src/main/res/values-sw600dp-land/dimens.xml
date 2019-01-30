@@ -9,4 +9,5 @@
     <dimen name="home_fab_top_margin">12dp</dimen>
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="design_fab_image_size" tools:override="true">32dp</dimen>
+    <dimen name="iv_button_size">65dp</dimen>
 </resources>

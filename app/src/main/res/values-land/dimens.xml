@@ -9,4 +9,5 @@
     <dimen name="ingredient_add_horizontal_space">120dp</dimen>
     <dimen name="ingredient_add_vertical_space">72dp</dimen>
     <dimen name="ingredient_field_margin">48dp</dimen>
+    <dimen name="iv_button_size">45dp</dimen>
 </resources>
