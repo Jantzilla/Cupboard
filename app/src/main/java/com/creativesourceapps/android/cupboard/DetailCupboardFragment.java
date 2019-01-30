@@ -80,6 +80,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).clearSearchFocus();
                 getActivity().onBackPressed();
             }
         });
@@ -174,7 +175,6 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setFloatingSearchView("Cupboard");
         MainActivity.restoreFragment = this;
     }
 }
