@@ -45,8 +45,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         notifyItemRangeRemoved(0, getItemCount());
     }
 
-    public String get(int itemClicked) {
-        return recipes.get(itemClicked).title;
+    public Recipe get(int itemClicked) {
+        return recipes.get(itemClicked);
     }
 
     public interface ListItemClickListener {
