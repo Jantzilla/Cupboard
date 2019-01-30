@@ -38,7 +38,7 @@ public class RecipeUtils {
 
         //Consistent Unit
         result = result.replaceAll("TSP|Tsp|Teaspoons|teaspoons|Teaspoon|teaspoon", "tsp");
-        result = result.replaceAll("TBS|Tbs|Tbsp|tbs\\w*|TBLSP|Tblsp|tblsp|Tbls|tbls|Tablespoons|tablespoons|Tablespoon|tablespoon", "tbsp");
+        result = result.replaceAll("Tbsp|TBS|Tbs|tbs\\w*|TBLSP|Tblsp|tblsp|Tbls|tbls|Tablespoons|tablespoons|Tablespoon|tablespoon", "tbsp");
         result = result.replaceAll("lb|LB|LBS|Pounds|Pound|pound|pounds", "lbs");
         result = result.replaceAll("OZ|Ounce|Ounces|OUNCES|OUNCE|ounce", "oz");
         result = result.replaceAll("mL|ML|Ml", "ml");
@@ -74,7 +74,7 @@ public class RecipeUtils {
         result = Pattern.compile("\\d*\\.*\\d+cup").matcher(result).find() ? result.replaceAll("cup", " cup") : result;
 
         //Match words([Aa-Zz]) not equal to above unit keywords & remove
-        result = result.replaceAll("\\b(?!\\d+\\b|(\\.)|pcs|tsp|tbsp|lbs|oz|qt|dash|g\\b|kg|ml|l\\b|cup\\b)\\w+","");
+        result = result.replaceAll("\\b(?!\\d+\\b|(\\.)|pcs|tsp|tbsp|lbs\\b|oz|qt|dash|g\\b|kg|ml|l\\b|cup\\b)\\w+","");
 
         result = result.replaceAll(",", "");
 
@@ -119,7 +119,7 @@ public class RecipeUtils {
         for(int i = 0; i < ingredients.size(); i++) {
 
             selectionArgs = new String[]{ingredients.get(i)};
-            selection = CupboardContract.AllIngredients.COLUMN_NAME + " = ?";
+            selection = CupboardContract.AllIngredients.COLUMN_NAME + " = ? COLLATE NOCASE";
             cursor = db.query(
                     CupboardContract.Ingredients.TABLE_NAME,
                     projection,
@@ -136,8 +136,9 @@ public class RecipeUtils {
                 String startUnit = units.get(i);
                 String endUnit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
 
-                if(available >= getConversion(ingredients.get(i),quantity,startUnit,endUnit))
+                if(available >= getConversion(ingredients.get(i),quantity,startUnit,endUnit)) {
                     indices.add(i);
+                }
             }
 
             cursor.close();
@@ -199,6 +200,44 @@ public class RecipeUtils {
         final double ML_TO_GAL = 0.000264;
         final double ML_TO_FL_OZ = 0.0338;
 
+        // VOLUME TO MASS CONVERSIONS (WATER)
+        final double G_TO_FL_OZ = 0.035;
+        final double KG_TO_GAL = 7.5;
+        final double KG_TO_FL_OZ = 35;
+        final double G_TO_GAL = 0.0075;
+        final double OZ_TO_FL_OZ = 1;
+        final double OZ_TO_GAL = 0.0078;
+        final double FL_OZ_TO_LBS = 0.0625;
+        final double TBSP_TO_LBS = 0.0326;
+        final double TBSP_TO_OZ = 0.522;
+        final double TSP_TO_LBS = 0.0109;
+        final double TSP_TO_OZ = 0.166;
+        final double L_TO_LBS = 2.205;
+        final double L_TO_OZ = 33.81;
+        final double ML_TO_LBS = 0.002205;
+        final double ML_TO_OZ = 0.0353;
+        final double CUP_TO_OZ = 8;
+        final double CUP_TO_LBS = 0.5;
+        final double QT_TO_OZ = 32;
+        final double QT_TO_LBS = 2;
+        final double PT_TO_OZ = 16;
+        final double PT_TO_LBS = 1;
+
+        // PCS CONVERSIONS
+        final double CUP_TO_PCS = 1;
+        final double GAL_TO_PCS = 16;
+        final double QT_TO_PCS = 4;
+        final double PT_TO_PCS = 2;
+        final double FL_OZ_TO_PCS = 0.125;
+        final double TBSP_TO_PCS = 0.0625;
+        final double TSP_TO_PCS = 0.020;
+        final double L_TO_PCS = 4.23;
+        final double ML_TO_PCS = 0.004;
+        final double G_TO_PCS = 0.004;
+        final double KG_TO_PCS = 4.23;
+        final double OZ_TO_PCS = 0.125;
+        final double LBS_TO_PCS = 2;
+
         if(startUnit.equals(endUnit))
             return quantity;
 
@@ -209,6 +248,12 @@ public class RecipeUtils {
                         return quantity * KG_TO_LBS;
                     case "oz":
                         return quantity * KG_TO_OZ;
+                    case "fl oz":
+                        return quantity * KG_TO_FL_OZ;
+                    case "gal":
+                        return quantity * KG_TO_GAL;
+                    case "pcs":
+                        return quantity * KG_TO_PCS;
                 }
             case "g":
                 switch (endUnit) {
@@ -216,65 +261,148 @@ public class RecipeUtils {
                         return quantity * G_TO_LBS;
                     case "oz":
                         return quantity * G_TO_OZ;
+                    case "fl oz":
+                        return quantity * G_TO_FL_OZ;
+                    case "gal":
+                        return quantity * G_TO_GAL;
+                    case "pcs":
+                        return quantity * G_TO_PCS;
+                }
+            case "lbs":
+                switch (endUnit) {
+                    case "oz":
+                        return quantity / OZ_TO_LBS;
+                    case "pcs":
+                        return quantity * LBS_TO_PCS;
                 }
             case "oz":
                 switch (endUnit) {
                     case "lbs":
                         return quantity * OZ_TO_LBS;
+                    case "fl oz":
+                        return quantity * OZ_TO_FL_OZ;
+                    case "gal":
+                        return quantity * OZ_TO_GAL;
+                    case "pcs":
+                        return quantity * OZ_TO_PCS;
                 }
             case "cup":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * CUP_TO_FL_OZ;
+                    case "oz":
+                        return quantity * CUP_TO_OZ;
                     case "gal":
                         return quantity * CUP_TO_GAL;
+                    case "lbs":
+                        return quantity * CUP_TO_LBS;
+                    case "pcs":
+                        return quantity * CUP_TO_PCS;
                 }
             case "qt":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * QT_TO_FL_OZ;
+                    case "oz":
+                        return quantity * QT_TO_OZ;
                     case "gal":
                         return quantity * QT_TO_GAL;
+                    case "lbs":
+                        return quantity * QT_TO_LBS;
+                    case "pcs":
+                        return quantity * QT_TO_PCS;
                 }
             case "pt":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * PT_TO_FL_OZ;
+                    case "oz":
+                        return quantity * PT_TO_OZ;
                     case "gal":
                         return quantity * PT_TO_GAL;
+                    case "lbs":
+                        return quantity * PT_TO_LBS;
+                    case "pcs":
+                        return quantity * PT_TO_PCS;
                 }
             case "tbsp":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * TBSP_TO_FL_OZ;
+                    case "oz":
+                        return quantity * TBSP_TO_OZ;
                     case "gal":
                         return quantity * TBSP_TO_GAL;
+                    case "lbs":
+                        return quantity * TBSP_TO_LBS;
+                    case "pcs":
+                        return quantity * TBSP_TO_PCS;
                 }
             case "tsp":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * TSP_TO_FL_OZ;
+                    case "oz":
+                        return quantity * TSP_TO_OZ;
                     case "gal":
                         return quantity * TSP_TO_GAL;
+                    case "lbs":
+                        return quantity * TSP_TO_LBS;
+                    case "pcs":
+                        return quantity * TSP_TO_PCS;
                 }
             case "l":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * L_TO_FL_OZ;
+                    case "oz":
+                        return quantity * L_TO_OZ;
                     case "gal":
                         return quantity * L_TO_GAL;
+                    case "lbs":
+                        return quantity * L_TO_LBS;
+                    case "pcs":
+                        return quantity * L_TO_PCS;
                 }
             case "ml":
                 switch (endUnit) {
                     case "fl oz":
                         return quantity * ML_TO_FL_OZ;
+                    case "oz":
+                        return quantity * ML_TO_OZ;
                     case "gal":
                         return quantity * ML_TO_GAL;
+                    case "lbs":
+                        return quantity * ML_TO_LBS;
+                    case "pcs":
+                        return quantity * ML_TO_PCS;
                 }
             case "fl oz":
                 switch (endUnit) {
                     case "gal":
                         return quantity * FL_OZ_TO_GAL;
+                    case "lbs":
+                        return quantity * FL_OZ_TO_LBS;
+                    case "pcs":
+                        return quantity * FL_OZ_TO_PCS;
+                }
+            case "gal":
+                switch (endUnit) {
+                    case "pcs":
+                        return quantity * GAL_TO_PCS;
+                    case "fl oz":
+                        return quantity / FL_OZ_TO_GAL;
+                }
+            case "pcs":
+                switch (endUnit) {
+                    case "gal":
+                        return quantity * GAL_TO_PCS;
+                    case "fl oz":
+                        return quantity / FL_OZ_TO_PCS;
+                    case "oz":
+                        return quantity / OZ_TO_PCS;
+                    case "lbs":
+                        return quantity / LBS_TO_PCS;
                 }
         }
 
