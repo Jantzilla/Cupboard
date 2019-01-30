@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Transition;
@@ -133,7 +134,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     }
 
     @Override
-    public void onItemClicked(int clickedItem, ImageView itemLayout, Object tag) {
+    public void onItemClicked(int clickedItem, CardView itemLayout, Object tag) {
 
         startFragmentTransaction(clickedItem, itemLayout, tag);
     }
