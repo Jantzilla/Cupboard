@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         cookbook = findViewById(R.id.fl_cookbook);
         groceries = findViewById(R.id.fl_groceries);
         fragmentManager = getSupportFragmentManager();
-        fragment = new CookbookFragment();                         //TODO: Change back to RecipeFragment()
+        fragment = new RecipeFragment();
 
         if (savedInstanceState != null) {
             //Restore the fragment's instance
@@ -189,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            setFloatingSearchView(getString(R.string.cookbook));
-            animateNavigation(cookbookView);
+            setFloatingSearchView(getString(R.string.recipes));
+            animateNavigation(recipesView);
             fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
         }
 
