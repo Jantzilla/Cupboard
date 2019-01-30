@@ -79,17 +79,23 @@
 
 </android.support.v7.widget.CardView>
 
+    <HorizontalScrollView
+        android:id="@+id/sv_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:scrollbars="none"
+        android:layout_marginBottom="16dp">
     <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
         android:id="@+id/worm_dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="16dp"
         app:dotsColor="@color/colorPrimary"
         app:dotsStrokeColor="@color/colorPrimaryDark"
         app:dotsCornerRadius="8dp"
-        app:dotsSize="16dp"
-        app:dotsSpacing="4dp"
+        app:dotsSize="10dp"
+        app:dotsSpacing="3dp"
         app:dotsStrokeWidth="2dp"/>
+    </HorizontalScrollView>
 
 </FrameLayout>
