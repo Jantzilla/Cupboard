@@ -107,21 +107,25 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             name = jsonObject.getString("strMeal");
 
             for(int o = 1; o < 50; o++) {
-                if(!jsonObject.getString("strIngredient" + o).isEmpty()) {
-                    tempIngredient = jsonObject.getString("strIngredient" + o);
-                    ingredient.add(tempIngredient);
-                } else
-                    break;
+                if(jsonObject.has("strIngredient" + o)) {
+                    if (!jsonObject.getString("strIngredient" + o).isEmpty()) {
+                        tempIngredient = jsonObject.getString("strIngredient" + o);
+                        ingredient.add(tempIngredient);
+                    } else
+                        break;
+                }
             }
 
             for(int o = 1; o < 50; o++) {
-                if(!jsonObject.getString("strMeasure" + o).isEmpty()) {
-                    tempUnit = jsonObject.getString("strMeasure" + o);
-                    String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
-                    quantity.add(quantityUnit[0]);
-                    unit.add(quantityUnit[1]);
-                } else
-                    break;
+                if(jsonObject.has("strMeasure" + o)) {
+                    if (!jsonObject.getString("strMeasure" + o).isEmpty()) {
+                        tempUnit = jsonObject.getString("strMeasure" + o);
+                        String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                        quantity.add(quantityUnit[0]);
+                        unit.add(quantityUnit[1]);
+                    } else
+                        break;
+                }
             }
 
             ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(jsonObject));
@@ -135,8 +139,10 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             Recipe recipe = new Recipe(id,
                     name, ingredient, quantity, unit, shortDescription, description, media);
 
-            recipes.add(recipe);
-            recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
+            if(ingredient.size() == quantity.size()) {
+                recipes.add(recipe);
+                recipeIds.add(cursor.getInt(cursor.getColumnIndex(CupboardContract.Recipes._ID)));
+            }
         }
 
         cursor.close();
@@ -193,7 +199,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                 break;
             default:
-                                                                        //TODO: Determine if app is running on tablet device
                 Recipe item_clicked = recipes.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
@@ -207,9 +212,6 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                         .replace(R.id.fl_fragment, fragment)
                         .commit();
 
-//                Intent intent = new Intent(getContext(), RecipeActivity.class);
-//                intent.putExtra("parcel_data", item_clicked);
-//                startActivity(intent);
         }
     }
 
@@ -231,9 +233,12 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
     @Override
     public void onDestroy() {
-        cursor.close();
-        dbHelper.close();
-        db.close();
+        if(cursor != null)
+            cursor.close();
+        if(dbHelper != null)
+            dbHelper.close();
+        if(db != null)
+            db.close();
         super.onDestroy();
     }
 }
