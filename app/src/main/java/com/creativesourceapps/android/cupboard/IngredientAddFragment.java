@@ -286,7 +286,7 @@ public class IngredientAddFragment extends Fragment {
             public void onClick(View v) {
                 selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
                 selectionArgs = new String[] {titleTextView.getText().toString()};
-                if(type.equals("new") || type.equals("choose") && ingredientEditText.getText().toString().isEmpty())
+                if((type.equals("new") || type.equals("choose")) && ingredientEditText.getText().toString().isEmpty())
                     ingredientEditText.setError("Please enter a name.");
                 if(!type.equals("detail") && !type.equals("choose") && quantityEditText.getText().toString().isEmpty())
                     quantityEditText.setError("Please enter a quantity.");
@@ -314,6 +314,8 @@ public class IngredientAddFragment extends Fragment {
                                 selection,
                                 selectionArgs
                         );
+
+                        Toast.makeText(getContext(), "Grocery item added!", Toast.LENGTH_LONG).show();
 
                     } else {
                         Ingredient ingredient = new Ingredient();
