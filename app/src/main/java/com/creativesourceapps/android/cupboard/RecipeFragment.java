@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
@@ -17,6 +16,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -50,6 +51,11 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private boolean savedRecipe;
     private StepPagerFragment fragment;
     private FragmentManager fragmentManager;
+    private Call call;
+    private ProgressBar pb;
+    private TextView emptyTextView;
+    private RecipeAdapter recipeAdapter;
+    private String savedQuery;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -61,7 +67,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
         recylcerView = view.findViewById(R.id.recipes_grid_view);
-        jsonObjectArray = new ArrayList<>();
+        pb = view.findViewById(R.id.pb);
+        emptyTextView = view.findViewById(R.id.tv_no_results_message);
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
@@ -69,6 +76,13 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         projection = new String[] {
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
+
+        recipeAdapter = new RecipeAdapter(getContext(), recipes, RecipeFragment.this, "Recipes");
+
+        recylcerView.setLayoutManager(layoutManager);
+
+        recylcerView.setAdapter(recipeAdapter);
+
         requestRecipeData("");
 
         ((MainActivity)getActivity()).updateSearchListener(RecipeFragment.this);
@@ -85,24 +99,34 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
     private void requestRecipeData(String query) {
 
+        this.savedQuery = query;
+
+        recipeAdapter.clear();
+        jsonObjectArray = new ArrayList<>();
+        recylcerView.removeAllViews();
+        recylcerView.getRecycledViewPool().clear();
+
+        pb.setVisibility(View.VISIBLE);
+
+        if(call != null) {
+            call.cancel();
+        }
+
         //Default Recipe API endpoint
         String baseUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
         String searchUrl = baseUrl + query;
 
-        recipes.clear();
-        jsonObjectArray.clear();
-
-
         if (isOnline()) {
-
-            OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
                     .url(searchUrl)
                     .build();
 
-            client.newCall(request).enqueue(new Callback() {
+            call = new OkHttpClient().newCall(request);
+
+
+            call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
@@ -110,77 +134,87 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                 @Override
                 public void onResponse(Call call, final Response response) throws IOException {
-                    if (!response.isSuccessful()) {
-                        throw new IOException("Unexpected code " + response);
-                    }
-                    try {
+                    if (response.isSuccessful()) {
 
-                        JSONObject responseObject = new JSONObject(response.body().string());
+                        try {
+                            JSONObject responseObject = new JSONObject(response.body().string());
 
-                        JSONArray json = responseObject.getJSONArray("meals");
+                            JSONArray json = responseObject.getJSONArray("meals");
 
-                        for (int i = 0; i < json.length(); i++) {
-                            int id;
-                            String name, media, tempIngredient, tempUnit;
-                            ArrayList<String> ingredient = new ArrayList<>();
-                            ArrayList<String> quantity = new ArrayList<>();
-                            ArrayList<String> unit = new ArrayList<>();
-                            ArrayList<String> shortDescription = new ArrayList<>();
-                            JSONObject resultObject = json.getJSONObject(i);
-                            jsonObjectArray.add(resultObject);
-                            id = resultObject.getInt("idMeal");
-                            name = resultObject.getString("strMeal");
+                            for (int i = 0; i < json.length(); i++) {
+                                int id;
+                                String name, media, tempIngredient, tempUnit;
+                                ArrayList<String> ingredient = new ArrayList<>();
+                                ArrayList<String> quantity = new ArrayList<>();
+                                ArrayList<String> unit = new ArrayList<>();
+                                ArrayList<String> shortDescription = new ArrayList<>();
+                                JSONObject resultObject = json.getJSONObject(i);
+                                id = resultObject.getInt("idMeal");
+                                name = resultObject.getString("strMeal");
 
-                            for(int o = 1; o < 50; o++) {
-                                if(!resultObject.getString("strIngredient" + o).isEmpty()) {
-                                    tempIngredient = resultObject.getString("strIngredient" + o);
-                                    ingredient.add(tempIngredient);
-                                } else
-                                    break;
+                                for(int o = 1; o < 50; o++) {
+                                    if(resultObject.has("strIngredient" + o)) {
+                                        if (!resultObject.getString("strIngredient" + o).isEmpty()) {
+                                            tempIngredient = resultObject.getString("strIngredient" + o);
+                                            ingredient.add(tempIngredient);
+                                        } else
+                                            break;
+                                    }
+                                }
+
+                                for(int o = 1; o < 50; o++) {
+                                    if(resultObject.has("strMeasure" + o)) {
+                                        if (!resultObject.getString("strMeasure" + o).isEmpty()) {
+                                            tempUnit = resultObject.getString("strMeasure" + o);
+                                            String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                                            quantity.add(quantityUnit[0]);
+                                            unit.add(quantityUnit[1]);
+                                        } else
+                                            break;
+                                    }
+                                }
+
+                                ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(resultObject));
+
+                                for(int o = 1; o < description.size(); o++) {
+                                    shortDescription.add(("Step " + o));
+                                }
+
+                                media = resultObject.getString("strMealThumb");
+
+                                Recipe recipe = new Recipe(id,
+                                        name, ingredient, quantity, unit, shortDescription, description, media);
+
+                                if(ingredient.size() == quantity.size() && name.toLowerCase().contains(savedQuery.toLowerCase())) {
+                                    recipeAdapter.add(recipe);
+                                    jsonObjectArray.add(resultObject);
+                                }
                             }
 
-                            for(int o = 1; o < 50; o++) {
-                                if(!resultObject.getString("strMeasure" + o).isEmpty()) {
-                                    tempUnit = resultObject.getString("strMeasure" + o);
-                                    String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
-                                    quantity.add(quantityUnit[0]);
-                                    unit.add(quantityUnit[1]);
-                                } else
-                                    break;
-                            }
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //Handle UI here
+                                    if(recipeAdapter.getItemCount() == 0)
+                                        pb.setVisibility(View.GONE);
+                                    else {
+                                        pb.setVisibility(View.GONE);
+                                        emptyTextView.setVisibility(View.GONE);
 
-                            ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(resultObject));
+                                        recipeAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                            });
 
-                            for(int o = 1; o < description.size(); o++) {
-                                shortDescription.add(("Step " + o));
-                            }
-
-                            media = resultObject.getString("strMealThumb");
-
-                            Recipe recipe = new Recipe(id,
-                                    name, ingredient, quantity, unit, shortDescription, description, media);
-
-                            recipes.add(recipe);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
                         }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
-                    }
-
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Handle UI here
-                            RecipeAdapter recipeAdapter = new RecipeAdapter(recipes, RecipeFragment.this, "Recipes");
-
-                            recylcerView.setLayoutManager(layoutManager);
-
-                            recylcerView.setAdapter(recipeAdapter);
-
-                        }
-                    });
+                        response.close();
+                    } else
+                        response.close();
                 }
             });
 
@@ -213,6 +247,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                     }
                 }
 
+                cursor.close();
+
                 if(!savedRecipe) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
                     alertDialog.setTitle("Save Recipe?");
@@ -226,7 +262,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                     alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            values.put(CupboardContract.Recipes.COLUMN_TITLE, recipes.get(itemClicked).title);
+                            values.put(CupboardContract.Recipes.COLUMN_TITLE, recipeAdapter.get(itemClicked).title);
                             values.put(CupboardContract.Recipes.COLUMN_RECIPE, jsonObjectArray.get(itemClicked).toString());
                             db.insert(CupboardContract.Recipes.TABLE_NAME, null, values);
                         }
@@ -237,7 +273,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                 savedRecipe = false;
                 break;
             default:
-                Recipe item_clicked = recipes.get(itemClicked);
+                Recipe item_clicked = recipeAdapter.get(itemClicked);
                 CupboardWidgetProvider.sendRefreshBroadcast(getContext(),item_clicked);
 
                 ((MainActivity)getActivity()).setRecipe(item_clicked);
@@ -250,9 +286,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                         .replace(R.id.fl_fragment, fragment)
                         .commit();
 
-//                Intent intent = new Intent(getContext(), RecipeActivity.class);
-//                intent.putExtra("parcel_data", item_clicked);
-//                startActivity(intent);
         }
     }
 
@@ -268,4 +301,14 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         MainActivity.restoreFragment = this;
     }
 
+    @Override
+    public void onDestroy() {
+        if(cursor != null)
+            cursor.close();
+        if(dbHelper != null)
+            dbHelper.close();
+        if(db != null)
+            db.close();
+        super.onDestroy();
+    }
 }
