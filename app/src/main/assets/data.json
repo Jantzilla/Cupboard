@@ -400,7 +400,7 @@
          "idIngredient":"79",
          "strIngredient":"Chopped Parsley",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"oz"
       },
       {
          "idIngredient":"80",
@@ -424,7 +424,7 @@
          "idIngredient":"83",
          "strIngredient":"Cilantro",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"oz"
       },
       {
          "idIngredient":"84",
@@ -490,7 +490,7 @@
          "idIngredient":"95",
          "strIngredient":"Coriander",
          "strDescription":"Fruits & Vegetables",
-         "strType":"grams"
+         "strType":"oz"
       },
       {
          "idIngredient":"97",
@@ -592,7 +592,7 @@
          "idIngredient":"113",
          "strIngredient":"Dill",
          "strDescription":"Spices & Baking",
-         "strType":"grams"
+         "strType":"oz"
       },
       {
          "idIngredient":"114",
