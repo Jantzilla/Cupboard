@@ -35,7 +35,12 @@
             android:fontFamily="@font/marmelad_regular"
             android:textColor="#1c1c1c"
             android:padding="16dp"
-            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="@dimen/iv_button_size"
+            android:layout_marginEnd="@dimen/iv_button_size"
             android:layout_gravity="top|start"
             android:gravity="center"
             android:textSize="32sp"/>
