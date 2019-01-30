@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/iv_button"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="@dimen/iv_button_size"
+            android:layout_height="@dimen/iv_button_size"
             android:padding="8dp"
             android:background="@drawable/recipe_list_icon_background"
             android:layout_gravity="top|end"
