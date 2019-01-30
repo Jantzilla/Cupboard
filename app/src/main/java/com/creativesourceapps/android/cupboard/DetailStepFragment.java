@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class DetailStepFragment extends Fragment {
     int position;
-    private static final String TAG = DetailStepFragment.class.getSimpleName();
     private TextView textView;
     private Recipe recipe;
 

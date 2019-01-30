@@ -41,7 +41,6 @@ public class IngredientAddFragment extends Fragment {
     FloatingActionButton fab, addFab, deleteFab;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
-    private Cursor cursor;
     private Button useButton;
     private EditText ingredientEditText, hintEditText, quantityEditText;
     private TextView unitTextView, titleTextView, quantityTextView;
@@ -50,7 +49,7 @@ public class IngredientAddFragment extends Fragment {
     private boolean savedIngredient, availableIngredient, isUsed;
     private String selection;
     private static String selectedCategory;
-    private String[] projection, selectionArgs;
+    private String[] selectionArgs;
     private int entryEnd;
     private Transition transitionFade, transitionSlide;
     private ViewGroup viewGroup;
@@ -263,7 +262,7 @@ public class IngredientAddFragment extends Fragment {
 
                 Ingredient ingredient = searchIngredients(getContext(), CupboardContract.AllIngredients.TABLE_NAME, String.valueOf(s));
 
-                Spannable wordToSpan = new SpannableString(ingredient.name);  //TODO: ADD REAL DATA
+                Spannable wordToSpan = new SpannableString(ingredient.name);
 
                 if(wordToSpan.length() > 0) {
                     wordToSpan.setSpan(new ForegroundColorSpan(Color.GRAY), entryEnd, wordToSpan.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -287,9 +286,9 @@ public class IngredientAddFragment extends Fragment {
                 selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
                 selectionArgs = new String[] {titleTextView.getText().toString()};
                 if((type.equals("new") || type.equals("choose")) && ingredientEditText.getText().toString().isEmpty())
-                    ingredientEditText.setError("Please enter a name.");
+                    ingredientEditText.setError(getString(R.string.please_enter_name));
                 if(!type.equals("detail") && !type.equals("choose") && quantityEditText.getText().toString().isEmpty())
-                    quantityEditText.setError("Please enter a quantity.");
+                    quantityEditText.setError(getString(R.string.please_enter_quantity));
                 else {
                     if(type.equals("edit")) {
                         ContentValues values = new ContentValues();
@@ -315,7 +314,7 @@ public class IngredientAddFragment extends Fragment {
                                 selectionArgs
                         );
 
-                        Toast.makeText(getContext(), "Grocery item added!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getString(R.string.grocery_item_added), Toast.LENGTH_LONG).show();
 
                     } else {
                         Ingredient ingredient = new Ingredient();
@@ -325,13 +324,13 @@ public class IngredientAddFragment extends Fragment {
                         ingredient.category = selectedCategory;
 
                         if (!searchIngredients(getContext(), CupboardContract.AllIngredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
-                            ingredientEditText.setError("Invalid ingredient.");
+                            ingredientEditText.setError(getString(R.string.invalid_ingredient));
                             availableIngredient = false;
                         }
 
                         if (type.equals("new") &&
                                 searchIngredients(getContext(), CupboardContract.Ingredients.TABLE_NAME, ingredient.name).name.equals(ingredient.name)) {
-                            ingredientEditText.setError("Ingredient already exists.");
+                            ingredientEditText.setError(getString(R.string.ingredient_already_exists));
                             savedIngredient = true;
                         }
 
@@ -363,7 +362,7 @@ public class IngredientAddFragment extends Fragment {
                                 ingredientEditText.setError(null);
                                 quantityEditText.setError(null);
 
-                                Toast.makeText(getContext(), "New Ingredient Added!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), getString(R.string.ingredient_added), Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -490,7 +489,7 @@ public class IngredientAddFragment extends Fragment {
 
         isUsed = true;
 
-        ContentValues values = new ContentValues();                            //TODO: Change ingredients.quantity value to Int parsable String
+        ContentValues values = new ContentValues();
         values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, String.valueOf(Double.valueOf(ingredient.quantity) - finalQuantity));
         db.update(
                 CupboardContract.Ingredients.TABLE_NAME,
@@ -525,7 +524,7 @@ public class IngredientAddFragment extends Fragment {
                 double finalQuantity = RecipeUtils.getConversion(ingredients.get(i).name,
                         Double.valueOf(ingredients.get(i).quantity),ingredients.get(i).unit,ingredient.unit);
 
-                ContentValues values = new ContentValues();                        //TODO: Change ingredients.quantity value to Int parsable String
+                ContentValues values = new ContentValues();
                 values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, String.valueOf(Double.valueOf(ingredient.quantity) - finalQuantity));
                 db.update(
                         CupboardContract.Ingredients.TABLE_NAME,

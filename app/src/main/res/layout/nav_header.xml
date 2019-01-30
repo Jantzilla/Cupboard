@@ -9,6 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/cupboard_kitchen_photo_logo_background"
         android:scaleType="centerCrop"
         android:src="@drawable/kitchen"
         android:foreground="@drawable/nav_header_background"/>

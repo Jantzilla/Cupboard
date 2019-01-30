@@ -14,7 +14,7 @@
         android:textSize="32sp"
         android:textColor="@color/colorAccent"
         android:fontFamily="@font/marmelad_regular"
-        android:text="Cookbook is empty."/>
+        android:text="@string/cookbook_is_empty"/>
 
     <ProgressBar
         android:id="@+id/pb"

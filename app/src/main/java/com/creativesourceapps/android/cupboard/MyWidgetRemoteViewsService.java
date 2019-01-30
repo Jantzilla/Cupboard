@@ -11,6 +11,6 @@ public class MyWidgetRemoteViewsService extends RemoteViewsService {
         ArrayList<String> names = intent.getStringArrayListExtra("names");
         ArrayList<String> quantities = intent.getStringArrayListExtra("quantities");
         ArrayList<String> units = intent.getStringArrayListExtra("units");
-        return new MyWidgetRemoteViewsFactory(this.getApplicationContext(), intent, names, quantities, units);
+        return new MyWidgetRemoteViewsFactory(this.getApplicationContext(), names, quantities, units);
     }
 }

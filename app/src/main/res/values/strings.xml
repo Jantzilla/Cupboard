@@ -9,20 +9,52 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_recipe">Delete Recipe</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="step">Step</string>
+    <string name="spirits_beverages"><![CDATA[Spirits & Beverages]]></string>
+    <string name="spices_baking"><![CDATA[Spices & Baking]]></string>
+    <string name="bread_grains"><![CDATA[Bread & Grains]]></string>
+    <string name="sauces_vinegar"><![CDATA[Sauces & Vinegar]]></string>
+    <string name="soups_canned"><![CDATA[Soups & Canned]]></string>
+    <string name="snacks_candy"><![CDATA[Snacks & Candy]]></string>
+    <string name="dairy_eggs"><![CDATA[Dairy & Eggs]]></string>
+    <string name="pasta_rice"><![CDATA[Pasta & Rice]]></string>
+    <string name="fruits_vegetables"><![CDATA[Fruits & Vegetables]]></string>
+    <string name="meat_seafood"><![CDATA[Meat & Seafood]]></string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="all_ingredients">All Ingredients</string>
+    <string name="is_empty">is empty.</string>
+    <string name="groceries">Groceries</string>
+    <string name="please_enter_name">Please enter a name.</string>
+    <string name="please_enter_quantity">Please enter a quantity.</string>
+    <string name="grocery_item_added">Grocery item added!</string>
+    <string name="invalid_ingredient">Invalid ingredient.</string>
+    <string name="ingredient_already_exists">Ingredient already exists.</string>
+    <string name="ingredient_added">New Ingredient Added!</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="cookbook">Cookbook</string>
+    <string name="recipes">Recipes</string>
+    <string name="recipe_already_saved">This Recipe is already saved.</string>
+    <string name="save_recipe_question">Save Recipe?</string>
+    <string name="cookbook_is_empty">Cookbook is empty.</string>
+    <string name="category">Category</string>
+    <string name="groceries_is_empty">Groceries is empty.</string>
+    <string name="use_ingredients">Use Ingredients</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="quantity">Quantity</string>
+    <string name="ounces">Ounces</string>
+    <string name="use">Use</string>
+    <string name="no_recipes_available">No Recipes Available.</string>
+    <string name="recipe_thumbnail">Recipe Thumbnail</string>
+    <string name="measuring_cup">Measuring Cup</string>
+    <string name="recipe_category_thumbnail">Recipe Category Thumbnail</string>
+    <string name="unit">Unit</string>
+    <string name="ingredient_thumbnail">Ingredient Thumbnail</string>
+    <string name="used_ingredient_indicator">Used Ingredient Indicator</string>
+    <string name="minimize_image_button">Minimize Image Button</string>
+    <string name="cupboard_kitchen_photo_logo_background">Cupboard Kitchen Photo Logo Background</string>
+    <string name="one">1</string>
 
-    <string-array name="units_array">
-        <item>g</item>
-        <item>kg</item>
-        <item>oz</item>
-        <item>lbs</item>
-    </string-array>
-
-    <string-array name="categories_array">
-        <item>Seasoning</item>
-        <item>Marinade</item>
-        <item>Fruits</item>
-        <item>Vegetables</item>
-        <item>Meat</item>
-
-    </string-array>
 </resources>

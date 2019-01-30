@@ -25,11 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.BreakIterator;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,7 +51,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private ProgressBar pb;
     private TextView emptyTextView;
     private RecipeAdapter recipeAdapter;
-    private String savedQuery;
+    private String savedQuery, step;
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -73,11 +69,12 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
         values = new ContentValues();
+        step = getString(R.string.step);
         projection = new String[] {
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
 
-        recipeAdapter = new RecipeAdapter(getContext(), recipes, RecipeFragment.this, "Recipes");
+        recipeAdapter = new RecipeAdapter(getContext(), recipes, RecipeFragment.this, getString(R.string.recipes));
 
         recylcerView.setLayoutManager(layoutManager);
 
@@ -177,7 +174,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                 ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(resultObject));
 
                                 for(int o = 1; o < description.size(); o++) {
-                                    shortDescription.add(("Step " + o));
+                                    shortDescription.add(step + " " + o);
                                 }
 
                                 media = resultObject.getString("strMealThumb");
@@ -242,7 +239,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                     if(cursor.getString(cursor.getColumnIndex(CupboardContract.Recipes.COLUMN_RECIPE))
                             .equals(jsonObjectArray.get(itemClicked).toString())) {
-                        Toast.makeText(getContext(), "This Recipe is already saved.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getString(R.string.recipe_already_saved), Toast.LENGTH_LONG).show();
                         savedRecipe = true;
                     }
                 }
@@ -251,15 +248,15 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
 
                 if(!savedRecipe) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-                    alertDialog.setTitle("Save Recipe?");
+                    alertDialog.setTitle(getString(R.string.save_recipe_question));
                     alertDialog.setCancelable(true);
-                    alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    alertDialog.setPositiveButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
                         }
                     });
-                    alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    alertDialog.setNegativeButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             values.put(CupboardContract.Recipes.COLUMN_TITLE, recipeAdapter.get(itemClicked).title);
@@ -297,7 +294,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setFloatingSearchView("Recipes");
+        ((MainActivity)getActivity()).setFloatingSearchView(getString(R.string.recipes));
         MainActivity.restoreFragment = this;
     }
 

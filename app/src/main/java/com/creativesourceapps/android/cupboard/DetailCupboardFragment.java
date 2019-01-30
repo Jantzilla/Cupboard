@@ -27,7 +27,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
     private TextView categoryTextView, emptyTextView;
-    private String category, selection, sortOrder, message, isEmpty = "is empty.";
+    private String category, selection, sortOrder, message, isEmpty;
     private CupboardDbHelper dbHelper;
     private SQLiteDatabase db;
     private String[] projection, selectionArgs;
@@ -61,6 +61,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         categoryTextView.setText(category);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getReadableDatabase();
+        isEmpty = getString(R.string.is_empty);
 
         ((MainActivity)getActivity()).updateSearchListener(DetailCupboardFragment.this);
 
@@ -100,7 +101,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
 
         sortOrder = CupboardContract.Ingredients.COLUMN_NAME;
 
-        if(category.equals("All Ingredients")) {
+        if(category.equals(getString(R.string.all_ingredients))) {
             message = getString(R.string.app_name) + " " + isEmpty;
             emptyTextView.setText(message);
             selection = null;

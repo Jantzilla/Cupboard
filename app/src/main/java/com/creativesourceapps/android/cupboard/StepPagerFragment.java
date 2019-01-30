@@ -101,7 +101,7 @@ public class StepPagerFragment extends Fragment {
         for(int i = 0; i < recipe.ingredients.size(); i++) {
             Ingredient ingredient = new Ingredient();
             ingredient.name = recipe.ingredients.get(i);
-            ingredient.category = "Ingredients";
+            ingredient.category = getString(R.string.ingredients);
             ingredient.unit = recipe.unit.get(i);
             ingredient.quantity = recipe.quantity.get(i);
             ingredient.available = recipe.available.get(i);

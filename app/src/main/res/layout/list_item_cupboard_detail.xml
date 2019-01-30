@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="#000000"
-        android:text="Ingredient"/>
+        android:text="@string/ingredient"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="8dp"
-        android:text="Quantity"
+        android:text="@string/quantity"
         android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@id/tv_unit"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -44,7 +44,7 @@
         android:paddingRight="8dp"
         android:paddingEnd="8dp"
         android:paddingBottom="8dp"
-        android:text="Unit"
+        android:text="@string/unit"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_quantity" />

@@ -12,7 +12,6 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -54,7 +53,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         getCategories();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            fab.setTransitionName("Add Ingredient");
+            fab.setTransitionName(getString(R.string.add_ingredient));
             setExitTransition(TransitionInflater.from(getContext())
                     .inflateTransition(R.transition.grid_exit_transition));
         }
@@ -75,17 +74,17 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
 
     private void getCategories() {
 
-        categoryList.add("All Ingredients");
-        categoryList.add("Meat & Seafood");
-        categoryList.add("Pasta & Rice");
-        categoryList.add("Fruits & Vegetables");
-        categoryList.add("Dairy & Eggs");
-        categoryList.add("Snacks & Candy");
-        categoryList.add("Bread & Grains");
-        categoryList.add("Spices & Baking");
-        categoryList.add("Spirits & Beverages");
-        categoryList.add("Sauces & Vinegar");
-        categoryList.add("Soups & Canned");
+        categoryList.add(getString(R.string.all_ingredients));
+        categoryList.add(getString(R.string.meat_seafood));
+        categoryList.add(getString(R.string.pasta_rice));
+        categoryList.add(getString(R.string.fruits_vegetables));
+        categoryList.add(getString(R.string.dairy_eggs));
+        categoryList.add(getString(R.string.snacks_candy));
+        categoryList.add(getString(R.string.bread_grains));
+        categoryList.add(getString(R.string.spices_baking));
+        categoryList.add(getString(R.string.spirits_beverages));
+        categoryList.add(getString(R.string.sauces_vinegar));
+        categoryList.add(getString(R.string.soups_canned));
 
         adapter = new CupboardAdapter(categoryList, CupboardFragment.this);
 
@@ -99,7 +98,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
         Bundle bundle = new Bundle();
 
         if (clickedItem == -1) {
-            bundle.putString("Shared Element", "Add Ingredient");
+            bundle.putString("Shared Element", getString(R.string.add_ingredient));
             fragment = new IngredientAddFragment();
             MainActivity.restoreFragment = fragment;
             fragment.setSharedElementReturnTransition(null);
@@ -147,7 +146,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setFloatingSearchView("Cupboard");
+        ((MainActivity)getActivity()).setFloatingSearchView(getString(R.string.app_name));
         MainActivity.restoreFragment = this;
     }
 }

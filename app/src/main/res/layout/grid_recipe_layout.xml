@@ -22,7 +22,8 @@
             android:id="@+id/iv_recipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"/>
+            android:contentDescription="@string/recipe_thumbnail"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/grid_item_recipe"
@@ -58,6 +59,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/measuring_cup"
                 android:padding="8dp"
                 android:src="@drawable/add_ingredients"/>
 

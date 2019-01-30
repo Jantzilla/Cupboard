@@ -14,13 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.BreakIterator;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
@@ -34,7 +30,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
     private JSONObject jsonObject;
-    private String selection, tempIngredient, tempUnit;
+    private String selection, tempIngredient, tempUnit, step;
     private RecipeAdapter recipeAdapter;
     private ArrayList<Integer> recipeIds = new ArrayList<>();
     private StepPagerFragment fragment;
@@ -59,6 +55,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
         pb = view.findViewById(R.id.pb);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
+        step = getString(R.string.step);
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
 
         try {
@@ -131,7 +128,7 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
             ArrayList<String> description = new ArrayList<>(RecipeUtils.parseSteps(jsonObject));
 
             for(int o = 1; o < description.size(); o++) {
-                shortDescription.add(("Step " + o));
+                shortDescription.add(step + " " + o);
             }
 
             media = jsonObject.getString("strMealThumb");
@@ -171,14 +168,14 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
                 alertDialog.setCancelable(true);
-                alertDialog.setTitle("Delete Recipe?");
-                alertDialog.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                alertDialog.setTitle(getString(R.string.delete_recipe) + "?");
+                alertDialog.setPositiveButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 });
-                alertDialog.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialog.setNegativeButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

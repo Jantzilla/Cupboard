@@ -89,7 +89,7 @@
                     android:layout_gravity="center"
                     android:textSize="32sp"
                     android:textColor="#000000"
-                    android:text="Recipes"/>
+                    android:text="@string/recipes"/>
             </FrameLayout>
 
             <FrameLayout
@@ -124,7 +124,7 @@
                     android:layout_gravity="center"
                     android:textSize="32sp"
                     android:textColor="#000000"
-                    android:text="Cupboard"/>
+                    android:text="@string/app_name"/>
             </FrameLayout>
 
             <FrameLayout
@@ -159,7 +159,7 @@
                     android:layout_gravity="center"
                     android:textSize="32sp"
                     android:textColor="#000000"
-                    android:text="Cookbook"/>
+                    android:text="@string/cookbook"/>
             </FrameLayout>
 
             <FrameLayout
@@ -194,7 +194,7 @@
                     android:layout_gravity="center"
                     android:textSize="32sp"
                     android:textColor="#000000"
-                    android:text="Groceries"/>
+                    android:text="@string/groceries"/>
             </FrameLayout>
 
         </android.support.constraint.ConstraintLayout>

@@ -14,7 +14,7 @@
         android:textSize="32sp"
         android:textColor="@color/colorAccent"
         android:fontFamily="@font/marmelad_regular"
-        android:text="No Recipes Available."/>
+        android:text="@string/no_recipes_available"/>
 
     <ProgressBar
         android:id="@+id/pb"

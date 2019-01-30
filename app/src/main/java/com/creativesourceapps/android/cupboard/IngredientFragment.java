@@ -81,7 +81,7 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
         for(int i = 0; i < recipe.ingredients.size(); i++) {
             Ingredient ingredient = new Ingredient();
             ingredient.name = recipe.ingredients.get(i);
-            ingredient.category = "Ingredients";
+            ingredient.category = getString(R.string.ingredients);
             ingredient.unit = recipe.unit.get(i);
             ingredient.quantity = recipe.quantity.get(i);
             ingredient.used = recipe.used.get(i);

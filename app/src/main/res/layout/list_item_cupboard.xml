@@ -23,6 +23,7 @@
             android:id="@+id/iv_category"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/recipe_category_thumbnail"
             android:padding="16dp"
             android:layout_gravity="center"
             android:scaleType="fitCenter"/>
@@ -31,7 +32,7 @@
             android:id="@+id/tv_category_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Ingredients"
+            android:text="@string/all_ingredients"
             android:textColor="#000000"
             android:fontFamily="@font/marmelad_regular"
             android:layout_gravity="center"

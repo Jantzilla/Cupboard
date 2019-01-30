@@ -3,7 +3,6 @@ package com.creativesourceapps.android.cupboard;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -90,8 +89,6 @@ public class RecipeUtils {
         if(result.matches("\\d+|\\d*\\.\\d+"))
             result += " pcs";
 
-        Log.d("Debug", result + " - ( " + s + " ) " );
-
         if(result.matches("\\D+")) {
             String tempResult = "1 " + result;
             result = tempResult;
@@ -109,7 +106,6 @@ public class RecipeUtils {
         String[] projection, selectionArgs;
         String selection;
         Cursor cursor;
-        int count = 0;
         db = dbHelper.getWritableDatabase();
         projection = new String[] {CupboardContract.Ingredients.COLUMN_NAME,
                 CupboardContract.Ingredients.COLUMN_UNIT,
@@ -155,7 +151,7 @@ public class RecipeUtils {
         ArrayList<String> descriptions = new ArrayList<>();
 
         BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
-        String source = null;
+        String source;
         try {
             source = instructions.getString("strInstructions").replaceAll("\r|\n", "").replaceAll("\\.", ". ");
             iterator.setText(source);

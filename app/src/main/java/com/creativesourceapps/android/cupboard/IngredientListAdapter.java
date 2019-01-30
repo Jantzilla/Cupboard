@@ -1,8 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -80,7 +78,7 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ingredientImageView = itemView.findViewById(R.id.iv_ingredient);
-            availableImageView = itemView.findViewById(R.id.iv_available);
+            availableImageView = itemView.findViewById(R.id.iv_used);
             nameTextView = itemView.findViewById(R.id.tv_ingredient_name);
             quantityTextView = itemView.findViewById(R.id.tv_ingredient_quantity);
             unitTextView = itemView.findViewById(R.id.tv_ingredient_unit);

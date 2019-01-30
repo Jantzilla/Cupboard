@@ -1,7 +1,6 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Binder;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
@@ -16,7 +15,7 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
     private ArrayList<String> quantities = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
 
-    public MyWidgetRemoteViewsFactory(Context applicationContext, Intent intent, ArrayList<String> recipes, ArrayList<String> quantities, ArrayList<String> units) {
+    public MyWidgetRemoteViewsFactory(Context applicationContext, ArrayList<String> recipes, ArrayList<String> quantities, ArrayList<String> units) {
         mContext = applicationContext;
 
         if(recipes != null) {

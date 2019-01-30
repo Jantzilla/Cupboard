@@ -67,7 +67,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         Recipe recipe = recipes.get(i);
 
         recipeViewHolder.titleTextView.setText(recipe.title);
-        if(type.equals("Recipes"))
+        if(type.equals(context.getString(R.string.recipes)))
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.add_cookbook);
         else
             recipeViewHolder.buttonImageView.setImageResource(R.drawable.minus_cookbook);

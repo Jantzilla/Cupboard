@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.view.menu.MenuItemImpl;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -190,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            setFloatingSearchView("Cookbook");
+            setFloatingSearchView(getString(R.string.cookbook));
             animateNavigation(cookbookView);
             fragmentManager.beginTransaction().add(R.id.fl_fragment, fragment).commit();
         }
@@ -243,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new RecipeFragment();
                 MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                floatingSearchView.setSearchBarTitle("Recipes");
+                floatingSearchView.setSearchBarTitle(getString(R.string.recipes));
             }
         });
         cupboard.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new CupboardFragment();
                 MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                floatingSearchView.setSearchBarTitle("Cupboard");
+                floatingSearchView.setSearchBarTitle(getString(R.string.app_name));
             }
         });
         cookbook.setOnClickListener(new View.OnClickListener() {
@@ -265,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new CookbookFragment();
                 MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                floatingSearchView.setSearchBarTitle("Cookbook");
+                floatingSearchView.setSearchBarTitle(getString(R.string.cookbook));
             }
         });
         groceries.setOnClickListener(new View.OnClickListener() {
@@ -276,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new GroceriesFragment();
                 MainActivity.restoreFragment = fragment;
                 fragmentManager.beginTransaction().replace(R.id.fl_fragment, fragment).commit();
-                floatingSearchView.setSearchBarTitle("Groceries");
+                floatingSearchView.setSearchBarTitle(getString(R.string.groceries));
             }
         });
 

@@ -152,7 +152,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setFloatingSearchView("Groceries");
+        ((MainActivity)getActivity()).setFloatingSearchView(getString(R.string.groceries));
         MainActivity.restoreFragment = this;
     }
 }
