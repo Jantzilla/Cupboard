@@ -3,6 +3,7 @@ package com.creativesourceapps.android.cupboard;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
     }
 
     public interface ItemClickListener{
-        void onItemClicked(int clickedItem, ImageView itemLayout, Object tag);
+        void onItemClicked(int clickedItem, CardView itemLayout, Object tag);
     }
 
     @NonNull
@@ -116,13 +117,13 @@ public class CupboardAdapter extends RecyclerView.Adapter<CupboardAdapter.Cupboa
 
     public class CupboardViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
-        ImageView listItemLayout;
+        CardView listItemLayout;
         ImageView imageView;
 
         public CupboardViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            listItemLayout = itemView.findViewById(R.id.iv_category);
+            listItemLayout = itemView.findViewById(R.id.ll_list_item);
             imageView = itemView.findViewById(R.id.iv_category);
             textView = itemView.findViewById(R.id.tv_category_name);
 
