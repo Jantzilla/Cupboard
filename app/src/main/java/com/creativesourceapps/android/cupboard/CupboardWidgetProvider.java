@@ -28,7 +28,9 @@ public class CupboardWidgetProvider extends AppWidgetProvider {
             Intent mainIntent = new Intent(context, MainActivity.class);
 
             if(recipe != null) {
-                intent.putStringArrayListExtra("bundle", recipe.ingredients);
+                intent.putStringArrayListExtra("names", recipe.ingredients);
+                intent.putStringArrayListExtra("quantities", recipe.quantity);
+                intent.putStringArrayListExtra("units", recipe.unit);
                 intent.setData(Uri.fromParts("content", String.valueOf(appWidgetId + Math.random()), null));
                 views.setTextViewText(R.id.recipe_title, recipe.title);
             }

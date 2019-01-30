@@ -12,13 +12,18 @@ import java.util.ArrayList;
 public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private Context mContext;
-    private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<String> quantities = new ArrayList<>();
+    private ArrayList<String> units = new ArrayList<>();
 
-    public MyWidgetRemoteViewsFactory(Context applicationContext, Intent intent, ArrayList<String> recipe) {
+    public MyWidgetRemoteViewsFactory(Context applicationContext, Intent intent, ArrayList<String> recipes, ArrayList<String> quantities, ArrayList<String> units) {
         mContext = applicationContext;
 
-        if(recipe != null)
-            arrayList = recipe;
+        if(recipes != null) {
+            names = recipes;
+            this.quantities = quantities;
+            this.units = units;
+        }
     }
 
     @Override
@@ -42,7 +47,7 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        return names.size();
     }
 
     @Override
@@ -52,7 +57,9 @@ public class MyWidgetRemoteViewsFactory implements RemoteViewsService.RemoteView
         }
 
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.list_item);
-        rv.setTextViewText(R.id.ingredientsListItem, arrayList.get(position));
+        rv.setTextViewText(R.id.ingredientsListItem, names.get(position));
+        rv.setTextViewText(R.id.quantityListItem, quantities.get(position));
+        rv.setTextViewText(R.id.unitListItem, units.get(position));
 
         return rv;
     }
