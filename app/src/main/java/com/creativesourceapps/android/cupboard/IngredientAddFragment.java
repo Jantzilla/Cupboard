@@ -164,6 +164,7 @@ public class IngredientAddFragment extends Fragment {
                 name = getArguments().getString("name");
                 quantity = getArguments().getString("quantity");
                 unit = getArguments().getString("unit");
+                selectedCategory = getArguments().getString("category");
 
                 ingredientEditText.setVisibility(View.GONE);
                 hintEditText.setEnabled(false);

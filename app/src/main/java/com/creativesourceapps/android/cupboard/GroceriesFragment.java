@@ -134,12 +134,13 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     }
 
     @Override
-    public void onItemClickListener(int index, String name, String quantity, String unit, boolean availability) {
+    public void onItemClickListener(int index, String name, String quantity, String unit, String category, boolean availability) {
         Bundle bundle = new Bundle();
         bundle.putString("type", "shop");
         bundle.putString("name", name);
         bundle.putString("quantity", quantity);
         bundle.putString("unit", unit);
+        bundle.putString("category", category);
 
         fragment = new IngredientAddFragment();
         MainActivity.restoreFragment = fragment;

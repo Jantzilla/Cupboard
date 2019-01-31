@@ -159,7 +159,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     }
 
     @Override
-    public void onItemClickListener(int index, String name, String quantity, String unit, boolean availability) {
+    public void onItemClickListener(int index, String name, String quantity, String unit, String category, boolean availability) {
         Bundle bundle = new Bundle();
         bundle.putString("type", "edit");
         bundle.putString("name", name);
