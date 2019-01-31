@@ -15,6 +15,15 @@ import java.util.regex.Pattern;
 
 public class RecipeUtils {
 
+    public static boolean duplicateIngredient(ArrayList<String> existingIngredients, String newIngredient) {
+        for(String ingredient : existingIngredients) {
+            if(ingredient.toLowerCase().equals(newIngredient.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static String[] parseMeasure(String s){
         String result;
 
