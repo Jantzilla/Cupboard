@@ -400,7 +400,7 @@ public class IngredientAddFragment extends Fragment {
 
         } else {
             ContentValues values = new ContentValues();
-            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Integer.valueOf(quantity) + Integer.valueOf(ingredient.quantity));
+            values.put(CupboardContract.Ingredients.COLUMN_QUANTITY, Double.valueOf(quantity) + Double.valueOf(ingredient.quantity));
             db.update(
                     CupboardContract.Ingredients.TABLE_NAME,
                     values,
@@ -471,7 +471,7 @@ public class IngredientAddFragment extends Fragment {
         name = titleTextView.getText().toString();
         quantity = quantityTextView.getText().toString();
         unit = unitTextView.getText().toString();
-        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
+        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ? COLLATE NOCASE";
         selectionArgs = new String[]{name};
 
         Ingredient ingredient;
@@ -507,7 +507,7 @@ public class IngredientAddFragment extends Fragment {
         CupboardDbHelper dbHelper = new CupboardDbHelper(context);
         String[] selectionArgs;
         String selection;
-        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ?";
+        selection = CupboardContract.Ingredients.COLUMN_NAME + " = ? COLLATE NOCASE";
         db = dbHelper.getWritableDatabase();
         MainActivity.recipe.ingredientsUsed = 1;
 
