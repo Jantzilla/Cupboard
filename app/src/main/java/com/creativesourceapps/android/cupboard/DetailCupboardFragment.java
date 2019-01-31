@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
@@ -135,7 +136,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
         while(cursor.moveToNext()) {
             ingredient = new Ingredient();
             ingredient.name = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_NAME));
-            ingredient.quantity = String.valueOf(cursor.getInt(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY)));
+            ingredient.quantity = String.format(Locale.US, "%.2f",cursor.getDouble(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_QUANTITY)));
             ingredient.unit = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_UNIT));
             ingredient.category = cursor.getString(cursor.getColumnIndex(CupboardContract.Ingredients.COLUMN_CATEGORY));
             ingredientsList.add(ingredient);
