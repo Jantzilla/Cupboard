@@ -153,19 +153,18 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                                     if(resultObject.has("strIngredient" + o)) {
                                         if (!resultObject.getString("strIngredient" + o).isEmpty()) {
                                             tempIngredient = resultObject.getString("strIngredient" + o);
-                                            ingredient.add(tempIngredient);
-                                        } else
-                                            break;
-                                    }
-                                }
-
-                                for(int o = 1; o < 50; o++) {
-                                    if(resultObject.has("strMeasure" + o)) {
-                                        if (!resultObject.getString("strMeasure" + o).isEmpty()) {
-                                            tempUnit = resultObject.getString("strMeasure" + o);
-                                            String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
-                                            quantity.add(quantityUnit[0]);
-                                            unit.add(quantityUnit[1]);
+                                            if(!RecipeUtils.duplicateIngredient(ingredient, tempIngredient)) {
+                                                ingredient.add(tempIngredient);
+                                                if(resultObject.has("strMeasure" + o)) {
+                                                    if (!resultObject.getString("strMeasure" + o).isEmpty()) {
+                                                        tempUnit = resultObject.getString("strMeasure" + o);
+                                                        String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                                                        quantity.add(quantityUnit[0]);
+                                                        unit.add(quantityUnit[1]);
+                                                    } else
+                                                        break;
+                                                }
+                                            }
                                         } else
                                             break;
                                     }

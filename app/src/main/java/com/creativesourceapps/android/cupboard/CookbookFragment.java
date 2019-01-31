@@ -107,19 +107,18 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                 if(jsonObject.has("strIngredient" + o)) {
                     if (!jsonObject.getString("strIngredient" + o).isEmpty()) {
                         tempIngredient = jsonObject.getString("strIngredient" + o);
-                        ingredient.add(tempIngredient);
-                    } else
-                        break;
-                }
-            }
-
-            for(int o = 1; o < 50; o++) {
-                if(jsonObject.has("strMeasure" + o)) {
-                    if (!jsonObject.getString("strMeasure" + o).isEmpty()) {
-                        tempUnit = jsonObject.getString("strMeasure" + o);
-                        String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
-                        quantity.add(quantityUnit[0]);
-                        unit.add(quantityUnit[1]);
+                        if(!RecipeUtils.duplicateIngredient(ingredient, tempIngredient)) {
+                            ingredient.add(tempIngredient);
+                            if(jsonObject.has("strMeasure" + o)) {
+                                if (!jsonObject.getString("strMeasure" + o).isEmpty()) {
+                                    tempUnit = jsonObject.getString("strMeasure" + o);
+                                    String[] quantityUnit = RecipeUtils.parseMeasure(tempUnit);
+                                    quantity.add(quantityUnit[0]);
+                                    unit.add(quantityUnit[1]);
+                                } else
+                                    break;
+                            }
+                        }
                     } else
                         break;
                 }
