@@ -20,3 +20,25 @@ a network connection.
 ### Groceries
 
 Cupboard can help you create and organize a grocery list by letting you know what you'll need to make one of the featured recipes, and by providing an easy one click shopping cart add feature. When you've purchased the item simply add to your inventory directly from your grocery list.
+
+## Built With
+
+* [TheMealDB](https://www.themealdb.com/api.php) - The api used
+* [OkHttp](https://square.github.io/okhttp/) - Networking library
+* [Glide](https://bumptech.github.io/glide/) - Image loading library
+* [FloatingSearchView](https://github.com/arimorty/floatingsearchview) - Toolbar widget library
+* [DotsIndicator](https://github.com/tommybuonomo/dotsindicator) - View paging indicator
+
+## License
+
+```
+All Rights Reserved
+```
+
+## Acknowledgments
+
+* [Freepik](https://www.themealdb.com/api.php)
+* [Good Ware](https://www.flaticon.com/authors/good-ware)
+* [monkik](https://www.flaticon.com/authors/monkik)
+* [turkkub](https://www.flaticon.com/authors/turkkub)
+* [Pause08](https://www.flaticon.com/authors/pause08)
