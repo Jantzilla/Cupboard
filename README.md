@@ -6,6 +6,8 @@ Cupboard is the best app for both keeping track of your kitchen materials, as we
 
 Whether you're looking to explore exciting cuisine, manage what's in your refrigerator, or simply create a comprehensive grocery list, this amazing app has what you need.
 
+![](static/CupboardMock_small.png)![](static/CookbookMock_small.png) ![](static/IngredientsMockup_small.png)
+
 ### Recipes
 
 The recipes section is full of many simple and beautiful recipes. Each one features step by step instructions on an elegant interface along with a visual ingredients section. Every recipe list item shows the user the number of available ingredients available, and needed to fully prepare the recipe.
