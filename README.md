@@ -2,9 +2,9 @@
 
 <a href='https://play.google.com/store/apps/details?id=com.creativesourceapps.android.cupboard&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='65'/></a>
 
-Cupboard is the best app for both keeping track of your kitchen materials, as well as discovering amazing new recipes. It helps organize your kitchen, and plan ahead, so you can use your kitchen ingredients before they become outdated. 
+**Cupboard is the best app for both keeping track of your kitchen materials, as well as discovering amazing new recipes. It helps organize your kitchen, and plan ahead, so you can use your kitchen ingredients before they become outdated.**
 
-Whether you're looking to explore exciting cuisine, manage what's in your refrigerator, or simply create a comprehensive grocery list, this amazing app has what you need.
+**Whether you're looking to explore exciting cuisine, manage what's in your refrigerator, or simply create a comprehensive grocery list, this amazing app has what you need.**
 
 ![](static/CupboardMock_small.png)![](static/CookbookMock_small.png) ![](static/IngredientsMockup_small.png)
 
