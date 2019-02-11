@@ -1,6 +1,6 @@
 ![](static/banner.png)
 
-<a href='https://play.google.com/store/apps/details?id=com.creativesourceapps.android.cupboard&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='45'/></a>
+<a href='https://play.google.com/store/apps/details?id=com.creativesourceapps.android.cupboard&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='65'/></a>
 
 Cupboard is the best app for both keeping track of your kitchen materials, as well as discovering amazing new recipes. It helps organize your kitchen, and plan ahead, so you can use your kitchen ingredients before they become outdated. 
 
