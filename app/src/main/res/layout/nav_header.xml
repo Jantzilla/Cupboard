@@ -11,8 +11,12 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/cupboard_kitchen_photo_logo_background"
         android:scaleType="centerCrop"
-        android:src="@drawable/kitchen"
-        android:foreground="@drawable/nav_header_background"/>
+        android:src="@drawable/kitchen"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/nav_header_background"/>
 
     <TextView
         android:layout_width="wrap_content"
