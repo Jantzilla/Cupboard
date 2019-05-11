@@ -19,7 +19,6 @@
             android:id="@+id/iv_ingredient"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintBottom_toTopOf="@+id/tv_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
