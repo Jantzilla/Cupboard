@@ -14,5 +14,6 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="ingredient_add_vertical_space">95dp</dimen>
     <dimen name="ingredient_field_margin">16dp</dimen>
     <dimen name="drawer_header_height">230dp</dimen>
+    <dimen name="iv_button_size">65dp</dimen>
 
 </resources>
