@@ -51,8 +51,7 @@
             android:layout_height="@dimen/iv_button_size"
             android:padding="8dp"
             android:background="@drawable/recipe_list_icon_background"
-            android:layout_gravity="top|end"
-            android:src="@drawable/ic_launcher_foreground"/>
+            android:layout_gravity="top|end"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
