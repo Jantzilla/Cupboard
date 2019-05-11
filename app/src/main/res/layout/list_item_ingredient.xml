@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/ingredient_thumbnail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_launcher_foreground"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/iv_used"
