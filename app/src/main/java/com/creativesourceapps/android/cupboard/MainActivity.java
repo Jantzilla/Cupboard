@@ -4,7 +4,6 @@ import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -218,10 +217,11 @@ public class MainActivity extends AppCompatActivity {
                 0
         ) {
 
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                animator.setCurrentFraction(slideOffset);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    animator.setCurrentFraction(slideOffset);
+                }
                 super.onDrawerSlide(drawerView, slideOffset);
             }
         };
