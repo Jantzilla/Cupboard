@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_type_size">56sp</dimen>
+    <dimen name="recipe_card_height">260dp</dimen>
+</resources>
