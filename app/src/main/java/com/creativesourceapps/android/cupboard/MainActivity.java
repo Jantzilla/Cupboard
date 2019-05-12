@@ -1,6 +1,7 @@
 package com.creativesourceapps.android.cupboard;
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.support.v7.view.menu.MenuItemImpl;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +25,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.security.ProviderInstaller;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -154,6 +160,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void updateAndroidSecurityProvider(Activity callingActivity) {
+        try {
+            ProviderInstaller.installIfNeeded(this);
+        } catch (GooglePlayServicesRepairableException e) {
+            // Thrown when Google Play Services is not installed, up-to-date, or enabled
+            // Show dialog to allow users to install, update, or otherwise enable Google Play services.
+            GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), callingActivity, 0);
+        } catch (GooglePlayServicesNotAvailableException e) {
+            Log.e("SecurityException", "Google Play Services not available.");
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
         groceries = findViewById(R.id.fl_groceries);
         fragmentManager = getSupportFragmentManager();
         fragment = new RecipeFragment();
+
+        updateAndroidSecurityProvider(this);
 
         if (savedInstanceState != null) {
             //Restore the fragment's instance
