@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:fontFamily="@font/sofia_regular"
         android:padding="16dp"
-        android:textSize="56sp"
+        android:textSize="@dimen/logo_type_size"
         android:textColor="#ffffff"
         android:text="@string/app_name"/>
 

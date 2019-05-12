@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/iv_recipe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/recipe_card_height"
             android:contentDescription="@string/recipe_thumbnail"
             android:scaleType="centerCrop"/>
 
