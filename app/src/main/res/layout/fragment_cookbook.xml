@@ -23,7 +23,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:background="#ffffff"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cookbook_grid_view"
         android:layout_width="match_parent"
@@ -42,6 +42,6 @@
         android:paddingEnd="@dimen/recipe_grid_border"
         android:stretchMode="columnWidth"
         android:verticalSpacing="8dp">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>
