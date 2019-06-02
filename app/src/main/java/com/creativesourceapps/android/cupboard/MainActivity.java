@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.fl_recipes) private FrameLayout recipes;
     @BindView(R.id.fl_cupboard) private FrameLayout cupboard;
     @BindView(R.id.fl_cookbook) private FrameLayout cookbook;
-    private FrameLayout groceries;
+    @BindView(R.id.fl_groceries) private FrameLayout groceries;
     private ActionBarDrawerToggle mDrawerToggle;
     private TransitionDrawable transition;
     public static int availableCount;
@@ -187,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigationView = findViewById(R.id.navigation);
-        cookbook = findViewById(R.id.fl_cookbook);
-        groceries = findViewById(R.id.fl_groceries);
         fragmentManager = getSupportFragmentManager();
         fragment = new RecipeFragment();
 
