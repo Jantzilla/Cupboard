@@ -30,19 +30,29 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.security.ProviderInstaller;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity {
 
-    private FloatingSearchView floatingSearchView;
-    private DrawerLayout drawerLayout;
+    @BindView(R.id.floating_search_view) private FloatingSearchView floatingSearchView;
+    @BindView(R.id.drawer_layout) private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private View view, navigation, cupboardView, cookbookView, recipesView, groceriesView;
+    @BindView(R.id.transparent_scrim) private View view;
+    private View navigation;
+    @BindView(R.id.view_cupboard) private View cupboardView;
+    @BindView(R.id.view_cookbook) private View cookbookView;
+    @BindView(R.id.view_recipes) private View recipesView;
+    @BindView(R.id.view_groceries) private View groceriesView;
     private Fragment fragment;
     public static Fragment restoreFragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
     public static Recipe recipe;
     private MenuItemImpl menuElement;
-    private FrameLayout recipes, cupboard, cookbook, groceries;
+    @BindView(R.id.fl_recipes) private FrameLayout recipes;
+    @BindView(R.id.fl_cupboard) private FrameLayout cupboard;
+    @BindView(R.id.fl_cookbook) private FrameLayout cookbook;
+    private FrameLayout groceries;
     private ActionBarDrawerToggle mDrawerToggle;
     private TransitionDrawable transition;
     public static int availableCount;
@@ -176,16 +186,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        floatingSearchView = findViewById(R.id.floating_search_view);
-        drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation);
-        cupboardView = findViewById(R.id.view_cupboard);
-        cookbookView = findViewById(R.id.view_cookbook);
-        recipesView = findViewById(R.id.view_recipes);
-        groceriesView = findViewById(R.id.view_groceries);
-        view = findViewById(R.id.transparent_scrim);
-        recipes = findViewById(R.id.fl_recipes);
-        cupboard = findViewById(R.id.fl_cupboard);
         cookbook = findViewById(R.id.fl_cookbook);
         groceries = findViewById(R.id.fl_groceries);
         fragmentManager = getSupportFragmentManager();
