@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -63,6 +64,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
+        ButterKnife.bind(getActivity());
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
