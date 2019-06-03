@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -35,7 +36,7 @@ import okhttp3.Response;
 
 public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
-    private RecyclerView recylcerView;
+    @BindView(R.id.recipes_grid_view) private RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
@@ -48,8 +49,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private StepPagerFragment fragment;
     private FragmentManager fragmentManager;
     private Call call;
-    private ProgressBar pb;
-    private TextView emptyTextView;
+    @BindView(R.id.pb) private ProgressBar pb;
+    @BindView(R.id.tv_no_results_message) private TextView emptyTextView;
     private RecipeAdapter recipeAdapter;
     private String savedQuery, step;
 
@@ -62,9 +63,6 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
-        recylcerView = view.findViewById(R.id.recipes_grid_view);
-        pb = view.findViewById(R.id.pb);
-        emptyTextView = view.findViewById(R.id.tv_no_results_message);
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
