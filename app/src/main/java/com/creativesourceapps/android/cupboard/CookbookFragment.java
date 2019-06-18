@@ -18,10 +18,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
-    private RecyclerView recyclerView;
-    private TextView emptyTextView;
+    @BindView(R.id.cookbook_grid_view) private RecyclerView recyclerView;
+    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
     private ProgressBar pb;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
@@ -45,13 +48,12 @@ public class CookbookFragment extends Fragment implements RecipeAdapter.ListItem
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
+        ButterKnife.bind(this, view);
         projection = new String[]{
                 CupboardContract.Recipes._ID,
                 CupboardContract.Recipes.COLUMN_RECIPE
         };
 
-        recyclerView = view.findViewById(R.id.cookbook_grid_view);
-        emptyTextView = view.findViewById(R.id.tv_empty_message);
         pb = view.findViewById(R.id.pb);
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
