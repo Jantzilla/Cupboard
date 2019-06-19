@@ -64,7 +64,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
-        ButterKnife.bind(getActivity());
+        ButterKnife.bind(this, view);
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.recipe_column_count));
         dbHelper = new CupboardDbHelper(getContext());
         db = dbHelper.getWritableDatabase();
