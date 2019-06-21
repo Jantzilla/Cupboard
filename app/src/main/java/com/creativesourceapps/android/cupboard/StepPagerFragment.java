@@ -24,18 +24,22 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StepPagerFragment extends Fragment {
     StepPagerAdapter stepPagerAdapter;
-    FloatingActionButton fab;
-    ViewPager viewPager;
-    ImageView imageView;
+    @BindView(R.id.fab_recipe_ingredients) FloatingActionButton fab;
+    @BindView(R.id.vp_ingredient_steps) ViewPager viewPager;
+    @BindView(R.id.iv_recipe_step_background) ImageView imageView;
     androidx.transition.Transition transition;
     WormDotsIndicator wormDotsIndicator;
-    TextView stepTextView, recipeTextView;
+    @BindView(R.id.tv_step_number) TextView stepTextView;
+    @BindView(R.id.tv_recipe_title) TextView recipeTextView;
     private String step;
     private ArrayList<Ingredient> ingredients;
     private boolean visible, isUsed;
-    private Button useButton;
+    @BindView(R.id.btn_use) private Button useButton;
     private int mid;
     private Bundle bundle;
 
@@ -48,12 +52,7 @@ public class StepPagerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_step_pager, container, false);
-        viewPager = view.findViewById(R.id.vp_ingredient_steps);
-        imageView = view.findViewById(R.id.iv_recipe_step_background);
-        stepTextView = view.findViewById(R.id.tv_step_number);
-        recipeTextView = view.findViewById(R.id.tv_recipe_title);
-        fab = view.findViewById(R.id.fab_recipe_ingredients);
-        useButton = view.findViewById(R.id.btn_use);
+        ButterKnife.bind(this, view);
         ingredients = new ArrayList<>();
         transition = new Slide(Gravity.START);
 
