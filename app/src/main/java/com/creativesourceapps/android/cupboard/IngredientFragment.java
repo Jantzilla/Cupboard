@@ -18,17 +18,20 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class IngredientFragment extends Fragment implements IngredientListAdapter.ItemClickListener {
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_ingredients) RecyclerView recyclerView;
     private Recipe recipe;
-    private FloatingActionButton fab;
+    @BindView(R.id.fab_close) private FloatingActionButton fab;
     private IngredientListAdapter adapter;
     private GridLayoutManager gridLayoutManager;
     private ArrayList<Ingredient> ingredients;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
     private Transition transition;
-    private Button useButton;
+    @BindView(R.id.btn_use) private Button useButton;
     private boolean isUsed;
 
     public IngredientFragment() {
@@ -40,10 +43,8 @@ public class IngredientFragment extends Fragment implements IngredientListAdapte
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_ingredient, container, false);
+        ButterKnife.bind(this, view);
 
-        recyclerView = view.findViewById(R.id.rv_ingredients);
-        fab = view.findViewById(R.id.fab_close);
-        useButton = view.findViewById(R.id.btn_use);
         ingredients = new ArrayList<>();
         fragmentManager = getActivity().getSupportFragmentManager();
         transition = new Slide(Gravity.START);
