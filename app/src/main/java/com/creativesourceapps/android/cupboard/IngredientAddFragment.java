@@ -36,15 +36,25 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class IngredientAddFragment extends Fragment {
-    FloatingActionButton fab, addFab, deleteFab;
+    @BindView(R.id.fab_back) private FloatingActionButton fab;
+    @BindView(R.id.fab_add) private FloatingActionButton addFab;
+    @BindView(R.id.fab_delete) private FloatingActionButton deleteFab;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
-    private Button useButton;
-    private EditText ingredientEditText, hintEditText, quantityEditText;
-    private TextView unitTextView, titleTextView, quantityTextView;
-    private ImageView ingredientImageView, usedImageView;
+    @BindView(R.id.btn_use) private Button useButton;
+    @BindView(R.id.et_title) private EditText ingredientEditText;
+    @BindView(R.id.tv_hint) private EditText hintEditText;
+    @BindView(R.id.et_quantity) private EditText quantityEditText;
+    @BindView(R.id.tv_unit) private TextView unitTextView;
+    @BindView(R.id.tv_title) private TextView titleTextView;
+    @BindView(R.id.tv_quantity) private TextView quantityTextView;
+    @BindView(R.id.iv_ingredient) private ImageView ingredientImageView;
+    @BindView(R.id.iv_used) private ImageView usedImageView;
     private String name, quantity, unit, selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient, isUsed;
     private String selection;
@@ -64,10 +74,8 @@ public class IngredientAddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_ingredient_add, container, false);
+        ButterKnife.bind(this, view);
 
-        fab = view.findViewById(R.id.fab_back);
-        addFab = view.findViewById(R.id.fab_add);
-        deleteFab = view.findViewById(R.id.fab_delete);
         type = "new";
 
         viewGroup = container;
@@ -84,16 +92,6 @@ public class IngredientAddFragment extends Fragment {
         baseImageUrl = "https://www.themealdb.com/images/ingredients/";
 
         selection = CupboardContract.AllIngredients.COLUMN_NAME + " LIKE ?";
-
-        ingredientEditText = view.findViewById(R.id.et_title);
-        hintEditText = view.findViewById(R.id.tv_hint);
-        quantityEditText = view.findViewById(R.id.et_quantity);
-        unitTextView = view.findViewById(R.id.tv_unit);
-        titleTextView = view.findViewById(R.id.tv_title);
-        quantityTextView = view.findViewById(R.id.tv_quantity);
-        ingredientImageView = view.findViewById(R.id.iv_ingredient);
-        useButton = view.findViewById(R.id.btn_use);
-        usedImageView = view.findViewById(R.id.iv_used);
 
         ingredientEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
