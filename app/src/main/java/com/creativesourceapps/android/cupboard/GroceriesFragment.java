@@ -19,13 +19,16 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class GroceriesFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_groceries) RecyclerView recyclerView;
     IngredientListAdapter adapter;
     ImageView imageView;
-    RoundedImageView roundedImageView;
-    private FloatingActionButton fab;
+    @BindView(R.id.iv_category_background) RoundedImageView roundedImageView;
+    @BindView(R.id.fab_add) private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
@@ -36,8 +39,8 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
-    private ProgressBar pb;
-    private TextView emptyTextView;
+    @BindView(R.id.pb) private ProgressBar pb;
+    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
 
     public GroceriesFragment() {
         // Required empty public constructor
@@ -47,11 +50,7 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_groceries, container, false);
-        roundedImageView = view.findViewById(R.id.iv_category_background);
-        recyclerView = view.findViewById(R.id.rv_groceries);
-        pb = view.findViewById(R.id.pb);
-        emptyTextView = view.findViewById(R.id.tv_empty_message);
-        fab = view.findViewById(R.id.fab_add);
+        ButterKnife.bind(this, view);
         gridLayoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.ingredient_column_count));
         recyclerView.setLayoutManager(gridLayoutManager);
         ingredientsList = new ArrayList<>();
