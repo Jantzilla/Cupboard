@@ -26,8 +26,6 @@ import butterknife.ButterKnife;
 public class GroceriesFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
     @BindView(R.id.rv_groceries) RecyclerView recyclerView;
     IngredientListAdapter adapter;
-    ImageView imageView;
-    @BindView(R.id.iv_category_background) RoundedImageView roundedImageView;
     @BindView(R.id.fab_add) private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
