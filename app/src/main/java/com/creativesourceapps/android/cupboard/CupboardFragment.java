@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CupboardFragment extends Fragment implements CupboardAdapter.ItemClickListener, MainActivity.SearchChangeListener {
 
-    private RecyclerView recyclerView;
-    private FloatingActionButton fab;
+    @BindView(R.id.cupboard_grid_view) private RecyclerView recyclerView;
+    @BindView(R.id.fab_ingredient_list) private FloatingActionButton fab;
     private CupboardAdapter adapter;
     private ArrayList<String> categoryList;
     private GridLayoutManager layoutManager;
@@ -33,8 +36,7 @@ public class CupboardFragment extends Fragment implements CupboardAdapter.ItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cupboard, container, false);
-        recyclerView = view.findViewById(R.id.cupboard_grid_view);
-        fab = view.findViewById(R.id.fab_ingredient_list);
+        ButterKnife.bind(this, view);
         fragment = new DetailCupboardFragment();
         categoryList = new ArrayList<>();
         layoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.cupboard_column_count));
