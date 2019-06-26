@@ -18,16 +18,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class DetailCupboardFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_cupboard_detail) RecyclerView recyclerView;
     IngredientListAdapter adapter;
-    ImageView imageView;
-    private FloatingActionButton fab;
+    @BindView(R.id.iv_collapse) ImageView imageView;
+    @BindView(R.id.fab_add) private FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
-    private TextView categoryTextView, emptyTextView;
+    @BindView(R.id.tv_category) private TextView categoryTextView;
+    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
     private String category, selection, sortOrder, message, isEmpty;
     private CupboardDbHelper dbHelper;
     private SQLiteDatabase db;
@@ -35,7 +39,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
-    private ProgressBar pb;
+    @BindView(R.id.pb) private ProgressBar pb;
 
     public DetailCupboardFragment() {
         // Required empty public constructor
@@ -45,17 +49,12 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail_cupboard, container, false);
+        ButterKnife.bind(this, view);
 
         Bundle bundle = getArguments();
 
         category = bundle.getString("Shared Element");
 
-        categoryTextView = view.findViewById(R.id.tv_category);
-        imageView = view.findViewById(R.id.iv_collapse);
-        recyclerView = view.findViewById(R.id.rv_cupboard_detail);
-        pb = view.findViewById(R.id.pb);
-        emptyTextView = view.findViewById(R.id.tv_empty_message);
-        fab = view.findViewById(R.id.fab_add);
         gridLayoutManager = new GridLayoutManager(getContext(), getResources().getInteger(R.integer.ingredient_column_count));
         recyclerView.setLayoutManager(gridLayoutManager);
         ingredientsList = new ArrayList<>();
