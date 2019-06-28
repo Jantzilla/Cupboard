@@ -8,10 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class DetailStepFragment extends Fragment {
     int position;
-    private TextView textView;
+    @BindView(R.id.text_description) private TextView textView;
     private Recipe recipe;
 
     // Override onAttach to make sure that the container activity has implemented the callback
@@ -30,7 +33,7 @@ public class DetailStepFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_detail_step, container, false);
-        textView = (TextView) rootView.findViewById(R.id.text_description);
+        ButterKnife.bind(this, rootView);
         recipe = ((MainActivity)getActivity()).getRecipe();
 
 
