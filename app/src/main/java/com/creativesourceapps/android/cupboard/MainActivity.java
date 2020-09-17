@@ -35,25 +35,25 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.floating_search_view) private FloatingSearchView floatingSearchView;
-    @BindView(R.id.drawer_layout) private DrawerLayout drawerLayout;
+    @BindView(R.id.floating_search_view) FloatingSearchView floatingSearchView;
+    @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    @BindView(R.id.transparent_scrim) private View view;
+    @BindView(R.id.transparent_scrim) View view;
     private View navigation;
-    @BindView(R.id.view_cupboard) private View cupboardView;
-    @BindView(R.id.view_cookbook) private View cookbookView;
-    @BindView(R.id.view_recipes) private View recipesView;
-    @BindView(R.id.view_groceries) private View groceriesView;
+    @BindView(R.id.view_cupboard) View cupboardView;
+    @BindView(R.id.view_cookbook) View cookbookView;
+    @BindView(R.id.view_recipes) View recipesView;
+    @BindView(R.id.view_groceries) View groceriesView;
     private Fragment fragment;
     public static Fragment restoreFragment;
     private NavigationView navigationView;
     private SearchChangeListener searchChangeListener;
     public static Recipe recipe;
     private MenuItemImpl menuElement;
-    @BindView(R.id.fl_recipes) private FrameLayout recipes;
-    @BindView(R.id.fl_cupboard) private FrameLayout cupboard;
-    @BindView(R.id.fl_cookbook) private FrameLayout cookbook;
-    @BindView(R.id.fl_groceries) private FrameLayout groceries;
+    @BindView(R.id.fl_recipes) FrameLayout recipes;
+    @BindView(R.id.fl_cupboard) FrameLayout cupboard;
+    @BindView(R.id.fl_cookbook) FrameLayout cookbook;
+    @BindView(R.id.fl_groceries) FrameLayout groceries;
     private ActionBarDrawerToggle mDrawerToggle;
     private TransitionDrawable transition;
     public static int availableCount;

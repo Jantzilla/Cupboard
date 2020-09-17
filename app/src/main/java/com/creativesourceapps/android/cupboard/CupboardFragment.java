@@ -20,8 +20,8 @@ import butterknife.ButterKnife;
 
 public class CupboardFragment extends Fragment implements CupboardAdapter.ItemClickListener, MainActivity.SearchChangeListener {
 
-    @BindView(R.id.cupboard_grid_view) private RecyclerView recyclerView;
-    @BindView(R.id.fab_ingredient_list) private FloatingActionButton fab;
+    @BindView(R.id.cupboard_grid_view) RecyclerView recyclerView;
+    @BindView(R.id.fab_ingredient_list) FloatingActionButton fab;
     private CupboardAdapter adapter;
     private ArrayList<String> categoryList;
     private GridLayoutManager layoutManager;

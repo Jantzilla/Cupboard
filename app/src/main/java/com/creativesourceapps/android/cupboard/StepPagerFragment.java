@@ -39,7 +39,7 @@ public class StepPagerFragment extends Fragment {
     private String step;
     private ArrayList<Ingredient> ingredients;
     private boolean visible, isUsed;
-    @BindView(R.id.btn_use) private Button useButton;
+    @BindView(R.id.btn_use) Button useButton;
     private int mid;
     private Bundle bundle;
 

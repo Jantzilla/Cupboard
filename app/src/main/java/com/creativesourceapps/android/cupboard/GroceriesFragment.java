@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 public class GroceriesFragment extends Fragment implements MainActivity.SearchChangeListener, IngredientListAdapter.ItemClickListener {
     @BindView(R.id.rv_groceries) RecyclerView recyclerView;
     IngredientListAdapter adapter;
-    @BindView(R.id.fab_add) private FloatingActionButton fab;
+    @BindView(R.id.fab_add) FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
@@ -37,8 +37,8 @@ public class GroceriesFragment extends Fragment implements MainActivity.SearchCh
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
-    @BindView(R.id.pb) private ProgressBar pb;
-    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
+    @BindView(R.id.pb) ProgressBar pb;
+    @BindView(R.id.tv_empty_message) TextView emptyTextView;
 
     public GroceriesFragment() {
         // Required empty public constructor

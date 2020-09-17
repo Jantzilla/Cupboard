@@ -41,20 +41,20 @@ import butterknife.ButterKnife;
 
 
 public class IngredientAddFragment extends Fragment {
-    @BindView(R.id.fab_back) private FloatingActionButton fab;
-    @BindView(R.id.fab_add) private FloatingActionButton addFab;
-    @BindView(R.id.fab_delete) private FloatingActionButton deleteFab;
+    @BindView(R.id.fab_back) FloatingActionButton fab;
+    @BindView(R.id.fab_add) FloatingActionButton addFab;
+    @BindView(R.id.fab_delete) FloatingActionButton deleteFab;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;
-    @BindView(R.id.btn_use) private Button useButton;
-    @BindView(R.id.et_title) private EditText ingredientEditText;
-    @BindView(R.id.tv_hint) private EditText hintEditText;
-    @BindView(R.id.et_quantity) private EditText quantityEditText;
-    @BindView(R.id.tv_unit) private TextView unitTextView;
-    @BindView(R.id.tv_title) private TextView titleTextView;
-    @BindView(R.id.tv_quantity) private TextView quantityTextView;
-    @BindView(R.id.iv_ingredient) private ImageView ingredientImageView;
-    @BindView(R.id.iv_used) private ImageView usedImageView;
+    @BindView(R.id.btn_use) Button useButton;
+    @BindView(R.id.et_title) EditText ingredientEditText;
+    @BindView(R.id.tv_hint) EditText hintEditText;
+    @BindView(R.id.et_quantity) EditText quantityEditText;
+    @BindView(R.id.tv_unit) TextView unitTextView;
+    @BindView(R.id.tv_title) TextView titleTextView;
+    @BindView(R.id.tv_quantity) TextView quantityTextView;
+    @BindView(R.id.iv_ingredient) ImageView ingredientImageView;
+    @BindView(R.id.iv_used) ImageView usedImageView;
     private String name, quantity, unit, selectedUnit, type, baseImageUrl;
     private boolean savedIngredient, availableIngredient, isUsed;
     private String selection;

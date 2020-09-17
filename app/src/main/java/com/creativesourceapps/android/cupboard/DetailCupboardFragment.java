@@ -26,12 +26,12 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     @BindView(R.id.rv_cupboard_detail) RecyclerView recyclerView;
     IngredientListAdapter adapter;
     @BindView(R.id.iv_collapse) ImageView imageView;
-    @BindView(R.id.fab_add) private FloatingActionButton fab;
+    @BindView(R.id.fab_add) FloatingActionButton fab;
     private ArrayList<Ingredient> ingredientsList;
     private Ingredient ingredient;
     private GridLayoutManager gridLayoutManager;
-    @BindView(R.id.tv_category) private TextView categoryTextView;
-    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
+    @BindView(R.id.tv_category) TextView categoryTextView;
+    @BindView(R.id.tv_empty_message) TextView emptyTextView;
     private String category, selection, sortOrder, message, isEmpty;
     private CupboardDbHelper dbHelper;
     private SQLiteDatabase db;
@@ -39,7 +39,7 @@ public class DetailCupboardFragment extends Fragment implements MainActivity.Sea
     private Cursor cursor;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
-    @BindView(R.id.pb) private ProgressBar pb;
+    @BindView(R.id.pb) ProgressBar pb;
 
     public DetailCupboardFragment() {
         // Required empty public constructor

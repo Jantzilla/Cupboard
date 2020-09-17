@@ -37,7 +37,7 @@ import okhttp3.Response;
 
 public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
-    @BindView(R.id.recipes_grid_view) private RecyclerView recylcerView;
+    @BindView(R.id.recipes_grid_view) RecyclerView recylcerView;
     private ArrayList<JSONObject> jsonObjectArray;
     private ArrayList<Recipe> recipes = new ArrayList<>();
     private GridLayoutManager layoutManager;
@@ -50,8 +50,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     private StepPagerFragment fragment;
     private FragmentManager fragmentManager;
     private Call call;
-    @BindView(R.id.pb) private ProgressBar pb;
-    @BindView(R.id.tv_no_results_message) private TextView emptyTextView;
+    @BindView(R.id.pb) ProgressBar pb;
+    @BindView(R.id.tv_no_results_message) TextView emptyTextView;
     private RecipeAdapter recipeAdapter;
     private String savedQuery, step;
 

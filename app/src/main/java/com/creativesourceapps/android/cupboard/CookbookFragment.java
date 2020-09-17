@@ -23,8 +23,8 @@ import butterknife.ButterKnife;
 
 public class CookbookFragment extends Fragment implements RecipeAdapter.ListItemClickListener, MainActivity.SearchChangeListener {
 
-    @BindView(R.id.cookbook_grid_view) private RecyclerView recyclerView;
-    @BindView(R.id.tv_empty_message) private TextView emptyTextView;
+    @BindView(R.id.cookbook_grid_view) RecyclerView recyclerView;
+    @BindView(R.id.tv_empty_message) TextView emptyTextView;
     private ProgressBar pb;
     private SQLiteDatabase db;
     private CupboardDbHelper dbHelper;

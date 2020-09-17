@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 
 public class DetailStepFragment extends Fragment {
     int position;
-    @BindView(R.id.text_description) private TextView textView;
+    @BindView(R.id.text_description) TextView textView;
     private Recipe recipe;
 
     // Override onAttach to make sure that the container activity has implemented the callback

@@ -24,14 +24,14 @@ import butterknife.ButterKnife;
 public class IngredientFragment extends Fragment implements IngredientListAdapter.ItemClickListener {
     @BindView(R.id.rv_ingredients) RecyclerView recyclerView;
     private Recipe recipe;
-    @BindView(R.id.fab_close) private FloatingActionButton fab;
+    @BindView(R.id.fab_close) FloatingActionButton fab;
     private IngredientListAdapter adapter;
     private GridLayoutManager gridLayoutManager;
     private ArrayList<Ingredient> ingredients;
     private IngredientAddFragment fragment;
     private FragmentManager fragmentManager;
     private Transition transition;
-    @BindView(R.id.btn_use) private Button useButton;
+    @BindView(R.id.btn_use) Button useButton;
     private boolean isUsed;
 
     public IngredientFragment() {
