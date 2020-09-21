@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.view;
+package com.creativesourceapps.android.cupboard.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

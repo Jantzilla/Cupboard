@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.view;
+package com.creativesourceapps.android.cupboard.ui;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -20,11 +20,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creativesourceapps.android.cupboard.model.CupboardContract;
-import com.creativesourceapps.android.cupboard.model.CupboardDbHelper;
+import com.creativesourceapps.android.cupboard.data.CupboardContract;
+import com.creativesourceapps.android.cupboard.data.CupboardDbHelper;
 import com.creativesourceapps.android.cupboard.R;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
-import com.creativesourceapps.android.cupboard.model.Recipe;
+import com.creativesourceapps.android.cupboard.data.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,9 +1,9 @@
-package com.creativesourceapps.android.cupboard.model;
+package com.creativesourceapps.android.cupboard.data;
 
 import android.content.Intent;
 import android.widget.RemoteViewsService;
 
-import com.creativesourceapps.android.cupboard.view.MyWidgetRemoteViewsFactory;
+import com.creativesourceapps.android.cupboard.ui.MyWidgetRemoteViewsFactory;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.model;
+package com.creativesourceapps.android.cupboard.data;
 
 import android.provider.BaseColumns;
 

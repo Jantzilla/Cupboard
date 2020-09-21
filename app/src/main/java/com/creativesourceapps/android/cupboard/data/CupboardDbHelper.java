@@ -1,12 +1,9 @@
-package com.creativesourceapps.android.cupboard.model;
+package com.creativesourceapps.android.cupboard.data;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.creativesourceapps.android.cupboard.model.CupboardContract;
-import com.creativesourceapps.android.cupboard.model.Ingredient;
 
 import org.json.JSONArray;
 import org.json.JSONException;

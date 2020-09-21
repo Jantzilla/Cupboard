@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.view;
+package com.creativesourceapps.android.cupboard.ui;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.creativesourceapps.android.cupboard.model.CupboardContract;
-import com.creativesourceapps.android.cupboard.model.CupboardDbHelper;
+import com.creativesourceapps.android.cupboard.data.CupboardContract;
+import com.creativesourceapps.android.cupboard.data.CupboardDbHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;

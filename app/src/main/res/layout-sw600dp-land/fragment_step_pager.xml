@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/master_list_fragment"
-        android:name="com.creativesourceapps.android.cupboard.view.IngredientFragment"
+        android:name="com.creativesourceapps.android.cupboard.ui.IngredientFragment"
         android:layout_marginTop="64dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -43,7 +43,7 @@
             card_view:cardCornerRadius="16dp"
             card_view:cardElevation="8dp"
             card_view:cardPreventCornerOverlap="false"
-            tools:context=".view.StepPagerFragment">
+            tools:context=".ui.StepPagerFragment">
 
             <ImageView
                 android:id="@+id/iv_recipe_step_background"
