@@ -2,6 +2,8 @@ package com.creativesourceapps.android.cupboard;
 
 import androidx.test.rule.ActivityTestRule;
 
+import com.creativesourceapps.android.cupboard.view.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

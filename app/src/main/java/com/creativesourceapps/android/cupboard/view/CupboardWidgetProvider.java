@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -8,6 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
+
+import com.creativesourceapps.android.cupboard.R;
+import com.creativesourceapps.android.cupboard.model.MyWidgetRemoteViewsService;
+import com.creativesourceapps.android.cupboard.model.Recipe;
 
 /**
  * Implementation of App Widget functionality.

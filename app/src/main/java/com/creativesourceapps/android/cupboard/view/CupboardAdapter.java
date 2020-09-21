@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.content.Context;
 import android.os.Build;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.creativesourceapps.android.cupboard.R;
 
 import java.util.ArrayList;
 

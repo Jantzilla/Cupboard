@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 public class Recipe implements Parcelable {
     final int id;
-    int ingredientsUsed;
-    final String title, media;
-    ArrayList<String> unit;
-    ArrayList<String> quantity;
-    ArrayList<String> ingredients;
-    ArrayList<String> steps;
-    ArrayList<String> instructions;
-    ArrayList<Boolean> used, available;
+    public int ingredientsUsed;
+    public final String title, media;
+    public ArrayList<String> unit;
+    public ArrayList<String> quantity;
+    public ArrayList<String> ingredients;
+    public ArrayList<String> steps;
+    public ArrayList<String> instructions;
+    public ArrayList<Boolean> used, available;
 
     public Recipe(int id, String title, ArrayList<String> ingredients, ArrayList<String> quantity, ArrayList<String> unit,
                   ArrayList<String> shortDescription, ArrayList<String> description, String media)

@@ -1,7 +1,9 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.os.Build;
 import android.os.Bundle;
+
+import com.creativesourceapps.android.cupboard.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.Fragment;
 import androidx.cardview.widget.CardView;

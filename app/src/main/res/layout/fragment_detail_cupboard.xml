@@ -17,7 +17,7 @@
     card_view:cardElevation="8dp"
     card_view:cardPreventCornerOverlap="false"
     android:orientation="vertical"
-    tools:context=".DetailCupboardFragment">
+    tools:context=".view.DetailCupboardFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

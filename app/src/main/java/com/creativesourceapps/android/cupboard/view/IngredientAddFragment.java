@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -7,6 +7,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+
+import com.creativesourceapps.android.cupboard.model.CupboardContract;
+import com.creativesourceapps.android.cupboard.model.CupboardDbHelper;
+import com.creativesourceapps.android.cupboard.R;
+import com.creativesourceapps.android.cupboard.util.RecipeUtils;
+import com.creativesourceapps.android.cupboard.model.Ingredient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.transition.Fade;
 import androidx.transition.Slide;

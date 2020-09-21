@@ -1,10 +1,12 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.content.Context;
 import android.os.Binder;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+
+import com.creativesourceapps.android.cupboard.R;
 
 import java.util.ArrayList;
 

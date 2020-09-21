@@ -1,10 +1,14 @@
-package com.creativesourceapps.android.cupboard;
+package com.creativesourceapps.android.cupboard.view;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
+
+import com.creativesourceapps.android.cupboard.R;
+import com.creativesourceapps.android.cupboard.util.RecipeUtils;
+import com.creativesourceapps.android.cupboard.model.Recipe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.fragment.app.Fragment;
