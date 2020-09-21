@@ -11,7 +11,8 @@ import android.widget.RemoteViews;
 
 import com.creativesourceapps.android.cupboard.R;
 import com.creativesourceapps.android.cupboard.data.MyWidgetRemoteViewsService;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
+import com.creativesourceapps.android.cupboard.ui.view.MainActivity;
 
 /**
  * Implementation of App Widget functionality.

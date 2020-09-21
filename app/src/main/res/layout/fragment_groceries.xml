@@ -17,7 +17,7 @@
     card_view:cardElevation="8dp"
     card_view:cardPreventCornerOverlap="false"
     android:orientation="vertical"
-    tools:context=".ui.GroceriesFragment">
+    tools:context=".ui.view.GroceriesFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

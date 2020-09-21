@@ -27,7 +27,7 @@
     card_view:cardCornerRadius="16dp"
     card_view:cardElevation="8dp"
     card_view:cardPreventCornerOverlap="false"
-    tools:context=".ui.StepPagerFragment">
+    tools:context=".ui.view.StepPagerFragment">
 
     <ImageView
         android:id="@+id/iv_recipe_step_background"

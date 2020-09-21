@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.creativesourceapps.android.cupboard.R;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -2,7 +2,7 @@ package com.creativesourceapps.android.cupboard;
 
 import androidx.test.rule.ActivityTestRule;
 
-import com.creativesourceapps.android.cupboard.ui.MainActivity;
+import com.creativesourceapps.android.cupboard.ui.view.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.view;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -8,7 +8,7 @@ import android.os.Build;
 
 import com.creativesourceapps.android.cupboard.R;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.fragment.app.Fragment;

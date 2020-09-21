@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -16,7 +16,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.creativesourceapps.android.cupboard.R;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
 
 import java.util.ArrayList;
 

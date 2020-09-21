@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.adapter;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.creativesourceapps.android.cupboard.R;
-import com.creativesourceapps.android.cupboard.data.Ingredient;
+import com.creativesourceapps.android.cupboard.data.model.Ingredient;
 
 import java.util.ArrayList;
 

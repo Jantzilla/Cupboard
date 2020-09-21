@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.creativesourceapps.android.cupboard.data.model.Ingredient;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

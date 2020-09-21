@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.creativesourceapps.android.cupboard.data.CupboardContract;
 import com.creativesourceapps.android.cupboard.data.CupboardDbHelper;
 import com.creativesourceapps.android.cupboard.R;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
+import com.creativesourceapps.android.cupboard.ui.CupboardWidgetProvider;
+import com.creativesourceapps.android.cupboard.ui.adapter.RecipeAdapter;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
 
 import org.json.JSONException;

@@ -1,12 +1,17 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.view;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
 import com.creativesourceapps.android.cupboard.R;
-import com.creativesourceapps.android.cupboard.data.Ingredient;
-import com.creativesourceapps.android.cupboard.data.Recipe;
+import com.creativesourceapps.android.cupboard.data.model.Ingredient;
+import com.creativesourceapps.android.cupboard.data.model.Recipe;
+import com.creativesourceapps.android.cupboard.ui.adapter.StepPagerAdapter;
+import com.creativesourceapps.android.cupboard.ui.view.DetailStepFragment;
+import com.creativesourceapps.android.cupboard.ui.view.IngredientAddFragment;
+import com.creativesourceapps.android.cupboard.ui.view.IngredientFragment;
+import com.creativesourceapps.android.cupboard.ui.view.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.transition.Slide;
 import androidx.transition.TransitionManager;

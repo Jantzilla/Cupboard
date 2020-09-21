@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.data;
+package com.creativesourceapps.android.cupboard.data.model;
 
 public class Ingredient {
     public String name, unit, category, quantity;

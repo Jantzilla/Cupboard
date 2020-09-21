@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.view;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -12,7 +12,7 @@ import com.creativesourceapps.android.cupboard.data.CupboardContract;
 import com.creativesourceapps.android.cupboard.data.CupboardDbHelper;
 import com.creativesourceapps.android.cupboard.R;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
-import com.creativesourceapps.android.cupboard.data.Ingredient;
+import com.creativesourceapps.android.cupboard.data.model.Ingredient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.transition.Fade;
 import androidx.transition.Slide;

@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.data;
+package com.creativesourceapps.android.cupboard.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

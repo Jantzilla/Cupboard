@@ -1,4 +1,4 @@
-package com.creativesourceapps.android.cupboard.ui;
+package com.creativesourceapps.android.cupboard.ui.adapter;
 
 import android.content.Context;
 import android.os.Build;
