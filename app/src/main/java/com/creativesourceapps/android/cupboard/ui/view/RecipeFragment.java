@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import com.creativesourceapps.android.cupboard.data.CupboardContract;
 import com.creativesourceapps.android.cupboard.data.CupboardDbHelper;
 import com.creativesourceapps.android.cupboard.R;
+import com.creativesourceapps.android.cupboard.di.DaggerApp;
 import com.creativesourceapps.android.cupboard.ui.CupboardWidgetProvider;
 import com.creativesourceapps.android.cupboard.ui.adapter.RecipeAdapter;
 import com.creativesourceapps.android.cupboard.util.RecipeUtils;
@@ -34,6 +37,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,9 +67,17 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
     @BindView(R.id.tv_no_results_message) TextView emptyTextView;
     private RecipeAdapter recipeAdapter;
     private String savedQuery, step;
+    @Inject
+    OkHttpClient okHttpClient;
 
     public RecipeFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        ((DaggerApp) getActivity().getApplication()).getAppComponent().inject(this);
+        super.onAttach(context);
     }
 
     @Override
@@ -128,7 +141,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.ListItemCl
                     .url(searchUrl)
                     .build();
 
-            call = new OkHttpClient().newCall(request);
+            call = okHttpClient.newCall(request);
 
 
             call.enqueue(new Callback() {
